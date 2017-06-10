@@ -1,0 +1,437 @@
+#
+# Sera - OnePage Jekyll Template
+# Configuration File
+#
+
+# Information for compile
+exclude: ["node_modules", "gulpfile.js", "package.json", "README.md"]
+
+# Git
+github-tp-master: https://github.com/nilsteampassnet/TeamPass/archive/master.zip
+readthedocs-url: https://teampass.readthedocs.io/en/latest/
+
+#######################################################
+#######################################################
+###############   HEADER INFORMATIONS   ###############
+#######################################################
+#######################################################
+
+# This is your site title
+title: Teampass.net
+# Website language
+lang: en-US
+# Header Title
+header-title: a <strong>Deeper Dimension</strong>
+# Header Tagline
+headter-tagline: Give to Passwords
+
+####################################
+######   CTA Header Buttons   ######
+####################################
+
+# Focus Buttons
+header-focus-button:
+  title: Github
+  url: https://github.com/nilsteampassnet/TeamPass
+
+# Secondary Buttons
+header-secondary-button:
+  title: Docker
+  url: https://hub.docker.com/r/teampass/teampass/
+
+#
+# If your website is placed in a separate folder on your server please modify
+# this with your folder name, by default is empty.
+# Example: Sera Demo is hosted on projects.gleesik.ro/sera-onepage
+# If I compile Sera Template and I put in /sera-onepage without modifing baseurl
+# than scripts can't be loaded corectly.
+# For this example my site url is: projects.gleesik.ro (This can be just www.example.com)
+# My folder for Demo Website is: /sera-onepage so baseurl: /sera-onepage
+#
+baseurl: /sera
+
+#
+# This is your email adress, contact from send here all emails from contact section
+# IMPORTANT: you can modify contact form from this static template, but now works contact form works with a free external server
+# To configure this contact form, first please send a fictive email afeter you enter below your email and verify that :)
+#
+email: nils@teampass.net
+
+# Offer Banner Link
+# Default link is a link to all Sera OnePage products
+banner-link: https://teampass.net
+
+####################################
+######  Global Social Links   ######
+####################################
+#youtube: '#'
+#pinterest: '#'
+facebook: 'https://fr-fr.facebook.com/TeamPass-Passwords-for-Teams-163627833721400/'
+twitter: 'https://twitter.com/theteampass'
+linkedin: 'nilslaumaille'
+reddit: 'https://www.reddit.com/r/TeamPass/'
+github: 'https://github.com/nilsteampassnet/TeamPass'
+#google-plus: '#'
+#vimeo: '#'
+
+#########################
+######   Widgets   ######
+#########################
+
+#
+# About Blog Author Widget
+#
+about-widget:
+  author-avatar: nils.jpeg
+  author-name: Nils Laumaillé
+  author-tagline: Blog Author
+  author-info: Cum sociis que penatibus et magnis dis parturient montes lorem, nascetur ridiculus mus. Donec quam felis, ultricies nec.
+  author-social-links:
+    facebook: '#'
+    twitter: '#'
+    google-plus: '#'
+
+# Google Map JS api
+# This is my api for this template
+key-api: AIzaSyDbnxVZQannH0GF4gtnnBFPiP9ofm2WqGs
+map-text: Sera Google Map
+map-text-location: Bucharest, Romania
+map-lat: 44.4267674
+map-lng: 26.102538399999958
+
+# Enter your Mailchimp User ID and Campaign ID
+# @TODO: Add in a link for where to find these
+mailchimp:
+  user-id: REPLACEME
+  list-id: REPLACEME
+
+####
+#
+# Hi you now use Sera - OnePage Jekyll Template created by Gleesik™
+#
+# Below are each section from the website in order from top to bottom
+# @TODO Edit each sections with your real information and each section from Sera will autocomplete with your information
+#
+####
+
+#####################################
+#############   About   #############
+#####################################
+about-title: About Teampass
+about-description: TeamPass is a Passwords Manager dedicated for managing passwords in a collaborative way by sharing them among team members.<br />Teampass offers a large set of features permitting to manage your passwords and related data in an organized way in respect to the access rights defined for each users.<br />Teampass is an Open-Source free to use product distributed in respect with OpenSource AGPL3.
+
+
+#####################################
+#############  Features  ############
+#####################################
+features-title: Features
+features-description: Teampass is highly customizable to fit your specific needs and constraints.
+
+#
+# Features
+#
+features:
+
+# Feature
+- title: Security
+  description: Teampass secures your data and your users at several levels with encryption. It relies on Defuse PHP Encryption library which provides a very secure Cryptographic protocol [<a href="https://github.com/defuse/php-encryption/blob/master/docs/CryptoDetails.md" target="_blank">Read mode</a>]
+  icon: pe-7s-safe
+
+# Feature
+- title: Customizable
+  description: Teampass provides a lot of options and features permitting to customize it to your needs. Decide how you want to setup your instance of Teampass to acheive your goals in term of Team sharing.
+  icon: pe-7s-plugin
+
+# Feature
+- title: Fine Tunning
+  description: Teampass allows you to fine tune the users access rights to the existing Items. Depending on your local policies, Teampass helps to ensure that only allowed people has access to expected data. 
+  icon: pe-7s-edit
+
+
+#####################################
+############  Portfolio  ############
+#####################################
+portfolio-title: Screenshots
+portfolio-description: Teampass is a web application. The next screenshots show some of the main common pages your users could found while using Teampass.
+
+#
+# Portfolio Grid
+#
+portfolio-categories: [Items, Administration]
+portfolio:
+
+# Portfolio Item
+- title: H<span class="thin">ome</span> Page
+  categories: [Items]
+  image: pf_tp_1.png
+  url: 'https://teampass.readthedocs.io/en/latest/features/feat-items/'
+
+# Portfolio Item
+- title: I<span class="thin">tem</span> Details
+  categories: [Items]
+  image: pf_tp_2.png
+  url: 'https://teampass.readthedocs.io/en/latest/features/feat-items/#item-details'
+
+# Portfolio Item
+- title: E<span class="thin">diting</span> an Item
+  categories: [Items]
+  image: pf_tp_3.png
+  url: 'https://teampass.readthedocs.io/en/latest/features/feat-items/#editing-item'
+
+# Portfolio Item
+- title: S<span class="thin">earching</span> Items
+  categories: [Items]
+  image: pf_tp_4.png
+  url: 'https://teampass.readthedocs.io/en/latest/features/feat-items/#searching-items'
+
+# Portfolio Item
+- title: A<span class="thin">udit Trail</span> of Item
+  categories: [Items]
+  image: pf_tp_5.png
+  url: 'https://teampass.readthedocs.io/en/latest/features/feat-items/#item-history'
+
+# Portfolio Item
+- title: U<span class="thin">ser</span> Profile
+  categories: [Items]
+  image: pf_tp_6.png
+  url: 'https://teampass.readthedocs.io/en/latest/features/feat-prof/'
+
+# Portfolio Item
+- title: M<span class="thin">anage</span> Users
+  categories: [Administration]
+  image: pf_tp_7.png
+  url: 'https://teampass.readthedocs.io/en/latest/manage/manage-users/'
+
+# Portfolio Item
+- title: S<span class="thin">ettings</span> Page
+  categories: [Administration]
+  image: pf_tp_8.png
+  url: '{{site.readthedocs-url}}install/setup/'
+
+# Portfolio Item
+- title: F<span class="thin">olders VS</span> Roles
+  categories: [Administration]
+  image: pf_tp_9.png
+  url: 'https://teampass.readthedocs.io/en/latest/manage/manage-groups/#using-the-rights-matrix'
+
+
+#####################################
+##########  Core Features  ##########
+#####################################
+core-title: Core Features
+core-description: Teampass has a lot of features to adapt its usage to most of the cases. Nevertheless Teampass relies on Core Features that could be resumed below.
+
+#
+# Core Features Left
+#
+core-features-left:
+
+# Feature
+- name: Secured Access
+  description: Access relies on user credentials completed with 2FA libraries such as DUOSecurity, Google Authencation, AGSES, ...
+  icon: pe-7s-door-lock
+
+# Feature
+- name: Roles definition
+  description: Define Roles with pre-defined access rights for easy and fast user creation.
+  icon: pe-7s-users
+
+# Feature
+- name: User Privileges
+  description: User access rights can be fine tuning on Folders and Items.
+  icon: pe-7s-scissors
+
+# Feature
+- name: Tree Structure
+  description: Organize Folders in a Tree view and define their access level (Write/Read/No) against Roles.
+  icon: pe-7s-albums
+
+#
+# Core Features Right
+#
+core-features-right:
+
+# Feature
+- name: Data Encryption
+  description: All passwords are encrypted in database relying on AES-256 algorithm.
+  icon: pe-7s-lock
+
+# Feature
+- name: Item definition
+  description: Each Item is defined with a set of Fields and Attachments. Custom fields can be added too.
+  icon: pe-7s-note2
+
+# Feature
+- name: Offline Mode
+  description: Export your Items in an encrypted file to be used in a location without connection.
+  icon: pe-7s-next-2
+
+# Feature
+- name: Personal Folders
+  description: Your users can have Personal Folders and Items secured with their own saltkey.
+  icon: pe-7s-id
+
+
+#####################################
+########### Testimonials ############
+#####################################
+#testimonials-title: Testimonials
+#testimonials-description: Currently no testimonials are available.
+
+#
+# Testimonials
+#
+#testimonials:
+
+# Client
+#- name: Johnatan Doe
+#  url: http://themeforest.net
+#  url-text: ThemeForest.net
+#  avatar: avatar-01.jpg
+#  cite: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius adipiscing lectus, eu ornare lectus semper in. Aenean at tincidunt sem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi id ornare ante. Cras odio nibh, volutpat vitae volutpat sed.
+#  logo-img: themeforest.png
+
+
+# Client
+#- name: Richard Ryan
+ # url: http://audiojungle.net
+  #url-text: AudioJungle.net
+  #avatar: avatar-04.jpg
+  #cite: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius adipiscing lectus, eu ornare lectus semper in. Aenean at tincidunt sem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi id ornare ante. Cras odio nibh, volutpat vitae volutpat sed.
+  #logo-img: audiojungle.png
+
+
+#####################################
+############# Our Blog ##############
+#####################################
+blog-title: Our Blog
+blog-description: Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi id ornare ante. Cras odio nibh, volutpat vitae volutpat sed, suscipit et nisi. Nulla a tellus at turpis gravida congue non sed nisl. Pellentesque scelerisque eu neque et tincidunt.
+
+
+#####################################
+############### Team ################
+#####################################
+team-title: Who I am
+team-description: Teampass has been entirely developed by Nils Laumaillé based upon his original idea.
+
+#
+# Team Members
+#
+team:
+
+# Team Member
+- name: Nils Laumaillé
+  tagline: Creator, Developer & Support
+  avatar: nils.jpeg
+
+  # Social Links
+ # youtube: '#'
+ # pinterest: '#'
+  facebook: '#'
+  twitter: '#'
+  #google-plus: '#'
+  #vimeo: '#'
+
+
+
+
+#####################################
+########## Pricing Tables ###########
+#####################################
+pricing-title: Communication Flows
+pricing-description: Depending on the topic, we suggest you to use the next flows.
+
+#
+# Plan Personal
+#
+plan-personal-price: UserEcho
+plan-personal-offer-1-title: Suggestions
+plan-personal-offer-1-info: Teampass grows up with your ideas and Request.
+plan-personal-offer-2-title: Participate 
+plan-personal-offer-2-info: UserEcho offers you the possibility to propose new features and improvtes. Vote for the ones you would like to see developed.
+plan-personal-url: 'https://teampass.userecho.com/'
+
+#
+# Plan Ultimate
+#
+plan-ultimate-price: $999
+plan-ultimate-offer-1-title: Defects & Bugs
+plan-ultimate-offer-1-info: In case you are facing a bug during Teampass usage, Report it.
+plan-ultimate-offer-2-title: Support
+plan-ultimate-offer-2-info: Critical and Security defects are treated with highest priority. The delay relies on your hability to provide detailed information.
+plan-ultimate-url: 'https://github.com/nilsteampassnet/TeamPass/issues'
+
+
+#
+# Plan ReadtheDocs
+#
+plan-rtd-price: ReadTheDocs
+plan-rtd-offer-1-title: Documentation
+plan-rtd-offer-1-info: Full documentation for Teampass installation and usage is available. It is updated based on evolution and improvements.
+plan-rtd-offer-2-title: API
+plan-rtd-offer-2-info: A chapter is dedicated to Teampass API in which all features are described.
+plan-rtd-url: 'https://teampass.readthedocs.io/en/latest//'
+
+#
+# Plan Redit
+#
+plan-reddit-price: Reddit
+plan-reddit-offer-1-title: Need Help?
+plan-reddit-offer-1-info: You are stucked in the usage of Teampass? You need advices on how to setup Teampass? Don't hesitate to use our SubReddit.
+plan-reddit-offer-2-title: Return of Experience
+plan-reddit-offer-2-info: Share your return of experience with other users. Reddit is open to your comments.
+plan-reddit-url: 'https://www.reddit.com/r/TeamPass/'
+
+
+
+#####################################
+########## COMMERCIAL ###########
+#####################################
+commercial-title: Commercial Support
+commercial-description: We also provide some Commercial Support that may interest you. We can develop specific features on-demand as we did for some companies, or provide you a priority Support on your tickets. Add your name to the Wall of Sponsors also encourage us in improving Teampass.
+
+#
+# Plan Personal
+#
+commercial-ondemand-price: OnDemand
+commercial-ondemand-offer-1-title: New Request
+commercial-ondemand-offer-1-info: For your specific needs, we can develop new features based upon your requirements. We define together the goals.
+commercial-ondemand-offer-2-title: Be our Sponsor
+commercial-ondemand-offer-2-info: You can sponsorize such development. They are treated in highest priority.
+commercial-ondemand-url: 'index.html#contact'
+
+#
+# Plan Ultimate
+#
+commercial-support-price: Prioritary Support
+commercial-support-offer-1-title: Defects & Messages
+commercial-support-offer-1-info: We offer a higher priority for Defect correction and Message answers to our Sponsors. 
+commercial-support-offer-2-title: Interested?
+commercial-support-offer-2-info: In exchange of +100$, we will offer you the assurance to treat your tickets and messages in highest priority.
+commercial-support-url: 'index.html#contact'
+
+#
+# Plan Ultimate
+#
+commercial-donate-price: Donate
+commercial-donate-offer-1-title: Encouraging us?
+commercial-donate-offer-1-info: You just want to support this Open Source project? Encourage its improvement? Get your name in the donators page?
+commercial-donate-offer-2-title: Wall of Sponsors
+commercial-donate-offer-2-info: In exchange of +25$, You will receive our full gratitude and respect. Thank you.
+commercial-donate-url: 'donation.html'
+
+
+#####################################
+############   Contact   ############
+#####################################
+contact-title: Contact Us
+contact-description: Please fill out this form and we will get in touch with you shortly.
+
+
+#####################################
+#############   Footer   ############
+#####################################
+footer-description: Teampass is developed by Nils Laumaillé with &#9829; since 2009.
+footer-copyright-text: Nils Laumaillé
+footer-copyright-url: http://teampass.net/
+footer-copyright-year: 2017
