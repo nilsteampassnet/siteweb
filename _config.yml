@@ -48,7 +48,8 @@ header-secondary-button:
 # For this example my site url is: projects.gleesik.ro (This can be just www.example.com)
 # My folder for Demo Website is: /sera-onepage so baseurl: /sera-onepage
 #
-baseurl: /sera
+baseurl: ""
+url: "http://nilsteampassnet.github.io"
 
 #
 # This is your email adress, contact from send here all emails from contact section
