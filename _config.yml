@@ -436,3 +436,6 @@ footer-description: Teampass is developed by Nils Laumaillé with &#9829; since 
 footer-copyright-text: Nils Laumaillé
 footer-copyright-url: http://teampass.net/
 footer-copyright-year: 2017
+
+# Fill in your Google Analytics ID to track your website using GA
+google_analytics: "UA-43236218-1"
