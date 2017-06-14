@@ -277,7 +277,7 @@ core-features-right:
 ########### Testimonials ############
 #####################################
 #testimonials-title: Testimonials
-#testimonials-description: Currently no testimonials are available.
+testimonials-description: Some users testimonials
 
 #
 # Testimonials
@@ -285,12 +285,12 @@ core-features-right:
 #testimonials:
 
 # Client
-#- name: Johnatan Doe
-#  url: http://themeforest.net
-#  url-text: ThemeForest.net
-#  avatar: avatar-01.jpg
-#  cite: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius adipiscing lectus, eu ornare lectus semper in. Aenean at tincidunt sem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi id ornare ante. Cras odio nibh, volutpat vitae volutpat sed.
-#  logo-img: themeforest.png
+- name: David Young
+  url: http://www.prophecy.net.nz
+  url-text: prophecy.net.nz
+  avatar: 
+  cite: We rely on TeamPass daily, to securely store and share internal and customer credentials among our staff. The folder/role features mean we can assign a folder per-customer, and delegate R/W management of that folder to accountable engineers, while other engineers get R/O access as required. The simplicity of the app (PHP and MySQL) means it fits in well with other proven tools in our production (CentOS6) environment. The usefulness of the app far outweighs the minor UI issues, which improve with every release.
+  logo-img: http://www.prophecy.net.nz/uploads/2/8/4/5/28459447/1399095110.png
 
 
 # Client
