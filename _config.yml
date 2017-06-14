@@ -277,7 +277,7 @@ core-features-right:
 ########### Testimonials ############
 #####################################
 #testimonials-title: Testimonials
-testimonials-description: Some users testimonials
+testimonials-description: Users Testimonial
 
 #
 # Testimonials
@@ -288,9 +288,9 @@ testimonials:
 - name: David Young
   url: http://www.prophecy.net.nz
   url-text: prophecy.net.nz
-  avatar: 
+  avatar: testi_1.png
   cite: We rely on TeamPass daily, to securely store and share internal and customer credentials among our staff. The folder/role features mean we can assign a folder per-customer, and delegate R/W management of that folder to accountable engineers, while other engineers get R/O access as required. The simplicity of the app (PHP and MySQL) means it fits in well with other proven tools in our production (CentOS6) environment. The usefulness of the app far outweighs the minor UI issues, which improve with every release.
-  logo-img: http://www.prophecy.net.nz/uploads/2/8/4/5/28459447/1399095110.png
+  logo-img: testi_1.png
 
 
 # Client
