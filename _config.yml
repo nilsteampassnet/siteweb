@@ -276,13 +276,13 @@ core-features-right:
 #####################################
 ########### Testimonials ############
 #####################################
-#testimonials-title: Testimonials
-testimonials-description: Users Testimonial
+testimonials-title: Testimonials
+testimonials-description: Users words
 
 #
 # Testimonials
 #
-testimonials: Testimonials
+testimonials: 
 
 # Client
 - name: David Young
