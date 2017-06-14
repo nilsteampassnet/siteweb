@@ -282,7 +282,7 @@ testimonials-description: Some users testimonials
 #
 # Testimonials
 #
-#testimonials:
+testimonials:
 
 # Client
 - name: David Young
