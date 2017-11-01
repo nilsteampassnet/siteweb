@@ -4,8 +4,7 @@
     "author" : "Nils Laumaillé",
     "version" : "2.1.27"
   } ,
-  {
-    "libraries" : {
+  "libraries" : {
     
-    }
+  }
 }
