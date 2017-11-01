@@ -1,4 +1,4 @@
-[{
+{
   "info" : {
     "name" : "Teampass",
     "author" : "Nils Laumaillé",
@@ -8,4 +8,4 @@
     "libraries" : {
     
     }
-}]
+}
