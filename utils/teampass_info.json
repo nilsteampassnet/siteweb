@@ -5,6 +5,7 @@
     "version" : "2.1.27"
   } ,
   "libraries" : {
-    
+    "jquery" : "http://jquery.com",
+    "jQuery-ui" : "http://jqueryui.com"
   }
 }
