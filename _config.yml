@@ -144,7 +144,7 @@ features:
   icon: pe-7s-plugin
 
 # Feature
-- title: Fine Tunning
+- title: Fine Tuning
   description: Teampass allows you to fine tune the users access rights to the existing Items. Depending on your local policies, Teampass helps to ensure that only allowed people has access to expected data. 
   icon: pe-7s-edit
 
