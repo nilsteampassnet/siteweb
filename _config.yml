@@ -119,7 +119,7 @@ mailchimp:
 #############   About   #############
 #####################################
 about-title: About Teampass
-about-description: TeamPass is a Passwords Manager dedicated for managing passwords in a collaborative way by sharing them among team members.<br />Teampass offers a large set of features permitting to manage your passwords and related data in an organized way in respect to the access rights defined for each users.<br />Teampass is an Open-Source free to use product distributed in respect with OpenSource AGPL3.
+about-description: TeamPass is a Passwords Manager dedicated for managing passwords in a collaborative way by sharing them among team members.<br />Teampass offers a large set of features permitting to manage your passwords and related data in an organized way in respect to the access rights defined for each users.<br />Teampass is an Open-Source free to use product distributed in respect with OpenSource GNU GPL-3.0.
 
 
 #####################################
