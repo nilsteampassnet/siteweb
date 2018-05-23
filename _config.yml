@@ -292,6 +292,13 @@ testimonials:
   cite: We rely on TeamPass daily, to securely store and share internal and customer credentials among our staff. The folder/role features mean we can assign a folder per-customer, and delegate R/W management of that folder to accountable engineers, while other engineers get R/O access as required. The simplicity of the app (PHP and MySQL) means it fits in well with other proven tools in our production (CentOS6) environment. The usefulness of the app far outweighs the minor UI issues, which improve with every release.
   logo-img: testi_1.png
 
+# Client
+- name: Jeff Smith
+  url: https://www.centro.net/
+  url-text: centro.net
+  avatar: centro.png
+  cite: When I first came to my company, it was like WestWorld with regards to password management.; anything goes. Since we've rolled out TeamPass throughout the org, it not only makes it easy to share passwords,  but staff members always know where to go to get the latest password. This takes a lot of the pain/frustration out of rotating passwords and enforcing strong password standards, which is often a barrier to good password hygiene. If you make it easy to share passwords your users will adopt it.When I 
+  logo-img: centro.png
 
 # Client
 #- name: Richard Ryan
