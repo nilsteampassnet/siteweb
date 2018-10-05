@@ -307,6 +307,14 @@ testimonials:
   avatar: coachwise.png
   cite: We are a small charity based company and being able to use a product that is fully secure and internal ticked all the boxes for us. After installing Teampass and trailing multiple other applications for the last 6 months. I can say teampass is by far the best option for us. It’s easy to use, simple to manage and requires little support once running. After experiencing  some minor issues with best practices, config and a lack of knowledge of the program, I contacted the support team for advice and expected no response as we are using it for free. I was given first class remote support and now understand the system a lot better thanks to Nils. I was also given advice on best practices and was fully supported through rectifying the issues I had experienced thanks to my own bad habits and mistakes. We now only have one password storage application and its teampass. I would highly recommend this product for IT support team password management. We will be rolling it out to other depts over the next year and will be using it as part of our BCP and disaster recovery plans.Great product.
   logo-img: coachwise.png
+  
+# Client
+- name: Dean Bruhn
+  url: http://www.cloudclarity.me
+  url-text: cloudclarity.me
+  avatar: cloudclarity.me.png
+  cite: Our team uses TeamPass daily managing thousands of accounts. It works well, it keeps our passwords secure, and we don’t have to worry about working around all of the exposures other hosted solutions have to deal with on a regular basis. The guys at TeamPass are continually upgrading the software and improving it. When we have needed support the forums have been excellent, but their team has been even better. 
+  logo-img: cloudclarity.me.png
 
 
 #####################################
