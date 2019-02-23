@@ -314,7 +314,15 @@ testimonials:
   url-text: cloudclarity.me
   avatar: cloudclarity.me.png
   cite: Our team uses TeamPass daily managing thousands of accounts. It works well, it keeps our passwords secure, and we don’t have to worry about working around all of the exposures other hosted solutions have to deal with on a regular basis. The guys at TeamPass are continually upgrading the software and improving it. When we have needed support the forums have been excellent, but their team has been even better. 
-  logo-img: cloudclarity.me.png
+  logo-img: cloudclarity.me.png  
+    
+# Client
+- name: Sébastien COUSIN
+  url: https://www.civ.fr/
+  url-text: CIV
+  avatar: Directeur Général et DSMSI de la SA CIV France
+  cite: Nous utilisons TEAMPASS depuis plusieurs années et nous n’avons à ce jour pas trouvé d’outils remplissant à la fois les fonctions de partage d’une même base de données, catégorisation des droits/accès, multi-utilisateurs. D’autre part, l’outil TEAMPASS a répondu aux exigences de la RGPD (validé par notre DPO), de l’ISO27001 (validé par nos auditeurs), de l’ISO9001 (validé par nos auditeurs) et nos commissaires aux comptes. Nous challengeons tous les 2 ans cette solution en assurant une veille sur les produits du marché sans avoir trouvé à ce jour une solution répondant à nos critères. Détail ultime, cette solution pouvant être installée sur un environnement dédié, elle est donc locale et répond facilement au problème des solutions hébergées, pas toujours faciles à localiser. Pour ce qui douterait du service, nous maintenons cette solution active car elle ne souffre depuis que nous l’utilisons, d’aucun bug, et dispose d’un niveau de services tout à fait acceptable via le site www.teampass.net.
+  logo-img: logo-civ-4.png
 
 
 #####################################
