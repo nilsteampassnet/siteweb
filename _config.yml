@@ -336,7 +336,7 @@ blog-description: Interdum et malesuada fames ac ante ipsum primis in faucibus. 
 ############### Team ################
 #####################################
 team-title: Who I am
-team-description: Teampass has been entirely developed by Nils Laumaillé based upon his original idea.
+team-description: Teampass has been entirely developed by Nils Laumaillé based upon his original idea. [More about me}(https://nils.laumaille.fr/).
 
 #
 # Team Members
@@ -448,7 +448,7 @@ commercial-donate-url: 'donation.html'
 #####################################
 ############   Contact   ############
 #####################################
-contact-title: Contact Us
+contact-title: Contact Me
 contact-description: Please fill out this form and we will get in touch with you shortly.
 
 
@@ -457,8 +457,8 @@ contact-description: Please fill out this form and we will get in touch with you
 #####################################
 footer-description: Teampass is developed by Nils Laumaillé with &#9829; since 2009.
 footer-copyright-text: Nils Laumaillé
-footer-copyright-url: http://teampass.net/
-footer-copyright-year: 2019
+footer-copyright-url: https://nils.laumaille.fr/
+footer-copyright-year: 2019-2021
 
 # Fill in your Google Analytics ID to track your website using GA
 google_analytics: "UA-43236218-1"
