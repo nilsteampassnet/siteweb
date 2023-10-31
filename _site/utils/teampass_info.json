@@ -1,0 +1,36 @@
+{
+  "info" : {
+    "name" : "Teampass",
+    "author" : "Nils Laumaillé",
+    "version" : "2.1.27"
+  } ,
+  "libraries" : {
+    "adLDAP" : "https://github.com/adldap/adLDAP",
+    "AES implementation in PHP & Javascript (Chris Veness)" : "https://www.movable-type.co.uk/scripts/aes-php.html",
+    "CKEditor" : "https://ckeditor.com/",
+    "Clipboard.js" : "https://zenorocha.github.io/clipboard.js",
+    "Datatables" : "https://datatables.net/",
+    "Gibberish AES" : "https://github.com/mdp/gibberish-aes",
+    "Goodby, CSV" : "https://github.com/goodby/csv",
+    "jQuery" : "http://jquery.com",
+    "jQuery-ui" : "http://jqueryui.com",
+    "jQuery MultiSelect UI Widget" : "https://github.com/ehynds/jquery-ui-multiselect-widget",
+    "jquerySimplePassMeter" : "https://github.com/jakerella/jquerySimplePassMeter",
+    "jQuery Toggles" : "https://github.com/simontabor/jquery-toggles",
+    "jsTree" : "https://www.jstree.com/",
+    "MeekroDB" : "https://meekro.com/",
+    "Multiselect.js" : "http://loudev.com",
+    "NProgress.js" : "http://ricostacruz.com/nprogress/",
+    "OWASP CSRFProtector" : "https://www.owasp.org/index.php/CSRFProtector_Project",
+    "PBKDF2 For PHP" : "https://defuse.ca/php-pbkdf2.htm",
+    "PHP-Encryption" : "https://github.com/defuse/php-encryption/",
+    "PHP-PasswordLib" : "https://github.com/ircmaxell/PHP-PasswordLib",
+    "PHPMailer" : "https://github.com/PHPMailer/PHPMailer",
+    "Plupload" : "http://www.plupload.com/",
+    "phpSecLib" : "https://github.com/phpseclib/phpseclib",
+    "Select2" : "https://select2.org/",
+    "TFPDF" : "http://www.fpdf.org/",
+    "TinySort" : "https://github.com/Sjeiti/TinySort",
+    "ToolTipster" : "http://iamceege.github.io/tooltipster/"
+  }
+}
