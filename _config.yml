@@ -295,11 +295,11 @@ testimonials:
 
 # Client
 - name: Jeff Smith
-  url: https://www.centro.net/
-  url-text: centro.net
-  avatar: centro.png
+  url: https://www.basis.com/
+  url-text: basis.com
+  avatar: logo-basis-white.webp
   cite: When I first came to my company, it was like WestWorld with regards to password management.; anything goes. Since we've rolled out TeamPass throughout the org, it not only makes it easy to share passwords,  but staff members always know where to go to get the latest password. This takes a lot of the pain/frustration out of rotating passwords and enforcing strong password standards, which is often a barrier to good password hygiene. If you make it easy to share passwords your users will adopt it.When I 
-  logo-img: centro.png
+  logo-img: logo-basis-white.webp
 
 # Client
 - name: Steve Jackman
@@ -321,7 +321,7 @@ testimonials:
 - name: Sébastien COUSIN
   url: https://www.civ.fr/
   url-text: CIV
-  avatar: Directeur Général et DSMSI de la SA CIV France
+  avatar: logo-civ-4.png
   cite: Nous utilisons TEAMPASS depuis plusieurs années et nous n’avons à ce jour pas trouvé d’outils remplissant à la fois les fonctions de partage d’une même base de données, catégorisation des droits/accès, multi-utilisateurs. D’autre part, l’outil TEAMPASS a répondu aux exigences de la RGPD (validé par notre DPO), de l’ISO27001 (validé par nos auditeurs), de l’ISO9001 (validé par nos auditeurs) et nos commissaires aux comptes. Nous challengeons tous les 2 ans cette solution en assurant une veille sur les produits du marché sans avoir trouvé à ce jour une solution répondant à nos critères. Détail ultime, cette solution pouvant être installée sur un environnement dédié, elle est donc locale et répond facilement au problème des solutions hébergées, pas toujours faciles à localiser. Pour ce qui douterait du service, nous maintenons cette solution active car elle ne souffre depuis que nous l’utilisons, d’aucun bug, et dispose d’un niveau de services tout à fait acceptable via le site www.teampass.net.
   logo-img: logo-civ-4.png
 
