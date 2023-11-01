@@ -103,9 +103,9 @@ map-lng: 26.102538399999958
 
 # Enter your Mailchimp User ID and Campaign ID
 # @TODO: Add in a link for where to find these
-mailchimp:
-  user-id: REPLACEME
-  list-id: REPLACEME
+#mailchimp:
+#  user-id: REPLACEME
+#  list-id: REPLACEME
 
 ####
 #
@@ -165,55 +165,55 @@ portfolio:
 # Portfolio Item
 - title: H<span class="thin">ome</span> Page
   categories: [Items]
-  image: pf_tp_1.png
+  image: tp3_sw_1.png
   url: 'https://teampass.readthedocs.io/en/latest/features/feat-items/'
 
 # Portfolio Item
 - title: I<span class="thin">tem</span> Details
   categories: [Items]
-  image: pf_tp_2.png
+  image: tp3_sw_2.png
   url: 'https://teampass.readthedocs.io/en/latest/features/feat-items/#item-details'
 
 # Portfolio Item
 - title: E<span class="thin">diting</span> an Item
   categories: [Items]
-  image: pf_tp_3.png
+  image: tp3_sw_3.png
   url: 'https://teampass.readthedocs.io/en/latest/features/feat-items/#editing-item'
 
 # Portfolio Item
 - title: S<span class="thin">earching</span> Items
   categories: [Items]
-  image: pf_tp_4.png
+  image: tp3_sw_4.png
   url: 'https://teampass.readthedocs.io/en/latest/features/feat-items/#searching-items'
 
 # Portfolio Item
 - title: A<span class="thin">udit Trail</span> of Item
   categories: [Items]
-  image: pf_tp_5.png
+  image: tp3_sw_5.png
   url: 'https://teampass.readthedocs.io/en/latest/features/feat-items/#item-history'
 
 # Portfolio Item
 - title: U<span class="thin">ser</span> Profile
   categories: [Items]
-  image: pf_tp_6.png
+  image: tp3_sw_6.png
   url: 'https://teampass.readthedocs.io/en/latest/features/feat-prof/'
 
 # Portfolio Item
 - title: M<span class="thin">anage</span> Users
   categories: [Administration]
-  image: pf_tp_7.png
+  image: tp3_sw_7.png
   url: 'https://teampass.readthedocs.io/en/latest/manage/manage-users/'
 
 # Portfolio Item
 - title: S<span class="thin">ettings</span> Page
   categories: [Administration]
-  image: pf_tp_8.png
+  image: tp3_sw_8.png
   url: '{{site.readthedocs-url}}install/setup/'
 
 # Portfolio Item
 - title: F<span class="thin">olders VS</span> Roles
   categories: [Administration]
-  image: pf_tp_9.png
+  image: tp3_sw_9.png
   url: 'https://teampass.readthedocs.io/en/latest/manage/manage-groups/#using-the-rights-matrix'
 
 
@@ -329,8 +329,8 @@ testimonials:
 #####################################
 ############# Our Blog ##############
 #####################################
-blog-title: Our Blog
-blog-description: Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi id ornare ante. Cras odio nibh, volutpat vitae volutpat sed, suscipit et nisi. Nulla a tellus at turpis gravida congue non sed nisl. Pellentesque scelerisque eu neque et tincidunt.
+#log-title: Our Blog
+#blog-description: Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi id ornare ante. Cras odio nibh, volutpat vitae volutpat sed, suscipit et nisi. Nulla a tellus at turpis gravida congue non sed nisl. Pellentesque scelerisque eu neque et tincidunt.
 
 
 #####################################
@@ -369,18 +369,18 @@ pricing-description: Depending on the topic, we suggest you to use the next flow
 #
 # Plan Personal
 #
-plan-personal-price: UserEcho
+plan-personal-price: Github22
 plan-personal-offer-1-title: Suggestions
 plan-personal-offer-1-info: Teampass grows up with your ideas and Request.
 plan-personal-offer-2-title: Participate 
-plan-personal-offer-2-info: UserEcho offers you the possibility to propose new features and improvtes. Vote for the ones you would like to see developed.
-plan-personal-url: 'https://teampass.userecho.com/'
+plan-personal-offer-2-info: Github Discussions offers you the possibility to propose new features and suggestions. Propose for the ones you would like to see developed.
+plan-personal-url: 'https://github.com/nilsteampassnet/TeamPass/discussions'
 
 #
 # Plan Ultimate
 #
-plan-ultimate-price: $999
-plan-ultimate-offer-1-title: Defects & Bugs
+plan-ultimate-price: Github
+plan-ultimate-offer-1-title: Defects
 plan-ultimate-offer-1-info: In case you are facing a bug during Teampass usage, Report it.
 plan-ultimate-offer-2-title: Support
 plan-ultimate-offer-2-info: Critical and Security defects are treated with highest priority. The delay relies on your hability to provide detailed information.
@@ -390,7 +390,7 @@ plan-ultimate-url: 'https://github.com/nilsteampassnet/TeamPass/issues'
 #
 # Plan ReadtheDocs
 #
-plan-rtd-price: ReadTheDocs
+plan-rtd-price: Documentation
 plan-rtd-offer-1-title: Documentation
 plan-rtd-offer-1-info: Full documentation for Teampass installation and usage is available. It is updated based on evolution and improvements.
 plan-rtd-offer-2-title: API
@@ -400,12 +400,12 @@ plan-rtd-url: 'https://teampass.readthedocs.io/en/latest//'
 #
 # Plan Redit
 #
-plan-reddit-price: Reddit
+plan-reddit-price: Github
 plan-reddit-offer-1-title: Need Help?
-plan-reddit-offer-1-info: You are stucked in the usage of Teampass? You need advices on how to setup Teampass? Don't hesitate to use our SubReddit.
+plan-reddit-offer-1-info: You are stucked in the usage of Teampass? You need advices on how to setup Teampass? Don't hesitate to post your questions.
 plan-reddit-offer-2-title: Return of Experience
-plan-reddit-offer-2-info: Share your return of experience with other users. Reddit is open to your comments.
-plan-reddit-url: 'https://www.reddit.com/r/TeamPass/'
+plan-reddit-offer-2-info: Share your return of experience with other users. Discussions are open to your comments.
+plan-reddit-url: 'https://github.com/nilsteampassnet/TeamPass/discussions'
 
 
 
@@ -413,7 +413,7 @@ plan-reddit-url: 'https://www.reddit.com/r/TeamPass/'
 ########## COMMERCIAL ###########
 #####################################
 commercial-title: Commercial Support
-commercial-description: We also provide some Commercial Support that may interest you. We can develop specific features on-demand as we did for some companies, or provide you a priority Support on your tickets. Add your name to the Wall of Sponsors also encourage us in improving Teampass.
+commercial-description: We also provide some Commercial Support that may interest you. We can develop specific features on-demand as we did for some companies, or provide you a priority Support on your tickets.
 
 #
 # Plan Personal
@@ -438,12 +438,12 @@ commercial-support-url: 'index.html#contact'
 #
 # Plan Ultimate
 #
-commercial-donate-price: Donate
-commercial-donate-offer-1-title: Encouraging us?
-commercial-donate-offer-1-info: Just wanting to support this Open Source project? Encourage its improvement? Showing your name as donator?
-commercial-donate-offer-2-title: Wall of Sponsors
-commercial-donate-offer-2-info: In exchange of +25$, You will receive our full gratitude and respect. Thank you.
-commercial-donate-url: 'donation.html'
+commercial-donate-price: Sponsor
+commercial-donate-offer-1-title: Why?
+commercial-donate-offer-1-info: Your support encourages and motivates me to continue building and maintaining open source software.
+commercial-donate-offer-2-title: How?
+commercial-donate-offer-2-info: Directly from Github using the button below.
+commercial-donate-url: 'https://github.com/sponsors/nilsteampassnet'
 
 
 #####################################
@@ -463,3 +463,6 @@ footer-copyright-year: 2019-2023
 
 # Fill in your Google Analytics ID to track your website using GA
 google_analytics: "UA-43236218-1"
+
+keyvalues-title: Key Values about Teampass
+keyvalues-description: Teampass is developed and maintenained all along the time. This project is not a one shot project. It is a long term project that will continue to evolve and grow up.
