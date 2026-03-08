@@ -4,7 +4,7 @@
 #
 
 # Information for compile
-exclude: ["node_modules", "gulpfile.js", "package.json", "README.md"]
+exclude: ["node_modules", "gulpfile.js", "package.json", "README.md", "CLAUDE.md"]
 
 # Git
 github-tp-master: https://github.com/nilsteampassnet/TeamPass/archive/master.zip
