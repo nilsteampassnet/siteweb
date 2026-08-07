@@ -1,0 +1,50 @@
+# Home page capability grid — eight benefit-led statements.
+
+- title: Folder and role access control
+  icon: folder
+  body: >-
+    A tree of folders, roles carrying pre-set rights and per-user overrides.
+    The same rules are enforced in the web interface and through the API.
+
+- title: Authenticated encryption
+  icon: lock
+  body: >-
+    AES-256-GCM with random IVs and per-secret salts, 256-bit object keys and
+    PBKDF2 at 600,000 iterations. Personal folders stay readable by their owner
+    alone.
+
+- title: Security posture
+  icon: gauge
+  body: >-
+    Weak, reused, breached and overdue credentials are scored continuously,
+    with a personal score per user and an optional email digest.
+
+- title: Governance and audit
+  icon: clipboard-check
+  body: >-
+    Recertification campaigns with immutable decisions, full item history,
+    rotation evidence and exportable access matrices.
+
+- title: Identity integration
+  icon: users
+  body: >-
+    LDAP and Active Directory including nested groups, OAuth2 single sign-on
+    and configurable RFC 6238 TOTP profiles.
+
+- title: Automation
+  icon: terminal
+  body: >-
+    A REST API with folder CRUD and a one-call folder tree, plus native Bash
+    and PowerShell clients for scripted operations.
+
+- title: Migration in and out
+  icon: upload
+  body: >-
+    Importers for Bitwarden, LastPass, 1Password, KeePassXC, KeePass XML and
+    CSV. Export to KeePass 2.x XML — your data is never held hostage.
+
+- title: Daily productivity
+  icon: zap
+  body: >-
+    Ctrl-K command palette, notification centre, favourites, tags, custom
+    fields, attachments and browser autofill through the extension.

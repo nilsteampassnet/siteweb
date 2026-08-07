@@ -1,0 +1,82 @@
+/**
+ *  Tables
+ *
+ *  Feature comparison and pricing matrices. Wide tables scroll inside their
+ *  own container so the page body never scrolls horizontally on mobile.
+ */
+
+.tp-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: $radius;
+}
+
+.tp-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: $fs-sm;
+  text-align: left;
+  color: var(--tp-text);
+
+  th, td {
+    padding: $sp-3 $sp-4;
+    border-bottom: 1px solid var(--tp-border);
+    vertical-align: top;
+  }
+
+  thead th {
+    position: sticky;
+    top: 0;
+    background: var(--tp-surface-alt);
+    border-bottom: 2px solid var(--tp-border-strong);
+    font-weight: $fw-semibold;
+    font-size: $fs-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--tp-text-muted);
+    white-space: nowrap;
+  }
+
+  tbody tr:hover { background: var(--tp-surface-alt); }
+
+  tbody th {
+    font-weight: $fw-medium;
+    color: var(--tp-text);
+  }
+
+  // Highlight the Teampass column in comparison tables
+  .is-highlight {
+    background: var(--tp-accent-soft);
+    font-weight: $fw-semibold;
+  }
+
+  thead .is-highlight {
+    background: var(--tp-accent-soft);
+    color: var(--tp-accent-strong);
+  }
+
+  &--centered {
+    td:not(:first-child),
+    th:not(:first-child) { text-align: center; }
+  }
+}
+
+// Yes/no/partial markers, readable without relying on colour alone
+.tp-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+
+  &--yes     { color: var(--tp-success); }
+  &--no      { color: var(--tp-text-muted); }
+  &--partial { color: var(--tp-warning); }
+}
+
+.tp-table-note {
+  margin-top: $sp-3;
+  font-size: $fs-xs;
+  color: var(--tp-text-muted);
+}

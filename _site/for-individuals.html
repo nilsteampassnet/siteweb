@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f2740" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#08151f" media="(prefers-color-scheme: dark)">
+
+  <title>A password vault you actually own | Teampass</title>
+  <meta name="description" content="Teampass for individuals, homelabs and freelancers — a free, self-hosted password manager with encrypted personal folders and importers for Bitwarden, LastPass, 1Password and KeePassXC.">
+  <link rel="canonical" href="https://teampass.net/for-individuals.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Teampass">
+  <meta property="og:title" content="A password vault you actually own | Teampass">
+  <meta property="og:description" content="Teampass for individuals, homelabs and freelancers — a free, self-hosted password manager with encrypted personal folders and importers for Bitwarden, LastPass, 1Password and KeePassXC.">
+  <meta property="og:url" content="https://teampass.net/for-individuals.html">
+  <meta property="og:image" content="https://teampass.net/images/og-image.png">
+  <meta property="og:locale" content="en_GB">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="A password vault you actually own | Teampass">
+  <meta name="twitter:description" content="Teampass for individuals, homelabs and freelancers — a free, self-hosted password manager with encrypted personal folders and importers for Bitwarden, LastPass, 1Password and KeePassXC.">
+  <meta name="twitter:image" content="https://teampass.net/images/og-image.png">
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+
+<body id="top">
+
+  
+
+<a class="tp-skip-link" href="#main">Skip to content</a>
+
+<nav class="tp-nav" id="site-nav" aria-label="Main">
+  <div class="tp-nav__inner">
+
+    <a class="tp-nav__logo" href="/" aria-label="Teampass — home">
+      <img src="/images/logo.svg" alt="Teampass" width="132" height="32">
+    </a>
+
+    <button class="tp-nav__toggle" type="button"
+            aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+      <svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+
+    <ul class="tp-nav__menu">
+      <li class="tp-nav__item">
+        <span class="tp-nav__link" role="button" tabindex="0" aria-haspopup="true">
+          Product<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        <ul class="tp-nav__dropdown">
+          <li>
+            <a href="/features.html">
+              Features<span>Everything Teampass does, grouped by domain</span>
+            </a>
+          </li>
+          <li>
+            <a href="/whats-new.html">
+              What's new<span>Highlights of the 3.2 line</span>
+            </a>
+          </li>
+          <li>
+            <a href="/extension.html">
+              Browser extension<span>Autofill and capture for Chrome, Firefox and Edge</span>
+            </a>
+          </li>
+          <li>
+            <a href="/install.html">
+              Install & requirements<span>Docker, bare metal and server prerequisites</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="tp-nav__item">
+        <span class="tp-nav__link" role="button" tabindex="0" aria-haspopup="true">
+          Solutions<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        <ul class="tp-nav__dropdown">
+          <li>
+            <a href="/for-individuals.html">
+              For individuals<span>Homelabs, freelancers and independent consultants</span>
+            </a>
+          </li>
+          <li>
+            <a href="/for-teams.html">
+              For teams & SMB<span>Shared credentials without the spreadsheet</span>
+            </a>
+          </li>
+          <li>
+            <a href="/for-enterprise.html">
+              For enterprise<span>Governance, audit evidence and identity integration</span>
+            </a>
+          </li>
+          <li>
+            <a href="/compare.html">
+              Compare alternatives<span>Teampass next to Bitwarden, Vaultwarden, Passbolt and KeePass</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="tp-nav__item">
+        <a class="tp-nav__link" href="/security.html">Security</a>
+      </li>
+      <li class="tp-nav__item">
+        <a class="tp-nav__link" href="/compliance.html">Compliance</a>
+      </li>
+      <li class="tp-nav__item">
+        <a class="tp-nav__link" href="/pricing.html">Pricing</a>
+      </li>
+      <li class="tp-nav__item">
+        <span class="tp-nav__link" role="button" tabindex="0" aria-haspopup="true">
+          Community<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        <ul class="tp-nav__dropdown">
+          <li>
+            <a href="/support.html">
+              Support & services<span>Community channels and commercial options</span>
+            </a>
+          </li>
+          <li>
+            <a href="/about.html">
+              About the project<span>History, licence and how it is funded</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://documentation.teampass.net" target="_blank" rel="noopener">
+              Documentation<span>Install, configure and operate Teampass</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/nilsteampassnet/TeamPass" target="_blank" rel="noopener">
+              GitHub<span>Source code, issues and discussions</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="tp-nav__actions">
+      <a class="tp-btn tp-btn--secondary" href="https://documentation.teampass.net" target="_blank" rel="noopener">Docs</a>
+      <a class="tp-btn" href="/install.html">Get started</a>
+    </div>
+
+  </div>
+</nav>
+
+
+  <main id="main">
+    <header class="tp-page-hero">
+  <div class="tp-container"><span class="tp-page-hero__eyebrow">For individuals & homelab</span>
+    <h1>A password vault you actually own</h1><p class="tp-page-hero__lead">No account to create, no subscription to cancel, no company holding your vault. Install Teampass on hardware you control and it stays yours.</p>
+    <div class="tp-button-row">
+      <a class="tp-btn" href="/install.html">Install it now</a>
+      <a class="tp-btn tp-btn--ghost" href="/features.html">See the feature list</a>
+    </div>
+  </div>
+</header>
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">The problem</span>
+      <h2>Every option asks you to trust someone</h2>
+    </header>
+
+    <div class="tp-grid">
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+        <h3>Cloud managers hold your vault</h3>
+        <p>
+          Encrypted, yes — but stored on infrastructure you do not control, under
+          a company that can be acquired, breached, or simply change its pricing.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+        <h3>A local file does not travel</h3>
+        <p>
+          A KeePass database on one laptop is safe and useless the moment you
+          need it from a second machine — and syncing it through a cloud drive
+          quietly reintroduces the problem you were avoiding.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+        <h3>Sharing is where it falls apart</h3>
+        <p>
+          The Wi-Fi password for the family, the server root account for a
+          side project, the client credentials for a freelance job. Those end up
+          in chat threads, and they stay there forever.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">The answer</span>
+      <h2>Small enough for a Pi, serious enough for client work</h2>
+    </header>
+
+    <div class="tp-split">
+      <div>
+        <h3>Runs on hardware you already have</h3>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          PHP and MySQL — the same stack as any small web app. A Raspberry Pi, a
+          €5 VPS or a spare mini-PC is enough. The Docker image gets you from
+          nothing to a login screen in about ten minutes.
+        </p>
+        <ul class="tp-checklist">
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>No account, no telemetry, no phoning home</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>One database to back up</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Works behind a VPN or on a LAN address</span></li>
+        </ul>
+      </div>
+      <div class="tp-split__visual">
+        <img src="/images/portfolio/tp3_sw_1.png" alt="The Teampass folder tree on the left and the items of the selected folder on the right" width="1920" height="887" loading="lazy">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="tp-split tp-split--reverse">
+      <div>
+        <h3>Personal folders only you can open</h3>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          Since 3.2.1.1, personal folders are decryptable by their owner and the
+          recovery account — and by nobody else, including administrators. If you
+          share the instance with family or a co-founder, your own items stay
+          your own.
+        </p>
+        <ul class="tp-checklist">
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Encrypted with your key, derived from your passphrase</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Admins can manage the instance without reading your secrets</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Shared folders still work normally alongside them</span></li>
+        </ul>
+      </div>
+      <div class="tp-split__visual">
+        <img src="/images/portfolio/tp3_sw_2.png" alt="An item card showing its fields, tags, classification and attachments" width="1920" height="881" loading="lazy">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Moving in</span>
+      <h2>Bring the vault you already have</h2>
+      <p>
+        Teampass 3.2 reads the export formats of the tools people actually leave
+        behind, so migration is an afternoon rather than a project.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--4">
+      <article class="tp-card"><h3>Bitwarden</h3><p>JSON export, folders preserved.</p></article>
+      <article class="tp-card"><h3>LastPass</h3><p>CSV export.</p></article>
+      <article class="tp-card"><h3>1Password</h3><p>Export file with fields mapped to items.</p></article>
+      <article class="tp-card"><h3>KeePassXC</h3><p>Plus classic KeePass XML and plain CSV.</p></article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Getting started</span>
+      <h2>Three steps, one evening</h2>
+    </header>
+
+    <ol class="tp-steps">
+      <li class="tp-step">
+        <h3>Install</h3>
+        <p>Docker image or a PHP directory on a server you already run.</p>
+        <code class="tp-code">docker pull teampass/teampass</code>
+      </li>
+      <li class="tp-step">
+        <h3>Import</h3>
+        <p>Bring in your existing vault, then delete the export file — it is plaintext.</p>
+      </li>
+      <li class="tp-step">
+        <h3>Run a posture scan</h3>
+        <p>Find the reused and breached passwords you have been carrying for years, and fix them.</p>
+      </li>
+    </ol>
+
+  </div>
+</section>
+
+<section class="tp-section">
+  <div class="tp-container tp-container--prose">
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Questions</span>
+      <h2>Straight answers</h2>
+    </header>
+    
+<div class="tp-faq">
+  <details class="tp-faq__item">
+    <summary>Is it really free?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>Yes. The server is GPL-3.0 and there is no user limit, no feature gate and no trial clock. The only paid product is the browser extension, and the web interface works perfectly well without it.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>Is this overkill for one person?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>Honestly, it might be. Teampass is built around shared access — folders, roles, audit trails. If you never share a credential with anyone, a local KeePass file is simpler. Teampass starts paying off the moment a second person needs access, or you want your vault reachable from more than one machine without handing it to a cloud provider.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>What happens if my server dies?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>Your data is in a MySQL database you control — back it up like any other database. You can also keep an encrypted offline HTML export, which opens in any browser without Teampass running.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>Can I get my data out later?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>Export to KeePass 2.x XML, PDF or the encrypted offline copy. Nothing is locked in a proprietary format.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>Does it work without a domain name or public IP?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>Yes. Plenty of people run it on a LAN address or behind a VPN. Do put TLS in front of it either way.</p>
+</div>
+  </details>
+</div>
+
+  </div>
+</section>
+
+
+<section class="tp-cta-band">
+  <div class="tp-container">
+    <h2>Your vault, your server, no subscription.</h2><p>Free under GPL-3.0, with no user limit and no feature gate.</p>
+    <div class="tp-button-row">
+      <a class="tp-btn tp-btn--lg" href="/install.html">Install Teampass</a>
+      <a class="tp-btn tp-btn--ghost tp-btn--lg" href="/compare.html">Compare with the alternatives</a>
+    </div>
+  </div>
+</section>
+
+
+
+  </main>
+
+  <footer class="tp-footer">
+  <div class="tp-container">
+
+    <div class="tp-footer__top">
+
+      <div class="tp-footer__brand">
+        <img src="/images/logo.svg" alt="Teampass" width="140" height="34">
+        <p>Teampass has been built and maintained by Nils Laumaillé since 2009.</p>
+        <ul class="tp-footer__social">
+          <li><a href="https://github.com/nilsteampassnet/TeamPass" target="_blank" rel="noopener" aria-label="Teampass on GitHub"><svg class="tp-icon tp-icon--lg" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg></a></li>
+          <li><a href="https://www.reddit.com/r/TeamPass/" target="_blank" rel="noopener" aria-label="Teampass on Reddit"><svg class="tp-icon tp-icon--lg" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M24 11.8a2.6 2.6 0 0 0-4.4-1.8 12.8 12.8 0 0 0-6.9-2.2l1.2-5.5 3.9.8a1.9 1.9 0 1 0 .2-1.1L13.5.9a.6.6 0 0 0-.7.4l-1.4 6.4a12.8 12.8 0 0 0-7 2.2 2.6 2.6 0 1 0-2.9 4.2 5 5 0 0 0 0 .8c0 4 4.7 7.3 10.5 7.3s10.5-3.3 10.5-7.3a5 5 0 0 0 0-.8 2.6 2.6 0 0 0 1.5-2.3M6 13.7a1.9 1.9 0 1 1 1.9 1.9A1.9 1.9 0 0 1 6 13.7m10.7 5a6.9 6.9 0 0 1-4.6 1.4A6.9 6.9 0 0 1 7.5 19a.5.5 0 0 1 .7-.7 5.9 5.9 0 0 0 3.9 1.1 5.9 5.9 0 0 0 3.9-1.2.5.5 0 1 1 .7.7Zm-.6-3a1.9 1.9 0 1 1 1.9-1.9 1.9 1.9 0 0 1-1.9 2Z"/></svg></a></li>
+          <li><a href="https://twitter.com/theteampass" target="_blank" rel="noopener" aria-label="Teampass on X"><svg class="tp-icon tp-icon--lg" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.5L6.3 22H3.2l7.3-8.3L2.8 2h6.4l4.4 5.9Zm-1.1 18.2h1.7L8.3 3.7H6.5Z"/></svg></a></li>
+          <li><a href="https://fr-fr.facebook.com/TeamPass-Passwords-for-Teams-163627833721400/" target="_blank" rel="noopener" aria-label="Teampass on Facebook"><svg class="tp-icon tp-icon--lg" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.6 4.5-4.6 1.3 0 2.7.2 2.7.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.6 3.5h-2.8v8.4A12 12 0 0 0 24 12"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="tp-footer__links">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="/features.html">Features</a></li>
+            <li><a href="/whats-new.html">What's new</a></li>
+            <li><a href="/extension.html">Browser extension</a></li>
+            <li><a href="/install.html">Install &amp; requirements</a></li>
+            <li><a href="/pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Solutions</h2>
+          <ul>
+            <li><a href="/for-individuals.html">For individuals</a></li>
+            <li><a href="/for-teams.html">For teams &amp; SMB</a></li>
+            <li><a href="/for-enterprise.html">For enterprise</a></li>
+            <li><a href="/compare.html">Compare alternatives</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Trust</h2>
+          <ul>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="/compliance.html">Compliance</a></li>
+            <li><a href="https://github.com/nilsteampassnet/TeamPass/security/advisories" target="_blank" rel="noopener">Security advisories</a></li>
+            <li><a href="/privacy.html">Privacy &amp; cookies</a></li>
+            <li><a href="/extension-privacy.html">Extension privacy policy</a></li>
+            <li><button type="button" class="tp-footer__consent" data-tp-consent-reopen>Cookie preferences</button></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Community</h2>
+          <ul>
+            <li><a href="https://documentation.teampass.net" target="_blank" rel="noopener">Documentation</a></li>
+            <li><a href="https://github.com/nilsteampassnet/TeamPass" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://github.com/nilsteampassnet/TeamPass/discussions" target="_blank" rel="noopener">Discussions</a></li>
+            <li><a href="/whats-new.html">Release history</a></li>
+            <li><a href="/support.html">Support &amp; services</a></li>
+            <li><a href="/about.html">About the project</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tp-footer__bottom">
+      <p>
+        &copy; 2009-2026
+        <a href="https://nils.laumaille.fr/" target="_blank" rel="noopener">Nils Laumaillé</a> —
+        released under GPL-3.0.
+      </p>
+      <p class="tp-footer__made">
+        <img src="/images/madeinfrance.png" alt="Made in France" height="28">
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<a href="#top" class="tp-to-top" aria-label="Back to top"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></a>
+
+  
+<div class="tp-consent" id="tp-consent" role="dialog" aria-modal="false"
+     aria-labelledby="tp-consent-title" hidden>
+  <div class="tp-consent__inner">
+
+    <div class="tp-consent__text">
+      <h2 class="tp-consent__title" id="tp-consent-title">Audience measurement</h2>
+      <p>
+        We would like to use Google Analytics to count visits and see which
+        pages are read. It sets cookies on your device. Nothing is loaded
+        until you accept, and we run no advertising or profiling.
+        See the <a href="/privacy.html">privacy policy</a>.
+      </p>
+    </div>
+
+    <div class="tp-consent__actions">
+      <button type="button" class="tp-btn tp-btn--secondary" data-tp-consent="decline">Decline</button>
+      <button type="button" class="tp-btn" data-tp-consent="accept">Accept</button>
+    </div>
+
+  </div>
+</div>
+
+  
+<script>
+  (function () {
+    'use strict';
+
+    var ID = 'G-5NS849FBPH';
+    var STORAGE_KEY = 'tp-consent';
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    // Consent Mode v2 — everything off until the visitor says otherwise.
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted'
+    });
+
+    function read() {
+      try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+    }
+
+    function write(value) {
+      try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
+    }
+
+    // Drop the cookies the tag may already have written.
+    function clearCookies() {
+      var names = document.cookie.split(';').map(function (pair) {
+        return pair.split('=')[0].trim();
+      }).filter(function (name) {
+        return name.indexOf('_ga') === 0 || name === '_gid';
+      });
+
+      var host = location.hostname;
+      var domains = ['', host, '.' + host];
+      var parts = host.split('.');
+      if (parts.length > 2) { domains.push('.' + parts.slice(-2).join('.')); }
+
+      names.forEach(function (name) {
+        domains.forEach(function (domain) {
+          document.cookie = name + '=; Max-Age=0; path=/' +
+            (domain ? '; domain=' + domain : '');
+        });
+      });
+    }
+
+    var loaded = false;
+
+    function load() {
+      if (loaded) { return; }
+      loaded = true;
+
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      gtag('js', new Date());
+      gtag('config', ID, {
+        anonymize_ip: true
+      });
+
+      var tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID;
+      document.head.appendChild(tag);
+    }
+
+    window.tpConsent = {
+      state: function () { return read(); },
+
+      accept: function () {
+        write('granted');
+        load();
+      },
+
+      decline: function () {
+        write('denied');
+        gtag('consent', 'update', { analytics_storage: 'denied' });
+        clearCookies();
+      }
+    };
+
+    if (read() === 'granted') { load(); }
+  })();
+</script>
+
+  <script src="/js/main.js" defer></script>
+
+
+</body>
+</html>

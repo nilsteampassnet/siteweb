@@ -1,0 +1,63 @@
+/**
+ *  Numbered steps
+ *
+ *  "Get started in three steps" blocks on the segment and install pages.
+ */
+
+.tp-steps {
+  counter-reset: tp-step;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: $sp-5;
+
+  @media (min-width: $bp-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tp-step {
+  position: relative;
+  padding: $sp-5;
+  padding-top: $sp-6;
+  border: 1px solid var(--tp-border);
+  border-radius: $radius-lg;
+  background: var(--tp-surface);
+
+  &:before {
+    counter-increment: tp-step;
+    content: counter(tp-step);
+    position: absolute;
+    top: $sp-4;
+    left: $sp-5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: $radius-pill;
+    background: var(--tp-accent);
+    color: #04202c;
+    font-size: $fs-xs;
+    font-weight: $fw-bold;
+  }
+
+  h3 {
+    font-size: $fs-base;
+    font-weight: $fw-semibold;
+    margin: $sp-4 0 $sp-2;
+    color: var(--tp-text);
+  }
+
+  p {
+    font-size: $fs-sm;
+    color: var(--tp-text-muted);
+    line-height: $lh-base;
+  }
+
+  code, pre {
+    font-family: $font-family-mono;
+    font-size: $fs-xs;
+  }
+}

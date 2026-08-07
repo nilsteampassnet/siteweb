@@ -1,0 +1,35 @@
+<section class="tp-section tp-section--alt" id="pricing">
+  <div class="tp-container">
+
+    <header class="tp-section-header tp-section-header--center">
+      <span class="tp-section-header__eyebrow">Pricing</span>
+      <h2>Free server. Paid extension. No surprises.</h2>
+      <p>{{ site.data.pricing.promise }}</p>
+    </header>
+
+    <div class="tp-plans">
+      {%- for plan in site.data.pricing.plans %}
+      <article class="tp-plan{% if plan.featured %} tp-plan--featured{% endif %}">
+        <p class="tp-plan__name">{{ plan.name }}</p>
+        <p class="tp-plan__price">{{ plan.price }} <small>{{ plan.unit }}</small></p>
+        <p class="tp-plan__summary">{{ plan.summary }}</p>
+        <ul class="tp-checklist">
+          {%- for feature in plan.features %}
+          <li>{% include components/icon.html name="check" %}<span>{{ feature }}</span></li>
+          {%- endfor %}
+        </ul>
+        <div class="tp-plan__cta">
+          <a class="tp-btn{% unless plan.featured %} tp-btn--secondary{% endunless %}" href="{{ plan.cta.url | relative_url }}">{{ plan.cta.label }}</a>
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+
+    <p style="margin-top: 32px; text-align: center;">
+      <a class="tp-link-arrow" href="{{ '/pricing.html' | relative_url }}">
+        Full pricing and capacity packs {% include components/icon.html name="arrow-right" %}
+      </a>
+    </p>
+
+  </div>
+</section>

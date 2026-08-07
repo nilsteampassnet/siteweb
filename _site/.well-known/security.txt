@@ -1,0 +1,12 @@
+# Teampass — security contact information (RFC 9116)
+#
+# TODO(nils): bump `Expires` at least once a year — an expired security.txt
+# is treated as invalid by scanners and by researchers.
+
+Contact: mailto:nils@teampass.net
+Contact: https://github.com/nilsteampassnet/TeamPass/blob/master/SECURITY.md
+Expires: 2027-07-30T00:00:00.000Z
+Preferred-Languages: en, fr
+Canonical: https://teampass.net/.well-known/security.txt
+Policy: https://github.com/nilsteampassnet/TeamPass/blob/master/SECURITY.md
+Acknowledgments: https://github.com/nilsteampassnet/TeamPass/security/advisories

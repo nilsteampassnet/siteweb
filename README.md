@@ -1,48 +1,53 @@
-```
-=================================================
-=====     jekyll-gulp-sass-browser-sync     =====
-=================================================
-```
-A project including full setup for Jekyll, GulpJS, SASS, AutoPrefixer &amp; BrowserSync
+# teampass.net
 
-## System Preparation
+The marketing and product website for [Teampass](https://github.com/nilsteampassnet/TeamPass),
+the open-source self-hosted password manager.
 
-To use this project, you'll need the following things installed on your machine.
+Built with Jekyll. SCSS is compiled by Jekyll itself (dart-sass), so there is
+no Node toolchain — the previous gulp 3 / node-sass setup no longer ran on
+current Node versions and was removed.
 
-1. [Jekyll](http://jekyllrb.com/) - `$ gem install jekyll`
-2. [NodeJS](http://nodejs.org) - use the installer.
-3. [GulpJS](https://github.com/gulpjs/gulp) - `$ npm install -g gulp` (mac users may need sudo)
+## Requirements
 
-## Local Installation
+- Ruby with [Jekyll](https://jekyllrb.com/) 4.x — `gem install jekyll`
 
-1. Inside the directory, run `npm install`.
-2. Enjoy
+## Development
 
-## Usage
-
-**development mode**
-
-This will give you file watching, browser synchronisation, auto-rebuild, CSS injecting etc etc.
-
-```shell
-$ gulp
+```bash
+jekyll serve --livereload
 ```
 
-**jekyll**
+The site is served on <http://localhost:4000> and rebuilds on change.
 
-As this is just a Jekyll project, you can use any of the commands listed in their [docs](http://jekyllrb.com/docs/usage/)
-
-## Deploy with Gulp
-
-You can easily deploy your site build to a gh-pages branch. First, follow the instructions at [gulp-gh-pages](https://github.com/rowoot/gulp-gh-pages) to get your branch prepared for the deployment and to install the module. Then, in `gulpfile.js` you'll want to include something like the code below. `gulp.src()` needs to be the path to your final site folder, which by default will be `_site`. If you change the `destination` in your `_config.yml` file, be sure to reflect that in your gulpfile.
-
-
-
-```javascript
-var deploy = require("gulp-gh-pages");
-
-gulp.task("deploy", ["jekyll-build"], function () {
-    return gulp.src("./_site/**/*")
-        .pipe(deploy());
-});
+```bash
+jekyll build
 ```
+
+Builds into `_site/`.
+
+## Where things live
+
+| Path | Contents |
+|---|---|
+| `_config.yml` | Build settings, site identity, canonical external links. No editorial copy. |
+| `_data/` | All content that is a list: navigation, features, segments, releases, pricing, comparison, testimonials. |
+| `_includes/sections/` | Home page sections. |
+| `_includes/components/` | Reusable pieces — `icon.html`, `cta-band.html`, `faq.html`. |
+| `_layouts/` | `base` → `page` → `prose`. `default` is the home page. |
+| `_sass/` | `main.scss` imports modules, components and layout partials. |
+| `css/style.scss` | Compilation entry point. Must not be renamed to match `_sass/main.scss`, or it would import itself. |
+
+## Conventions
+
+- **Content belongs in `_data/`**, not in `_config.yml` and not hard-coded in a
+  page. If you are adding a list, add a YAML file.
+- **Icons are inline SVG** via `{% include components/icon.html name="shield" %}`.
+  Add new ones to `_includes/components/icon.html`. No icon fonts, no CDN.
+- **Colours go through CSS custom properties** (`--tp-*`) so dark mode keeps
+  working. Do not hard-code hex values in components.
+- **Claims must be checkable.** The comparison table and the compliance mapping
+  carry editorial rules in their data files — read them before editing.
+
+## Deployment
+
+The site is served from this repository (see `CNAME`). Push to `master`.

@@ -1,0 +1,24 @@
+<section class="tp-section tp-section--alt" id="integrations">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Integrations &amp; automation</span>
+      <h2>Fits the stack you already run</h2>
+      <p>
+        Identity from your directory, secrets into your pipelines, and a way out
+        of the product whenever you want one.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--4">
+      {%- for item in site.data.integrations %}
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile">{% include components/icon.html name=item.icon %}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.body }}</p>
+      </article>
+      {%- endfor %}
+    </div>
+
+  </div>
+</section>

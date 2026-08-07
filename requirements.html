@@ -1,76 +1,21 @@
 ---
-layout: single_page
-tagline: Technical Information
-title: What <strong>Requirements?</strong>
+layout: null
+sitemap: false
 ---
-
-<section class="site-section about-section next-section-indicator" id="about">
-  <div class="container">
-
-    <div class="row text-center">
-      
-      <div class="col-md-8 col-md-push-2 col-sm-12 section-content">
-        <blockquote cite="http://">
-          TeamPass needs to be installed on a web server with next minimal configuration.
-        </blockquote>
-      </div>
-      
-    </div>
-    
-    <div class="row text-center">
-      <header class="col-md-8 col-md-push-2 col-sm-12 section-header">
-        <h2>Server Requirements</h2>
-        <hr class="normal">
-      </header>
-    </div>
-
-    <div class="row text-left">
-
-      <div class="col-md-8 col-md-push-2 col-sm-12 section-content">
-        <p>
-          <ul class="icon-list">
-            <li>Apache v2.0 (and after) OR Nginx</li>
-            <li>MariaDB 10 (and after) OR MySQL v8 (and after)</li>
-            <li>PHP v8.1 (recommanded 8.2)</li>
-          </ul>
-        </p>
-      </div>
-    </div>
-  
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
-  
-    <div class="row text-center">
-      <header class="col-md-8 col-md-push-2 col-sm-12 section-header">
-        <h2>Expected PHP modules</h2>
-        <hr class="normal">
-      </header>
-    </div>
-
-    <div class="row text-left">
-
-      <div class="col-md-8 col-md-push-2 col-sm-12 section-content">
-        <p>
-          <ul class="icon-list">
-            <li>bcmath</li>
-            <li>curl</li>
-            <li>gd</li>
-            <li>gmp</li>
-            <li>iconv</li>
-            <li>LDAP (if using LDAP identification)</li>
-            <li>mbstring</li>
-            <li>mcrypt</li>
-            <li>mysqli</li>
-            <li>openssl</li>
-            <li>xml</li>
-          </ul>
-        </p>
-      </div>
-    </div>
-
-    <div class="row text-center">
-      {% include ads.html %}
-    </div>
-  </div>
-
-</section>
+{%- comment %}
+  The server requirements moved into /install.html. This stub keeps the old
+  URL alive for anyone holding a bookmark or an inbound link.
+{% endcomment -%}
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting to Install &amp; requirements</title>
+  <link rel="canonical" href="{{ '/install.html' | absolute_url }}">
+  <meta http-equiv="refresh" content="0; url={{ '/install.html' | absolute_url }}">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <p>Server requirements now live on the <a href="{{ '/install.html' | relative_url }}">Install &amp; requirements</a> page.</p>
+</body>
+</html>

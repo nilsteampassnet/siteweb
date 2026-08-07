@@ -1,0 +1,271 @@
+---
+layout: page
+title: Governance, audit and compliance evidence
+eyebrow: Compliance
+lead: >-
+  Access recertification, rotation tracking and exportable evidence. Teampass
+  will not make you compliant — no software does — but it produces the artefacts
+  your auditor asks for.
+description: >-
+  How Teampass supports access governance and audit — recertification campaigns,
+  evidence export, data classification, rotation tracking, and where those map
+  onto ISO 27001, NIS2, GDPR and SOC 2 control expectations.
+cta:
+  - label: See it in the enterprise view
+    url: /for-enterprise.html
+  - label: Documentation
+    url: https://documentation.teampass.net
+---
+
+<section class="tp-section">
+  <div class="tp-container">
+    <div class="tp-callout tp-callout--warning">
+      {% include components/icon.html name="info" %}
+      <p>
+        <strong>A note on the word "compliant".</strong>
+        No tool makes an organisation compliant with ISO 27001, NIS2, GDPR or
+        SOC 2 — those apply to how you operate, and are assessed by an auditor,
+        not by a vendor. What Teampass does is generate the access-control
+        evidence those frameworks expect you to be able to produce. Every mapping
+        on this page is phrased as "supports", and it means exactly that.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="recertification">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Access recertification</span>
+      <h2>The review, and the proof that it happened</h2>
+    </header>
+
+    <div class="tp-prose">
+      <p>
+        A recertification campaign takes the current access model, routes each
+        grant to the person accountable for it, and records an approve-or-revoke
+        decision against it. Those decisions are immutable: once recorded they
+        cannot be edited, which is the property that makes them evidence rather
+        than notes.
+      </p>
+      <p>
+        The output answers the three questions that usually go unanswered — who
+        has access, who confirmed they should, and when. Not reconstructed from
+        memory the week before an audit, but captured as the review happened.
+      </p>
+    </div>
+
+    <div class="tp-grid tp-grid--4" style="margin-top: 32px;">
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="clipboard-check" %}</span>
+        <h3>Scope the campaign</h3>
+        <p>Pick the folders, roles or users under review.</p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="user-check" %}</span>
+        <h3>Route to owners</h3>
+        <p>Each access goes to the person who can actually judge it.</p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="lock" %}</span>
+        <h3>Record decisions</h3>
+        <p>Approve or revoke, timestamped and immutable.</p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="download" %}</span>
+        <h3>Export the evidence</h3>
+        <p>CSV, ready to attach to an audit file.</p>
+      </article>
+    </div>
+
+    <figure class="tp-shot" style="margin-top: 32px;">
+      <img src="{{ '/images/portfolio/tp3_sw_8.png' | relative_url }}"
+           alt="The Teampass administration options, showing the Governance and compliance settings category"
+           width="1920" height="885" loading="lazy">
+      <figcaption>
+        <strong>Where it is configured</strong>
+        Governance and compliance is a settings category of its own, next to
+        integrations, logging and authentication — not a bolt-on.
+      </figcaption>
+    </figure>
+
+  </div>
+</section>
+
+<section class="tp-section" id="evidence">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Evidence</span>
+      <h2>What you can hand over</h2>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="file-text" %}</span>
+        <h3>Access matrices</h3>
+        <p>
+          Who can reach which folders and items, derived from the live model
+          rather than a maintained-by-hand document.
+        </p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="refresh" %}</span>
+        <h3>Rotation evidence</h3>
+        <p>
+          When each credential was last changed, measured against the rotation
+          policy for its folder, with an overdue report.
+        </p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="layers" %}</span>
+        <h3>Classification &amp; ownership</h3>
+        <p>
+          Four classification levels and a named owner per item, so sensitivity
+          and accountability are recorded rather than assumed.
+        </p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="users" %}</span>
+        <h3>Leaver risk report</h3>
+        <p>
+          The credentials a departing account could reach — the exact scope of
+          the rotation you owe after an exit.
+        </p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="clock" %}</span>
+        <h3>Per-item history</h3>
+        <p>
+          Views, edits and shares recorded against each item, for the incident
+          where "who saw this" stops being hypothetical.
+        </p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="gauge" %}</span>
+        <h3>Posture reporting</h3>
+        <p>
+          Weak, reused, breached and overdue credentials, scored continuously
+          and attributable per user.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="mapping">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Framework mapping</span>
+      <h2>Where these features land in the frameworks</h2>
+      <p>
+        Indicative, not a certification and not legal advice. Confirm the mapping
+        with your own auditor — control numbering changes between revisions.
+      </p>
+    </header>
+
+    <div class="tp-table-scroll">
+      <table class="tp-table">
+        <thead>
+          <tr>
+            <th scope="col">Expectation</th>
+            <th scope="col">Typical reference</th>
+            <th scope="col" class="is-highlight">Teampass supports it with</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Access is granted on a defined basis</th>
+            <td>ISO 27001 A.5.15 · SOC 2 CC6.1</td>
+            <td class="is-highlight">Folder tree, roles, per-user overrides, rights matrix</td>
+          </tr>
+          <tr>
+            <th scope="row">Access rights are reviewed periodically</th>
+            <td>ISO 27001 A.5.18 · SOC 2 CC6.2</td>
+            <td class="is-highlight">Recertification campaigns with immutable decisions</td>
+          </tr>
+          <tr>
+            <th scope="row">Privileged access is restricted and tracked</th>
+            <td>ISO 27001 A.5.15 · NIS2 art. 21(2)(i)</td>
+            <td class="is-highlight">Role scoping, admin lockout controls, per-item history</td>
+          </tr>
+          <tr>
+            <th scope="row">Authentication information is managed securely</th>
+            <td>ISO 27001 A.5.17</td>
+            <td class="is-highlight">Encrypted storage, TOTP/SSO, password policy and generator</td>
+          </tr>
+          <tr>
+            <th scope="row">Access is removed on termination</th>
+            <td>ISO 27001 A.5.11 · SOC 2 CC6.3</td>
+            <td class="is-highlight">Account disablement plus the leaver risk report</td>
+          </tr>
+          <tr>
+            <th scope="row">Information is classified and owned</th>
+            <td>ISO 27001 A.5.12 · A.5.9</td>
+            <td class="is-highlight">Four-level classification and per-item ownership</td>
+          </tr>
+          <tr>
+            <th scope="row">Appropriate technical protection of personal data</th>
+            <td>GDPR art. 32</td>
+            <td class="is-highlight">AES-256-GCM at rest, self-hosting, access logging</td>
+          </tr>
+          <tr>
+            <th scope="row">Cryptography is used appropriately</th>
+            <td>ISO 27001 A.8.24</td>
+            <td class="is-highlight">Authenticated encryption, PBKDF2 600k, per-user key wrapping</td>
+          </tr>
+          <tr>
+            <th scope="row">Logging and monitoring of access</th>
+            <td>ISO 27001 A.8.15 · NIS2 art. 21(2)(b)</td>
+            <td class="is-highlight">Item history, user logs, operational statistics</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tp-table-note">
+      Indicative mapping only. Teampass is not certified against any of these
+      frameworks, and certification would not transfer to your deployment if it
+      were.
+    </p>
+
+  </div>
+</section>
+
+<section class="tp-section" id="residency">
+  <div class="tp-container">
+    <div class="tp-split">
+      <div>
+        <span class="tp-section-header__eyebrow">Data residency</span>
+        <h2 style="font-size: 2.25rem; line-height: 1.2; margin-bottom: 16px;">
+          There is no processor to assess
+        </h2>
+        <p style="color: var(--tp-text-muted);">
+          Teampass runs on infrastructure you choose. There is no vendor cloud in
+          the path, no sub-processor list, no cross-border transfer to justify.
+          For a GDPR record of processing, the entry is short: the data stays
+          where you put it.
+        </p>
+      </div>
+      <div>
+        <div class="tp-callout">
+          {% include components/icon.html name="shield-check" %}
+          <p>
+            The browser extension does not change this. Credentials travel
+            between the extension and your own Teampass instance — they do not
+            transit our servers. See the
+            <a href="{{ '/extension-privacy.html' | relative_url }}">extension privacy policy</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include components/cta-band.html
+   title="Run a recertification campaign before you commit."
+   body="Install it, point it at a copy of your access model, and see what the evidence export actually looks like."
+   primary-label="Install Teampass" primary-url="/install.html"
+   secondary-label="Talk about your requirements" secondary-url="/support.html" %}

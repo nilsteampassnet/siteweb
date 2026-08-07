@@ -1,0 +1,215 @@
+---
+layout: page
+title: Pricing
+eyebrow: Free server, paid extension
+lead: >-
+  The Teampass server is free and open-source, with no user limit and no feature
+  gate. The browser extension is the commercial product, and it is what funds
+  the project.
+description: >-
+  Teampass pricing — the self-hosted server is free under GPL-3.0. Browser
+  extension capacity packs from €49 per year, plus commercial support and
+  sponsored development.
+cta:
+  - label: Start the extension trial
+    url: /extension.html
+  - label: Install the free server
+    url: /install.html
+faq:
+  - question: What exactly is free?
+    answer: >-
+      The whole server: unlimited users, folders and items, plus every security
+      and governance feature — encryption, security posture, recertification,
+      compliance exports, LDAP/AD, OAuth2 SSO and the API. There is no
+      "enterprise edition" holding features back.
+  - question: What happens when the extension licence expires?
+    answer: >-
+      The extension stops autofilling. Nothing is lost or locked: every
+      credential remains fully accessible through the web interface.
+  - question: How are extension users counted?
+    answer: >-
+      By the number of unique accounts that used the browser extension during
+      the month. Users who only use the web interface are not counted.
+  - question: Can we move up a pack mid-year?
+    answer: >-
+      Yes. What you have already paid is deducted pro-rata from the higher tier.
+  - question: Why is the extension paid at all?
+    answer: >-
+      Maintaining an extension across Chrome, Firefox and Edge is continuous
+      work — three review processes, three sets of breaking changes. Charging for
+      it is what keeps the server free rather than pushing the whole project
+      toward an open-core model where the good features sit behind a licence.
+  - question: Is there a discount for non-profits or education?
+    answer: >-
+      Ask. <a href="mailto:nils@teampass.net">Get in touch</a> and describe your
+      situation.
+---
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <div class="tp-plans">
+      {%- for plan in site.data.pricing.plans %}
+      <article class="tp-plan{% if plan.featured %} tp-plan--featured{% endif %}">
+        <p class="tp-plan__name">{{ plan.name }}</p>
+        <p class="tp-plan__price">{{ plan.price }} <small>{{ plan.unit }}</small></p>
+        <p class="tp-plan__summary">{{ plan.summary }}</p>
+        <ul class="tp-checklist">
+          {%- for feature in plan.features %}
+          <li>{% include components/icon.html name="check" %}<span>{{ feature }}</span></li>
+          {%- endfor %}
+        </ul>
+        <div class="tp-plan__cta">
+          <a class="tp-btn{% unless plan.featured %} tp-btn--secondary{% endunless %}" href="{{ plan.cta.url | relative_url }}">{{ plan.cta.label }}</a>
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+
+    <div class="tp-pricing-promise">
+      <strong>{{ site.data.pricing.promise }}</strong>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="packs">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Extension packs</span>
+      <h2>Buy capacity, not seats</h2>
+      <p>
+        Pick a pack that covers your team and manage access yourself. No per-seat
+        administration, no monthly reconciliation.
+      </p>
+    </header>
+
+    <div class="tp-table-scroll">
+      <table class="tp-table">
+        <thead>
+          <tr>
+            <th scope="col">Pack</th>
+            <th scope="col">Capacity</th>
+            <th scope="col">Annual price</th>
+            <th scope="col">Suited to</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Community</th>
+            <td>Unlimited</td>
+            <td class="is-highlight"><strong>Free</strong></td>
+            <td>The server on its own — personal use, homelabs and evaluation.</td>
+          </tr>
+          {%- for pack in site.data.pricing.packs %}
+          <tr>
+            <th scope="row">{{ pack.name }}</th>
+            <td>{{ pack.capacity }}</td>
+            <td><strong>{{ pack.price }}</strong></td>
+            <td>{{ pack.ideal }}</td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="tp-table-note">
+      Prices exclude taxes. A licence includes updates and email support for the
+      period. Every new instance gets a 30-day trial of the extension — no card,
+      no commitment.
+    </p>
+
+  </div>
+</section>
+
+<section class="tp-section" id="what-you-get">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Free vs Pro</span>
+      <h2>Exactly where the line sits</h2>
+    </header>
+
+    <div class="tp-table-scroll">
+      <table class="tp-table tp-table--centered">
+        <thead>
+          <tr>
+            <th scope="col">Capability</th>
+            <th scope="col">Free server</th>
+            <th scope="col" class="is-highlight">With Pro extension</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Self-hosted, unlimited users</th><td><span class="tp-mark tp-mark--yes">Yes</span></td><td class="is-highlight"><span class="tp-mark tp-mark--yes">Yes</span></td></tr>
+          <tr><th scope="row">AES-256-GCM encryption</th><td><span class="tp-mark tp-mark--yes">Yes</span></td><td class="is-highlight"><span class="tp-mark tp-mark--yes">Yes</span></td></tr>
+          <tr><th scope="row">Folder &amp; role access control</th><td><span class="tp-mark tp-mark--yes">Yes</span></td><td class="is-highlight"><span class="tp-mark tp-mark--yes">Yes</span></td></tr>
+          <tr><th scope="row">Security posture &amp; scoring</th><td><span class="tp-mark tp-mark--yes">Yes</span></td><td class="is-highlight"><span class="tp-mark tp-mark--yes">Yes</span></td></tr>
+          <tr><th scope="row">Recertification &amp; evidence export</th><td><span class="tp-mark tp-mark--yes">Yes</span></td><td class="is-highlight"><span class="tp-mark tp-mark--yes">Yes</span></td></tr>
+          <tr><th scope="row">LDAP / Active Directory, OAuth2 SSO</th><td><span class="tp-mark tp-mark--yes">Yes</span></td><td class="is-highlight"><span class="tp-mark tp-mark--yes">Yes</span></td></tr>
+          <tr><th scope="row">REST API, Bash &amp; PowerShell clients</th><td><span class="tp-mark tp-mark--yes">Yes</span></td><td class="is-highlight"><span class="tp-mark tp-mark--yes">Yes</span></td></tr>
+          <tr><th scope="row">Secure Send</th><td><span class="tp-mark tp-mark--yes">Yes</span></td><td class="is-highlight"><span class="tp-mark tp-mark--yes">Yes</span></td></tr>
+          <tr><th scope="row">Browser autofill</th><td><span class="tp-mark tp-mark--no">No</span></td><td class="is-highlight"><span class="tp-mark tp-mark--yes">Yes</span></td></tr>
+          <tr><th scope="row">Password capture on sign-up</th><td><span class="tp-mark tp-mark--no">No</span></td><td class="is-highlight"><span class="tp-mark tp-mark--yes">Yes</span></td></tr>
+          <tr><th scope="row">Anti-phishing domain matching</th><td><span class="tp-mark tp-mark--no">No</span></td><td class="is-highlight"><span class="tp-mark tp-mark--yes">Yes</span></td></tr>
+          <tr><th scope="row">Support</th><td>Community</td><td class="is-highlight">Email support included</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="services">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Beyond a licence</span>
+      <h2>Services and sponsorship</h2>
+    </header>
+
+    <div class="tp-grid">
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="git-branch" %}</span>
+        <h3>Sponsored development</h3>
+        <p>
+          Need a feature Teampass does not have? Scope it together and fund it.
+          Sponsored work is prioritised, and it ships to everyone.
+        </p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="zap" %}</span>
+        <h3>Priority support</h3>
+        <p>
+          Defects and messages from sponsors are handled first. Useful when
+          Teampass sits on the critical path for your operations.
+        </p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="heart" %}</span>
+        <h3>Sponsorship</h3>
+        <p>
+          Support the project directly through
+          <a href="{{ site.links.sponsor }}" target="_blank" rel="noopener">GitHub Sponsors</a>
+          — it is what keeps a fifteen-year-old open-source project maintained.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section">
+  <div class="tp-container tp-container--prose">
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Questions</span>
+      <h2>Straight answers</h2>
+    </header>
+    {% include components/faq.html items=page.faq %}
+  </div>
+</section>
+
+{% include components/cta-band.html
+   title="Start free. Pay only if the extension earns it."
+   body="Thirty days of the extension across your whole team, no card required."
+   primary-label="Start the trial" primary-url="/extension.html"
+   secondary-label="Install the server" secondary-url="/install.html" %}

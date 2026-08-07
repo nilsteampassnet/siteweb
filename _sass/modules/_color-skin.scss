@@ -1,0 +1,82 @@
+/**
+ *
+ *  Colour system
+ *
+ *  SCSS variables hold the source values; every rule consumes them through the
+ *  CSS custom properties below, so the page can flip to dark mode without a
+ *  second stylesheet.
+ *
+ **/
+
+// ---------------------------------------------------------------------------
+// Brand palette
+// ---------------------------------------------------------------------------
+$blue: #21c2f8;   // historical Teampass accent — kept for brand continuity
+$navy: #0f2740;   // primary dark surface
+
+$white: #fff;
+$black: #000;
+
+// Semantic
+$success: #16a34a;
+$warning: #d97706;
+$danger:  #dc2626;
+
+// ---------------------------------------------------------------------------
+// Custom properties
+// ---------------------------------------------------------------------------
+:root {
+  color-scheme: light dark;
+
+  --tp-accent:        #{$blue};
+  --tp-accent-strong: #0a94c4;
+  --tp-accent-soft:   #e6f7fe;
+
+  --tp-navy:          #{$navy};
+
+  --tp-bg:            #ffffff;
+  --tp-bg-alt:        #f5f8fa;
+  --tp-bg-inverse:    #{$navy};
+
+  --tp-surface:       #ffffff;
+  --tp-surface-alt:   #f5f8fa;
+
+  --tp-text:          #16232f;
+  --tp-text-muted:    #5b6b7a;
+  --tp-text-inverse:  #ffffff;
+  --tp-text-inverse-muted: rgba(255, 255, 255, 0.72);
+
+  --tp-border:        #dfe6ec;
+  --tp-border-strong: #c3d0da;
+
+  --tp-success:       #{$success};
+  --tp-warning:       #{$warning};
+  --tp-danger:        #{$danger};
+
+  --tp-shadow-sm:     #{$shadow-sm};
+  --tp-shadow:        #{$shadow};
+  --tp-shadow-lg:     #{$shadow-lg};
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --tp-accent-soft:   rgba(33, 194, 248, 0.12);
+
+    --tp-bg:            #0c1720;
+    --tp-bg-alt:        #111f2b;
+    --tp-bg-inverse:    #08151f;
+
+    --tp-surface:       #132330;
+    --tp-surface-alt:   #182c3b;
+
+    --tp-text:          #e7eef4;
+    --tp-text-muted:    #9db0c0;
+
+    --tp-border:        #24394a;
+    --tp-border-strong: #33505f;
+
+    --tp-shadow-sm:     0 1px 2px rgba(0, 0, 0, 0.4);
+    --tp-shadow:        0 4px 8px rgba(0, 0, 0, 0.45);
+    --tp-shadow-lg:     0 16px 32px rgba(0, 0, 0, 0.5);
+  }
+}

@@ -1,0 +1,159 @@
+---
+layout: page
+title: Support & services
+eyebrow: Getting help
+lead: >-
+  Community channels for most things, commercial options when Teampass sits on
+  your critical path. Both go to the same place — the person who writes the
+  code.
+description: >-
+  How to get help with Teampass — documentation, GitHub discussions and issues,
+  security reporting, priority commercial support and sponsored development.
+cta:
+  - label: Ask the community
+    url: https://github.com/nilsteampassnet/TeamPass/discussions
+  - label: Read the documentation
+    url: https://documentation.teampass.net
+---
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Free channels</span>
+      <h2>Start here — it is usually faster</h2>
+      <p>
+        Public channels keep answers searchable for the next person with the same
+        problem, which is why they are the default rather than a fallback.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+
+      <a class="tp-card tp-card--link" href="{{ site.links.docs }}" target="_blank" rel="noopener">
+        <span class="tp-icon-tile">{% include components/icon.html name="book" %}</span>
+        <h3>Documentation</h3>
+        <p>
+          Installation, configuration, administration and the API. Most questions
+          are answered here, and it tracks the current release.
+        </p>
+        <span class="tp-card__footer">Open the docs {% include components/icon.html name="external-link" %}</span>
+      </a>
+
+      <a class="tp-card tp-card--link" href="{{ site.links.discussions }}" target="_blank" rel="noopener">
+        <span class="tp-icon-tile">{% include components/icon.html name="users" %}</span>
+        <h3>Discussions</h3>
+        <p>
+          Setup questions, advice, feature ideas and shared experience from other
+          administrators. The right place for "how should I…" questions.
+        </p>
+        <span class="tp-card__footer">Ask a question {% include components/icon.html name="external-link" %}</span>
+      </a>
+
+      <a class="tp-card tp-card--link" href="{{ site.links.issues }}" target="_blank" rel="noopener">
+        <span class="tp-icon-tile">{% include components/icon.html name="alert-triangle" %}</span>
+        <h3>Issues</h3>
+        <p>
+          Bug reports. Include your version, PHP version and the steps to
+          reproduce — a report that can be reproduced gets fixed far faster than
+          one that cannot.
+        </p>
+        <span class="tp-card__footer">Report a bug {% include components/icon.html name="external-link" %}</span>
+      </a>
+
+      <a class="tp-card tp-card--link" href="{{ site.links.security-policy }}" target="_blank" rel="noopener">
+        <span class="tp-icon-tile">{% include components/icon.html name="shield" %}</span>
+        <h3>Security reports</h3>
+        <p>
+          Vulnerabilities go through the security policy, not the public tracker.
+          Fixes are published as advisories once released.
+        </p>
+        <span class="tp-card__footer">Read the policy {% include components/icon.html name="external-link" %}</span>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="commercial">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Commercial</span>
+      <h2>When you need a commitment rather than a community</h2>
+    </header>
+
+    <div class="tp-grid">
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="zap" %}</span>
+        <h3>Priority support</h3>
+        <p>
+          Your defects and messages handled ahead of the queue. Sensible when an
+          outage in Teampass means your team cannot reach production credentials.
+        </p>
+        <span class="tp-card__footer">
+          <a href="mailto:{{ site.email }}">Enquire {% include components/icon.html name="arrow-right" %}</a>
+        </span>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="git-branch" %}</span>
+        <h3>Sponsored development</h3>
+        <p>
+          Fund a feature you need. Scope and timeline agreed up front, and the
+          result ships in the open-source release rather than as a private fork
+          you then have to maintain.
+        </p>
+        <span class="tp-card__footer">
+          <a href="mailto:{{ site.email }}">Discuss a feature {% include components/icon.html name="arrow-right" %}</a>
+        </span>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="server" %}</span>
+        <h3>Deployment assistance</h3>
+        <p>
+          Help sizing, installing, integrating with your directory or migrating
+          from another manager — particularly useful for the first large rollout.
+        </p>
+        <span class="tp-card__footer">
+          <a href="mailto:{{ site.email }}">Request a quote {% include components/icon.html name="arrow-right" %}</a>
+        </span>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="heart" %}</span>
+        <h3>Sponsorship</h3>
+        <p>
+          Back the project through GitHub Sponsors. It is the least
+          transactional option on this page, and the one that keeps everything
+          else free.
+        </p>
+        <span class="tp-card__footer">
+          <a href="{{ site.links.sponsor }}" target="_blank" rel="noopener">Become a sponsor {% include components/icon.html name="external-link" %}</a>
+        </span>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section">
+  <div class="tp-container">
+    <div class="tp-callout tp-callout--warning">
+      {% include components/icon.html name="alert-triangle" %}
+      <p>
+        <strong>Never send credentials to get support.</strong>
+        Nobody working on Teampass will ask for your instance password, a database
+        dump containing secrets, or the contents of an item. Logs, versions and
+        error messages are enough — and if they are not, we will ask for
+        something specific and safe.
+      </p>
+    </div>
+  </div>
+</section>
+
+{% include sections/contact.html %}

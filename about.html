@@ -1,0 +1,95 @@
+---
+layout: page
+title: About the project
+eyebrow: Since 2009
+lead: >-
+  Teampass is a long-lived open-source project with a small core team. Here is
+  who builds it, how it is funded, and what that means for you.
+description: >-
+  About Teampass — an open-source, self-hosted password manager built and
+  maintained by Nils Laumaillé since 2009, licensed under GPL-3.0.
+cta:
+  - label: Browse the source
+    url: https://github.com/nilsteampassnet/TeamPass
+  - label: Sponsor the project
+    url: https://github.com/sponsors/nilsteampassnet
+---
+
+<section class="tp-section">
+  <div class="tp-container tp-container--prose">
+    <div class="tp-prose">
+      <h2>What it is</h2>
+      <p>
+        Teampass is a collaborative password manager you install on your own
+        servers. It started in 2009 as a way to stop a team sharing credentials
+        through documents and email, and it has been developed continuously since
+        then — currently in the 3.2 line, with authenticated encryption and access
+        governance features that would have sounded absurd for the original
+        version.
+      </p>
+      <p>
+        It is released under {{ site.product.licence }}. The source is public,
+        the issue tracker is public, and the security advisories are public. You
+        can verify every claim on this website by reading the code.
+      </p>
+
+      <h2>Who builds it</h2>
+      <p>
+        Teampass was created by
+        <a href="{{ site.author.url }}" target="_blank" rel="noopener">{{ site.author.name }}</a>,
+        who still writes most of it, answers most of the discussions and handles
+        the security reports. Contributions come from users through pull requests,
+        bug reports and translations.
+      </p>
+      <p>
+        That is worth being straight about: this is not a venture-funded company
+        with a support desk. It is a small project that has shipped for fifteen
+        years. The upside is that the person answering your question wrote the
+        code. The downside is that there is a limit to how many questions one
+        person can answer — which is exactly why the
+        <a href="{{ '/support.html' | relative_url }}">commercial options</a> exist.
+      </p>
+
+      <h2>How it is funded</h2>
+      <p>
+        The server is free and stays free. The browser extension is a paid
+        add-on, and that revenue — along with sponsored development and GitHub
+        Sponsors — is what pays for the time that goes into the open-source
+        server.
+      </p>
+      <p>
+        The alternative model, where the interesting features get held back for a
+        paid edition, was deliberately avoided. Encryption, access control,
+        recertification, compliance export, SSO and the API are all in the free
+        server. If that arrangement matters to you, the most useful thing you can
+        do is
+        <a href="{{ site.links.sponsor }}" target="_blank" rel="noopener">sponsor it</a>.
+      </p>
+
+      <h2>How security is handled</h2>
+      <p>
+        Vulnerabilities are reported through the
+        <a href="{{ site.links.security-policy }}" target="_blank" rel="noopener">security policy</a>,
+        fixed in a release, and published as GitHub Security Advisories. Nine were
+        published with 3.2.1.1 alone. Making that history public is a deliberate
+        choice — see the <a href="{{ '/security.html' | relative_url }}">security page</a>
+        for the reasoning and the full model.
+      </p>
+
+      <h2>Contributing</h2>
+      <p>
+        Pull requests, bug reports, translations and documentation improvements
+        are all welcome on
+        <a href="{{ site.links.github }}" target="_blank" rel="noopener">GitHub</a>.
+        If you are planning something substantial, open a discussion first — it is
+        a faster route to a merged change than a large surprise pull request.
+      </p>
+    </div>
+  </div>
+</section>
+
+{% include components/cta-band.html
+   title="Fifteen years, still shipping."
+   body="The best way to support the project is to use it, report what breaks, and tell people it exists."
+   primary-label="Install Teampass" primary-url="/install.html"
+   secondary-label="Sponsor the project" secondary-url="https://github.com/sponsors/nilsteampassnet" %}

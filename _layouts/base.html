@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+
+{% include head.html %}
+
+<body id="top">
+
+  {% include nav.html %}
+
+  <main id="main">
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+  {% include components/consent-banner.html %}
+  {% include analytics.html %}
+  {% include scripts.html %}
+
+</body>
+</html>

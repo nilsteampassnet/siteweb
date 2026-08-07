@@ -1,0 +1,37 @@
+---
+layout: page
+title: That page does not exist
+eyebrow: 404
+lead: >-
+  The link is wrong, or the page moved during the site rebuild. Here are the
+  places people are usually looking for.
+sitemap: false
+permalink: /404.html
+---
+
+<section class="tp-section">
+  <div class="tp-container">
+    <div class="tp-grid tp-grid--2">
+      <a class="tp-card tp-card--link" href="{{ '/install.html' | relative_url }}">
+        <span class="tp-icon-tile">{% include components/icon.html name="download" %}</span>
+        <h3>Install &amp; requirements</h3>
+        <p>Docker, bare metal and server prerequisites. Previously at /requirements.html.</p>
+      </a>
+      <a class="tp-card tp-card--link" href="{{ '/features.html' | relative_url }}">
+        <span class="tp-icon-tile">{% include components/icon.html name="layers" %}</span>
+        <h3>Features</h3>
+        <p>The complete list, grouped by what it is for.</p>
+      </a>
+      <a class="tp-card tp-card--link" href="{{ '/security.html' | relative_url }}">
+        <span class="tp-icon-tile">{% include components/icon.html name="shield-check" %}</span>
+        <h3>Security</h3>
+        <p>The encryption model, the threat model and the advisory history.</p>
+      </a>
+      <a class="tp-card tp-card--link" href="{{ site.links.docs }}" target="_blank" rel="noopener">
+        <span class="tp-icon-tile">{% include components/icon.html name="book" %}</span>
+        <h3>Documentation</h3>
+        <p>Install, configure and operate Teampass.</p>
+      </a>
+    </div>
+  </div>
+</section>

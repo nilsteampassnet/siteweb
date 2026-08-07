@@ -1,0 +1,56 @@
+# Primary navigation.
+# `url` values starting with http open in a new tab (handled in nav.html).
+
+- title: Product
+  children:
+    - title: Features
+      url: /features.html
+      summary: Everything Teampass does, grouped by domain
+    - title: What's new
+      url: /whats-new.html
+      summary: Highlights of the 3.2 line
+    - title: Browser extension
+      url: /extension.html
+      summary: Autofill and capture for Chrome, Firefox and Edge
+    - title: Install & requirements
+      url: /install.html
+      summary: Docker, bare metal and server prerequisites
+
+- title: Solutions
+  children:
+    - title: For individuals
+      url: /for-individuals.html
+      summary: Homelabs, freelancers and independent consultants
+    - title: For teams & SMB
+      url: /for-teams.html
+      summary: Shared credentials without the spreadsheet
+    - title: For enterprise
+      url: /for-enterprise.html
+      summary: Governance, audit evidence and identity integration
+    - title: Compare alternatives
+      url: /compare.html
+      summary: Teampass next to Bitwarden, Vaultwarden, Passbolt and KeePass
+
+- title: Security
+  url: /security.html
+
+- title: Compliance
+  url: /compliance.html
+
+- title: Pricing
+  url: /pricing.html
+
+- title: Community
+  children:
+    - title: Support & services
+      url: /support.html
+      summary: Community channels and commercial options
+    - title: About the project
+      url: /about.html
+      summary: History, licence and how it is funded
+    - title: Documentation
+      url: https://documentation.teampass.net
+      summary: Install, configure and operate Teampass
+    - title: GitHub
+      url: https://github.com/nilsteampassnet/TeamPass
+      summary: Source code, issues and discussions

@@ -1,14 +1,71 @@
-<!-- Site Head -->
+{% comment %}
+  Document head — SEO, social cards and structured data.
+  Pages set `title`, `description` and optionally `image` in their front matter.
+{% endcomment %}
+
+{%- assign page_title = page.title | strip_html | strip -%}
+{%- if page.seo-title -%}
+  {%- assign seo_title = page.seo-title -%}
+{%- elsif page.url == "/" -%}
+  {%- assign seo_title = site.title | append: " — " | append: site.tagline -%}
+{%- else -%}
+  {%- assign seo_title = page_title | append: " | " | append: site.title -%}
+{%- endif -%}
+{%- assign seo_description = page.description | default: site.description | strip_newlines | strip -%}
+{%- assign seo_image = page.image | default: site.default-image | absolute_url -%}
+
 <head>
-  <meta charset="utf-8" />
-  <title>{{ page.title | strip_html }}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" href="{{ site.baseurl }}/images/favicon.png" title="Favicon" />
-  <!--<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f2740" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#08151f" media="(prefers-color-scheme: dark)">
 
-  <!-- Importing Styles -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
+  <title>{{ seo_title }}</title>
+  <meta name="description" content="{{ seo_description }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6796519999488555" crossorigin="anonymous"></script>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:title" content="{{ seo_title }}">
+  <meta property="og:description" content="{{ seo_description }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ seo_image }}">
+  <meta property="og:locale" content="en_GB">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ seo_title }}">
+  <meta name="twitter:description" content="{{ seo_description }}">
+  <meta name="twitter:image" content="{{ seo_image }}">
+
+  <link rel="shortcut icon" href="{{ '/images/favicon.png' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
+
+  {%- if page.url == "/" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Teampass",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Linux, Windows, Docker",
+    "url": "{{ site.url }}",
+    "downloadUrl": "{{ site.links.releases }}",
+    "softwareHelp": "{{ site.links.docs }}",
+    "license": "https://spdx.org/licenses/GPL-3.0-only.html",
+    "description": {{ site.description | strip_newlines | strip | jsonify }},
+    "author": {
+      "@type": "Person",
+      "name": {{ site.author.name | jsonify }},
+      "url": "{{ site.author.url }}"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    }
+  }
+  </script>
+  {%- endif %}
 </head>

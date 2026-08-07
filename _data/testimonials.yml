@@ -1,0 +1,61 @@
+# Testimonials.
+#
+# Quotes are reproduced as given, trimmed only with ellipses. They are not
+# rewritten: a testimonial that has been edited for marketing is not a
+# testimonial. One earlier quote was retired because it described a CentOS 6
+# deployment and a version of the interface that no longer exists.
+#
+# TODO(nils): collect fresh quotes covering the 3.2 governance features, and
+# confirm written permission before adding any customer logo.
+
+- name: Jeff Smith
+  company: Basis Technologies
+  url: https://www.basis.com/
+  logo: logo-basis-white.webp
+  quote: >-
+    When I first came to my company, it was like Westworld with regards to
+    password management — anything goes. Since we've rolled out TeamPass
+    throughout the org, it not only makes it easy to share passwords, but staff
+    members always know where to go to get the latest password. This takes a
+    lot of the pain out of rotating passwords and enforcing strong password
+    standards, which is often a barrier to good password hygiene.
+
+- name: Steve Jackman
+  company: Coachwise
+  url: http://www.coachwise.ltd.uk/
+  logo: coachwise.png
+  quote: >-
+    We are a small charity-based company and being able to use a product that is
+    fully secure and internal ticked all the boxes for us. After installing
+    Teampass and trialling multiple other applications, I can say Teampass is by
+    far the best option for us. It's easy to use, simple to manage and requires
+    little support once running… I would highly recommend this product for IT
+    support team password management.
+
+- name: Dean Bruhn
+  company: Cloud Clarity
+  url: http://www.cloudclarity.me
+  logo: cloudclarity.me.png
+  quote: >-
+    Our team uses TeamPass daily managing thousands of accounts. It works well,
+    it keeps our passwords secure, and we don't have to worry about working
+    around all of the exposures other hosted solutions have to deal with on a
+    regular basis.
+
+- name: Sébastien Cousin
+  company: CIV
+  url: https://www.civ.fr/
+  logo: logo-civ-4.png
+  language: fr
+  quote: >-
+    Nous utilisons TEAMPASS depuis plusieurs années et nous n'avons à ce jour pas
+    trouvé d'outils remplissant à la fois les fonctions de partage d'une même
+    base de données, catégorisation des droits/accès, multi-utilisateurs.
+    L'outil TEAMPASS a répondu aux exigences de la RGPD (validé par notre DPO),
+    de l'ISO 27001 et de l'ISO 9001 (validé par nos auditeurs) et nos
+    commissaires aux comptes.
+  translation: >-
+    We have used Teampass for several years and have yet to find another tool
+    that combines shared database access, categorised rights and multi-user
+    management. It met our GDPR requirements — validated by our DPO — as well as
+    ISO 27001 and ISO 9001, validated by our auditors and statutory accountants.

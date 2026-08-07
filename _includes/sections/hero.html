@@ -1,0 +1,44 @@
+<section class="tp-hero">
+  <div class="tp-container tp-hero__inner">
+
+    <div class="tp-hero__copy">
+      <span class="tp-hero__eyebrow tp-badge tp-badge--accent">
+        {% include components/icon.html name="zap" %}
+        Teampass {{ site.data.releases.line }} is out
+      </span>
+
+      <h1>Self-hosted password management your whole team can trust.</h1>
+
+      <p class="tp-hero__lead">
+        Teampass is an open-source credential vault you run yourself: folder-level
+        access control, authenticated AES-256-GCM encryption and built-in
+        compliance evidence. Your secrets never leave your infrastructure.
+      </p>
+
+      <div class="tp-button-row">
+        <a class="tp-btn tp-btn--lg" href="{{ '/install.html' | relative_url }}">
+          {% include components/icon.html name="download" %} Deploy in 5 minutes
+        </a>
+        <a class="tp-btn tp-btn--ghost tp-btn--lg" href="{{ '/whats-new.html' | relative_url }}">
+          What's new in {{ site.data.releases.line }}
+        </a>
+      </div>
+
+      <ul class="tp-trust-bar">
+        <li><span class="tp-badge tp-badge--on-dark">{{ site.product.licence }}</span></li>
+        <li><span class="tp-badge tp-badge--on-dark">Self-hosted</span></li>
+        <li><span class="tp-badge tp-badge--on-dark">Maintained since {{ site.product.since }}</span></li>
+        <li><span class="tp-badge tp-badge--on-dark">Docker &amp; bare metal</span></li>
+        <li><span class="tp-badge tp-badge--on-dark">PHP {{ site.product.min-php }}</span></li>
+        <li><span class="tp-badge tp-badge--on-dark">Made in France</span></li>
+      </ul>
+    </div>
+
+    <div class="tp-hero__visual">
+      <img src="{{ '/images/portfolio/tp3_sw_11.png' | relative_url }}"
+           alt="The Teampass security posture screen: a score out of 100 and tiles counting weak, reused, breached, overdue and widely shared credentials"
+           width="1920" height="887" loading="eager" fetchpriority="high">
+    </div>
+
+  </div>
+</section>

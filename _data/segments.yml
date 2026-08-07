@@ -1,0 +1,42 @@
+# The three audience paths shown on the home page and expanded on their own
+# pages. `slug` matches the page filename.
+
+- slug: for-individuals
+  icon: home
+  name: Individuals & homelab
+  headline: Own your vault, literally.
+  summary: >-
+    No account to create, no company behind the curtain holding your data.
+    Install it on hardware you control and keep it.
+  bullets:
+    - Runs on a Raspberry Pi or a €5 VPS
+    - Personal folders encrypted with your own key
+    - Import from Bitwarden, LastPass, 1Password or KeePassXC
+    - Free forever, no sign-up required
+
+- slug: for-teams
+  icon: users
+  name: Teams & SMB
+  headline: Stop sharing passwords in chat.
+  summary: >-
+    Shared credentials with real boundaries, so onboarding and offboarding stop
+    being a manual scramble through a spreadsheet.
+  bullets:
+    - Folders and roles instead of a shared document
+    - A record of who accessed what, and when
+    - Secure Send for clients and contractors
+    - Browser extension for day-to-day autofill
+
+- slug: for-enterprise
+  icon: building
+  name: Enterprise & regulated
+  headline: Prove your access controls, don't just claim them.
+  summary: >-
+    Everything an auditor asks for — who has access, who approved it, when it
+    was last rotated — comes out of the product rather than out of a
+    spreadsheet you rebuild each year.
+  bullets:
+    - Access recertification campaigns with immutable decisions
+    - Compliance reports and evidence export
+    - LDAP/AD with nested groups, OAuth2 SSO
+    - Data classification and ownership

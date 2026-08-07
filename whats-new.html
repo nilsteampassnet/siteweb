@@ -1,0 +1,96 @@
+---
+layout: page
+title: What's new in Teampass 3.2
+eyebrow: Release history
+lead: >-
+  The 3.2 line rebuilt the cryptography, added the governance features auditors
+  ask for, and closed a long list of security advisories. Here is what changed,
+  release by release.
+description: >-
+  Teampass 3.2 release highlights — AES-256-GCM encryption, Security Posture
+  Dashboard, access recertification, Secure Send and the security advisories
+  closed in each version.
+cta:
+  - label: All releases on GitHub
+    url: https://github.com/nilsteampassnet/TeamPass/releases
+  - label: Upgrade guide
+    url: https://documentation.teampass.net
+---
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">The short version</span>
+      <h2>Four changes worth upgrading for</h2>
+    </header>
+
+    <div class="tp-grid tp-grid--4">
+      {%- for item in site.data.releases.highlights %}
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name=item.icon %}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.body }}</p>
+      </article>
+      {%- endfor %}
+    </div>
+
+    <div class="tp-callout" style="margin-top: 32px;">
+      {% include components/icon.html name="info" %}
+      <p>
+        <strong>Upgrading from 3.1 or earlier?</strong>
+        New features are seeded disabled, and the hardened encryption format
+        stays off until you turn it on — so an upgrade will not change behaviour
+        under your users. Back up the database first, then enable features one
+        at a time.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Release by release</span>
+      <h2>Changelog</h2>
+      <p>
+        Condensed from the GitHub release notes. Advisory identifiers link to
+        the published GitHub Security Advisory for that issue.
+      </p>
+    </header>
+
+    {%- for release in site.data.releases.versions %}
+    <article class="tp-card" style="margin-bottom: 24px;">
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
+        <h3 style="margin:0; font-size:1.375rem;">{{ release.version }}</h3>
+        <span class="tp-badge">{{ release.date | date: "%-d %B %Y" }}</span>
+      </div>
+      <p style="margin-bottom:16px;">{{ release.summary }}</p>
+
+      {%- for group in release.changes %}
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">{{ group.group }}</h4>
+      <ul class="tp-checklist">
+        {%- for change in group.items %}
+        <li>{% include components/icon.html name="check" %}<span>{{ change }}</span></li>
+        {%- endfor %}
+      </ul>
+      {%- endfor %}
+    </article>
+    {%- endfor %}
+
+    <p>
+      <a class="tp-link-arrow" href="{{ site.links.releases }}" target="_blank" rel="noopener">
+        Full release notes on GitHub {% include components/icon.html name="external-link" %}
+      </a>
+    </p>
+
+  </div>
+</section>
+
+{% include components/cta-band.html
+   title="Get the latest release"
+   body="Upgrade instructions and a fresh install both live in the documentation."
+   primary-label="Install or upgrade" primary-url="/install.html"
+   secondary-label="Download from GitHub" secondary-url="https://github.com/nilsteampassnet/TeamPass/releases/latest" %}

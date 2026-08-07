@@ -1,0 +1,32 @@
+<section class="tp-section" id="tour">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Product tour</span>
+      <h2>What your team actually sees</h2>
+      <p>Eight screens from Teampass {{ site.data.releases.line }} — a working day for a user, and the parts an administrator lives in.</p>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+      {%- for shot in site.data.screenshots %}
+      <figure class="tp-shot">
+        {%- capture shot_img %}
+          <img src="{{ shot.image | prepend: '/images/portfolio/' | relative_url }}"
+               alt="{{ shot.title }} — {{ shot.body }}"
+               width="1920" height="883" loading="lazy">
+        {% endcapture -%}
+        {%- if shot.url %}
+        <a href="{{ shot.url }}" target="_blank" rel="noopener">{{ shot_img }}</a>
+        {%- else %}
+        {{ shot_img }}
+        {%- endif %}
+        <figcaption>
+          <strong>{{ shot.title }}</strong>
+          {{ shot.body }}
+        </figcaption>
+      </figure>
+      {%- endfor %}
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,105 @@
+/**
+ *
+ *  Cookie consent banner
+ *
+ *  Docked to the bottom of the viewport. Not a modal: the page stays readable
+ *  and scrollable while the choice is pending — a wall in front of the content
+ *  is what makes people click "accept" without reading.
+ *
+ **/
+
+.tp-consent {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  padding: $sp-4;
+  background: var(--tp-surface);
+  border-top: 1px solid var(--tp-border);
+  box-shadow: var(--tp-shadow-lg);
+
+  // Revealed by js/main.js, which flips `hidden` then adds `is-open`.
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity $transition-links $transition-links-type,
+              transform 300ms $cubic;
+
+  &.is-open {
+    opacity: 1;
+    transform: none;
+  }
+
+  &[hidden] { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    transform: none;
+  }
+}
+
+.tp-consent__inner {
+  display: flex;
+  align-items: center;
+  gap: $sp-5;
+  max-width: $content-width;
+  margin: 0 auto;
+
+  @media (max-width: $bp-md) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $sp-4;
+  }
+}
+
+.tp-consent__title {
+  margin: 0 0 $sp-1;
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  color: var(--tp-text);
+}
+
+.tp-consent__text p {
+  margin: 0;
+  font-size: $fs-xs;
+  line-height: $lh-base;
+  color: var(--tp-text-muted);
+
+  a {
+    color: var(--tp-accent-strong);
+    text-decoration: underline;
+  }
+}
+
+.tp-consent__actions {
+  display: flex;
+  gap: $sp-3;
+  flex-shrink: 0;
+
+  @media (max-width: $bp-sm) {
+    width: 100%;
+
+    .tp-btn { flex: 1; }
+  }
+}
+
+/**
+ *  Footer trigger — a button that has to sit in a list of links without
+ *  looking like a button.
+ */
+.tp-footer__consent {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--tp-text-inverse-muted);
+  text-align: left;
+  cursor: pointer;
+
+  &:hover { color: var(--tp-accent); }
+
+  &:focus-visible {
+    outline: 2px solid var(--tp-accent);
+    outline-offset: 2px;
+  }
+}

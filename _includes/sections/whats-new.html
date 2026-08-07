@@ -1,0 +1,31 @@
+<section class="tp-section tp-section--alt" id="whats-new">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Release {{ site.data.releases.line }}</span>
+      <h2>The biggest change to Teampass in years</h2>
+      <p>
+        The 3.2 line rebuilt the cryptography and added the governance features
+        auditors keep asking for. Everything below ships in the free,
+        open-source server.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--4">
+      {%- for item in site.data.releases.highlights %}
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name=item.icon %}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.body }}</p>
+      </article>
+      {%- endfor %}
+    </div>
+
+    <p style="margin-top: 32px;">
+      <a class="tp-link-arrow" href="{{ '/whats-new.html' | relative_url }}">
+        Read the full release history {% include components/icon.html name="arrow-right" %}
+      </a>
+    </p>
+
+  </div>
+</section>

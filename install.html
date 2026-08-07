@@ -1,0 +1,167 @@
+---
+layout: page
+title: Install Teampass
+eyebrow: Get started
+lead: >-
+  Docker, Docker Compose or a plain PHP install on a server you already run.
+  Ten minutes either way, and nothing phones home.
+description: >-
+  How to install Teampass — Docker and bare-metal instructions, server
+  requirements, required PHP extensions and post-install hardening steps.
+cta:
+  - label: Full installation guide
+    url: https://documentation.teampass.net/#/install/installation
+  - label: Download the latest release
+    url: https://github.com/nilsteampassnet/TeamPass/releases/latest
+---
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Three steps</span>
+      <h2>From nothing to a working vault</h2>
+    </header>
+
+    <ol class="tp-steps">
+      <li class="tp-step">
+        <h3>Get the code</h3>
+        <p>Pull the Docker image, or drop the release archive into your web root.</p>
+        <code class="tp-code">docker pull teampass/teampass</code>
+      </li>
+      <li class="tp-step">
+        <h3>Point it at a database</h3>
+        <p>
+          Create an empty MySQL or MariaDB schema and a dedicated user. The
+          installer creates the tables and writes the configuration.
+        </p>
+      </li>
+      <li class="tp-step">
+        <h3>Run the installer</h3>
+        <p>
+          Open <code>/install</code> in a browser, work through the checks, create
+          the first administrator, then delete the install directory.
+        </p>
+      </li>
+    </ol>
+
+    <div class="tp-callout" style="margin-top: 32px;">
+      {% include components/icon.html name="book" %}
+      <p>
+        Each step is covered in detail — including reverse proxy, TLS and
+        background task setup — in the
+        <a href="{{ site.links.docs-install }}" target="_blank" rel="noopener">installation documentation</a>.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="requirements">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Requirements</span>
+      <h2>What the server needs</h2>
+      <p>
+        Nothing exotic. If you can host a PHP application, you can host Teampass.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="server" %}</span>
+        <h3>Platform</h3>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span>Apache 2.4 or Nginx</span></li>
+          <li>{% include components/icon.html name="check" %}<span>{{ site.product.min-mysql }} or newer</span></li>
+          <li>{% include components/icon.html name="check" %}<span><strong>PHP {{ site.product.min-php }} minimum</strong> — required since 3.2.1.1</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Tables must use InnoDB</span></li>
+          <li>{% include components/icon.html name="check" %}<span>A cron entry or scheduler for background tasks</span></li>
+        </ul>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="layers" %}</span>
+        <h3>PHP extensions</h3>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span><code>openssl</code>, <code>mbstring</code>, <code>bcmath</code>, <code>gmp</code></span></li>
+          <li>{% include components/icon.html name="check" %}<span><code>iconv</code>, <code>xml</code>, <code>gd</code>, <code>curl</code></span></li>
+          <li>{% include components/icon.html name="check" %}<span><code>mysqli</code></span></li>
+          <li>{% include components/icon.html name="check" %}<span><code>ldap</code> — only if you authenticate against a directory</span></li>
+        </ul>
+      </article>
+
+    </div>
+
+    <div class="tp-callout tp-callout--warning" style="margin-top: 32px;">
+      {% include components/icon.html name="alert-triangle" %}
+      <p>
+        Teampass stores your organisation's credentials. Put it behind TLS,
+        restrict it to the networks that need it, back the database up, and keep
+        the recovery account somewhere you can still reach when everything else
+        is down.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="after">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Right after install</span>
+      <h2>Five things worth doing on day one</h2>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+      <article class="tp-card tp-card--muted">
+        <h3>Turn on the hardened encryption format</h3>
+        <p>
+          New installations use authenticated AES-256-GCM by default. Upgrades
+          keep the old format until you enable it, then migrate secrets lazily on
+          first read.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Enforce two-factor authentication</h3>
+        <p>Pick a TOTP profile, or wire Teampass to your identity provider over OAuth2.</p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Model your folders before your users</h3>
+        <p>
+          Folders and roles are where access control actually lives. Getting the
+          tree right first saves rework later.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Import what you already have</h3>
+        <p>Bitwarden, LastPass, 1Password, KeePassXC, KeePass XML and CSV are all supported.</p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Run the first posture scan</h3>
+        <p>
+          It will tell you how many of the credentials you just imported are weak,
+          reused or overdue for rotation. Expect the number to be higher than you
+          think.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Store the recovery account safely</h3>
+        <p>
+          It is the only account besides the owner that can decrypt personal
+          folders. Treat it accordingly.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+{% include components/cta-band.html
+   title="Something not working?"
+   body="Installation problems are usually a missing PHP extension or a database that is not InnoDB. Both are covered in the docs — and the discussions are open if they are not."
+   primary-label="Installation docs" primary-url="https://documentation.teampass.net/#/install/installation"
+   secondary-label="Ask the community" secondary-url="https://github.com/nilsteampassnet/TeamPass/discussions" %}

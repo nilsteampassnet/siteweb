@@ -1,0 +1,55 @@
+/**
+ *  FAQ accordion
+ *
+ *  Built on <details>/<summary> so it works with keyboard and without JS.
+ */
+
+.tp-faq {
+  border-top: 1px solid var(--tp-border);
+}
+
+.tp-faq__item {
+  border-bottom: 1px solid var(--tp-border);
+
+  > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $sp-4;
+    padding: $sp-4 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: $fs-base;
+    font-weight: $fw-semibold;
+    color: var(--tp-text);
+
+    &::-webkit-details-marker { display: none; }
+
+    &:hover { color: var(--tp-accent-strong); }
+
+    &:focus-visible {
+      outline: 2px solid var(--tp-accent);
+      outline-offset: 2px;
+    }
+
+    .tp-icon {
+      flex: none;
+      color: var(--tp-text-muted);
+      transition: transform $transition-links $transition-links-type;
+    }
+  }
+
+  &[open] > summary .tp-icon { transform: rotate(180deg); }
+
+  &[open] > summary { color: var(--tp-accent-strong); }
+}
+
+.tp-faq__answer {
+  padding: 0 0 $sp-5;
+  font-size: $fs-sm;
+  line-height: $lh-base;
+  color: var(--tp-text-muted);
+  max-width: $prose-width;
+
+  p:last-child { margin-bottom: 0; }
+}

@@ -1,13 +1,23 @@
-# Privacy Policy — Teampass Password Manager Browser Extension
+---
+layout: prose
+title: Extension privacy policy
+eyebrow: Teampass browser extension
+lead: >-
+  How the Teampass browser extension handles data. Short version: it talks to
+  your own server, and nothing reaches ours.
+description: >-
+  Privacy policy for the Teampass Password Manager browser extension for Chrome,
+  Firefox and Edge — what data it handles, what it never collects, and how to
+  contact us about it.
+---
 
-**Last updated:** 2026-05-31
+*Last updated: 2026-05-31*
 
-This Privacy Policy describes how the **Teampass Password Manager**
-browser extension (the "Extension") for Microsoft Edge, Google Chrome
-and Mozilla Firefox handles user data. The Extension is published by
-the Teampass project (the "Publisher", "we", "us") and is designed to
-act as a client interface to a self-hosted [Teampass](https://teampass.net)
-password manager server.
+This Privacy Policy describes how the **Teampass Password Manager** browser
+extension (the "Extension") for Microsoft Edge, Google Chrome and Mozilla
+Firefox handles user data. The Extension is published by the Teampass project
+(the "Publisher", "we", "us") and is designed to act as a client interface to a
+self-hosted [Teampass](https://teampass.net) password manager server.
 
 By installing or using the Extension you agree to this Privacy Policy.
 

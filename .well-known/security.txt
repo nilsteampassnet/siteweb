@@ -1,0 +1,16 @@
+---
+layout: null
+sitemap: false
+---
+# Teampass — security contact information (RFC 9116)
+#
+# TODO(nils): bump `Expires` at least once a year — an expired security.txt
+# is treated as invalid by scanners and by researchers.
+
+Contact: mailto:{{ site.email }}
+Contact: {{ site.links.security-policy }}
+Expires: 2027-07-30T00:00:00.000Z
+Preferred-Languages: en, fr
+Canonical: {{ '/.well-known/security.txt' | absolute_url }}
+Policy: {{ site.links.security-policy }}
+Acknowledgments: {{ site.links.advisories }}

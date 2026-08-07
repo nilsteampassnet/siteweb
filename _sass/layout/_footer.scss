@@ -1,0 +1,125 @@
+/**
+ *  Footer
+ */
+
+.tp-footer {
+  padding: $sp-8 0 $sp-5;
+  background: var(--tp-bg-inverse);
+  color: var(--tp-text-inverse-muted);
+  font-size: $fs-sm;
+
+  &__top {
+    display: grid;
+    gap: $sp-7;
+
+    @media (min-width: $bp-lg) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
+      gap: $sp-8;
+    }
+  }
+
+  &__brand {
+    img { margin-bottom: $sp-4; }
+
+    p {
+      max-width: 32em;
+      line-height: $lh-base;
+      margin-bottom: $sp-4;
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: $sp-4;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+      display: inline-flex;
+      color: var(--tp-text-inverse-muted);
+
+      &:hover { color: var(--tp-accent); }
+    }
+  }
+
+  &__links {
+    display: grid;
+    gap: $sp-6;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    @media (min-width: $bp-md) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    h2 {
+      margin-bottom: $sp-3;
+      font-size: $fs-xs;
+      font-weight: $fw-semibold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--tp-text-inverse);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li { margin-bottom: $sp-2; }
+
+    a {
+      color: var(--tp-text-inverse-muted);
+
+      &:hover { color: var(--tp-accent); }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: $sp-4;
+    margin-top: $sp-7;
+    padding-top: $sp-5;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: $fs-xs;
+
+    p { margin: 0; }
+
+    a { color: var(--tp-text-inverse); text-decoration: underline; }
+  }
+
+  &__made img { opacity: 0.8; }
+}
+
+.tp-to-top {
+  position: fixed;
+  right: $sp-5;
+  bottom: $sp-5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--tp-border);
+  border-radius: $radius-pill;
+  background: var(--tp-surface);
+  color: var(--tp-text);
+  box-shadow: var(--tp-shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all $transition-links $transition-links-type;
+  z-index: 90;
+
+  .tp-icon { transform: rotate(180deg); }
+
+  &:hover { border-color: var(--tp-accent); color: var(--tp-accent-strong); }
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}

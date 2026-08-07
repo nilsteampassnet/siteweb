@@ -1,0 +1,88 @@
+/**
+ *  Pricing
+ *
+ *  Three-tier snapshot on the home page and the full pack table on /pricing.
+ */
+
+.tp-plans {
+  display: grid;
+  gap: $sp-5;
+
+  @media (min-width: $bp-md) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.tp-plan {
+  display: flex;
+  flex-direction: column;
+  padding: $sp-6 $sp-5;
+  border: 1px solid var(--tp-border);
+  border-radius: $radius-lg;
+  background: var(--tp-surface);
+
+  &--featured {
+    border-color: var(--tp-accent);
+    box-shadow: var(--tp-shadow-lg);
+  }
+
+  &__name {
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tp-accent-strong);
+    margin-bottom: $sp-3;
+  }
+
+  &__price {
+    display: flex;
+    align-items: baseline;
+    gap: $sp-2;
+    font-size: $fs-2xl;
+    font-weight: $fw-bold;
+    line-height: 1;
+    color: var(--tp-text);
+    margin-bottom: $sp-2;
+
+    small {
+      font-size: $fs-sm;
+      font-weight: $fw-normal;
+      color: var(--tp-text-muted);
+    }
+  }
+
+  &__summary {
+    font-size: $fs-sm;
+    line-height: $lh-base;
+    color: var(--tp-text-muted);
+    margin-bottom: $sp-5;
+  }
+
+  .tp-checklist { margin-bottom: $sp-5; }
+
+  &__cta {
+    margin-top: auto;
+
+    .tp-btn { width: 100%; justify-content: center; }
+  }
+
+  &__note {
+    margin-top: $sp-3;
+    font-size: $fs-xs;
+    text-align: center;
+    color: var(--tp-text-muted);
+  }
+}
+
+// Framing statement kept next to every price on the site
+.tp-pricing-promise {
+  margin-top: $sp-6;
+  padding: $sp-5;
+  border-radius: $radius;
+  border: 1px dashed var(--tp-border-strong);
+  background: var(--tp-surface-alt);
+  text-align: center;
+  font-size: $fs-sm;
+  color: var(--tp-text-muted);
+
+  strong { color: var(--tp-text); }
+}

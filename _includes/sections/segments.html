@@ -1,0 +1,34 @@
+<section class="tp-section" id="solutions">
+  <div class="tp-container">
+
+    <header class="tp-section-header tp-section-header--center">
+      <span class="tp-section-header__eyebrow">Choose your path</span>
+      <h2>The same server. Three very different jobs.</h2>
+      <p>
+        A homelab and a regulated enterprise want opposite things from a password
+        manager. Teampass ships both sets of features — start from the one that
+        describes you.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+      {%- for segment in site.data.segments %}
+      <a class="tp-card tp-card--link" href="{{ segment.slug | prepend: '/' | append: '.html' | relative_url }}">
+        <span class="tp-icon-tile">{% include components/icon.html name=segment.icon %}</span>
+        <h3>{{ segment.name }}</h3>
+        <p><strong>{{ segment.headline }}</strong></p>
+        <p>{{ segment.summary }}</p>
+        <ul class="tp-checklist">
+          {%- for bullet in segment.bullets %}
+          <li>{% include components/icon.html name="check" %}<span>{{ bullet }}</span></li>
+          {%- endfor %}
+        </ul>
+        <span class="tp-card__footer">
+          See what it looks like {% include components/icon.html name="arrow-right" %}
+        </span>
+      </a>
+      {%- endfor %}
+    </div>
+
+  </div>
+</section>

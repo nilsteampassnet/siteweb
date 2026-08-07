@@ -1,0 +1,145 @@
+# Feature comparison.
+#
+# EDITORIAL RULES — read before touching this file:
+#   * Factual only. If a claim cannot be checked against public documentation,
+#     it does not belong here.
+#   * Say plainly where an alternative is stronger. The "Where others are
+#     stronger" block on /compare.html exists for that reason and must not be
+#     removed to make the table look better.
+#   * Bump `verified` whenever a row is checked, and re-check before every
+#     announcement — competitors change their tiers often.
+#
+# TODO(nils): re-verify every row against current vendor documentation before
+# this page goes live, and record the date below.
+
+verified: 2026-07-30
+
+columns:
+  - key: teampass
+    name: Teampass
+    highlight: true
+  - key: bitwarden
+    name: Bitwarden (self-hosted)
+  - key: vaultwarden
+    name: Vaultwarden
+  - key: passbolt
+    name: Passbolt
+  - key: keepass
+    name: KeePass + file share
+
+rows:
+  - label: Licence
+    teampass: { text: "GPL-3.0" }
+    bitwarden: { text: "AGPL-3.0 (server)" }
+    vaultwarden: { text: "AGPL-3.0" }
+    passbolt: { text: "AGPL-3.0 (CE)" }
+    keepass: { text: "GPL-2.0" }
+
+  - label: Runs entirely on your own servers
+    teampass: { mark: yes }
+    bitwarden: { mark: yes }
+    vaultwarden: { mark: yes }
+    passbolt: { mark: yes }
+    keepass: { mark: partial, text: "File on a share" }
+
+  - label: Server stack
+    teampass: { text: "PHP 8.2 + MySQL/MariaDB" }
+    bitwarden: { text: ".NET + SQL Server" }
+    vaultwarden: { text: "Rust + SQLite/MySQL/Postgres" }
+    passbolt: { text: "PHP + MySQL/MariaDB" }
+    keepass: { text: "None — local file" }
+
+  - label: Folder tree with per-role rights
+    teampass: { mark: yes }
+    bitwarden: { mark: partial, text: "Collections" }
+    vaultwarden: { mark: partial, text: "Collections" }
+    passbolt: { mark: partial, text: "Folders in Pro" }
+    keepass: { mark: no }
+
+  - label: Access recertification campaigns
+    teampass: { mark: yes }
+    bitwarden: { mark: no }
+    vaultwarden: { mark: no }
+    passbolt: { mark: no }
+    keepass: { mark: no }
+
+  - label: Compliance evidence export
+    teampass: { mark: yes, text: "Access matrices, rotation evidence" }
+    bitwarden: { mark: partial, text: "Event logs on paid tiers" }
+    vaultwarden: { mark: partial, text: "Event logs" }
+    passbolt: { mark: partial, text: "Action logs in Pro" }
+    keepass: { mark: no }
+
+  - label: Data classification and ownership
+    teampass: { mark: yes, text: "Four levels" }
+    bitwarden: { mark: no }
+    vaultwarden: { mark: no }
+    passbolt: { mark: no }
+    keepass: { mark: no }
+
+  - label: Password health / breach reporting
+    teampass: { mark: yes, text: "Included" }
+    bitwarden: { mark: partial, text: "Paid tiers" }
+    vaultwarden: { mark: partial }
+    passbolt: { mark: partial, text: "Pro" }
+    keepass: { mark: partial, text: "Via plugins" }
+
+  - label: LDAP / Active Directory
+    teampass: { mark: yes, text: "Included, nested groups" }
+    bitwarden: { mark: partial, text: "Directory Connector, paid tiers" }
+    vaultwarden: { mark: no }
+    passbolt: { mark: partial, text: "Pro" }
+    keepass: { mark: no }
+
+  - label: OAuth2 / SSO
+    teampass: { mark: yes, text: "Included" }
+    bitwarden: { mark: partial, text: "Enterprise tier" }
+    vaultwarden: { mark: partial, text: "Experimental" }
+    passbolt: { mark: partial, text: "Pro" }
+    keepass: { mark: no }
+
+  - label: REST API with CLI clients
+    teampass: { mark: yes, text: "Bash and PowerShell" }
+    bitwarden: { mark: yes, text: "bw CLI" }
+    vaultwarden: { mark: yes, text: "bw CLI" }
+    passbolt: { mark: yes, text: "passbolt CLI" }
+    keepass: { mark: no }
+
+  - label: Browser extension
+    teampass: { mark: partial, text: "Paid add-on" }
+    bitwarden: { mark: yes, text: "Free" }
+    vaultwarden: { mark: yes, text: "Bitwarden clients" }
+    passbolt: { mark: yes, text: "Required, free" }
+    keepass: { mark: partial, text: "Third-party" }
+
+  - label: Native mobile apps
+    teampass: { mark: no }
+    bitwarden: { mark: yes }
+    vaultwarden: { mark: yes, text: "Bitwarden clients" }
+    passbolt: { mark: yes }
+    keepass: { mark: partial, text: "Third-party" }
+
+  - label: Offline copy of the vault
+    teampass: { mark: yes, text: "Encrypted HTML export" }
+    bitwarden: { mark: yes, text: "Client cache" }
+    vaultwarden: { mark: yes, text: "Client cache" }
+    passbolt: { mark: no }
+    keepass: { mark: yes, text: "The file is the vault" }
+
+# Stated plainly on the page — do not delete to make the table look better.
+weaknesses:
+  - title: No native mobile applications
+    body: >-
+      Bitwarden, Vaultwarden and Passbolt ship mobile clients; Teampass does
+      not. If your team needs credentials on phones, that is a real gap and you
+      should weigh it seriously.
+  - title: The browser extension is a paid add-on
+    body: >-
+      Bitwarden and Passbolt include theirs at no cost. Ours is what funds the
+      project, and the server stays fully usable without it — but it is a
+      difference worth knowing before you compare price tags.
+  - title: A smaller ecosystem
+    body: >-
+      Bitwarden has a large company, formal audits and a broad integration
+      ecosystem behind it. Teampass is a long-lived project with a small core
+      team. Choose accordingly.

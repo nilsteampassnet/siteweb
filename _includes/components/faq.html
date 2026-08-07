@@ -1,0 +1,12 @@
+{% comment %}
+  FAQ list rendered from a page-level `faq` front-matter array of
+  { question, answer } entries.
+{% endcomment %}
+<div class="tp-faq">
+  {%- for entry in include.items %}
+  <details class="tp-faq__item">
+    <summary>{{ entry.question }}{% include components/icon.html name="chevron-down" %}</summary>
+    <div class="tp-faq__answer">{{ entry.answer | markdownify }}</div>
+  </details>
+  {%- endfor %}
+</div>

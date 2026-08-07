@@ -1,0 +1,21 @@
+{% comment %}
+  Closing call to action.
+
+    {% include components/cta-band.html
+       title="Ready to run your own vault?"
+       body="Docker image, compose file or a plain PHP install."
+       primary-label="Install Teampass" primary-url="/install.html"
+       secondary-label="Read the docs" secondary-url="https://documentation.teampass.net" %}
+{% endcomment %}
+<section class="tp-cta-band">
+  <div class="tp-container">
+    <h2>{{ include.title }}</h2>
+    {%- if include.body %}<p>{{ include.body }}</p>{% endif %}
+    <div class="tp-button-row">
+      <a class="tp-btn tp-btn--lg" href="{% if include.primary-url contains 'http' %}{{ include.primary-url }}" target="_blank" rel="noopener{% else %}{{ include.primary-url | relative_url }}{% endif %}">{{ include.primary-label }}</a>
+      {%- if include.secondary-label %}
+      <a class="tp-btn tp-btn--ghost tp-btn--lg" href="{% if include.secondary-url contains 'http' %}{{ include.secondary-url }}" target="_blank" rel="noopener{% else %}{{ include.secondary-url | relative_url }}{% endif %}">{{ include.secondary-label }}</a>
+      {%- endif %}
+    </div>
+  </div>
+</section>

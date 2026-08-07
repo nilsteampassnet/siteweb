@@ -1,0 +1,39 @@
+/**
+ *
+ *  Teampass.net — stylesheet
+ *
+ *  Compiled by Jekyll (dart-sass) through `css/style.scss`.
+ *
+ *  1. Modules      design tokens, reset, grid, helpers
+ *  2. Components   reusable UI pieces
+ *  3. Layout       page sections
+ *
+ **/
+
+@charset "UTF-8";
+
+// Modules
+@import "modules/_reset",
+        "modules/_config",
+        "modules/_color-skin";
+
+// Components
+@import "components/_icons",
+        "components/_buttons",
+        "components/_badges",
+        "components/_cards",
+        "components/_callout",
+        "components/_steps",
+        "components/_faq",
+        "components/_tables",
+        "components/_forms",
+        "components/_consent";
+
+// Layout
+@import "layout/_global",
+        "layout/_nav",
+        "layout/_hero",
+        "layout/_page",
+        "layout/_pricing",
+        "layout/_contact",
+        "layout/_footer";

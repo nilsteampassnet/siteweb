@@ -1,0 +1,200 @@
+---
+layout: page
+title: A password vault you actually own
+eyebrow: For individuals & homelab
+lead: >-
+  No account to create, no subscription to cancel, no company holding your
+  vault. Install Teampass on hardware you control and it stays yours.
+description: >-
+  Teampass for individuals, homelabs and freelancers — a free, self-hosted
+  password manager with encrypted personal folders and importers for Bitwarden,
+  LastPass, 1Password and KeePassXC.
+cta:
+  - label: Install it now
+    url: /install.html
+  - label: See the feature list
+    url: /features.html
+faq:
+  - question: Is it really free?
+    answer: >-
+      Yes. The server is GPL-3.0 and there is no user limit, no feature gate and
+      no trial clock. The only paid product is the browser extension, and the
+      web interface works perfectly well without it.
+  - question: Is this overkill for one person?
+    answer: >-
+      Honestly, it might be. Teampass is built around shared access — folders,
+      roles, audit trails. If you never share a credential with anyone, a local
+      KeePass file is simpler. Teampass starts paying off the moment a second
+      person needs access, or you want your vault reachable from more than one
+      machine without handing it to a cloud provider.
+  - question: What happens if my server dies?
+    answer: >-
+      Your data is in a MySQL database you control — back it up like any other
+      database. You can also keep an encrypted offline HTML export, which opens
+      in any browser without Teampass running.
+  - question: Can I get my data out later?
+    answer: >-
+      Export to KeePass 2.x XML, PDF or the encrypted offline copy. Nothing is
+      locked in a proprietary format.
+  - question: Does it work without a domain name or public IP?
+    answer: >-
+      Yes. Plenty of people run it on a LAN address or behind a VPN. Do put TLS
+      in front of it either way.
+---
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">The problem</span>
+      <h2>Every option asks you to trust someone</h2>
+    </header>
+
+    <div class="tp-grid">
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning">{% include components/icon.html name="alert-triangle" %}</span>
+        <h3>Cloud managers hold your vault</h3>
+        <p>
+          Encrypted, yes — but stored on infrastructure you do not control, under
+          a company that can be acquired, breached, or simply change its pricing.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning">{% include components/icon.html name="alert-triangle" %}</span>
+        <h3>A local file does not travel</h3>
+        <p>
+          A KeePass database on one laptop is safe and useless the moment you
+          need it from a second machine — and syncing it through a cloud drive
+          quietly reintroduces the problem you were avoiding.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning">{% include components/icon.html name="alert-triangle" %}</span>
+        <h3>Sharing is where it falls apart</h3>
+        <p>
+          The Wi-Fi password for the family, the server root account for a
+          side project, the client credentials for a freelance job. Those end up
+          in chat threads, and they stay there forever.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">The answer</span>
+      <h2>Small enough for a Pi, serious enough for client work</h2>
+    </header>
+
+    <div class="tp-split">
+      <div>
+        <h3>Runs on hardware you already have</h3>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          PHP and MySQL — the same stack as any small web app. A Raspberry Pi, a
+          €5 VPS or a spare mini-PC is enough. The Docker image gets you from
+          nothing to a login screen in about ten minutes.
+        </p>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span>No account, no telemetry, no phoning home</span></li>
+          <li>{% include components/icon.html name="check" %}<span>One database to back up</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Works behind a VPN or on a LAN address</span></li>
+        </ul>
+      </div>
+      <div class="tp-split__visual">
+        <img src="{{ '/images/portfolio/tp3_sw_1.png' | relative_url }}" alt="The Teampass folder tree on the left and the items of the selected folder on the right" width="1920" height="887" loading="lazy">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="tp-split tp-split--reverse">
+      <div>
+        <h3>Personal folders only you can open</h3>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          Since 3.2.1.1, personal folders are decryptable by their owner and the
+          recovery account — and by nobody else, including administrators. If you
+          share the instance with family or a co-founder, your own items stay
+          your own.
+        </p>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span>Encrypted with your key, derived from your passphrase</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Admins can manage the instance without reading your secrets</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Shared folders still work normally alongside them</span></li>
+        </ul>
+      </div>
+      <div class="tp-split__visual">
+        <img src="{{ '/images/portfolio/tp3_sw_2.png' | relative_url }}" alt="An item card showing its fields, tags, classification and attachments" width="1920" height="881" loading="lazy">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Moving in</span>
+      <h2>Bring the vault you already have</h2>
+      <p>
+        Teampass 3.2 reads the export formats of the tools people actually leave
+        behind, so migration is an afternoon rather than a project.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--4">
+      <article class="tp-card"><h3>Bitwarden</h3><p>JSON export, folders preserved.</p></article>
+      <article class="tp-card"><h3>LastPass</h3><p>CSV export.</p></article>
+      <article class="tp-card"><h3>1Password</h3><p>Export file with fields mapped to items.</p></article>
+      <article class="tp-card"><h3>KeePassXC</h3><p>Plus classic KeePass XML and plain CSV.</p></article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Getting started</span>
+      <h2>Three steps, one evening</h2>
+    </header>
+
+    <ol class="tp-steps">
+      <li class="tp-step">
+        <h3>Install</h3>
+        <p>Docker image or a PHP directory on a server you already run.</p>
+        <code class="tp-code">docker pull teampass/teampass</code>
+      </li>
+      <li class="tp-step">
+        <h3>Import</h3>
+        <p>Bring in your existing vault, then delete the export file — it is plaintext.</p>
+      </li>
+      <li class="tp-step">
+        <h3>Run a posture scan</h3>
+        <p>Find the reused and breached passwords you have been carrying for years, and fix them.</p>
+      </li>
+    </ol>
+
+  </div>
+</section>
+
+<section class="tp-section">
+  <div class="tp-container tp-container--prose">
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Questions</span>
+      <h2>Straight answers</h2>
+    </header>
+    {% include components/faq.html items=page.faq %}
+  </div>
+</section>
+
+{% include components/cta-band.html
+   title="Your vault, your server, no subscription."
+   body="Free under GPL-3.0, with no user limit and no feature gate."
+   primary-label="Install Teampass" primary-url="/install.html"
+   secondary-label="Compare with the alternatives" secondary-url="/compare.html" %}

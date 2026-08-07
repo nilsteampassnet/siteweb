@@ -1,0 +1,33 @@
+# Integration and automation surface, shown as a compact grid on the home page.
+
+- title: LDAP & Active Directory
+  icon: users
+  body: Nested groups resolved in both login modes, with group-to-role mapping.
+
+- title: OAuth2 / Entra ID
+  icon: shield-check
+  body: Single sign-on against your existing identity provider.
+
+- title: TOTP two-factor
+  icon: lock
+  body: Configurable RFC 6238 profiles — algorithm, digit count and period.
+
+- title: REST API
+  icon: git-branch
+  body: Item and folder CRUD, plus the whole folder tree in a single call.
+
+- title: Bash & PowerShell clients
+  icon: terminal
+  body: Ship credentials into scripts and pipelines without scraping the UI.
+
+- title: Docker
+  icon: server
+  body: Official image and a compose file for a quick, reproducible install.
+
+- title: Importers
+  icon: upload
+  body: Bitwarden, LastPass, 1Password, KeePassXC, KeePass XML and CSV.
+
+- title: Exports
+  icon: download
+  body: KeePass 2.x XML, PDF and an encrypted offline HTML copy.

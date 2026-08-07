@@ -1,0 +1,30 @@
+<section class="tp-section" id="capabilities">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Capabilities</span>
+      <h2>What you get, without a licence key</h2>
+      <p>
+        Every capability below is part of the open-source server. There is no
+        feature-gated edition and no seat count to manage.
+      </p>
+    </header>
+
+    <div class="tp-grid">
+      {%- for item in site.data.capabilities %}
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name=item.icon %}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.body }}</p>
+      </article>
+      {%- endfor %}
+    </div>
+
+    <p style="margin-top: 32px;">
+      <a class="tp-link-arrow" href="{{ '/features.html' | relative_url }}">
+        See the complete feature list {% include components/icon.html name="arrow-right" %}
+      </a>
+    </p>
+
+  </div>
+</section>

@@ -1,0 +1,243 @@
+---
+layout: page
+title: Shared credentials without the shared spreadsheet
+eyebrow: For teams & SMB
+lead: >-
+  Folders and roles instead of a document everyone edits. A record of who
+  opened what. And an offboarding process that takes a minute rather than an
+  afternoon of guesswork.
+description: >-
+  Teampass for small and medium teams — shared password folders with role-based
+  access, audit trails, Secure Send for contractors and browser autofill.
+cta:
+  - label: Install it now
+    url: /install.html
+  - label: See pricing
+    url: /pricing.html
+faq:
+  - question: How long does a rollout take?
+    answer: >-
+      Installing takes an evening. Modelling folders and roles takes longer, and
+      it is the part worth doing carefully — start with one team's credentials
+      rather than importing everything on day one.
+  - question: Do we need the paid extension?
+    answer: >-
+      No. The web interface covers everything. Teams buy the extension because
+      autofill removes the copy-paste habit that leaks credentials into
+      clipboards and chat windows — but it is an add-on, not a requirement.
+  - question: What happens when someone leaves?
+    answer: >-
+      Disable the account and their access is gone. The leaver risk report shows
+      which credentials they had reached, so you know exactly what to rotate
+      instead of rotating everything or, more commonly, nothing.
+  - question: Can we give a client or contractor one credential without an account?
+    answer: >-
+      Yes — Secure Send produces a link with an expiry, a view limit and an
+      optional passphrase. No account, no standing access.
+  - question: Who can read our passwords?
+    answer: >-
+      Only users your folder and role model grants access to. Administrators can
+      manage the instance, but personal folders are decryptable only by their
+      owner and the recovery account.
+---
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Sound familiar?</span>
+      <h2>The three habits every growing team has</h2>
+    </header>
+
+    <div class="tp-grid">
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--danger">{% include components/icon.html name="alert-triangle" %}</span>
+        <h3>The credential lives in a chat thread</h3>
+        <p>
+          Searchable by everyone who was ever in the channel, retained by the
+          chat provider, and impossible to revoke.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--danger">{% include components/icon.html name="alert-triangle" %}</span>
+        <h3>Nobody knows which password is current</h3>
+        <p>
+          Two spreadsheets, three versions, and one person who knows the real
+          one. Rotation stops happening because rotation breaks things.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--danger">{% include components/icon.html name="alert-triangle" %}</span>
+        <h3>Offboarding is a guess</h3>
+        <p>
+          Someone leaves and the honest answer to "what did they have access to?"
+          is a shrug and a hope.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">What changes</span>
+      <h2>Structure first, then everything else gets easier</h2>
+    </header>
+
+    <div class="tp-split">
+      <div>
+        <h3>Folders and roles carry the access model</h3>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          Build a folder per client, per environment or per team. Attach roles
+          with read or write rights, then assign people to roles. Adding the
+          fourth engineer becomes one click instead of a conversation about which
+          documents to share.
+        </p>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span>Pre-defined roles: admin, manager, user, read-only</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Per-user overrides where a role is not quite right</span></li>
+          <li>{% include components/icon.html name="check" %}<span>A rights matrix that shows the real model in one screen</span></li>
+        </ul>
+      </div>
+      <div class="tp-split__visual">
+        <img src="{{ '/images/portfolio/tp3_sw_9.png' | relative_url }}" alt="Folder administration in Teampass: every folder with its complexity requirement and its settings" width="1920" height="883" loading="lazy">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="tp-split tp-split--reverse">
+      <div>
+        <h3>Every access leaves a trace</h3>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          Views, edits and shares are recorded against the item. When a service
+          gets compromised, you can answer "who had this, and when did they last
+          use it" instead of assuming the worst about everyone.
+        </p>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span>Per-item history</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Leaver risk report listing what a departing account could reach</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Rotation tracking, so overdue credentials surface on their own</span></li>
+        </ul>
+      </div>
+      <div class="tp-split__visual">
+        <img src="{{ '/images/portfolio/tp3_sw_5.png' | relative_url }}" alt="The history of an item: creation, edits, tag changes and file uploads, each with an account and a timestamp" width="1920" height="880" loading="lazy">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="tp-split">
+      <div>
+        <h3>Sharing outside the team, without giving out an account</h3>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          Secure Send hands a client or contractor exactly one credential, under
+          an expiry and a view limit, with an optional passphrase you pass through
+          a different channel. When it expires, it is gone.
+        </p>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span>No account for the recipient</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Expiry and view count enforced server-side</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Optional recipient passphrase</span></li>
+        </ul>
+      </div>
+      <div class="tp-split__visual">
+        <img src="{{ '/images/portfolio/tp3_sw_2.png' | relative_url }}" alt="An item in Teampass, with Secure Send in the toolbar next to Share and Notify" width="1920" height="881" loading="lazy">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Daily use</span>
+      <h2>The part that decides whether people adopt it</h2>
+      <p>
+        A password manager only works if using it is faster than not using it.
+        That is what the browser extension is for.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--4">
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="zap" %}</span>
+        <h3>Autofill in the tab</h3>
+        <p>No switching windows, no clipboard, no half-typed passwords in the wrong field.</p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="shield" %}</span>
+        <h3>Domain matching</h3>
+        <p>Credentials fill on the domain they belong to, which takes the edge off phishing pages.</p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="download" %}</span>
+        <h3>Capture on sign-up</h3>
+        <p>New credentials land in the right folder instead of a sticky note.</p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="search" %}</span>
+        <h3>Ctrl-K anywhere</h3>
+        <p>The command palette in the web app finds an item without a single click.</p>
+      </article>
+    </div>
+
+    <div class="tp-callout" style="margin-top: 32px;">
+      {% include components/icon.html name="info" %}
+      <p>
+        The extension is the paid part of Teampass — from €49 a year for three
+        users, with a 30-day trial. The server, and everything on this page
+        except autofill, stays free.
+        <a href="{{ '/pricing.html' | relative_url }}">See pricing</a>.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Getting started</span>
+      <h2>A rollout that does not stall</h2>
+    </header>
+
+    <ol class="tp-steps">
+      <li class="tp-step">
+        <h3>Start with one team</h3>
+        <p>Model their folders and roles properly. A good first tree becomes the template for the rest.</p>
+      </li>
+      <li class="tp-step">
+        <h3>Import, then rotate</h3>
+        <p>Pull in the spreadsheet, run a posture scan, and rotate what it flags before anyone relies on it.</p>
+      </li>
+      <li class="tp-step">
+        <h3>Roll out the extension</h3>
+        <p>Adoption follows convenience. Autofill is what turns a policy into a habit.</p>
+      </li>
+    </ol>
+
+  </div>
+</section>
+
+<section class="tp-section">
+  <div class="tp-container tp-container--prose">
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Questions</span>
+      <h2>Straight answers</h2>
+    </header>
+    {% include components/faq.html items=page.faq %}
+  </div>
+</section>
+
+{% include components/cta-band.html
+   title="Get the credentials out of the chat thread."
+   body="Free, self-hosted, and running before the end of the day."
+   primary-label="Install Teampass" primary-url="/install.html"
+   secondary-label="Try the extension" secondary-url="/extension.html" %}

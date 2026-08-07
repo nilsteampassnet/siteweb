@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(ls \"C:/Personnel/Développements/\" 2>/dev/null)",
+      "WebFetch(domain:github.com)",
+      "Bash(jekyll build *)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(echo \"exit:$?\")"
     ]
   }
 }

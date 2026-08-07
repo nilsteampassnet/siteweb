@@ -1,0 +1,32 @@
+{% comment %}
+  Cookie consent banner.
+
+  Only rendered when an analytics tag is actually configured — no banner on a
+  site that sets no cookies. Ships hidden; js/main.js reveals it when no choice
+  is stored, and the footer "Cookie preferences" button reopens it.
+
+  The wiring lives in js/main.js, the consent state in _includes/analytics.html.
+{% endcomment %}
+{%- if site.analytics.provider == "google" and site.analytics.measurement_id != "" %}
+<div class="tp-consent" id="tp-consent" role="dialog" aria-modal="false"
+     aria-labelledby="tp-consent-title" hidden>
+  <div class="tp-consent__inner">
+
+    <div class="tp-consent__text">
+      <h2 class="tp-consent__title" id="tp-consent-title">Audience measurement</h2>
+      <p>
+        We would like to use Google Analytics to count visits and see which
+        pages are read. It sets cookies on your device. Nothing is loaded
+        until you accept, and we run no advertising or profiling.
+        See the <a href="{{ '/privacy.html' | relative_url }}">privacy policy</a>.
+      </p>
+    </div>
+
+    <div class="tp-consent__actions">
+      <button type="button" class="tp-btn tp-btn--secondary" data-tp-consent="decline">Decline</button>
+      <button type="button" class="tp-btn" data-tp-consent="accept">Accept</button>
+    </div>
+
+  </div>
+</div>
+{%- endif %}

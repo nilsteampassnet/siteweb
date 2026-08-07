@@ -1,9 +1,110 @@
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+{% comment %}
+  Analytics.
 
-  ga('create', 'UA-43236218-1', 'auto');
-  ga('send', 'pageview');
+  The former Universal Analytics property was shut down by Google in 2023 and
+  had stopped collecting anything. Nothing is loaded unless
+  `analytics.provider` is set in _config.yml — a security product should not
+  ship a tracker its visitors did not expect.
+
+  provider: "google"    -> GA4 via gtag.js, needs analytics.measurement_id
+                           (the data stream's G-XXXXXXXXXX, not the numeric
+                           property ID).
+  provider: "plausible" -> self-hosted Plausible, needs analytics.script.
+
+  Prior blocking, not just Consent Mode. Google's tag is *not* requested at
+  all until the visitor has accepted: consent defaults are declared denied,
+  and `gtag/js` is only injected from tpConsent.accept(). A "denied" Consent
+  Mode tag still pings Google cookielessly, which the CNIL does not treat as
+  exempt — so we never load it in the first place.
+{% endcomment %}
+{%- if site.analytics.provider == "plausible" and site.analytics.script != "" %}
+<script defer data-domain="{{ site.analytics.domain }}" src="{{ site.analytics.script }}"></script>
+{%- endif %}
+{%- if site.analytics.provider == "google" and site.analytics.measurement_id != "" %}
+<script>
+  (function () {
+    'use strict';
+
+    var ID = '{{ site.analytics.measurement_id }}';
+    var STORAGE_KEY = 'tp-consent';
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    // Consent Mode v2 — everything off until the visitor says otherwise.
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted'
+    });
+
+    function read() {
+      try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+    }
+
+    function write(value) {
+      try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
+    }
+
+    // Drop the cookies the tag may already have written.
+    function clearCookies() {
+      var names = document.cookie.split(';').map(function (pair) {
+        return pair.split('=')[0].trim();
+      }).filter(function (name) {
+        return name.indexOf('_ga') === 0 || name === '_gid';
+      });
+
+      var host = location.hostname;
+      var domains = ['', host, '.' + host];
+      var parts = host.split('.');
+      if (parts.length > 2) { domains.push('.' + parts.slice(-2).join('.')); }
+
+      names.forEach(function (name) {
+        domains.forEach(function (domain) {
+          document.cookie = name + '=; Max-Age=0; path=/' +
+            (domain ? '; domain=' + domain : '');
+        });
+      });
+    }
+
+    var loaded = false;
+
+    function load() {
+      if (loaded) { return; }
+      loaded = true;
+
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      gtag('js', new Date());
+      gtag('config', ID, {
+        anonymize_ip: {% if site.analytics.anonymize_ip %}true{% else %}false{% endif %}
+      });
+
+      var tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID;
+      document.head.appendChild(tag);
+    }
+
+    window.tpConsent = {
+      state: function () { return read(); },
+
+      accept: function () {
+        write('granted');
+        load();
+      },
+
+      decline: function () {
+        write('denied');
+        gtag('consent', 'update', { analytics_storage: 'denied' });
+        clearCookies();
+      }
+    };
+
+    if (read() === 'granted') { load(); }
+  })();
 </script>
+{%- endif %}

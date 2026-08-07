@@ -1,0 +1,302 @@
+/**
+ *  Page scaffolding
+ *
+ *  Container, sections, grids and prose defaults for every rebuilt page.
+ *  Deliberately independent from the Bootstrap 3 push/pull grid the legacy
+ *  sections still rely on.
+ */
+
+.tp-container {
+  width: 100%;
+  max-width: $content-width;
+  margin: 0 auto;
+  padding: 0 $sp-5;
+}
+
+.tp-container--prose { max-width: $prose-width + 2 * $sp-5; }
+
+.tp-section {
+  padding: $sp-8 0;
+  background: var(--tp-bg);
+  color: var(--tp-text);
+
+  @media (min-width: $bp-lg) { padding: $sp-9 0; }
+
+  &--alt { background: var(--tp-bg-alt); }
+  &--tight { padding: $sp-7 0; }
+}
+
+.tp-section-header {
+  max-width: $prose-width;
+  margin-bottom: $sp-7;
+
+  &--center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  &__eyebrow {
+    display: block;
+    margin-bottom: $sp-2;
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tp-accent-strong);
+  }
+
+  h2 {
+    font-size: $fs-xl;
+    font-weight: $fw-bold;
+    line-height: $lh-tight;
+    letter-spacing: -0.015em;
+    color: var(--tp-text);
+    margin-bottom: $sp-3;
+
+    @media (min-width: $bp-md) { font-size: $fs-2xl; }
+  }
+
+  p {
+    font-size: $fs-md;
+    line-height: $lh-base;
+    color: var(--tp-text-muted);
+    margin-bottom: 0;
+  }
+}
+
+// Auto-fitting grid; `--min` tunes the smallest acceptable column
+.tp-grid {
+  display: grid;
+  gap: $sp-5;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min, 260px), 1fr));
+}
+
+.tp-grid--2 { --min: 320px; }
+.tp-grid--4 { --min: 220px; }
+
+// Two-column text + visual block
+.tp-split {
+  display: grid;
+  gap: $sp-6;
+  align-items: center;
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $sp-8;
+  }
+
+  &--reverse {
+    @media (min-width: $bp-lg) {
+      .tp-split__visual { order: -1; }
+    }
+  }
+
+  &__visual img {
+    width: 100%;
+    border-radius: $radius-lg;
+    border: 1px solid var(--tp-border);
+    box-shadow: var(--tp-shadow);
+  }
+
+  h3 {
+    font-size: $fs-lg;
+    font-weight: $fw-semibold;
+    line-height: $lh-snug;
+    margin-bottom: $sp-3;
+    color: var(--tp-text);
+  }
+}
+
+// Long-form copy (security, compliance, privacy pages)
+.tp-prose {
+  max-width: $prose-width;
+  font-size: $fs-base;
+  line-height: $lh-base;
+  color: var(--tp-text-muted);
+
+  h2 {
+    margin: $sp-7 0 $sp-3;
+    font-size: $fs-lg;
+    font-weight: $fw-bold;
+    color: var(--tp-text);
+  }
+
+  h3 {
+    margin: $sp-5 0 $sp-2;
+    font-size: $fs-base;
+    font-weight: $fw-semibold;
+    color: var(--tp-text);
+  }
+
+  p { margin-bottom: $sp-4; }
+
+  ul, ol {
+    margin: 0 0 $sp-4 $sp-5;
+    padding: 0;
+  }
+
+  li { margin-bottom: $sp-2; }
+
+  code {
+    padding: 2px 6px;
+    border-radius: $radius-sm;
+    background: var(--tp-surface-alt);
+    font-family: $font-family-mono;
+    font-size: 0.875em;
+    color: var(--tp-text);
+  }
+
+  // Markdown tables. Kramdown emits a bare <table>, so the scroll container
+  // has to be the table itself — the page body must never scroll sideways.
+  table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: $sp-4;
+    border-collapse: collapse;
+    font-size: $fs-sm;
+    text-align: left;
+    color: var(--tp-text);
+
+    th, td {
+      padding: $sp-2 $sp-4;
+      border-bottom: 1px solid var(--tp-border);
+      vertical-align: top;
+    }
+
+    thead th {
+      background: var(--tp-surface-alt);
+      border-bottom: 2px solid var(--tp-border-strong);
+      font-size: $fs-xs;
+      font-weight: $fw-semibold;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--tp-text-muted);
+      white-space: nowrap;
+    }
+  }
+
+  > *:first-child { margin-top: 0; }
+}
+
+// Fenced command blocks
+.tp-code {
+  display: block;
+  overflow-x: auto;
+  padding: $sp-4;
+  border-radius: $radius;
+  border: 1px solid var(--tp-border);
+  background: var(--tp-surface-alt);
+  font-family: $font-family-mono;
+  font-size: $fs-xs;
+  line-height: 1.6;
+  color: var(--tp-text);
+  white-space: pre;
+}
+
+// Rows of buttons that wrap cleanly on mobile
+.tp-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-3;
+}
+
+// Logos / integration strip
+.tp-logo-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: $sp-6;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  img {
+    max-height: 34px;
+    width: auto;
+    opacity: 0.75;
+    filter: grayscale(1);
+    transition: opacity $transition-links $transition-links-type,
+                filter $transition-links $transition-links-type;
+
+    &:hover { opacity: 1; filter: none; }
+  }
+}
+
+// Screenshot tour
+.tp-shot {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--tp-border);
+  border-radius: $radius-lg;
+  background: var(--tp-surface);
+
+  img {
+    width: 100%;
+    border-bottom: 1px solid var(--tp-border);
+  }
+
+  figcaption {
+    padding: $sp-4;
+    font-size: $fs-sm;
+    line-height: $lh-base;
+    color: var(--tp-text-muted);
+
+    strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--tp-text);
+      font-weight: $fw-semibold;
+    }
+  }
+}
+
+// Quote grid replacing the carousel
+.tp-quote {
+  display: flex;
+  flex-direction: column;
+  padding: $sp-5;
+  border: 1px solid var(--tp-border);
+  border-radius: $radius-lg;
+  background: var(--tp-surface);
+
+  blockquote {
+    all: unset;
+    display: block;
+    font-size: $fs-sm;
+    line-height: $lh-base;
+    color: var(--tp-text-muted);
+    margin-bottom: $sp-4;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: $sp-3;
+    margin-top: auto;
+
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: $radius-pill;
+      object-fit: contain;
+      background: var(--tp-surface-alt);
+    }
+
+    strong {
+      display: block;
+      font-size: $fs-sm;
+      font-weight: $fw-semibold;
+      color: var(--tp-text);
+    }
+
+    span {
+      font-size: $fs-xs;
+      color: var(--tp-text-muted);
+    }
+  }
+}

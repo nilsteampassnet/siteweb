@@ -1,0 +1,156 @@
+---
+layout: page
+title: Teampass next to the alternatives
+eyebrow: Compare
+lead: >-
+  An honest table, including the rows where Teampass loses. If a comparison page
+  makes its own product win everywhere, it is marketing rather than information.
+description: >-
+  How Teampass compares to Bitwarden self-hosted, Vaultwarden, Passbolt and
+  KeePass with a file share — access control, governance, identity integration
+  and the areas where the alternatives are stronger.
+cta:
+  - label: See the full feature list
+    url: /features.html
+  - label: Install and judge for yourself
+    url: /install.html
+---
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Side by side</span>
+      <h2>Feature comparison</h2>
+      <p>
+        Restricted to things that can be checked against public documentation.
+        Where the honest answer is "partly", the table says so.
+      </p>
+    </header>
+
+    <div class="tp-table-scroll">
+      <table class="tp-table tp-table--centered">
+        <thead>
+          <tr>
+            <th scope="col">Capability</th>
+            {%- for column in site.data.comparison.columns %}
+            <th scope="col"{% if column.highlight %} class="is-highlight"{% endif %}>{{ column.name }}</th>
+            {%- endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {%- for row in site.data.comparison.rows %}
+          <tr>
+            <th scope="row">{{ row.label }}</th>
+            {%- for column in site.data.comparison.columns %}
+            {%- assign cell = row[column.key] %}
+            <td{% if column.highlight %} class="is-highlight"{% endif %}>
+              {%- if cell.mark == true %}<span class="tp-mark tp-mark--yes">{% include components/icon.html name="check-circle" %} Yes</span>
+              {%- elsif cell.mark == false %}<span class="tp-mark tp-mark--no">{% include components/icon.html name="x-circle" %} No</span>
+              {%- elsif cell.mark == "partial" %}<span class="tp-mark tp-mark--partial">{% include components/icon.html name="minus-circle" %} Partly</span>
+              {%- endif %}
+              {%- if cell.text %}<span style="display:block; font-size:0.8125rem; color:var(--tp-text-muted); margin-top:2px;">{{ cell.text }}</span>{% endif %}
+            </td>
+            {%- endfor %}
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="tp-table-note">
+      Comparison last verified {{ site.data.comparison.verified | date: "%-d %B %Y" }}.
+      Vendors change their tiers often — if a row is out of date or wrong,
+      <a href="{{ site.links.issues }}" target="_blank" rel="noopener">open an issue</a>
+      and it will be corrected.
+    </p>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="weaknesses">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">The other side</span>
+      <h2>Where the alternatives are stronger</h2>
+      <p>
+        These are real trade-offs, not softened ones. If any of them is a
+        blocker for you, one of the other tools is the better choice — and you
+        should find that out now rather than after a migration.
+      </p>
+    </header>
+
+    <div class="tp-grid">
+      {%- for item in site.data.comparison.weaknesses %}
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning">{% include components/icon.html name="alert-triangle" %}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.body }}</p>
+      </article>
+      {%- endfor %}
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="where-teampass-wins">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">The case for Teampass</span>
+      <h2>Three reasons teams pick it anyway</h2>
+    </header>
+
+    <div class="tp-grid">
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="clipboard-check" %}</span>
+        <h3>Governance is not an upsell</h3>
+        <p>
+          Recertification campaigns, evidence export, classification and rotation
+          tracking ship in the free server. Elsewhere the equivalent features —
+          where they exist at all — sit behind an enterprise tier.
+        </p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="folder" %}</span>
+        <h3>A real folder and role model</h3>
+        <p>
+          A tree of folders with roles and per-user overrides, rather than flat
+          collections. It maps onto how organisations actually delegate access —
+          per client, per environment, per team.
+        </p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="server" %}</span>
+        <h3>A stack most teams already run</h3>
+        <p>
+          PHP and MySQL. No .NET, no container orchestration, no separate
+          identity service. If you host a web application today, you can host
+          this.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt">
+  <div class="tp-container">
+    <div class="tp-callout">
+      {% include components/icon.html name="info" %}
+      <p>
+        <strong>How to use this page.</strong> Do not choose a password manager
+        from a comparison table — including this one. Install the two you are
+        weighing, model your real folder structure in each, and try an
+        offboarding. The differences that matter show up in fifteen minutes of
+        that, and never in a feature grid.
+      </p>
+    </div>
+  </div>
+</section>
+
+{% include components/cta-band.html
+   title="Try it against your own use case."
+   body="Free, self-hosted, and uninstallable in one command if it is not for you."
+   primary-label="Install Teampass" primary-url="/install.html"
+   secondary-label="Read the feature list" secondary-url="/features.html" %}

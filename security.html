@@ -1,0 +1,307 @@
+---
+layout: page
+title: How Teampass protects your secrets
+eyebrow: Security
+lead: >-
+  The encryption model, the key distribution model, what the threat model
+  covers — and, just as importantly, what it does not.
+description: >-
+  Teampass security model — authenticated AES-256-GCM encryption, PBKDF2 at
+  600,000 iterations, per-user key distribution, threat model, responsible
+  disclosure and published security advisories.
+cta:
+  - label: Published advisories
+    url: https://github.com/nilsteampassnet/TeamPass/security/advisories
+  - label: Report a vulnerability
+    url: https://github.com/nilsteampassnet/TeamPass/blob/master/SECURITY.md
+---
+
+<section class="tp-section">
+  <div class="tp-container">
+    <div class="tp-callout tp-callout--quote">
+      {% include components/icon.html name="shield-check" %}
+      <p>
+        We publish every advisory we fix — nine were closed in 3.2.1.1 alone.
+        A password manager that reports no vulnerabilities is not a password
+        manager that has none; it is one nobody is looking at, or one that is not
+        telling you.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="encryption">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Encryption at rest</span>
+      <h2>Authenticated AES-256-GCM</h2>
+      <p>
+        Rebuilt in the 3.2.1 line. The previous format used AES-CBC, which
+        encrypts but does not authenticate — a tampered ciphertext would decrypt
+        to garbage rather than being rejected.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="lock" %}</span>
+        <h3>AES-256-GCM with random IVs</h3>
+        <p>
+          Every secret is sealed with a random initialisation vector and its own
+          random salt. Tampering is detected at decryption time rather than
+          silently passed through.
+        </p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="key" %}</span>
+        <h3>PBKDF2 at 600,000 iterations</h3>
+        <p>
+          Raised from 1,000, in line with current NIST guidance, with HKDF-SHA256
+          added for key derivation.
+        </p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="shield" %}</span>
+        <h3>256-bit object keys</h3>
+        <p>
+          Per-secret key entropy went from 64 bits to 256 bits, while remaining
+          backward compatible with existing data.
+        </p>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="refresh" %}</span>
+        <h3>Lazy migration</h3>
+        <p>
+          Existing secrets re-encrypt into the new format on first read, with
+          progress tracking. No maintenance window, no bulk migration script to
+          babysit.
+        </p>
+      </article>
+    </div>
+
+    <div class="tp-callout tp-callout--warning" style="margin-top: 32px;">
+      {% include components/icon.html name="alert-triangle" %}
+      <p>
+        <strong>After an upgrade, the hardened format is off by default.</strong>
+        New installations enable it automatically; upgrades leave it disabled so
+        an upgrade never changes behaviour underneath your users. Turning it on is
+        a deliberate step — and one worth taking.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="keys">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Key distribution</span>
+      <h2>Why revoking access actually revokes it</h2>
+    </header>
+
+    <div class="tp-prose">
+      <p>
+        Teampass does not hold one master key that decrypts everything. Each item
+        has its own object key, and that key is wrapped separately for every user
+        entitled to it — a <em>sharekey</em>. Granting access means creating a
+        sharekey; revoking access means destroying one. There is no ambient
+        ability to read an item that your rights do not cover.
+      </p>
+
+      <h3>Personal folders are genuinely personal</h3>
+      <p>
+        Since 3.2.1.1, only the owner and the designated recovery account hold
+        keys to a personal folder. An administrator can manage the instance,
+        reset accounts and run the server, and still cannot read what is in your
+        personal folder. Treat the recovery account accordingly: it is the one
+        remaining path in.
+      </p>
+
+      <h3>A sharekey is not an access grant</h3>
+      <p>
+        3.2.1.3 tightened this boundary explicitly. Holding key material is not
+        by itself authorisation — every read is still checked against the folder
+        and role model. The two are enforced separately on purpose, so a bug in
+        one does not quietly become a bypass of the other.
+      </p>
+
+      <h3>Resilient distribution</h3>
+      <p>
+        When keys are redistributed across many users, a single failing account
+        now isolates itself instead of aborting the batch. RSA operations moved
+        into background tasks, so saving an item stays fast in large
+        installations.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="authentication">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Authentication</span>
+      <h2>Getting in</h2>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+      <article class="tp-card">
+        <h3>Two-factor authentication</h3>
+        <p>
+          RFC 6238 TOTP with configurable profiles — algorithm, digit count and
+          period — so Teampass fits an existing MFA standard rather than imposing
+          its own.
+        </p>
+      </article>
+      <article class="tp-card">
+        <h3>Single sign-on</h3>
+        <p>
+          OAuth2 against your identity provider, or LDAP and Active Directory
+          with nested group resolution in both login modes.
+        </p>
+      </article>
+      <article class="tp-card">
+        <h3>Lockout management</h3>
+        <p>
+          Brute-force protection with administrator visibility and control over
+          lockouts, added in 3.2.1.3.
+        </p>
+      </article>
+      <article class="tp-card">
+        <h3>Scoped privilege</h3>
+        <p>
+          Role assignment is validated against the caller's own roles: an
+          administrator cannot grant rights they do not themselves hold.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="threat-model">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Threat model</span>
+      <h2>What this does and does not protect you from</h2>
+      <p>
+        Any vendor that answers "everything" is selling you something. Here is the
+        honest boundary.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+
+      <article class="tp-card">
+        <span class="tp-icon-tile tp-icon-tile--success">{% include components/icon.html name="check-circle" %}</span>
+        <h3>Protects against</h3>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span>Database theft — secrets are useless without the key material</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Over-broad internal access — rights are enforced per folder and per item</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Silent tampering with stored ciphertext</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Credentials lingering after someone leaves, once the account is disabled</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Unaccountable access — every read is recorded</span></li>
+        </ul>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile tp-icon-tile--danger">{% include components/icon.html name="x-circle" %}</span>
+        <h3>Does not protect against</h3>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="minus-circle" %}<span>A compromised server — root on the host can observe secrets in use</span></li>
+          <li>{% include components/icon.html name="minus-circle" %}<span>A compromised workstation — a keylogger sees what the user sees</span></li>
+          <li>{% include components/icon.html name="minus-circle" %}<span>A user who is entitled to a credential and then leaks it</span></li>
+          <li>{% include components/icon.html name="minus-circle" %}<span>Weak deployment — no TLS, no backups, a public instance with a weak admin password</span></li>
+          <li>{% include components/icon.html name="minus-circle" %}<span>A lost recovery account combined with a lost owner passphrase</span></li>
+        </ul>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="disclosure">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Responsible disclosure</span>
+      <h2>How vulnerabilities are handled</h2>
+    </header>
+
+    <div class="tp-prose">
+      <p>
+        Report vulnerabilities through the
+        <a href="{{ site.links.security-policy }}" target="_blank" rel="noopener">security policy</a>,
+        not the public issue tracker. Fixes are shipped in a release and
+        published as a GitHub Security Advisory with an identifier, an affected
+        version range and a description of the defect.
+      </p>
+      <p>
+        That record is deliberately public. Nine advisories were published with
+        3.2.1.1, two more with 3.2.1.2, four with 3.2.0.8 — including
+        authentication bypasses and a privilege escalation. Publishing them is
+        uncomfortable and it is the correct behaviour: you cannot assess the risk
+        of software whose defect history is hidden from you.
+      </p>
+      <p>
+        <a class="tp-link-arrow" href="{{ site.links.advisories }}" target="_blank" rel="noopener">
+          Browse the published advisories {% include components/icon.html name="external-link" %}
+        </a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="hardening">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Your side of the deal</span>
+      <h2>Deployment hardening checklist</h2>
+      <p>
+        The cryptography above assumes a competently deployed server. These are
+        yours to get right.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+      <article class="tp-card tp-card--muted">
+        <h3>Terminate TLS properly</h3>
+        <p>Valid certificate, modern ciphers, HSTS. Never expose the instance over plain HTTP.</p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Limit exposure</h3>
+        <p>Restrict to the networks that need it. A credential vault rarely needs to face the open internet.</p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Delete the install directory</h3>
+        <p>Once setup is done, remove it. Verify file permissions on the configuration.</p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Back up, and test restoring</h3>
+        <p>An untested backup of an encrypted database is a guess, not a recovery plan.</p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Keep background tasks running</h3>
+        <p>Key distribution, posture scans and rotation tracking depend on the scheduler.</p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Upgrade promptly</h3>
+        <p>Advisories are published with each release. Watch the repository and apply security releases quickly.</p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+{% include components/cta-band.html
+   title="Read the code, not the datasheet."
+   body="The full source is public under GPL-3.0. Your security team can verify every claim on this page."
+   primary-label="Browse the source" primary-url="https://github.com/nilsteampassnet/TeamPass"
+   secondary-label="See the compliance features" secondary-url="/compliance.html" %}

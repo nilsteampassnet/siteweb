@@ -1,0 +1,25 @@
+---
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+{%- comment %}
+  Hand-rolled so the site needs no extra gem. Pages opt out with
+  `sitemap: false` in their front matter.
+{% endcomment -%}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for page in site.pages %}
+{%- unless page.url == "/" or page.url contains ".html" %}{% continue %}{% endunless %}
+{%- if page.sitemap == false %}{% continue %}{% endif %}
+  <url>
+    <loc>{{ page.url | absolute_url | xml_escape }}</loc>
+    {%- if page.url == "/" %}
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    {%- else %}
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    {%- endif %}
+  </url>
+{%- endfor %}
+</urlset>

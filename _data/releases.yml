@@ -1,0 +1,149 @@
+# Release highlights.
+#
+# `highlights` feeds the home page cards; `versions` feeds /whats-new.html.
+# Source of truth: https://github.com/nilsteampassnet/TeamPass/releases
+
+line: "3.2"
+
+highlights:
+  - title: Authenticated encryption
+    icon: lock
+    body: >-
+      AES-256-GCM replaces AES-CBC, with random IVs, per-secret salts,
+      256-bit object keys, PBKDF2 at 600,000 iterations and HKDF-SHA256.
+      Existing vaults migrate lazily, on first read.
+
+  - title: Security Posture Dashboard
+    icon: gauge
+    body: >-
+      Weak, reused, breached and overdue credentials at a glance, a personal
+      security score for every user, and quality indicators shown while
+      editing an item.
+
+  - title: Governance built in
+    icon: clipboard-check
+    body: >-
+      Access recertification campaigns, rotation policy tracking, leaver risk
+      detection, four-level data classification and CSV evidence export.
+
+  - title: Secure Send
+    icon: send
+    body: >-
+      Share a credential with someone outside Teampass under an expiry, a view
+      limit and an optional recipient passphrase.
+
+versions:
+  - version: 3.2.1.4
+    date: 2026-08-02
+    summary: Faceted search, a Quick access panel, and a folder-scope authorization bypass in search closed.
+    changes:
+      - group: Security
+        items:
+          - "Folder scope bypass in the search backend — the `limited` parameter replaced the accessible-folder scope instead of narrowing it, letting any authenticated user enumerate item metadata across folder boundaries"
+          - Search scope now intersects the requested subtree with the folders the caller can reach, and subtracts other people's personal folders
+      - group: New
+        items:
+          - Faceted search — classification level, security flags, attachments, dates, rotation, tags, scope, favourites, recently viewed and unencrypted custom fields
+          - Item restrictions moved into SQL, so filtering happens before the row limit rather than after it
+          - "Quick access panel replacing the sidebar: recent, most used and favourites, ranked per user"
+      - group: Improved
+        items:
+          - Health page accuracy and backup reliability
+          - Version differences between instances no longer raise backup anomaly warnings
+          - Server-side filtering and a "Password changed" column on the security posture flagged-items list
+          - Login page repairs itself after a session expires, and renews keys silently when a tab regains focus
+      - group: Upgrade notes
+        items:
+          - Schema change — the upgrade wizard runs on every installation
+          - Back up the database before upgrading
+
+  - version: 3.2.1.3
+    date: 2026-07-29
+    summary: Administrator control over authentication lockouts, KeePass 2.x XML export and a native PowerShell API client.
+    changes:
+      - group: New
+        items:
+          - Administrator management of authentication lockouts
+          - KeePass 2.x XML export
+          - Native PowerShell API client
+          - Configurable minimum password length
+          - "\"Not assessed\" password health state for uncomputed metadata"
+      - group: Improved
+        items:
+          - Redesigned operational statistics dashboard
+          - Security scans no longer abort on malformed legacy passwords
+          - Item password health measured from the live value
+      - group: Security
+        items:
+          - Authorization boundary tightened — holding a sharekey is not an access grant
+          - Role assignment scoped to the caller's own roles
+
+  - version: 3.2.1.2
+    date: 2026-07-26
+    summary: Active Directory nested groups restored and two authorization defects closed.
+    changes:
+      - group: Security
+        items:
+          - Missing authorization in the folder update action (GHSA-66q9-mxf2-xqw6)
+          - Personal items disclosed through key generation
+      - group: Improved
+        items:
+          - Active Directory group mapping with nested-group support in both login modes
+          - API folder rights aligned with the web interface
+          - Folder password complexity exposed through the API
+
+  - version: 3.2.1.1
+    date: 2026-07-23
+    summary: The first stable build of the 3.2.1 line — modern cryptography, a security posture dashboard and governance features, plus nine advisories closed.
+    changes:
+      - group: Encryption
+        items:
+          - Authenticated AES-256-GCM with random IVs and per-secret salts
+          - PBKDF2 raised from 1,000 to 600,000 iterations, HKDF-SHA256 added
+          - Object keys widened from 64 to 256 bits
+          - Personal folders readable only by their owner and the recovery account
+          - Lazy re-encryption of existing secrets, with progress tracking
+      - group: New
+        items:
+          - Security Posture Dashboard and personal security score
+          - Access Recertification Campaigns with immutable decisions
+          - Compliance reports and CSV evidence export
+          - Leaver / offboarding risk identification
+          - Rotation policy and overdue tracking
+          - Four-level data classification and item ownership
+          - Secure Send — expiring, view-limited external sharing
+          - Importers for Bitwarden, LastPass, 1Password and KeePassXC
+          - Configurable RFC 6238 TOTP profiles
+          - Ctrl-K command palette and in-app notification centre
+          - First-run onboarding wizard
+      - group: Security
+        items:
+          - Unauthenticated MFA reset and authentication oracles (GHSA-6x6x-v79m-v5x3)
+          - Unauthenticated forced password reset (GHSA-cm5h-m2xm-5pxr)
+          - Folder access bypass in item details (GHSA-hjhc-6g7v-8jxr)
+          - Legacy unguarded user update branches (GHSA-58ph-5gg6-h2v8)
+          - Unscoped role assignment (GHSA-gjc5-pmxw-58p4)
+          - Stored XSS through the API (GHSA-r298-6mxv-j9hc)
+          - User logs IDOR (GHSA-qhff-v9qj-75wc)
+          - Decoupled authorization in downloadFile (GHSA-3f3c-cw29-xxm7)
+          - Import module authorization (GHSA-cgcj-f9rx-c8r4)
+      - group: Upgrade notes
+        items:
+          - PHP 8.2 is now the minimum supported version
+          - Every new feature is seeded disabled on upgrade
+          - The hardened encryption format stays off after an upgrade until you enable it
+          - Back up the database before running remediation scripts
+
+  - version: 3.2.0.8
+    date: 2026-07-09
+    summary: Four advisories closed, including a privilege escalation and an OAuth2 bypass.
+    changes:
+      - group: Security
+        items:
+          - Mass-assignment privilege escalation in user management (GHSA-x8jf-9g87-j232)
+          - OAuth2 authentication bypass (GHSA-2mvr-v9w8-34c7)
+          - SQL injection in the user-logs datatable (GHSA-fqg6-xvv8-w228)
+          - Authenticated path traversal in file upload (GHSA-wwxq-c766-v93w)
+      - group: Improved
+        items:
+          - Folder-level rights enforced consistently on bulk operations

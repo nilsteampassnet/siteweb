@@ -1,0 +1,87 @@
+/**
+ *  Cards
+ *
+ *  One primitive with a few modifiers, used for capabilities, release
+ *  highlights, segment entry points and integration tiles.
+ */
+
+.tp-card {
+  display: flex;
+  flex-direction: column;
+  padding: $sp-5;
+  border: 1px solid var(--tp-border);
+  border-radius: $radius-lg;
+  background: var(--tp-surface);
+  color: var(--tp-text);
+  transition: border-color $transition-links $transition-links-type,
+              box-shadow $transition-links $transition-links-type,
+              transform $transition-links $transition-links-type;
+
+  h3 {
+    font-size: $fs-md;
+    font-weight: $fw-semibold;
+    line-height: $lh-snug;
+    margin-bottom: $sp-2;
+    color: var(--tp-text);
+  }
+
+  p {
+    font-size: $fs-sm;
+    line-height: $lh-base;
+    color: var(--tp-text-muted);
+  }
+
+  // Cards that are entirely clickable
+  &--link {
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--tp-accent);
+      box-shadow: var(--tp-shadow-lg);
+      transform: translateY(-2px);
+      color: var(--tp-text);
+    }
+  }
+
+  &--muted { background: var(--tp-surface-alt); }
+
+  &--accent {
+    border-color: var(--tp-accent);
+    box-shadow: var(--tp-shadow);
+  }
+
+  &__footer {
+    margin-top: auto;
+    padding-top: $sp-4;
+    font-size: $fs-sm;
+    font-weight: $fw-semibold;
+    color: var(--tp-accent-strong);
+
+    .tp-icon { margin-left: 4px; }
+  }
+}
+
+// Checklist used inside cards and segment pages
+.tp-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: $sp-3;
+    padding: $sp-2 0;
+    font-size: $fs-sm;
+    line-height: $lh-base;
+    color: var(--tp-text-muted);
+  }
+
+  .tp-icon {
+    margin-top: 0.25em;
+    color: var(--tp-success);
+  }
+
+  strong { color: var(--tp-text); font-weight: $fw-semibold; }
+}

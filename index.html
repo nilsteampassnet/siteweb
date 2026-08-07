@@ -1,34 +1,25 @@
 ---
 layout: default
-title: Teampass.net
-published: true
+title: Teampass
+description: >-
+  Teampass is an open-source, self-hosted password manager for teams:
+  folder-level access control, authenticated AES-256-GCM encryption, access
+  recertification and compliance evidence — running on your own servers.
 ---
 
-
-{% include sections/offer.html offer-text="Check <strong>T</strong><span class=\"thin\">eampass</span> server requirements!" button-text="Open" button-target="" button-url="requirements.html" %}
-
-{% include sections/about.html %}
-
-{% include sections/features.html %}
-
-{% include sections/portfolio.html %}
-
-{% include sections/parallax-features.html %}
-
-{% include sections/offer.html offer-text="Complete <strong>L</strong><span class=\"thin\">ist</span> of Features" button-text="Read more" button-target="" button-url="features.html" %}
-
-{% include sections/commercial.html %}
-
-{% include sections/offer.html offer-text="Complete <strong>D</strong><span class=\"thin\">ocumentation</span> is available." button-text="Open" button-target="_blank" button-url="https://documentation.teampass.net" %}
-
+{% include sections/hero.html %}
+{% include sections/segments.html %}
+{% include sections/whats-new.html %}
+{% include sections/capabilities.html %}
+{% include sections/security-teaser.html %}
+{% include sections/tour.html %}
+{% include sections/integrations.html %}
 {% include sections/testimonials.html %}
-
-{% include sections/offer.html offer-text="Discover the <strong>T</strong><span class=\"thin\">eampass</span> Browser Extension" button-text="Learn more" button-target="" button-url="extension.html" %}
-
-{% include sections/prices.html %}
-
-{% include sections/team.html %}
-
+{% include sections/pricing-snapshot.html %}
 {% include sections/contact.html %}
 
-{% include sections/offer.html offer-text="<strong>T</strong><span class=\"thin\">eampass</span> is your solution!" button-text="Visit Github" button-target="_blank" button-url="https://github.com/nilsteampassnet/TeamPass" %}
+{% include components/cta-band.html
+   title="Run it yourself. Today."
+   body="A Docker image, a compose file, or a plain PHP install on a server you already own. No account, no trial clock, no sales call."
+   primary-label="Install Teampass" primary-url="/install.html"
+   secondary-label="Browse the source" secondary-url="https://github.com/nilsteampassnet/TeamPass" %}

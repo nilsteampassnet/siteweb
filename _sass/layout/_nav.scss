@@ -1,0 +1,195 @@
+/**
+ *  Site navigation
+ *
+ *  Sticky compact bar with dropdown menus on desktop and a disclosure menu on
+ *  mobile. Replaces the full-screen parallax navigation of the old template.
+ */
+
+.tp-skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: $sp-3 $sp-4;
+  background: var(--tp-accent);
+  color: #04202c;
+  font-weight: $fw-semibold;
+
+  &:focus {
+    left: 0;
+  }
+}
+
+.tp-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--tp-surface);
+  border-bottom: 1px solid var(--tp-border);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    gap: $sp-5;
+    height: $header-height;
+    max-width: $content-width;
+    margin: 0 auto;
+    padding: 0 $sp-5;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    flex: none;
+
+    img {
+      width: 132px;
+      height: auto;
+    }
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--tp-border);
+    border-radius: $radius-sm;
+    background: transparent;
+    color: var(--tp-text);
+    cursor: pointer;
+
+    @media (min-width: $bp-lg) { display: none; }
+  }
+
+  &__menu {
+    display: none;
+    flex: 1;
+    align-items: center;
+    gap: $sp-1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @media (min-width: $bp-lg) { display: flex; }
+  }
+
+  &__actions {
+    display: none;
+    align-items: center;
+    gap: $sp-3;
+    margin-left: auto;
+
+    @media (min-width: $bp-lg) { display: flex; }
+  }
+
+  // Mobile: the whole menu collapses under the bar
+  &.is-open {
+    .tp-nav__menu,
+    .tp-nav__actions {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      width: 100%;
+      padding: $sp-3 $sp-5 $sp-5;
+      border-top: 1px solid var(--tp-border);
+      background: var(--tp-surface);
+    }
+
+    .tp-nav__actions {
+      flex-direction: row;
+      gap: $sp-3;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .tp-nav__inner { flex-wrap: wrap; height: auto; }
+  }
+}
+
+.tp-nav__link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: $sp-2 $sp-3;
+  border-radius: $radius-sm;
+  font-size: $fs-sm;
+  font-weight: $fw-medium;
+  color: var(--tp-text);
+  white-space: nowrap;
+
+  &:hover,
+  &:focus-visible { color: var(--tp-accent-strong); background: var(--tp-surface-alt); }
+
+  &.is-current { color: var(--tp-accent-strong); }
+
+  .tp-icon { width: 14px; height: 14px; opacity: 0.6; }
+}
+
+.tp-nav__item {
+  position: relative;
+
+  @media (max-width: $bp-lg - 1px) {
+    border-bottom: 1px solid var(--tp-border);
+  }
+}
+
+// Dropdowns — hover on desktop, always expanded on mobile
+.tp-nav__dropdown {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @media (min-width: $bp-lg) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 260px;
+    padding: $sp-2;
+    border: 1px solid var(--tp-border);
+    border-radius: $radius;
+    background: var(--tp-surface);
+    box-shadow: var(--tp-shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4px);
+    transition: opacity $transition-links $transition-links-type,
+                transform $transition-links $transition-links-type,
+                visibility $transition-links;
+  }
+
+  @media (max-width: $bp-lg - 1px) {
+    padding-left: $sp-4;
+    padding-bottom: $sp-2;
+  }
+
+  a {
+    display: block;
+    padding: $sp-2 $sp-3;
+    border-radius: $radius-sm;
+    font-size: $fs-sm;
+    color: var(--tp-text);
+
+    &:hover,
+    &:focus-visible { background: var(--tp-surface-alt); color: var(--tp-accent-strong); }
+
+    span {
+      display: block;
+      font-size: $fs-xs;
+      color: var(--tp-text-muted);
+    }
+  }
+}
+
+@media (min-width: $bp-lg) {
+  .tp-nav__item:hover > .tp-nav__dropdown,
+  .tp-nav__item:focus-within > .tp-nav__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}

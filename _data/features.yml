@@ -1,0 +1,124 @@
+# Complete feature list, grouped by domain. Feeds /features.html.
+
+- group: Access control
+  icon: folder
+  intro: Who can reach what, expressed once and enforced everywhere.
+  items:
+    - Folder tree with inherited structure
+    - Pre-defined roles — administrator, manager, user, read-only
+    - Custom user groups mapped onto roles
+    - Read / write / no-access rights per folder and role
+    - Per-user overrides on top of role rights
+    - Rights matrix showing the effective model in one screen
+    - Identical enforcement through the web interface and the API
+    - Personal folders decryptable only by their owner and the recovery account
+
+- group: Encryption and key management
+  icon: lock
+  intro: Rebuilt in the 3.2.1 line.
+  items:
+    - Authenticated AES-256-GCM with random IVs and per-secret salts
+    - PBKDF2 at 600,000 iterations, plus HKDF-SHA256 key derivation
+    - 256-bit per-object keys
+    - Per-user key wrapping — granting access creates a key, revoking destroys one
+    - Encrypted custom fields, configurable per field
+    - Optional encryption of file attachments
+    - Lazy re-encryption of legacy secrets on first read
+    - Administrator tool to detect and repair missing sharekeys
+
+- group: Security posture
+  icon: gauge
+  intro: Continuous measurement rather than an annual spreadsheet.
+  items:
+    - Dashboard of weak, reused, breached and overdue credentials
+    - Personal security score with a navbar badge
+    - Entropy and estimated crack time shown while editing
+    - "\"Not assessed\" state for credentials whose metadata has not been computed"
+    - In-app health nudges and an optional email digest
+    - Configurable minimum password length
+    - Password generator with live regeneration
+
+- group: Governance and compliance
+  icon: clipboard-check
+  intro: Evidence produced as a by-product of normal use.
+  items:
+    - Access recertification campaigns with immutable decisions
+    - Compliance reports and CSV evidence export
+    - Access matrices and rotation evidence
+    - Leaver and offboarding risk identification
+    - Rotation policy per folder with an overdue report
+    - Four-level data classification and per-item ownership
+    - Full per-item history — views, edits and shares
+    - User activity logs
+
+- group: Authentication
+  icon: shield-check
+  intro: Fits the identity stack you already operate.
+  items:
+    - Individual accounts with per-user credentials
+    - Configurable RFC 6238 TOTP profiles — algorithm, digits, period
+    - OAuth2 / Entra ID single sign-on
+    - LDAP and Active Directory, with nested groups in both login modes
+    - Directory group to role mapping
+    - Brute-force protection with administrator-managed lockouts
+    - Role assignment scoped to the caller's own roles
+
+- group: Items and data
+  icon: file-text
+  intro: What an entry can hold.
+  items:
+    - Label, description, URL, login, password and free-form fields
+    - Custom fields defined per folder
+    - File attachments
+    - Tags, favourites and full-text search across reachable folders
+    - Faceted search filtering by classification, security state, attachments, dates, rotation and custom fields
+    - Quick access panel — recent, most used and favourite items, ranked per user
+    - Suggestion system for users to propose new items
+    - Change-proposal workflow on existing items
+    - Knowledge base entries attached to items
+
+- group: Sharing
+  icon: send
+  intro: Getting a credential to someone who should not have an account.
+  items:
+    - Secure Send with expiry and view-count limits
+    - Optional recipient passphrase
+    - One-time-view links
+    - User-to-user sharing on individual items
+
+- group: Automation and integration
+  icon: terminal
+  intro: For everything that should not be done by hand.
+  items:
+    - REST API covering items and folders
+    - Folder create, read, update and delete endpoints
+    - Whole folder tree returned in a single call, with position data
+    - Native Bash client
+    - Native PowerShell client
+    - Server version returned in authentication responses
+    - Docker image and compose file
+
+- group: Import and export
+  icon: upload
+  intro: In, and out. No lock-in.
+  items:
+    - Import from Bitwarden
+    - Import from LastPass
+    - Import from 1Password
+    - Import from KeePassXC
+    - Import from KeePass XML and CSV
+    - Export to KeePass 2.x XML
+    - Export to PDF
+    - Encrypted offline HTML export, readable without a running server
+
+- group: Everyday use
+  icon: zap
+  intro: The details that decide whether people keep using it.
+  items:
+    - Ctrl-K universal command palette
+    - In-app notification centre
+    - First-run onboarding wizard
+    - Contextual security tips
+    - Dark mode
+    - Accessibility work — skip links, ARIA labels, visible focus
+    - Browser extension for Chrome, Firefox and Edge (paid add-on)

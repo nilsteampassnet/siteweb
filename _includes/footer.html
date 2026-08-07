@@ -1,46 +1,79 @@
-<!-- Site Footer -->
-<footer class="site-footer" id="footer">
-  
-  <div class="container">
+<footer class="tp-footer">
+  <div class="tp-container">
 
-    <div class="row">
-      <div class="col-md-6 col-md-push-3 footer-info text-center">
-        
-        <div class="footer-logo">
-          <img src="{{ site.baseurl }}/images/logo.svg" width="140" alt="{{site.title}}" />
-        </div>
+    <div class="tp-footer__top">
 
-        <div class="footer-info-text">
-          <p>{{ site.footer-description }}</p>
-        </div>
+      <div class="tp-footer__brand">
+        <img src="{{ '/images/logo.svg' | relative_url }}" alt="Teampass" width="140" height="34">
+        <p>{{ site.footer-description }}</p>
+        <ul class="tp-footer__social">
+          <li><a href="{{ site.social.github }}" target="_blank" rel="noopener" aria-label="Teampass on GitHub">{% include components/icon.html name="github" class="tp-icon--lg" %}</a></li>
+          <li><a href="{{ site.social.reddit }}" target="_blank" rel="noopener" aria-label="Teampass on Reddit">{% include components/icon.html name="reddit" class="tp-icon--lg" %}</a></li>
+          <li><a href="{{ site.social.twitter }}" target="_blank" rel="noopener" aria-label="Teampass on X">{% include components/icon.html name="twitter" class="tp-icon--lg" %}</a></li>
+          <li><a href="{{ site.social.facebook }}" target="_blank" rel="noopener" aria-label="Teampass on Facebook">{% include components/icon.html name="facebook" class="tp-icon--lg" %}</a></li>
+        </ul>
+      </div>
 
-        <div class="social-icons">
-          <ul class="icons">
-            <!--<li><a href="{{ site.youtube }}" target="_blank"><i class="fi flaticon-youtube"></i></a></li>
-            <li><a href="{{ site.pinterest }}" target="_blank"><i class="fi flaticon-pinterest"></i></a></li>
-            <li><a href="{{ site.google-plus }}" target="_blank"><i class="fi flaticon-google-plus"></i></a></li>
-            <li><a href="{{ site.vimeo }}" target="_blank"><i class="fi flaticon-vimeo"></i></a></li>-->
-            <li><a href="{{ site.facebook }}" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a></li>
-            <li><a href="{{ site.twitter }}" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a></li>
-            <li><a href="{{ site.reddit }}" target="_blank"><i class="fa fa-reddit-square fa-2x"></i></a></li>
-            <li><a href="{{ site.github }}" target="_blank"><i class="fa fa-github-square fa-2x"></i></a></li>
+      <div class="tp-footer__links">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="{{ '/features.html' | relative_url }}">Features</a></li>
+            <li><a href="{{ '/whats-new.html' | relative_url }}">What's new</a></li>
+            <li><a href="{{ '/extension.html' | relative_url }}">Browser extension</a></li>
+            <li><a href="{{ '/install.html' | relative_url }}">Install &amp; requirements</a></li>
+            <li><a href="{{ '/pricing.html' | relative_url }}">Pricing</a></li>
           </ul>
         </div>
-
-      </div>
-
-      <div class="col-md-8 col-md-push-2 footer-copyright">
-        <div class="footer-text text-center">
-          <p>All Right Reserved!</p>
-          <p><a href="{{ site.footer-copyright-url }}">{{ site.footer-copyright-text }}</a> &copy; {{ site.footer-copyright-year }} Copyright</p>
-          <p><a href="{{ site.baseurl }}/extension-privacy.html" style="font-size:0.85em; opacity:0.7;">Extension Privacy Policy</a></p>
-          <p><img src="{{ site.baseurl }}/images/madeinfrance.png" alt="{{site.title}}" /></p>
+        <div>
+          <h2>Solutions</h2>
+          <ul>
+            <li><a href="{{ '/for-individuals.html' | relative_url }}">For individuals</a></li>
+            <li><a href="{{ '/for-teams.html' | relative_url }}">For teams &amp; SMB</a></li>
+            <li><a href="{{ '/for-enterprise.html' | relative_url }}">For enterprise</a></li>
+            <li><a href="{{ '/compare.html' | relative_url }}">Compare alternatives</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Trust</h2>
+          <ul>
+            <li><a href="{{ '/security.html' | relative_url }}">Security</a></li>
+            <li><a href="{{ '/compliance.html' | relative_url }}">Compliance</a></li>
+            <li><a href="{{ site.links.advisories }}" target="_blank" rel="noopener">Security advisories</a></li>
+            <li><a href="{{ '/privacy.html' | relative_url }}">Privacy &amp; cookies</a></li>
+            <li><a href="{{ '/extension-privacy.html' | relative_url }}">Extension privacy policy</a></li>
+{%- if site.analytics.provider == "google" and site.analytics.measurement_id != "" %}
+            <li><button type="button" class="tp-footer__consent" data-tp-consent-reopen>Cookie preferences</button></li>
+{%- endif %}
+          </ul>
+        </div>
+        <div>
+          <h2>Community</h2>
+          <ul>
+            <li><a href="{{ site.links.docs }}" target="_blank" rel="noopener">Documentation</a></li>
+            <li><a href="{{ site.links.github }}" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="{{ site.links.discussions }}" target="_blank" rel="noopener">Discussions</a></li>
+            <li><a href="{{ '/whats-new.html' | relative_url }}">Release history</a></li>
+            <li><a href="{{ '/support.html' | relative_url }}">Support &amp; services</a></li>
+            <li><a href="{{ '/about.html' | relative_url }}">About the project</a></li>
+          </ul>
         </div>
       </div>
+
+    </div>
+
+    <div class="tp-footer__bottom">
+      <p>
+        &copy; {{ site.footer-copyright-year }}
+        <a href="{{ site.author.url }}" target="_blank" rel="noopener">{{ site.author.name }}</a> —
+        released under {{ site.product.licence }}.
+      </p>
+      <p class="tp-footer__made">
+        <img src="{{ '/images/madeinfrance.png' | relative_url }}" alt="Made in France" height="28">
+      </p>
     </div>
 
   </div>
 </footer>
 
-<!-- Go To Top Button -->
-<a href="#home" class="go-to-top-button"><i class="pe-7s-angle-up"></i></a>
+<a href="#top" class="tp-to-top" aria-label="Back to top">{% include components/icon.html name="chevron-down" %}</a>

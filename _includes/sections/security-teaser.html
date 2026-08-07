@@ -1,0 +1,48 @@
+<section class="tp-section tp-section--alt" id="security">
+  <div class="tp-container">
+    <div class="tp-split">
+
+      <div>
+        <span class="tp-section-header__eyebrow">Security</span>
+        <h2 style="font-size: 2.25rem; line-height: 1.2; margin-bottom: 16px;">
+          Encryption you can describe to an auditor
+        </h2>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          Secrets are sealed with authenticated AES-256-GCM using a random IV and
+          a per-secret salt. Keys are derived with PBKDF2 at 600,000 iterations
+          and HKDF-SHA256. Object keys carry 256 bits of entropy. Personal
+          folders are decryptable by their owner and the recovery account, and
+          nobody else.
+        </p>
+
+        <ul class="tp-checklist" style="margin-bottom: 24px;">
+          <li>{% include components/icon.html name="check" %}<span>Authenticated encryption — tampering is detected, not silently decrypted</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Per-user key distribution, so revoking access actually revokes it</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Existing vaults migrate lazily, without a maintenance window</span></li>
+        </ul>
+
+        <a class="tp-link-arrow" href="{{ '/security.html' | relative_url }}">
+          Read the security model {% include components/icon.html name="arrow-right" %}
+        </a>
+      </div>
+
+      <div>
+        <div class="tp-callout tp-callout--quote">
+          {% include components/icon.html name="shield-check" %}
+          <p>
+            We publish every advisory we fix — nine were closed in 3.2.1.1 alone.
+            A password manager that reports no vulnerabilities is not a password
+            manager that has none.
+          </p>
+        </div>
+
+        <p style="margin-top: 24px;">
+          <a class="tp-link-arrow" href="{{ site.links.advisories }}" target="_blank" rel="noopener">
+            Browse published advisories {% include components/icon.html name="external-link" %}
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>

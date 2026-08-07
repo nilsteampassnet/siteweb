@@ -1,0 +1,51 @@
+{% comment %}
+  Sticky site navigation, driven by _data/nav.yml so the desktop and mobile
+  menus can never drift apart (they used to be duplicated across header.html
+  and header-page.html).
+{% endcomment %}
+
+<a class="tp-skip-link" href="#main">Skip to content</a>
+
+<nav class="tp-nav" id="site-nav" aria-label="Main">
+  <div class="tp-nav__inner">
+
+    <a class="tp-nav__logo" href="{{ '/' | relative_url }}" aria-label="Teampass — home">
+      <img src="{{ '/images/logo.svg' | relative_url }}" alt="Teampass" width="132" height="32">
+    </a>
+
+    <button class="tp-nav__toggle" type="button"
+            aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+      {% include components/icon.html name="chevron-down" %}
+    </button>
+
+    <ul class="tp-nav__menu">
+      {%- for entry in site.data.nav %}
+      <li class="tp-nav__item">
+        {%- if entry.children %}
+        <span class="tp-nav__link" role="button" tabindex="0" aria-haspopup="true">
+          {{ entry.title }}{% include components/icon.html name="chevron-down" %}
+        </span>
+        <ul class="tp-nav__dropdown">
+          {%- for child in entry.children %}
+          <li>
+            <a href="{% if child.url contains 'http' %}{{ child.url }}" target="_blank" rel="noopener{% else %}{{ child.url | relative_url }}{% endif %}">
+              {{ child.title }}
+              {%- if child.summary %}<span>{{ child.summary }}</span>{% endif %}
+            </a>
+          </li>
+          {%- endfor %}
+        </ul>
+        {%- else %}
+        <a class="tp-nav__link{% if page.url == entry.url %} is-current{% endif %}" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+
+    <div class="tp-nav__actions">
+      <a class="tp-btn tp-btn--secondary" href="{{ site.links.docs }}" target="_blank" rel="noopener">Docs</a>
+      <a class="tp-btn" href="{{ '/install.html' | relative_url }}">Get started</a>
+    </div>
+
+  </div>
+</nav>

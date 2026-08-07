@@ -1,0 +1,263 @@
+---
+layout: page
+title: Prove your access controls, don't just claim them
+eyebrow: For enterprise & regulated organisations
+lead: >-
+  Recertification campaigns, immutable decisions and exportable evidence — the
+  answers an auditor asks for, produced by the product instead of rebuilt in a
+  spreadsheet every year.
+description: >-
+  Teampass for enterprise — access recertification campaigns, compliance
+  evidence export, data classification, LDAP/AD with nested groups, OAuth2 SSO
+  and a REST API, all self-hosted.
+cta:
+  - label: Read the compliance detail
+    url: /compliance.html
+  - label: Talk to us
+    url: /support.html
+faq:
+  - question: Can it run fully air-gapped?
+    answer: >-
+      Yes. Teampass is a PHP application against a MySQL database, with no
+      outbound dependency required at runtime. Breach-check style features that
+      need external data are optional and can stay off.
+  - question: How does it fit our identity provider?
+    answer: >-
+      OAuth2 single sign-on, or LDAP and Active Directory with nested group
+      resolution in both login modes. Directory groups map to Teampass roles, so
+      joiners and leavers follow the directory.
+  - question: Is there an API for our automation?
+    answer: >-
+      Yes — a REST API covering item and folder CRUD, the whole folder tree in a
+      single call, and native Bash and PowerShell clients. Folder rights are
+      enforced identically through the API and the web interface.
+  - question: What about separation of duties for administrators?
+    answer: >-
+      Administrators manage the instance, but personal folders are decryptable
+      only by their owner and the recovery account. Role assignment is scoped to
+      the caller's own roles, so an administrator cannot grant themselves rights
+      they do not hold.
+  - question: Do you offer commercial support?
+    answer: >-
+      Yes — priority handling on defects and messages, sponsored feature
+      development and deployment assistance. See the
+      <a href="/support.html">support page</a>.
+  - question: Is Teampass certified against ISO 27001 or SOC 2?
+    answer: >-
+      No, and you should be sceptical of any self-hosted open-source project
+      claiming otherwise — those certifications apply to an organisation's
+      operations, not to a piece of software you run yourself. What Teampass
+      does is produce the access-control evidence your own audit needs.
+---
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">The audit problem</span>
+      <h2>The questions that are hard to answer honestly</h2>
+    </header>
+
+    <div class="tp-grid">
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning">{% include components/icon.html name="clipboard-check" %}</span>
+        <h3>"Who has access to this system?"</h3>
+        <p>
+          Answerable — until you are asked to prove that the list is current and
+          that someone reviewed it.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning">{% include components/icon.html name="user-check" %}</span>
+        <h3>"Who approved that access, and when?"</h3>
+        <p>
+          This is where most credential stores stop. An access list is not an
+          approval record.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning">{% include components/icon.html name="refresh" %}</span>
+        <h3>"When was this last rotated?"</h3>
+        <p>
+          Without tracking, the answer is whatever the last person to touch it
+          remembers.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Governance</span>
+      <h2>Evidence produced as a by-product of normal use</h2>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="clipboard-check" %}</span>
+        <h3>Access recertification campaigns</h3>
+        <p>
+          Launch a review, route each access to the person accountable for it,
+          and record approve-or-revoke decisions that cannot be edited
+          afterwards. The campaign itself is the evidence.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="file-text" %}</span>
+        <h3>Compliance reports &amp; evidence export</h3>
+        <p>
+          Access matrices and rotation evidence as timestamped CSV, ready to hand
+          to an auditor rather than reconstructed the week before the audit.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="layers" %}</span>
+        <h3>Data classification &amp; ownership</h3>
+        <p>
+          Four classification levels and a named owner per item, so the
+          protection an item gets matches what it actually protects.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="users" %}</span>
+        <h3>Leaver &amp; offboarding risk</h3>
+        <p>
+          A report of what a departing account could reach — the scope of the
+          rotation you owe, stated precisely instead of estimated.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="refresh" %}</span>
+        <h3>Rotation policy &amp; tracking</h3>
+        <p>
+          Per-folder rotation expectations with an overdue report, so drift is
+          visible before an auditor finds it.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="gauge" %}</span>
+        <h3>Security posture</h3>
+        <p>
+          Weak, reused, breached and overdue credentials scored continuously,
+          with a personal score that makes hygiene an individual metric.
+        </p>
+      </article>
+
+    </div>
+
+    <p style="margin-top: 32px;">
+      <a class="tp-link-arrow" href="{{ '/compliance.html' | relative_url }}">
+        How this maps to ISO 27001, NIS2 and GDPR {% include components/icon.html name="arrow-right" %}
+      </a>
+    </p>
+
+  </div>
+</section>
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Fits your estate</span>
+      <h2>Identity, automation and sovereignty</h2>
+    </header>
+
+    <div class="tp-split">
+      <div>
+        <h3>Your directory stays the source of truth</h3>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          LDAP and Active Directory with nested group resolution in both login
+          modes, or OAuth2 against your identity provider. Group-to-role mapping
+          means joiners and leavers are handled where you already handle them.
+        </p>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span>Nested AD groups resolved correctly</span></li>
+          <li>{% include components/icon.html name="check" %}<span>OAuth2 / Entra ID single sign-on</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Configurable RFC 6238 TOTP profiles where SSO is not in play</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Administrator control over authentication lockouts</span></li>
+        </ul>
+      </div>
+      <div class="tp-split__visual">
+        <img src="{{ '/images/portfolio/tp3_sw_7.png' | relative_url }}" alt="User administration in Teampass, with LDAP and OAuth2 synchronisation and the roles held by each account" width="1920" height="888" loading="lazy">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="tp-split tp-split--reverse">
+      <div>
+        <h3>Automation without scraping the UI</h3>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          A REST API with item and folder CRUD and the full folder tree in one
+          call, plus native Bash and PowerShell clients. Folder rights are
+          enforced the same way through the API as through the browser — an
+          important detail, and one that was explicitly aligned in 3.2.1.2.
+        </p>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span>Bash and PowerShell clients shipped with the release</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Folder <code>PUT</code> and <code>DELETE</code> endpoints</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Server version returned in authentication responses</span></li>
+        </ul>
+      </div>
+      <div class="tp-split__visual">
+        <img src="{{ '/images/portfolio/tp3_sw_6.png' | relative_url }}" alt="A user profile showing the API token and the active API sessions, each revocable individually" width="1920" height="879" loading="lazy">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt">
+  <div class="tp-container">
+    <div class="tp-split">
+      <div>
+        <span class="tp-section-header__eyebrow">Sovereignty</span>
+        <h2 style="font-size: 2.25rem; line-height: 1.2; margin-bottom: 16px;">Nothing leaves your perimeter</h2>
+        <p style="color: var(--tp-text-muted);">
+          Teampass runs entirely on infrastructure you choose — your data centre,
+          your cloud tenant, your jurisdiction. There is no vendor cloud in the
+          path, no shared multi-tenant store, and no processor agreement to
+          negotiate because there is no processor. For organisations answering to
+          a regulator about where credentials physically reside, that is the
+          whole argument.
+        </p>
+      </div>
+      <div>
+        <div class="tp-callout">
+          {% include components/icon.html name="shield-check" %}
+          <p>
+            The source is public under {{ site.product.licence }}. Your security team can
+            read exactly how secrets are encrypted, how keys are distributed and
+            what the API enforces — rather than taking a datasheet's word for it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tp-section">
+  <div class="tp-container tp-container--prose">
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Questions</span>
+      <h2>Straight answers</h2>
+    </header>
+    {% include components/faq.html items=page.faq %}
+  </div>
+</section>
+
+{% include components/cta-band.html
+   title="Evaluate it against your own controls."
+   body="Install it, point it at a test directory, and run a recertification campaign. Nothing to sign, nobody to call."
+   primary-label="Install Teampass" primary-url="/install.html"
+   secondary-label="Discuss commercial support" secondary-url="/support.html" %}

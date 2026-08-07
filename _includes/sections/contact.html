@@ -1,53 +1,83 @@
-<!-- Contact Section -->
-<section class="site-section contact-section next-section-indicator parallax" id="contact"  data-scrollax-parent="true">
+<section class="tp-section" id="contact">
+  <div class="tp-container">
 
-  <!-- Parallax Contact Image -->
-  <div class="cover" data-scrollax="properties: { 'translateY': '48%' }">
-    <img src="{{ site.baseurl }}/images/features-parallax.jpg" alt="Sera - One Page Template by Gleesik Wallpaper" />
-  </div>
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Contact</span>
+      <h2>Talk to the person who writes the code</h2>
+      <p>
+        Bugs and feature requests belong on GitHub, where they stay public and
+        traceable. Everything else can come straight to the inbox.
+      </p>
+    </header>
 
-  <div class="container">
+    <div class="tp-contact">
 
-    <!-- Section Heading -->
-    <div class="row text-center">
-
-      <!-- Section Header -->
-      <header class="col-md-8 col-md-push-2 col-sm-12 section-header">
-        <h2>{{ site.contact-title }}</h2>
-        <hr class="normal">
-      </header>
-
-      <!-- Section Content -->
-      <div class="col-md-8 col-md-push-2 col-sm-12 section-content">
-        <p>{{ site.contact-description }}</p>
+      <div class="tp-contact__aside">
+        <ul class="tp-contact__channels">
+          <li>
+            {% include components/icon.html name="alert-triangle" %}
+            <div>
+              <strong>Found a bug?</strong>
+              Open an issue on <a href="{{ site.links.issues }}" target="_blank" rel="noopener">GitHub</a> —
+              it gets tracked, and other users can see the fix land.
+            </div>
+          </li>
+          <li>
+            {% include components/icon.html name="users" %}
+            <div>
+              <strong>Need help or want a feature?</strong>
+              <a href="{{ site.links.discussions }}" target="_blank" rel="noopener">GitHub Discussions</a>
+              is the fastest route, and answers stay searchable for everyone.
+            </div>
+          </li>
+          <li>
+            {% include components/icon.html name="shield" %}
+            <div>
+              <strong>Reporting a vulnerability?</strong>
+              Follow the <a href="{{ site.links.security-policy }}" target="_blank" rel="noopener">security policy</a>
+              rather than the public tracker.
+            </div>
+          </li>
+          <li>
+            {% include components/icon.html name="briefcase" %}
+            <div>
+              <strong>Commercial enquiry?</strong>
+              Licences, quotes and sponsored development —
+              <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
+            </div>
+          </li>
+        </ul>
       </div>
 
-    </div>
-
-    <!-- Form Container -->
-    <div class="row form-container">
-
-      <!-- Contact Form -->
-      <div class="col-md-8 col-md-push-2">
-        <form id="sera-contact-form" action="https://formspree.io/{{ site.email }}" method="POST" class="contact-form container-fluid">
-          <div class="col-md-6">
-            <input type="text" name="name" placeholder="Name" />
+      <div class="tp-contact__form">
+        {%- comment %}
+          Endpoint kept exactly as it was before the redesign. Formspree's
+          email-address form is its legacy format; the current one is
+          https://formspree.io/f/<form-id>.
+          TODO(nils): confirm this endpoint still delivers, and switch to a
+          form ID if it does not.
+        {% endcomment -%}
+        <form action="https://formspree.io/{{ site.email }}" method="POST">
+          <div class="tp-field">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="name" autocomplete="name" required>
           </div>
-          <div class="col-md-6">
-            <input type="text" name="website" placeholder="Website" />
+          <div class="tp-field">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="_replyto" autocomplete="email" required>
           </div>
-          <div class="col-md-6">
-            <input type="text" name="email" placeholder="Email" />
+          <div class="tp-field">
+            <label for="contact-org">Organisation <span class="tp-field__hint">Optional</span></label>
+            <input type="text" id="contact-org" name="organisation" autocomplete="organization">
           </div>
-          <div class="col-md-6">
-            <input type="text" name="subject" placeholder="Subject" />
+          <div class="tp-field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" required></textarea>
           </div>
-          <div class="col-md-12">
-            <textarea name="message" rows="8" cols="40" placeholder="Message"></textarea>
-          </div>
-          <div class="col-md-12 form-action">
-            <button type="submit" class="send-button">Send Message</button>
-          </div>
+          <button class="tp-btn tp-btn--block" type="submit">Send message</button>
+          <p class="tp-plan__note">
+            Please do not send credentials, tokens or instance secrets by email.
+          </p>
         </form>
       </div>
 

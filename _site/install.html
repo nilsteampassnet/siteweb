@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f2740" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#08151f" media="(prefers-color-scheme: dark)">
+
+  <title>Install Teampass | Teampass</title>
+  <meta name="description" content="How to install Teampass — Docker and bare-metal instructions, server requirements, required PHP extensions and post-install hardening steps.">
+  <link rel="canonical" href="https://teampass.net/install.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Teampass">
+  <meta property="og:title" content="Install Teampass | Teampass">
+  <meta property="og:description" content="How to install Teampass — Docker and bare-metal instructions, server requirements, required PHP extensions and post-install hardening steps.">
+  <meta property="og:url" content="https://teampass.net/install.html">
+  <meta property="og:image" content="https://teampass.net/images/og-image.png">
+  <meta property="og:locale" content="en_GB">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Install Teampass | Teampass">
+  <meta name="twitter:description" content="How to install Teampass — Docker and bare-metal instructions, server requirements, required PHP extensions and post-install hardening steps.">
+  <meta name="twitter:image" content="https://teampass.net/images/og-image.png">
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+
+<body id="top">
+
+  
+
+<a class="tp-skip-link" href="#main">Skip to content</a>
+
+<nav class="tp-nav" id="site-nav" aria-label="Main">
+  <div class="tp-nav__inner">
+
+    <a class="tp-nav__logo" href="/" aria-label="Teampass — home">
+      <img src="/images/logo.svg" alt="Teampass" width="132" height="32">
+    </a>
+
+    <button class="tp-nav__toggle" type="button"
+            aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+      <svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+
+    <ul class="tp-nav__menu">
+      <li class="tp-nav__item">
+        <span class="tp-nav__link" role="button" tabindex="0" aria-haspopup="true">
+          Product<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        <ul class="tp-nav__dropdown">
+          <li>
+            <a href="/features.html">
+              Features<span>Everything Teampass does, grouped by domain</span>
+            </a>
+          </li>
+          <li>
+            <a href="/whats-new.html">
+              What's new<span>Highlights of the 3.2 line</span>
+            </a>
+          </li>
+          <li>
+            <a href="/extension.html">
+              Browser extension<span>Autofill and capture for Chrome, Firefox and Edge</span>
+            </a>
+          </li>
+          <li>
+            <a href="/install.html">
+              Install & requirements<span>Docker, bare metal and server prerequisites</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="tp-nav__item">
+        <span class="tp-nav__link" role="button" tabindex="0" aria-haspopup="true">
+          Solutions<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        <ul class="tp-nav__dropdown">
+          <li>
+            <a href="/for-individuals.html">
+              For individuals<span>Homelabs, freelancers and independent consultants</span>
+            </a>
+          </li>
+          <li>
+            <a href="/for-teams.html">
+              For teams & SMB<span>Shared credentials without the spreadsheet</span>
+            </a>
+          </li>
+          <li>
+            <a href="/for-enterprise.html">
+              For enterprise<span>Governance, audit evidence and identity integration</span>
+            </a>
+          </li>
+          <li>
+            <a href="/compare.html">
+              Compare alternatives<span>Teampass next to Bitwarden, Vaultwarden, Passbolt and KeePass</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="tp-nav__item">
+        <a class="tp-nav__link" href="/security.html">Security</a>
+      </li>
+      <li class="tp-nav__item">
+        <a class="tp-nav__link" href="/compliance.html">Compliance</a>
+      </li>
+      <li class="tp-nav__item">
+        <a class="tp-nav__link" href="/pricing.html">Pricing</a>
+      </li>
+      <li class="tp-nav__item">
+        <span class="tp-nav__link" role="button" tabindex="0" aria-haspopup="true">
+          Community<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        <ul class="tp-nav__dropdown">
+          <li>
+            <a href="/support.html">
+              Support & services<span>Community channels and commercial options</span>
+            </a>
+          </li>
+          <li>
+            <a href="/about.html">
+              About the project<span>History, licence and how it is funded</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://documentation.teampass.net" target="_blank" rel="noopener">
+              Documentation<span>Install, configure and operate Teampass</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/nilsteampassnet/TeamPass" target="_blank" rel="noopener">
+              GitHub<span>Source code, issues and discussions</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="tp-nav__actions">
+      <a class="tp-btn tp-btn--secondary" href="https://documentation.teampass.net" target="_blank" rel="noopener">Docs</a>
+      <a class="tp-btn" href="/install.html">Get started</a>
+    </div>
+
+  </div>
+</nav>
+
+
+  <main id="main">
+    <header class="tp-page-hero">
+  <div class="tp-container"><span class="tp-page-hero__eyebrow">Get started</span>
+    <h1>Install Teampass</h1><p class="tp-page-hero__lead">Docker, Docker Compose or a plain PHP install on a server you already run. Ten minutes either way, and nothing phones home.</p>
+    <div class="tp-button-row">
+      <a class="tp-btn" href="https://documentation.teampass.net/#/install/installation" target="_blank" rel="noopener">Full installation guide</a>
+      <a class="tp-btn tp-btn--ghost" href="https://github.com/nilsteampassnet/TeamPass/releases/latest" target="_blank" rel="noopener">Download the latest release</a>
+    </div>
+  </div>
+</header>
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Three steps</span>
+      <h2>From nothing to a working vault</h2>
+    </header>
+
+    <ol class="tp-steps">
+      <li class="tp-step">
+        <h3>Get the code</h3>
+        <p>Pull the Docker image, or drop the release archive into your web root.</p>
+        <code class="tp-code">docker pull teampass/teampass</code>
+      </li>
+      <li class="tp-step">
+        <h3>Point it at a database</h3>
+        <p>
+          Create an empty MySQL or MariaDB schema and a dedicated user. The
+          installer creates the tables and writes the configuration.
+        </p>
+      </li>
+      <li class="tp-step">
+        <h3>Run the installer</h3>
+        <p>
+          Open <code>/install</code> in a browser, work through the checks, create
+          the first administrator, then delete the install directory.
+        </p>
+      </li>
+    </ol>
+
+    <div class="tp-callout" style="margin-top: 32px;">
+      <svg class="tp-icon " viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"></svg>
+      <p>
+        Each step is covered in detail — including reverse proxy, TLS and
+        background task setup — in the
+        <a href="https://documentation.teampass.net/#/install/installation" target="_blank" rel="noopener">installation documentation</a>.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="requirements">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Requirements</span>
+      <h2>What the server needs</h2>
+      <p>
+        Nothing exotic. If you can host a PHP application, you can host Teampass.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+
+      <article class="tp-card">
+        <span class="tp-icon-tile"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01"/><path d="M6 18h.01"/></svg></span>
+        <h3>Platform</h3>
+        <ul class="tp-checklist">
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Apache 2.4 or Nginx</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>MySQL 8 / MariaDB 10.7 or newer</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span><strong>PHP 8.2 minimum</strong> — required since 3.2.1.1</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Tables must use InnoDB</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A cron entry or scheduler for background tasks</span></li>
+        </ul>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="M2 12.18a1 1 0 0 0 .6.9l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 .58-.91"/><path d="M2 17.18a1 1 0 0 0 .6.9l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 .58-.91"/></svg></span>
+        <h3>PHP extensions</h3>
+        <ul class="tp-checklist">
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span><code>openssl</code>, <code>mbstring</code>, <code>bcmath</code>, <code>gmp</code></span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span><code>iconv</code>, <code>xml</code>, <code>gd</code>, <code>curl</code></span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span><code>mysqli</code></span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span><code>ldap</code> — only if you authenticate against a directory</span></li>
+        </ul>
+      </article>
+
+    </div>
+
+    <div class="tp-callout tp-callout--warning" style="margin-top: 32px;">
+      <svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+      <p>
+        Teampass stores your organisation's credentials. Put it behind TLS,
+        restrict it to the networks that need it, back the database up, and keep
+        the recovery account somewhere you can still reach when everything else
+        is down.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="after">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Right after install</span>
+      <h2>Five things worth doing on day one</h2>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+      <article class="tp-card tp-card--muted">
+        <h3>Turn on the hardened encryption format</h3>
+        <p>
+          New installations use authenticated AES-256-GCM by default. Upgrades
+          keep the old format until you enable it, then migrate secrets lazily on
+          first read.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Enforce two-factor authentication</h3>
+        <p>Pick a TOTP profile, or wire Teampass to your identity provider over OAuth2.</p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Model your folders before your users</h3>
+        <p>
+          Folders and roles are where access control actually lives. Getting the
+          tree right first saves rework later.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Import what you already have</h3>
+        <p>Bitwarden, LastPass, 1Password, KeePassXC, KeePass XML and CSV are all supported.</p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Run the first posture scan</h3>
+        <p>
+          It will tell you how many of the credentials you just imported are weak,
+          reused or overdue for rotation. Expect the number to be higher than you
+          think.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Store the recovery account safely</h3>
+        <p>
+          It is the only account besides the owner that can decrypt personal
+          folders. Treat it accordingly.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="tp-cta-band">
+  <div class="tp-container">
+    <h2>Something not working?</h2><p>Installation problems are usually a missing PHP extension or a database that is not InnoDB. Both are covered in the docs — and the discussions are open if they are not.</p>
+    <div class="tp-button-row">
+      <a class="tp-btn tp-btn--lg" href="https://documentation.teampass.net/#/install/installation" target="_blank" rel="noopener">Installation docs</a>
+      <a class="tp-btn tp-btn--ghost tp-btn--lg" href="https://github.com/nilsteampassnet/TeamPass/discussions" target="_blank" rel="noopener">Ask the community</a>
+    </div>
+  </div>
+</section>
+
+
+
+  </main>
+
+  <footer class="tp-footer">
+  <div class="tp-container">
+
+    <div class="tp-footer__top">
+
+      <div class="tp-footer__brand">
+        <img src="/images/logo.svg" alt="Teampass" width="140" height="34">
+        <p>Teampass has been built and maintained by Nils Laumaillé since 2009.</p>
+        <ul class="tp-footer__social">
+          <li><a href="https://github.com/nilsteampassnet/TeamPass" target="_blank" rel="noopener" aria-label="Teampass on GitHub"><svg class="tp-icon tp-icon--lg" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg></a></li>
+          <li><a href="https://www.reddit.com/r/TeamPass/" target="_blank" rel="noopener" aria-label="Teampass on Reddit"><svg class="tp-icon tp-icon--lg" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M24 11.8a2.6 2.6 0 0 0-4.4-1.8 12.8 12.8 0 0 0-6.9-2.2l1.2-5.5 3.9.8a1.9 1.9 0 1 0 .2-1.1L13.5.9a.6.6 0 0 0-.7.4l-1.4 6.4a12.8 12.8 0 0 0-7 2.2 2.6 2.6 0 1 0-2.9 4.2 5 5 0 0 0 0 .8c0 4 4.7 7.3 10.5 7.3s10.5-3.3 10.5-7.3a5 5 0 0 0 0-.8 2.6 2.6 0 0 0 1.5-2.3M6 13.7a1.9 1.9 0 1 1 1.9 1.9A1.9 1.9 0 0 1 6 13.7m10.7 5a6.9 6.9 0 0 1-4.6 1.4A6.9 6.9 0 0 1 7.5 19a.5.5 0 0 1 .7-.7 5.9 5.9 0 0 0 3.9 1.1 5.9 5.9 0 0 0 3.9-1.2.5.5 0 1 1 .7.7Zm-.6-3a1.9 1.9 0 1 1 1.9-1.9 1.9 1.9 0 0 1-1.9 2Z"/></svg></a></li>
+          <li><a href="https://twitter.com/theteampass" target="_blank" rel="noopener" aria-label="Teampass on X"><svg class="tp-icon tp-icon--lg" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.5L6.3 22H3.2l7.3-8.3L2.8 2h6.4l4.4 5.9Zm-1.1 18.2h1.7L8.3 3.7H6.5Z"/></svg></a></li>
+          <li><a href="https://fr-fr.facebook.com/TeamPass-Passwords-for-Teams-163627833721400/" target="_blank" rel="noopener" aria-label="Teampass on Facebook"><svg class="tp-icon tp-icon--lg" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.6 4.5-4.6 1.3 0 2.7.2 2.7.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.6 3.5h-2.8v8.4A12 12 0 0 0 24 12"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="tp-footer__links">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="/features.html">Features</a></li>
+            <li><a href="/whats-new.html">What's new</a></li>
+            <li><a href="/extension.html">Browser extension</a></li>
+            <li><a href="/install.html">Install &amp; requirements</a></li>
+            <li><a href="/pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Solutions</h2>
+          <ul>
+            <li><a href="/for-individuals.html">For individuals</a></li>
+            <li><a href="/for-teams.html">For teams &amp; SMB</a></li>
+            <li><a href="/for-enterprise.html">For enterprise</a></li>
+            <li><a href="/compare.html">Compare alternatives</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Trust</h2>
+          <ul>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="/compliance.html">Compliance</a></li>
+            <li><a href="https://github.com/nilsteampassnet/TeamPass/security/advisories" target="_blank" rel="noopener">Security advisories</a></li>
+            <li><a href="/privacy.html">Privacy &amp; cookies</a></li>
+            <li><a href="/extension-privacy.html">Extension privacy policy</a></li>
+            <li><button type="button" class="tp-footer__consent" data-tp-consent-reopen>Cookie preferences</button></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Community</h2>
+          <ul>
+            <li><a href="https://documentation.teampass.net" target="_blank" rel="noopener">Documentation</a></li>
+            <li><a href="https://github.com/nilsteampassnet/TeamPass" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://github.com/nilsteampassnet/TeamPass/discussions" target="_blank" rel="noopener">Discussions</a></li>
+            <li><a href="/whats-new.html">Release history</a></li>
+            <li><a href="/support.html">Support &amp; services</a></li>
+            <li><a href="/about.html">About the project</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tp-footer__bottom">
+      <p>
+        &copy; 2009-2026
+        <a href="https://nils.laumaille.fr/" target="_blank" rel="noopener">Nils Laumaillé</a> —
+        released under GPL-3.0.
+      </p>
+      <p class="tp-footer__made">
+        <img src="/images/madeinfrance.png" alt="Made in France" height="28">
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<a href="#top" class="tp-to-top" aria-label="Back to top"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></a>
+
+  
+<div class="tp-consent" id="tp-consent" role="dialog" aria-modal="false"
+     aria-labelledby="tp-consent-title" hidden>
+  <div class="tp-consent__inner">
+
+    <div class="tp-consent__text">
+      <h2 class="tp-consent__title" id="tp-consent-title">Audience measurement</h2>
+      <p>
+        We would like to use Google Analytics to count visits and see which
+        pages are read. It sets cookies on your device. Nothing is loaded
+        until you accept, and we run no advertising or profiling.
+        See the <a href="/privacy.html">privacy policy</a>.
+      </p>
+    </div>
+
+    <div class="tp-consent__actions">
+      <button type="button" class="tp-btn tp-btn--secondary" data-tp-consent="decline">Decline</button>
+      <button type="button" class="tp-btn" data-tp-consent="accept">Accept</button>
+    </div>
+
+  </div>
+</div>
+
+  
+<script>
+  (function () {
+    'use strict';
+
+    var ID = 'G-5NS849FBPH';
+    var STORAGE_KEY = 'tp-consent';
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    // Consent Mode v2 — everything off until the visitor says otherwise.
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted'
+    });
+
+    function read() {
+      try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+    }
+
+    function write(value) {
+      try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
+    }
+
+    // Drop the cookies the tag may already have written.
+    function clearCookies() {
+      var names = document.cookie.split(';').map(function (pair) {
+        return pair.split('=')[0].trim();
+      }).filter(function (name) {
+        return name.indexOf('_ga') === 0 || name === '_gid';
+      });
+
+      var host = location.hostname;
+      var domains = ['', host, '.' + host];
+      var parts = host.split('.');
+      if (parts.length > 2) { domains.push('.' + parts.slice(-2).join('.')); }
+
+      names.forEach(function (name) {
+        domains.forEach(function (domain) {
+          document.cookie = name + '=; Max-Age=0; path=/' +
+            (domain ? '; domain=' + domain : '');
+        });
+      });
+    }
+
+    var loaded = false;
+
+    function load() {
+      if (loaded) { return; }
+      loaded = true;
+
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      gtag('js', new Date());
+      gtag('config', ID, {
+        anonymize_ip: true
+      });
+
+      var tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID;
+      document.head.appendChild(tag);
+    }
+
+    window.tpConsent = {
+      state: function () { return read(); },
+
+      accept: function () {
+        write('granted');
+        load();
+      },
+
+      decline: function () {
+        write('denied');
+        gtag('consent', 'update', { analytics_storage: 'denied' });
+        clearCookies();
+      }
+    };
+
+    if (read() === 'granted') { load(); }
+  })();
+</script>
+
+  <script src="/js/main.js" defer></script>
+
+
+</body>
+</html>

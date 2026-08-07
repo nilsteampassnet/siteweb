@@ -1,0 +1,84 @@
+/**
+ *
+ *  Buttons
+ *
+ **/
+
+.tp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $sp-2;
+  padding: 11px 20px;
+  border: 1px solid transparent;
+  border-radius: $radius;
+  background: var(--tp-accent);
+  color: #04202c;
+  font-family: inherit;
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color $transition-links $transition-links-type,
+              border-color $transition-links $transition-links-type,
+              color $transition-links $transition-links-type;
+
+  &:hover,
+  &:active { background: var(--tp-accent-strong); color: #04202c; }
+
+  &:focus-visible {
+    outline: 2px solid var(--tp-accent);
+    outline-offset: 2px;
+  }
+
+  // Quiet button on a light surface
+  &--secondary {
+    background: transparent;
+    border-color: var(--tp-border-strong);
+    color: var(--tp-text);
+
+    &:hover,
+    &:active {
+      background: var(--tp-surface-alt);
+      border-color: var(--tp-accent);
+      color: var(--tp-accent-strong);
+    }
+  }
+
+  // Quiet button on the dark hero
+  &--ghost {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.35);
+    color: var(--tp-text-inverse);
+
+    &:hover,
+    &:active {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.6);
+      color: var(--tp-text-inverse);
+    }
+  }
+
+  &--lg { padding: 14px 26px; font-size: $fs-base; }
+
+  &--block { width: 100%; }
+
+  .tp-icon { width: 1.1em; height: 1.1em; }
+}
+
+// Text link with a trailing arrow
+.tp-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: $fs-sm;
+  font-weight: $fw-semibold;
+  color: var(--tp-accent-strong);
+
+  .tp-icon { transition: transform $transition-links $transition-links-type; }
+
+  &:hover .tp-icon { transform: translateX(3px); }
+}

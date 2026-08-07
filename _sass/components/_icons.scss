@@ -1,0 +1,45 @@
+/**
+ *  Inline SVG icons
+ *
+ *  Rendered by _includes/components/icon.html. Icons inherit the current
+ *  colour and font size, so they align with the text they sit next to.
+ *  Replaces the Font Awesome 4 CDN request the site used to make.
+ */
+
+.tp-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tp-icon--lg { width: 1.5em; height: 1.5em; }
+.tp-icon--xl { width: 2em;   height: 2em;   }
+
+// Icon sitting in a tinted square, used at the top of feature cards
+.tp-icon-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: $sp-4;
+  border-radius: $radius;
+  color: var(--tp-accent-strong);
+  background: var(--tp-accent-soft);
+
+  .tp-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  &--success { color: var(--tp-success); background: rgba(22, 163, 74, 0.12); }
+  &--warning { color: var(--tp-warning); background: rgba(217, 119, 6, 0.12); }
+  &--danger  { color: var(--tp-danger);  background: rgba(220, 38, 38, 0.12); }
+}

@@ -1,45 +1,20 @@
-<!DOCTYPE html >
-<html lang="{{ site.lang }}">
+---
+layout: base
+---
 
-  {% include head.html %}
+<header class="tp-page-hero">
+  <div class="tp-container">
+    {%- if page.eyebrow %}<span class="tp-page-hero__eyebrow">{{ page.eyebrow }}</span>{% endif %}
+    <h1>{{ page.title }}</h1>
+    {%- if page.lead %}<p class="tp-page-hero__lead">{{ page.lead }}</p>{% endif %}
+    {%- if page.cta %}
+    <div class="tp-button-row">
+      {%- for button in page.cta %}
+      <a class="tp-btn{% unless forloop.first %} tp-btn--ghost{% endunless %}" href="{% if button.url contains 'http' %}{{ button.url }}" target="_blank" rel="noopener{% else %}{{ button.url | relative_url }}{% endif %}">{{ button.label }}</a>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </div>
+</header>
 
-  <body>
-
-    <!-- Page Loader -->
-    <div id="page-loader" class="page-loader"><span class="load-icon"></span></div>
-
-    {% include header-page.html %}
-
-    <!-- Page Section -->
-    <section class="site-section blog-section page-layout" id="start">
-      <div class="container">
-
-        <!-- Page Layout -->
-        <div class="row">
-
-          <!-- Sidebar -->
-          <div class="col-md-4 hidden-xs hidden-sm">
-
-            {% include sidebar.html %}
-
-          </div>
-
-          <!-- Content -->
-          <div class="col-md-8 blog-articles-container">
-
-            {{ content }}
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    {% include footer.html %}
-
-    {% include scripts.html %}
-
-  </body>
-
-</html>
+{{ content }}

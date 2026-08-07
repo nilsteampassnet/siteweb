@@ -1,0 +1,7 @@
+---
+# Front matter is required so Jekyll compiles this file with dart-sass.
+# The real stylesheet lives in _sass/main.scss — it must not be called
+# style.scss, or this file would import itself.
+---
+
+@import "main";

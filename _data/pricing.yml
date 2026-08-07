@@ -1,0 +1,78 @@
+# Pricing.
+#
+# The server is free and open-source. The browser extension is the commercial
+# product that funds the project. Keep that framing wherever a price appears.
+
+promise: >-
+  The Teampass server is free and open-source, and always will be.
+  The browser extension is what funds continued development.
+
+plans:
+  - name: Community
+    price: Free
+    unit: forever
+    summary: The complete self-hosted server, with every security and governance feature.
+    features:
+      - Unlimited users, folders and items
+      - AES-256-GCM encryption and access control
+      - Security posture, recertification and compliance exports
+      - LDAP/AD, OAuth2 SSO and TOTP
+      - REST API, Bash and PowerShell clients
+      - Community support on GitHub Discussions
+    cta:
+      label: Download Teampass
+      url: /install.html
+    featured: false
+
+  - name: Pro extension
+    price: From €49
+    unit: per year
+    summary: Browser autofill and capture for the whole team, on top of the same free server.
+    features:
+      - Chrome, Firefox and Edge
+      - Autofill without leaving the tab
+      - Password capture on new sign-ups
+      - Domain matching to blunt phishing attempts
+      - Email support and updates included
+      - 30-day free trial, no card required
+    cta:
+      label: Start the free trial
+      url: /extension.html
+    featured: true
+
+  - name: Services
+    price: On request
+    unit: quoted per engagement
+    summary: Feature development, priority handling and deployment help, directly from the maintainer.
+    features:
+      - Custom feature development
+      - Priority on defects and messages
+      - Deployment and migration assistance
+      - Sponsorship of specific roadmap items
+    cta:
+      label: Get in touch
+      url: /support.html
+    featured: false
+
+# Extension capacity packs — annual, excluding taxes.
+packs:
+  - name: Starter Pack
+    capacity: 3 users
+    price: "€49"
+    ideal: Freelancers, solo consultants and two-person technical shops.
+  - name: Team Pack
+    capacity: 10 users
+    price: "€150"
+    ideal: Small IT agencies, startups and specialised technical squads.
+  - name: Business Pack
+    capacity: 25 users
+    price: "€350"
+    ideal: SMEs and growing departments that live in the browser all day.
+  - name: Premium Pack
+    capacity: 50 users
+    price: "€600"
+    ideal: Larger IT departments focused on password hygiene at scale.
+  - name: Enterprise
+    capacity: Unlimited
+    price: "€1200"
+    ideal: Large and multi-site organisations that want a flat fee.

@@ -1,0 +1,54 @@
+/**
+ *  Badges & pills
+ *
+ *  Used for the hero trust bar, "new in 3.2" markers and status labels.
+ */
+
+.tp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-2;
+  padding: 4px 10px;
+  border-radius: $radius-pill;
+  border: 1px solid var(--tp-border);
+  background: var(--tp-surface-alt);
+  color: var(--tp-text-muted);
+  font-size: $fs-xs;
+  font-weight: $fw-medium;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  white-space: nowrap;
+
+  &--accent {
+    border-color: transparent;
+    background: var(--tp-accent-soft);
+    color: var(--tp-accent-strong);
+  }
+
+  &--new {
+    border-color: transparent;
+    background: rgba(22, 163, 74, 0.14);
+    color: var(--tp-success);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+
+  &--on-dark {
+    border-color: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--tp-text-inverse-muted);
+  }
+}
+
+// Horizontal list of trust signals under the hero copy
+.tp-trust-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $sp-2;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li { display: inline-flex; }
+}

@@ -1,0 +1,44 @@
+# Product tour.
+#
+# Captures taken on Teampass 3.2.1.x (the version string is visible in the
+# footer of most of them). Replace them again when the interface moves, and
+# keep the captions describing what is actually on screen — a caption that
+# promises a feature the screenshot does not show is worse than no caption.
+#
+# `url` is optional. Omit it rather than guessing a documentation anchor.
+
+- image: tp3_sw_1.png
+  title: Folders and items
+  body: The folder tree on the left, its items on the right, filtered down to what the signed-in user is actually allowed to see.
+  url: https://documentation.teampass.net/#/features/feat-items
+
+- image: tp3_sw_11.png
+  title: Security posture
+  body: Every user gets a score out of 100 and a ranked list of what to fix — reused, weak, breached, overdue, widely shared and never-expiring credentials, with an optional Have I Been Pwned check.
+
+- image: tp3_sw_2.png
+  title: An item, in full
+  body: Fields, tags, attachments, OTP code and data classification on one card. Secure Send sits in the toolbar, next to Share and Notify.
+  url: https://documentation.teampass.net/#/features/feat-items
+
+- image: tp3_sw_3.png
+  title: Password strength, enforced
+  body: The folder sets the required strength; the editor scores the password against it and states in plain words how long it would resist an offline attack. Random or passphrase generator built in.
+
+- image: tp3_sw_4.png
+  title: Search that understands risk
+  body: Search labels, logins, URLs and tags, then narrow by classification level or by security state — weak, breached, overdue, reused, widely shared, unreadable.
+
+- image: tp3_sw_5.png
+  title: Per-item history
+  body: Creation, edits, tag changes and every file added, each stamped with the account and the time. This is what an auditor asks to see first.
+  url: https://documentation.teampass.net/#/features/feat-items
+
+- image: tp3_sw_7.png
+  title: Users, roles and directory sync
+  body: Accounts with their roles and managers, plus one-click LDAP and OAuth2 synchronisation. Inactive and deleted users stay listed rather than vanishing.
+  url: https://documentation.teampass.net/#/manage/manage-users
+
+- image: tp3_sw_10.png
+  title: Administration dashboard
+  body: Users, items, folders and 24-hour log volume at a glance, with a System Health panel covering the encryption system, cron jobs, sessions and the websocket service.

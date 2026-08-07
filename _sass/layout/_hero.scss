@@ -1,0 +1,116 @@
+/**
+ *  Hero
+ *
+ *  Solid dark surface with the product screenshot beside the copy. No parallax:
+ *  the old scrollax header pushed the value proposition below the fold.
+ */
+
+.tp-hero {
+  position: relative;
+  overflow: hidden;
+  padding: $sp-8 0;
+  background: var(--tp-bg-inverse);
+  color: var(--tp-text-inverse);
+
+  @media (min-width: $bp-lg) { padding: $sp-9 0; }
+
+  // Subtle accent glow, purely decorative
+  &:before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 620px;
+    height: 620px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(33, 194, 248, 0.18) 0%, rgba(33, 194, 248, 0) 68%);
+    pointer-events: none;
+  }
+
+  &__inner {
+    position: relative;
+    display: grid;
+    gap: $sp-7;
+    align-items: center;
+
+    @media (min-width: $bp-lg) {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: $sp-8;
+    }
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: $sp-2;
+    margin-bottom: $sp-4;
+  }
+
+  h1 {
+    font-size: 2.125rem;
+    font-weight: $fw-bold;
+    line-height: $lh-tight;
+    letter-spacing: -0.02em;
+    color: var(--tp-text-inverse);
+    margin-bottom: $sp-4;
+
+    @media (min-width: $bp-md) { font-size: 2.75rem; }
+    @media (min-width: $bp-lg) { font-size: $fs-3xl; }
+  }
+
+  &__lead {
+    max-width: 34em;
+    font-size: $fs-md;
+    line-height: $lh-base;
+    color: var(--tp-text-inverse-muted);
+    margin-bottom: $sp-6;
+  }
+
+  .tp-trust-bar { margin-top: $sp-6; }
+
+  &__visual {
+    img {
+      width: 100%;
+      border-radius: $radius-lg;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.55);
+    }
+  }
+}
+
+// Compact hero for interior pages
+.tp-page-hero {
+  padding: $sp-7 0 $sp-6;
+  background: var(--tp-bg-inverse);
+  color: var(--tp-text-inverse);
+
+  &__eyebrow {
+    display: block;
+    margin-bottom: $sp-3;
+    font-size: $fs-xs;
+    font-weight: $fw-semibold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tp-accent);
+  }
+
+  h1 {
+    max-width: 20em;
+    font-size: $fs-2xl;
+    font-weight: $fw-bold;
+    line-height: $lh-tight;
+    letter-spacing: -0.015em;
+    color: var(--tp-text-inverse);
+    margin-bottom: $sp-4;
+  }
+
+  &__lead {
+    max-width: $prose-width;
+    font-size: $fs-md;
+    line-height: $lh-base;
+    color: var(--tp-text-inverse-muted);
+    margin-bottom: 0;
+  }
+
+  .tp-button-row { margin-top: $sp-5; }
+}

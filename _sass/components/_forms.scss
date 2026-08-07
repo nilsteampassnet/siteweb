@@ -1,0 +1,55 @@
+/**
+ *  Form controls
+ */
+
+.tp-field {
+  display: block;
+  margin-bottom: $sp-4;
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: $fs-sm;
+    font-weight: $fw-medium;
+    color: var(--tp-text);
+  }
+
+  .tp-field__hint {
+    display: block;
+    margin-top: 6px;
+    font-size: $fs-xs;
+    color: var(--tp-text-muted);
+  }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--tp-border-strong);
+  border-radius: $radius-sm;
+  background: var(--tp-surface);
+  color: var(--tp-text);
+  font-family: inherit;
+  font-size: $fs-sm;
+  line-height: 1.5;
+  transition: border-color $transition-links $transition-links-type;
+
+  &::placeholder { color: var(--tp-text-muted); }
+
+  &:focus {
+    border-color: var(--tp-accent);
+    outline: 2px solid var(--tp-accent);
+    outline-offset: 1px;
+  }
+}
+
+textarea {
+  min-height: 150px;
+  resize: vertical;
+}
