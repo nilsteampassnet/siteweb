@@ -1,0 +1,41 @@
+/**
+ *  Brand wordmark
+ *
+ *  The shield mark plus the name "Teampass" set as live text to its right.
+ *  The old images/logo.svg baked the word into the artwork, so it could not
+ *  follow --tp-text into dark mode; here the mark is the only image and the
+ *  name inherits the surrounding colour.
+ *
+ *  The mark ships at 75x77, so it is always sized by height and left to work
+ *  its own width out — never stretched to a square.
+ */
+
+.tp-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: $sp-3;
+  color: inherit;
+  text-decoration: none;
+
+  &__mark {
+    flex: none;
+    width: auto;
+    height: 32px;
+  }
+
+  &__name {
+    font-size: $fs-lg;
+    font-weight: $fw-bold;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  // Footer and any other roomier placement
+  &--lg {
+    gap: $sp-4;
+
+    .tp-brand__mark { height: 44px; }
+    .tp-brand__name { font-size: $fs-xl; }
+  }
+}

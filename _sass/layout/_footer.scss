@@ -19,7 +19,10 @@
   }
 
   &__brand {
-    img { margin-bottom: $sp-4; }
+    .tp-brand {
+      color: var(--tp-text-inverse);
+      margin-bottom: $sp-4;
+    }
 
     p {
       max-width: 32em;

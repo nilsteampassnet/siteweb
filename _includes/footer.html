@@ -4,7 +4,7 @@
     <div class="tp-footer__top">
 
       <div class="tp-footer__brand">
-        <img src="{{ '/images/logo.svg' | relative_url }}" alt="Teampass" width="140" height="34">
+        {% include components/brand.html class="tp-brand--lg" %}
         <p>{{ site.footer-description }}</p>
         <ul class="tp-footer__social">
           <li><a href="{{ site.social.github }}" target="_blank" rel="noopener" aria-label="Teampass on GitHub">{% include components/icon.html name="github" class="tp-icon--lg" %}</a></li>

@@ -1,0 +1,15 @@
+{% comment %}
+  The Teampass wordmark: the shield mark plus the name set beside it.
+
+  Replaces the old images/logo.svg, which baked the word into the artwork and
+  therefore could not follow the colour tokens into dark mode.
+
+  Parameters
+    class  extra class on the wrapper, e.g. "tp-brand--lg" in the footer
+{% endcomment %}
+<span class="tp-brand{% if include.class %} {{ include.class }}{% endif %}">
+  <img class="tp-brand__mark"
+       src="{{ '/images/teampass-logo2-home.png' | relative_url }}"
+       alt="" width="75" height="77" aria-hidden="true">
+  <span class="tp-brand__name">Teampass</span>
+</span>

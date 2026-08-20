@@ -10,7 +10,7 @@
   <div class="tp-nav__inner">
 
     <a class="tp-nav__logo" href="{{ '/' | relative_url }}" aria-label="Teampass — home">
-      <img src="{{ '/images/logo.svg' | relative_url }}" alt="Teampass" width="132" height="32">
+      {% include components/brand.html %}
     </a>
 
     <button class="tp-nav__toggle" type="button"
