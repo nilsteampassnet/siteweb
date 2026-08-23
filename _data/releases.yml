@@ -33,13 +33,110 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.2.0
+    date: 2026-08-23
+    summary: LAPR — agentless rotation of Linux account passwords over SSH — plus item revisions for offline synchronization and three new notification types.
+    changes:
+      - group: New
+        items:
+          - "LAPR (Linux Account Password Rotation) — Teampass generates a password from a policy, pushes it to the server over SSH, then re-encrypts the item, so the vault only ever records a password the machine actually accepted"
+          - "Agentless: nothing is installed on the target servers, and the existing item encryption model is reused rather than a parallel secret store"
+          - Managed endpoints with host key trust on first use, reusable rotation policies, and manual or scheduled rotation that retries then suspends instead of hammering an unreachable host
+          - "A dedicated audit log that never records a secret, and a separate \"Can manage LAPR\" permission held by non-administrators"
+          - Item revisions and a delta endpoint for offline clients, with an optional precondition on update that rejects a conflicting write instead of overwriting it
+          - Notifications for local password expiry, knowledge base publication and backup failures
+          - "Versioned Docker image tags — teampass/teampass:3.2.2.0 can now be pinned"
+      - group: Improved
+        items:
+          - Search results open in a modal, with copy login and copy password directly on the row
+          - A page transition indicator covering navigation and slow AJAX, replacing the Pace plugin
+          - Browser-native confirmation dialogs replaced by the Teampass modal
+          - Personal folders no longer listed in the role, folder and user management screens
+          - Independent manual overrides for each web-server log path
+      - group: Upgrade notes
+        items:
+          - Schema change — the upgrade wizard runs on every installation
+          - LAPR is disabled by default, does nothing until an administrator enables it, and needs its own permission that no existing user receives on upgrade
+          - Back up the database before upgrading
+
+  - version: 3.2.1.7
+    date: 2026-08-18
+    summary: Customizable email templates, server log reading on the Health page, and a refreshed Docker image clearing most of the vulnerabilities reported against it.
+    changes:
+      - group: Security
+        items:
+          - "Upgrade wizard administrator check had no server-side effect — the grant is now kept server-side and required on every step"
+          - Link secrets masked in the Health page log excerpts
+          - The client-side purifier split into inbound and outbound entry points, closing the class of XSS that assumed a purified value was safe to concatenate
+          - The WebDAV backup client no longer follows redirects, so Basic credentials cannot be replayed towards another host
+          - Vendored crypto-js updated to 4.2.0 (CVE-2023-46233)
+      - group: New
+        items:
+          - Customizable email templates — every subject and body rewritable per language, stored as a pure diff over the shipped strings
+          - Health page reading of the WebSocket and server access logs
+      - group: Improved
+        items:
+          - Docker base image moved to Alpine 3.24, clearing around 42 of the 48 open image alerts
+          - All Composer dependencies updated, clearing the five Dependabot advisories on guzzlehttp/guzzle
+          - Development dependencies are no longer part of an installation
+      - group: Upgrade notes
+        items:
+          - Schema change — the upgrade wizard runs on every installation and creates the email templates table
+          - An externalized WebDAV destination that relied on a redirect will stop working
+
+  - version: 3.2.1.6
+    date: 2026-08-11
+    summary: A broad sweep of stored cross-site scripting sinks closed, and the client IP feeding the audit log and the bruteforce counter can no longer be forged.
+    changes:
+      - group: Security
+        items:
+          - Stored markup in folder titles imported from KeePass
+          - LDAP and OAuth2 identity fields neutralized before storage, and encoded in the directory sync screens
+          - Folder titles, folder paths and role names encoded in the roles matrix
+          - Item labels, recipient emails and task error messages encoded in attribute contexts
+          - WebSocket notification payloads escaped
+          - Item icons stored by the API before 3.2.1 can no longer inject markup
+          - The client IP used for security decisions is resolved through trusted proxies only
+          - Two earlier security fixes that had been applied to the wrong copy of a duplicated file are now actually served
+      - group: Improved
+        items:
+          - Accented names are stored with their accents, and names already in the database are realigned by the upgrade
+          - A sentinel test pins client-side HTML encoding at each sink, and another covers all 21 duplicated file pairs
+      - group: Upgrade notes
+        items:
+          - No table structure change, but three idempotent data migrations run once through the upgrade wizard
+          - The strict client IP resolution is opt-in — declare your trusted proxies to enable it
+
+  - version: 3.2.1.5
+    date: 2026-08-07
+    summary: Two authorization bypasses closed, and the personal-to-shared item move rebuilt on a single hardened path shared by the web interface and the API.
+    changes:
+      - group: Security
+        items:
+          - "Folder authorization was only checked on the first page of the items list, so asking for a later page returned the metadata of any folder, including other users' personal folders (GHSA-xrjw-r5hx-29rj)"
+          - Item copy verified the rights on the source folder and never looked at the destination, letting any non-read-only user copy into an admin-restricted folder (GHSA-g797-4rh6-m2xp)
+      - group: New
+        items:
+          - Knowledge base entries searchable from the command palette
+          - The account avatar shown in the topbar
+      - group: Improved
+        items:
+          - "The personal-to-shared item move is one hardened implementation — a missing source key now aborts the move instead of dropping the custom field"
+          - The background task queue is visible on the Health page, and the task drain window is configurable
+          - The account creation email now reaches users created by their first LDAP login
+          - KeePass XML import no longer fails on entries with empty fields
+      - group: Upgrade notes
+        items:
+          - Code only — installations already on 3.2.1.4 are not sent through the upgrade wizard
+          - Anything automated against the items list must request the first page of a folder before asking for later pages
+
   - version: 3.2.1.4
     date: 2026-08-02
     summary: Faceted search, a Quick access panel, and a folder-scope authorization bypass in search closed.
     changes:
       - group: Security
         items:
-          - "Folder scope bypass in the search backend — the `limited` parameter replaced the accessible-folder scope instead of narrowing it, letting any authenticated user enumerate item metadata across folder boundaries"
+          - "Folder scope bypass in the search backend — the \"limited\" parameter replaced the accessible-folder scope instead of narrowing it, letting any authenticated user enumerate item metadata across folder boundaries"
           - Search scope now intersects the requested subtree with the folders the caller can reach, and subtracts other people's personal folders
       - group: New
         items:
