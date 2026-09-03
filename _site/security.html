@@ -9,22 +9,22 @@
 
   <title>How Teampass protects your secrets | Teampass</title>
   <meta name="description" content="Teampass security model — authenticated AES-256-GCM encryption, PBKDF2 at 600,000 iterations, per-user key distribution, threat model, responsible disclosure and published security advisories.">
-  <link rel="canonical" href="https://teampass.net/security.html">
+  <link rel="canonical" href="http://localhost:4000/security.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Teampass">
   <meta property="og:title" content="How Teampass protects your secrets | Teampass">
   <meta property="og:description" content="Teampass security model — authenticated AES-256-GCM encryption, PBKDF2 at 600,000 iterations, per-user key distribution, threat model, responsible disclosure and published security advisories.">
-  <meta property="og:url" content="https://teampass.net/security.html">
-  <meta property="og:image" content="https://teampass.net/images/og-image.png">
+  <meta property="og:url" content="http://localhost:4000/security.html">
+  <meta property="og:image" content="http://localhost:4000/images/og-image.png">
   <meta property="og:locale" content="en_GB">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How Teampass protects your secrets | Teampass">
   <meta name="twitter:description" content="Teampass security model — authenticated AES-256-GCM encryption, PBKDF2 at 600,000 iterations, per-user key distribution, threat model, responsible disclosure and published security advisories.">
-  <meta name="twitter:image" content="https://teampass.net/images/og-image.png">
+  <meta name="twitter:image" content="http://localhost:4000/images/og-image.png">
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="stylesheet" href="/css/style.css">
@@ -70,6 +70,11 @@
           <li>
             <a href="/whats-new.html">
               What's new<span>Highlights of the 3.2 line</span>
+            </a>
+          </li>
+          <li>
+            <a href="/lapr.html">
+              Linux password rotation<span>Agentless rotation of Linux account passwords over SSH</span>
             </a>
           </li>
           <li>
@@ -358,6 +363,7 @@
           <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Silent tampering with stored ciphertext</span></li>
           <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Credentials lingering after someone leaves, once the account is disabled</span></li>
           <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Unaccountable access — every read is recorded</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Stale Linux account passwords — <a href="/lapr.html">LAPR</a> performs the rotation, it does not only report it</span></li>
         </ul>
       </article>
 
@@ -370,6 +376,7 @@
           <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>A user who is entitled to a credential and then leaks it</span></li>
           <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>Weak deployment — no TLS, no backups, a public instance with a weak admin password</span></li>
           <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>A lost recovery account combined with a lost owner passphrase</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg><span>A compromised host with LAPR enabled — it holds reusable privileged SSH credentials by design</span></li>
         </ul>
       </article>
 
@@ -448,6 +455,14 @@
         <h3>Upgrade promptly</h3>
         <p>Advisories are published with each release. Watch the repository and apply security releases quickly.</p>
       </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Fence LAPR before enabling it</h3>
+        <p>It ships disabled. Turn on the hostname allowlist, grant the operator permission narrowly, and leave management of the Teampass host itself switched off.</p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Treat SSH credential items as crown jewels</h3>
+        <p>Whoever can read the folder holding them holds root on every enrolled server. Restrict that folder harder than anything else in the vault.</p>
+      </article>
     </div>
 
   </div>
@@ -497,6 +512,7 @@
           <ul>
             <li><a href="/features.html">Features</a></li>
             <li><a href="/whats-new.html">What's new</a></li>
+            <li><a href="/lapr.html">Linux password rotation</a></li>
             <li><a href="/extension.html">Browser extension</a></li>
             <li><a href="/install.html">Install &amp; requirements</a></li>
             <li><a href="/pricing.html">Pricing</a></li>

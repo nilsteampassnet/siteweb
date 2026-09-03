@@ -38,6 +38,29 @@
     - Configurable minimum password length
     - Password generator with live regeneration
 
+- group: Linux password rotation (LAPR)
+  icon: refresh
+  intro: Agentless rotation of local Linux account passwords, over SSH. New in 3.2.2.
+  items:
+    - Rotation of local Linux account passwords from the item that stores them
+    - Agentless — nothing installed on the target servers, no inbound port
+    - One outbound SSH session per operation, run in a background task
+    - Managed endpoints with host key trust on first use
+    - Host key verified before the credential is transmitted; a mismatch blocks the rotation
+    - Enrollment refuses an SSH account that cannot actually change a password
+    - Reusable rotation policies — frequency, length, character sets, rotate on enrollment
+    - Generated passwords filtered so the remote password change cannot be malformed
+    - Account discovery from the endpoint, with system accounts filtered out
+    - Manual rotation, or a scheduler that retries transient failures then suspends
+    - Periodic reachability, OS and privilege checks of enrolled endpoints
+    - Per-endpoint pause with a recorded reason, without disturbing account state
+    - Managed items show a badge and keep their login and password read-only
+    - Deletion, and moving into a personal folder, refused while an item is linked
+    - Rotation audit log that never records a secret
+    - Separate "Can manage LAPR" permission, distinct from administration
+    - System Health and Statistics reports covering scheduler, queues and failures
+    - Optional email alerts on rotation failure, carrying operational metadata only
+
 - group: Governance and compliance
   icon: clipboard-check
   intro: Evidence produced as a by-product of normal use.

@@ -9,22 +9,22 @@
 
   <title>Shared credentials without the shared spreadsheet | Teampass</title>
   <meta name="description" content="Teampass for small and medium teams — shared password folders with role-based access, audit trails, Secure Send for contractors and browser autofill.">
-  <link rel="canonical" href="https://teampass.net/for-teams.html">
+  <link rel="canonical" href="http://localhost:4000/for-teams.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Teampass">
   <meta property="og:title" content="Shared credentials without the shared spreadsheet | Teampass">
   <meta property="og:description" content="Teampass for small and medium teams — shared password folders with role-based access, audit trails, Secure Send for contractors and browser autofill.">
-  <meta property="og:url" content="https://teampass.net/for-teams.html">
-  <meta property="og:image" content="https://teampass.net/images/og-image.png">
+  <meta property="og:url" content="http://localhost:4000/for-teams.html">
+  <meta property="og:image" content="http://localhost:4000/images/og-image.png">
   <meta property="og:locale" content="en_GB">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Shared credentials without the shared spreadsheet | Teampass">
   <meta name="twitter:description" content="Teampass for small and medium teams — shared password folders with role-based access, audit trails, Secure Send for contractors and browser autofill.">
-  <meta name="twitter:image" content="https://teampass.net/images/og-image.png">
+  <meta name="twitter:image" content="http://localhost:4000/images/og-image.png">
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="stylesheet" href="/css/style.css">
@@ -70,6 +70,11 @@
           <li>
             <a href="/whats-new.html">
               What's new<span>Highlights of the 3.2 line</span>
+            </a>
+          </li>
+          <li>
+            <a href="/lapr.html">
+              Linux password rotation<span>Agentless rotation of Linux account passwords over SSH</span>
             </a>
           </li>
           <li>
@@ -249,6 +254,7 @@
           <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Per-item history</span></li>
           <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Leaver risk report listing what a departing account could reach</span></li>
           <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Rotation tracking, so overdue credentials surface on their own</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>For Linux servers, <a href="/lapr.html">rotation Teampass performs itself</a>, over SSH</span></li>
         </ul>
       </div>
       <div class="tp-split__visual">
@@ -374,7 +380,7 @@
   </details>
   <details class="tp-faq__item">
     <summary>What happens when someone leaves?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
-    <div class="tp-faq__answer"><p>Disable the account and their access is gone. The leaver risk report shows which credentials they had reached, so you know exactly what to rotate instead of rotating everything or, more commonly, nothing.</p>
+    <div class="tp-faq__answer"><p>Disable the account and their access is gone. The leaver risk report shows which credentials they had reached, so you know exactly what to rotate instead of rotating everything or, more commonly, nothing. For the shared Linux logins on that list, <a href="/lapr.html">LAPR</a> can do the rotation for you, over SSH.</p>
 </div>
   </details>
   <details class="tp-faq__item">
@@ -436,6 +442,7 @@
           <ul>
             <li><a href="/features.html">Features</a></li>
             <li><a href="/whats-new.html">What's new</a></li>
+            <li><a href="/lapr.html">Linux password rotation</a></li>
             <li><a href="/extension.html">Browser extension</a></li>
             <li><a href="/install.html">Install &amp; requirements</a></li>
             <li><a href="/pricing.html">Pricing</a></li>

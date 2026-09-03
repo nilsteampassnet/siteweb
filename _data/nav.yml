@@ -9,6 +9,9 @@
     - title: What's new
       url: /whats-new.html
       summary: Highlights of the 3.2 line
+    - title: Linux password rotation
+      url: /lapr.html
+      summary: Agentless rotation of Linux account passwords over SSH
     - title: Browser extension
       url: /extension.html
       summary: Autofill and capture for Chrome, Firefox and Edge

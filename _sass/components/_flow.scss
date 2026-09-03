@@ -1,0 +1,69 @@
+/**
+ *  Process flow
+ *
+ *  Ordered stages of a sequence, connected left-to-right on desktop and
+ *  stacked on mobile. Built for the LAPR rotation pipeline, where the order of
+ *  the steps is the whole point — the password reaches the server before the
+ *  vault records it.
+ */
+
+.tp-flow {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: $sp-5;
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: $sp-6;
+  }
+}
+
+.tp-flow__step {
+  position: relative;
+  padding: $sp-5;
+  border: 1px solid var(--tp-border);
+  border-radius: $radius-lg;
+  background: var(--tp-surface);
+
+  h3 {
+    font-size: $fs-base;
+    font-weight: $fw-semibold;
+    line-height: $lh-snug;
+    margin-bottom: $sp-2;
+    color: var(--tp-text);
+  }
+
+  p {
+    margin: 0;
+    font-size: $fs-sm;
+    line-height: $lh-base;
+    color: var(--tp-text-muted);
+  }
+
+  // Purely decorative, and only drawn once the steps actually sit in a row.
+  @media (min-width: $bp-lg) {
+    &:not(:last-child):after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -$sp-6;
+      width: $sp-6;
+      height: 2px;
+      transform: translateY(-50%);
+      background: linear-gradient(to right, var(--tp-border-strong), var(--tp-accent));
+    }
+  }
+}
+
+.tp-flow__stage {
+  display: inline-block;
+  margin-bottom: $sp-3;
+  font-family: $font-family-mono;
+  font-size: $fs-xs;
+  font-weight: $fw-semibold;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--tp-accent-strong);
+}

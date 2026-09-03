@@ -31,6 +31,13 @@ faq:
       Yes — a REST API covering item and folder CRUD, the whole folder tree in a
       single call, and native Bash and PowerShell clients. Folder rights are
       enforced identically through the API and the web interface.
+  - question: Can Teampass rotate the credentials it stores?
+    answer: >-
+      For local Linux accounts, yes — LAPR changes the password on the server
+      over SSH and then re-encrypts the item, agentless, on a policy or on
+      demand. Windows, directory, database and cloud identities are out of
+      scope; see the <a href="/lapr.html">LAPR page</a> for exactly where the
+      boundary sits.
   - question: What about separation of duties for administrators?
     answer: >-
       Administrators manage the instance, but personal folders are decryptable
@@ -211,6 +218,43 @@ faq:
       </div>
       <div class="tp-split__visual">
         <img src="{{ '/images/portfolio/tp3_sw_6.png' | relative_url }}" alt="A user profile showing the API token and the active API sessions, each revocable individually" width="1920" height="879" loading="lazy">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="tp-split">
+      <div>
+        <h3>And the Linux accounts themselves</h3>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          Tracking that a credential is overdue is only half the control. LAPR
+          performs the rotation: it generates the password from a policy, pushes
+          it to the server over SSH, and only then re-encrypts the item — so the
+          vault never records a password the machine refused. Agentless, with
+          nothing installed on the targets, and with its own operator permission
+          separate from administration.
+        </p>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span>Rotation evidence that is a record of an action, not of an intention</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Host key verified before the privileged credential is transmitted</span></li>
+          <li>{% include components/icon.html name="check" %}<span>A dedicated audit log that never records a secret</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Scoped to local Linux accounts — stated plainly on its own page</span></li>
+        </ul>
+        <p style="margin-top: 24px;">
+          <a class="tp-link-arrow" href="{{ '/lapr.html' | relative_url }}">
+            How LAPR works {% include components/icon.html name="arrow-right" %}
+          </a>
+        </p>
+      </div>
+      <div>
+        <div class="tp-callout">
+          {% include components/icon.html name="refresh" %}
+          <p>
+            An auditor asking "when was this last rotated, and by what process?"
+            gets a timestamped answer naming the policy, the endpoint and the
+            outcome — rather than a person recalling a maintenance window.
+          </p>
+        </div>
       </div>
     </div>
 

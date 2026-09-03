@@ -24,6 +24,42 @@
 
   &--alt { background: var(--tp-bg-alt); }
   &--tight { padding: $sp-7 0; }
+
+  // Dark band used to single out one section mid-page. It sits outside the
+  // light/alt alternation on purpose, so inserting one does not flip the
+  // background of every section below it.
+  &--inverse {
+    background: var(--tp-bg-inverse);
+    color: var(--tp-text-inverse);
+
+    .tp-section-header {
+      h2 { color: var(--tp-text-inverse); }
+      p  { color: var(--tp-text-inverse-muted); }
+      &__eyebrow { color: var(--tp-accent); }
+    }
+
+    h2, h3, strong { color: var(--tp-text-inverse); }
+    p { color: var(--tp-text-inverse-muted); }
+
+    .tp-checklist li { color: var(--tp-text-inverse-muted); }
+    .tp-checklist strong { color: var(--tp-text-inverse); }
+
+    .tp-link-arrow { color: var(--tp-accent); }
+
+    .tp-code {
+      border-color: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--tp-text-inverse);
+    }
+
+    .tp-callout {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--tp-text-inverse);
+
+      p { color: var(--tp-text-inverse-muted); }
+      .tp-icon { color: var(--tp-accent); }
+    }
+  }
 }
 
 .tp-section-header {
@@ -65,11 +101,13 @@
   }
 }
 
-// Auto-fitting grid; `--min` tunes the smallest acceptable column
+// Auto-fitting grid; `--min` tunes the smallest acceptable column.
+// `min(..., 100%)` keeps a wide `--min` from becoming a hard floor on a narrow
+// screen, which would push the track past the viewport and scroll the body.
 .tp-grid {
   display: grid;
   gap: $sp-5;
-  grid-template-columns: repeat(auto-fit, minmax(var(--min, 260px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--min, 260px), 100%), 1fr));
 }
 
 .tp-grid--2 { --min: 320px; }
@@ -80,6 +118,10 @@
   display: grid;
   gap: $sp-6;
   align-items: center;
+  // The single stacked column needs the same 0 floor the two desktop tracks
+  // get below, or a wide child (a `.tp-code` block) stretches it past the
+  // viewport instead of scrolling inside itself.
+  grid-template-columns: minmax(0, 1fr);
 
   @media (min-width: $bp-lg) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -184,6 +226,7 @@
 // Fenced command blocks
 .tp-code {
   display: block;
+  max-width: 100%;
   overflow-x: auto;
   padding: $sp-4;
   border-radius: $radius;

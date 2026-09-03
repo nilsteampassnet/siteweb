@@ -9,22 +9,22 @@
 
   <title>Prove your access controls, don't just claim them | Teampass</title>
   <meta name="description" content="Teampass for enterprise — access recertification campaigns, compliance evidence export, data classification, LDAP/AD with nested groups, OAuth2 SSO and a REST API, all self-hosted.">
-  <link rel="canonical" href="https://teampass.net/for-enterprise.html">
+  <link rel="canonical" href="http://localhost:4000/for-enterprise.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Teampass">
   <meta property="og:title" content="Prove your access controls, don't just claim them | Teampass">
   <meta property="og:description" content="Teampass for enterprise — access recertification campaigns, compliance evidence export, data classification, LDAP/AD with nested groups, OAuth2 SSO and a REST API, all self-hosted.">
-  <meta property="og:url" content="https://teampass.net/for-enterprise.html">
-  <meta property="og:image" content="https://teampass.net/images/og-image.png">
+  <meta property="og:url" content="http://localhost:4000/for-enterprise.html">
+  <meta property="og:image" content="http://localhost:4000/images/og-image.png">
   <meta property="og:locale" content="en_GB">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Prove your access controls, don't just claim them | Teampass">
   <meta name="twitter:description" content="Teampass for enterprise — access recertification campaigns, compliance evidence export, data classification, LDAP/AD with nested groups, OAuth2 SSO and a REST API, all self-hosted.">
-  <meta name="twitter:image" content="https://teampass.net/images/og-image.png">
+  <meta name="twitter:image" content="http://localhost:4000/images/og-image.png">
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="stylesheet" href="/css/style.css">
@@ -70,6 +70,11 @@
           <li>
             <a href="/whats-new.html">
               What's new<span>Highlights of the 3.2 line</span>
+            </a>
+          </li>
+          <li>
+            <a href="/lapr.html">
+              Linux password rotation<span>Agentless rotation of Linux account passwords over SSH</span>
             </a>
           </li>
           <li>
@@ -333,6 +338,43 @@
       </div>
     </div>
 
+    <hr>
+
+    <div class="tp-split">
+      <div>
+        <h3>And the Linux accounts themselves</h3>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          Tracking that a credential is overdue is only half the control. LAPR
+          performs the rotation: it generates the password from a policy, pushes
+          it to the server over SSH, and only then re-encrypts the item — so the
+          vault never records a password the machine refused. Agentless, with
+          nothing installed on the targets, and with its own operator permission
+          separate from administration.
+        </p>
+        <ul class="tp-checklist">
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Rotation evidence that is a record of an action, not of an intention</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Host key verified before the privileged credential is transmitted</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A dedicated audit log that never records a secret</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Scoped to local Linux accounts — stated plainly on its own page</span></li>
+        </ul>
+        <p style="margin-top: 24px;">
+          <a class="tp-link-arrow" href="/lapr.html">
+            How LAPR works <svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </p>
+      </div>
+      <div>
+        <div class="tp-callout">
+          <svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+          <p>
+            An auditor asking "when was this last rotated, and by what process?"
+            gets a timestamped answer naming the policy, the endpoint and the
+            outcome — rather than a person recalling a maintenance window.
+          </p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -386,6 +428,11 @@
   <details class="tp-faq__item">
     <summary>Is there an API for our automation?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
     <div class="tp-faq__answer"><p>Yes — a REST API covering item and folder CRUD, the whole folder tree in a single call, and native Bash and PowerShell clients. Folder rights are enforced identically through the API and the web interface.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>Can Teampass rotate the credentials it stores?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>For local Linux accounts, yes — LAPR changes the password on the server over SSH and then re-encrypts the item, agentless, on a policy or on demand. Windows, directory, database and cloud identities are out of scope; see the <a href="/lapr.html">LAPR page</a> for exactly where the boundary sits.</p>
 </div>
   </details>
   <details class="tp-faq__item">
@@ -452,6 +499,7 @@
           <ul>
             <li><a href="/features.html">Features</a></li>
             <li><a href="/whats-new.html">What's new</a></li>
+            <li><a href="/lapr.html">Linux password rotation</a></li>
             <li><a href="/extension.html">Browser extension</a></li>
             <li><a href="/install.html">Install &amp; requirements</a></li>
             <li><a href="/pricing.html">Pricing</a></li>

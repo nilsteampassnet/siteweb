@@ -38,5 +38,6 @@
   bullets:
     - Access recertification campaigns with immutable decisions
     - Compliance reports and evidence export
+    - Linux account passwords rotated over SSH, agentless
     - LDAP/AD with nested groups, OAuth2 SSO
     - Data classification and ownership

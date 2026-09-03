@@ -54,6 +54,18 @@ p {
   &:last-child { margin-bottom: 0; }
 }
 
+// Inline code. `.tp-code` (the block variant) and `.tp-prose code` both carry
+// a class, so they keep winning over this base rule.
+code {
+  padding: 1px 5px;
+  border-radius: $radius-sm;
+  background: var(--tp-surface-alt);
+  font-family: $font-family-mono;
+  font-size: 0.875em;
+  color: var(--tp-text);
+  white-space: nowrap;
+}
+
 hr {
   clear: both;
   border: none;

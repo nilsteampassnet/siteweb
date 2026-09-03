@@ -205,6 +205,7 @@ cta:
           <li>{% include components/icon.html name="check" %}<span>Silent tampering with stored ciphertext</span></li>
           <li>{% include components/icon.html name="check" %}<span>Credentials lingering after someone leaves, once the account is disabled</span></li>
           <li>{% include components/icon.html name="check" %}<span>Unaccountable access — every read is recorded</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Stale Linux account passwords — <a href="{{ '/lapr.html' | relative_url }}">LAPR</a> performs the rotation, it does not only report it</span></li>
         </ul>
       </article>
 
@@ -217,6 +218,7 @@ cta:
           <li>{% include components/icon.html name="minus-circle" %}<span>A user who is entitled to a credential and then leaks it</span></li>
           <li>{% include components/icon.html name="minus-circle" %}<span>Weak deployment — no TLS, no backups, a public instance with a weak admin password</span></li>
           <li>{% include components/icon.html name="minus-circle" %}<span>A lost recovery account combined with a lost owner passphrase</span></li>
+          <li>{% include components/icon.html name="minus-circle" %}<span>A compromised host with LAPR enabled — it holds reusable privileged SSH credentials by design</span></li>
         </ul>
       </article>
 
@@ -294,6 +296,14 @@ cta:
       <article class="tp-card tp-card--muted">
         <h3>Upgrade promptly</h3>
         <p>Advisories are published with each release. Watch the repository and apply security releases quickly.</p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Fence LAPR before enabling it</h3>
+        <p>It ships disabled. Turn on the hostname allowlist, grant the operator permission narrowly, and leave management of the Teampass host itself switched off.</p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <h3>Treat SSH credential items as crown jewels</h3>
+        <p>Whoever can read the folder holding them holds root on every enrolled server. Restrict that folder harder than anything else in the vault.</p>
       </article>
     </div>
 

@@ -9,22 +9,22 @@
 
   <title>Teampass next to the alternatives | Teampass</title>
   <meta name="description" content="How Teampass compares to Bitwarden self-hosted, Vaultwarden, Passbolt and KeePass with a file share — access control, governance, identity integration and the areas where the alternatives are stronger.">
-  <link rel="canonical" href="https://teampass.net/compare.html">
+  <link rel="canonical" href="http://localhost:4000/compare.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Teampass">
   <meta property="og:title" content="Teampass next to the alternatives | Teampass">
   <meta property="og:description" content="How Teampass compares to Bitwarden self-hosted, Vaultwarden, Passbolt and KeePass with a file share — access control, governance, identity integration and the areas where the alternatives are stronger.">
-  <meta property="og:url" content="https://teampass.net/compare.html">
-  <meta property="og:image" content="https://teampass.net/images/og-image.png">
+  <meta property="og:url" content="http://localhost:4000/compare.html">
+  <meta property="og:image" content="http://localhost:4000/images/og-image.png">
   <meta property="og:locale" content="en_GB">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Teampass next to the alternatives | Teampass">
   <meta name="twitter:description" content="How Teampass compares to Bitwarden self-hosted, Vaultwarden, Passbolt and KeePass with a file share — access control, governance, identity integration and the areas where the alternatives are stronger.">
-  <meta name="twitter:image" content="https://teampass.net/images/og-image.png">
+  <meta name="twitter:image" content="http://localhost:4000/images/og-image.png">
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="stylesheet" href="/css/style.css">
@@ -70,6 +70,11 @@
           <li>
             <a href="/whats-new.html">
               What's new<span>Highlights of the 3.2 line</span>
+            </a>
+          </li>
+          <li>
+            <a href="/lapr.html">
+              Linux password rotation<span>Agentless rotation of Linux account passwords over SSH</span>
             </a>
           </li>
           <li>
@@ -299,6 +304,19 @@
             </td>
           </tr>
           <tr>
+            <th scope="row">Rotates local Linux account passwords</th>
+            <td class="is-highlight"><span class="tp-mark tp-mark--yes"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Yes</span><span style="display:block; font-size:0.8125rem; color:var(--tp-text-muted); margin-top:2px;">Agentless, over SSH</span>
+            </td>
+            <td><span class="tp-mark tp-mark--no"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg> No</span>
+            </td>
+            <td><span class="tp-mark tp-mark--no"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg> No</span>
+            </td>
+            <td><span class="tp-mark tp-mark--no"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg> No</span>
+            </td>
+            <td><span class="tp-mark tp-mark--no"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg> No</span>
+            </td>
+          </tr>
+          <tr>
             <th scope="row">LDAP / Active Directory</th>
             <td class="is-highlight"><span class="tp-mark tp-mark--yes"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Yes</span><span style="display:block; font-size:0.8125rem; color:var(--tp-text-muted); margin-top:2px;">Included, nested groups</span>
             </td>
@@ -523,6 +541,7 @@
           <ul>
             <li><a href="/features.html">Features</a></li>
             <li><a href="/whats-new.html">What's new</a></li>
+            <li><a href="/lapr.html">Linux password rotation</a></li>
             <li><a href="/extension.html">Browser extension</a></li>
             <li><a href="/install.html">Install &amp; requirements</a></li>
             <li><a href="/pricing.html">Pricing</a></li>

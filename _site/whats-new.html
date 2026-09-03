@@ -9,22 +9,22 @@
 
   <title>What's new in Teampass 3.2 | Teampass</title>
   <meta name="description" content="Teampass 3.2 release highlights — AES-256-GCM encryption, Security Posture Dashboard, access recertification, Secure Send and the security advisories closed in each version.">
-  <link rel="canonical" href="https://teampass.net/whats-new.html">
+  <link rel="canonical" href="http://localhost:4000/whats-new.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Teampass">
   <meta property="og:title" content="What's new in Teampass 3.2 | Teampass">
   <meta property="og:description" content="Teampass 3.2 release highlights — AES-256-GCM encryption, Security Posture Dashboard, access recertification, Secure Send and the security advisories closed in each version.">
-  <meta property="og:url" content="https://teampass.net/whats-new.html">
-  <meta property="og:image" content="https://teampass.net/images/og-image.png">
+  <meta property="og:url" content="http://localhost:4000/whats-new.html">
+  <meta property="og:image" content="http://localhost:4000/images/og-image.png">
   <meta property="og:locale" content="en_GB">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="What's new in Teampass 3.2 | Teampass">
   <meta name="twitter:description" content="Teampass 3.2 release highlights — AES-256-GCM encryption, Security Posture Dashboard, access recertification, Secure Send and the security advisories closed in each version.">
-  <meta name="twitter:image" content="https://teampass.net/images/og-image.png">
+  <meta name="twitter:image" content="http://localhost:4000/images/og-image.png">
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="stylesheet" href="/css/style.css">
@@ -70,6 +70,11 @@
           <li>
             <a href="/whats-new.html">
               What's new<span>Highlights of the 3.2 line</span>
+            </a>
+          </li>
+          <li>
+            <a href="/lapr.html">
+              Linux password rotation<span>Agentless rotation of Linux account passwords over SSH</span>
             </a>
           </li>
           <li>
@@ -174,10 +179,15 @@
 
     <header class="tp-section-header">
       <span class="tp-section-header__eyebrow">The short version</span>
-      <h2>Four changes worth upgrading for</h2>
+      <h2>Five changes worth upgrading for</h2>
     </header>
 
     <div class="tp-grid tp-grid--4">
+      <article class="tp-card">
+        <span class="tp-icon-tile"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></span>
+        <h3>Linux password rotation</h3>
+        <p>LAPR changes the passwords of local Linux accounts over SSH, agentless, from the item that stores them — pushing to the server first, then re-encrypting the vault entry.</p>
+      </article>
       <article class="tp-card">
         <span class="tp-icon-tile"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
         <h3>Authenticated encryption</h3>
@@ -227,13 +237,180 @@
     </header>
     <article class="tp-card" style="margin-bottom: 24px;">
       <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
+        <h3 style="margin:0; font-size:1.375rem;">3.2.2.1</h3>
+        <span class="tp-badge">3 September 2026</span>
+      </div>
+      <p style="margin-bottom:16px;">Seven security advisories, four of them in LAPR, plus file integrity diagnostics, folder search and a Docker upgrade path that no longer leaves databases half-migrated.</p>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>LAPR endpoints are now scoped to the caller, so an operator can no longer attach an account to an endpoint whose SSH credential they cannot read (GHSA-mq4w-p2gw-pqp4)</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The SSH host key is verified before the credential is transmitted, closing a window where a man-in-the-middle received the plaintext password of a privileged account (GHSA-h25r-8cc9-2cg8)</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Deleting a managed account and changing its rotation policy now check folder scope, blocking a weak policy from being pushed to a privileged Linux account (GHSA-v7hq-28rv-qh3p)</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The API change feed no longer discloses instance-wide item ids and activity to a caller holding no folder rights (GHSA-9823-p8pg-rfm4)</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The item history detail is encoded where it is rendered, closing a stored cross-site scripting reachable from any edited field (GHSA-mwxw-gg4p-8xpc)</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The item login is rendered as text rather than markup (GHSA-47xg-w656-j4v4)</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Two entity-decoding helpers no longer build a live DOM node while decoding (GHSA-5vf9-rxqv-g8wp)</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The command palette applies item-level restrictions, so it no longer returns items the user cannot open</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">New</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>File integrity and permission diagnostics in System Health, replacing the old unknown-files counter and its web deletion workflow with a read-only report</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A command-line integrity script for environments reachable only over SSH</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Folder results, a folder filter and a reset control on the search page</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Periodic checks of enrolled LAPR endpoints, and a pause that suspends rotations for one endpoint</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Repair my personal items encryption keys, in My Profile, for an owner whose internal reference key went missing</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The background key repair task now covers personal items, writing a key for their owner only</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Personal folders are excluded from key redistribution by their position in the tree, instead of a flag that legacy data never set</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>An empty custom field is no longer reported as unreadable, and can be cleared again</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The One-Time View page decodes stored entities, so descriptions and logins render as written</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>OAuth2 self-registration assigns the configured fallback role again</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The Docker container applies every intermediate upgrade step and records the version reached</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Published Docker images report the real version instead of the branch name</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Every Tools page query builds its table name from the configured prefix, restoring two repair tools on installations that do not use the default one</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Search no longer hides items sitting deep inside a personal folder</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A password changed through the API is recorded in the item history</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Item revision timestamps are returned wherever the revision is</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Upgrade notes</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Schema change — the upgrade wizard runs on every installation</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Periodic LAPR endpoint checks stay off after an upgrade, so no outbound SSH starts without an administrator enabling it</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Updating an item password through the API can now be refused while encryption keys are still being distributed — retry, the message says so</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The web workflow that deleted unknown files is gone, replaced by the read-only report</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Back up the database before upgrading</span></li>
+      </ul>
+    </article>
+    <article class="tp-card" style="margin-bottom: 24px;">
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
+        <h3 style="margin:0; font-size:1.375rem;">3.2.2.0</h3>
+        <span class="tp-badge">23 August 2026</span>
+      </div>
+      <p style="margin-bottom:16px;">LAPR — agentless rotation of Linux account passwords over SSH — plus item revisions for offline synchronization and three new notification types.</p>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">New</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>LAPR (Linux Account Password Rotation) — Teampass generates a password from a policy, pushes it to the server over SSH, then re-encrypts the item, so the vault only ever records a password the machine actually accepted</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Agentless: nothing is installed on the target servers, and the existing item encryption model is reused rather than a parallel secret store</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Managed endpoints with host key trust on first use, reusable rotation policies, and manual or scheduled rotation that retries then suspends instead of hammering an unreachable host</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A dedicated audit log that never records a secret, and a separate "Can manage LAPR" permission held by non-administrators</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Item revisions and a delta endpoint for offline clients, with an optional precondition on update that rejects a conflicting write instead of overwriting it</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Notifications for local password expiry, knowledge base publication and backup failures</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Versioned Docker image tags — teampass/teampass:3.2.2.0 can now be pinned</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Search results open in a modal, with copy login and copy password directly on the row</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A page transition indicator covering navigation and slow AJAX, replacing the Pace plugin</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Browser-native confirmation dialogs replaced by the Teampass modal</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Personal folders no longer listed in the role, folder and user management screens</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Independent manual overrides for each web-server log path</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Upgrade notes</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Schema change — the upgrade wizard runs on every installation</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>LAPR is disabled by default, does nothing until an administrator enables it, and needs its own permission that no existing user receives on upgrade</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Back up the database before upgrading</span></li>
+      </ul>
+    </article>
+    <article class="tp-card" style="margin-bottom: 24px;">
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
+        <h3 style="margin:0; font-size:1.375rem;">3.2.1.7</h3>
+        <span class="tp-badge">18 August 2026</span>
+      </div>
+      <p style="margin-bottom:16px;">Customizable email templates, server log reading on the Health page, and a refreshed Docker image clearing most of the vulnerabilities reported against it.</p>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Upgrade wizard administrator check had no server-side effect — the grant is now kept server-side and required on every step</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Link secrets masked in the Health page log excerpts</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The client-side purifier split into inbound and outbound entry points, closing the class of XSS that assumed a purified value was safe to concatenate</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The WebDAV backup client no longer follows redirects, so Basic credentials cannot be replayed towards another host</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Vendored crypto-js updated to 4.2.0 (CVE-2023-46233)</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">New</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Customizable email templates — every subject and body rewritable per language, stored as a pure diff over the shipped strings</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Health page reading of the WebSocket and server access logs</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Docker base image moved to Alpine 3.24, clearing around 42 of the 48 open image alerts</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>All Composer dependencies updated, clearing the five Dependabot advisories on guzzlehttp/guzzle</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Development dependencies are no longer part of an installation</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Upgrade notes</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Schema change — the upgrade wizard runs on every installation and creates the email templates table</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>An externalized WebDAV destination that relied on a redirect will stop working</span></li>
+      </ul>
+    </article>
+    <article class="tp-card" style="margin-bottom: 24px;">
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
+        <h3 style="margin:0; font-size:1.375rem;">3.2.1.6</h3>
+        <span class="tp-badge">11 August 2026</span>
+      </div>
+      <p style="margin-bottom:16px;">A broad sweep of stored cross-site scripting sinks closed, and the client IP feeding the audit log and the bruteforce counter can no longer be forged.</p>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Stored markup in folder titles imported from KeePass</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>LDAP and OAuth2 identity fields neutralized before storage, and encoded in the directory sync screens</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Folder titles, folder paths and role names encoded in the roles matrix</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Item labels, recipient emails and task error messages encoded in attribute contexts</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>WebSocket notification payloads escaped</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Item icons stored by the API before 3.2.1 can no longer inject markup</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The client IP used for security decisions is resolved through trusted proxies only</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Two earlier security fixes that had been applied to the wrong copy of a duplicated file are now actually served</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Accented names are stored with their accents, and names already in the database are realigned by the upgrade</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A sentinel test pins client-side HTML encoding at each sink, and another covers all 21 duplicated file pairs</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Upgrade notes</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>No table structure change, but three idempotent data migrations run once through the upgrade wizard</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The strict client IP resolution is opt-in — declare your trusted proxies to enable it</span></li>
+      </ul>
+    </article>
+    <article class="tp-card" style="margin-bottom: 24px;">
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
+        <h3 style="margin:0; font-size:1.375rem;">3.2.1.5</h3>
+        <span class="tp-badge">7 August 2026</span>
+      </div>
+      <p style="margin-bottom:16px;">Two authorization bypasses closed, and the personal-to-shared item move rebuilt on a single hardened path shared by the web interface and the API.</p>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Folder authorization was only checked on the first page of the items list, so asking for a later page returned the metadata of any folder, including other users' personal folders (GHSA-xrjw-r5hx-29rj)</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Item copy verified the rights on the source folder and never looked at the destination, letting any non-read-only user copy into an admin-restricted folder (GHSA-g797-4rh6-m2xp)</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">New</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Knowledge base entries searchable from the command palette</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The account avatar shown in the topbar</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The personal-to-shared item move is one hardened implementation — a missing source key now aborts the move instead of dropping the custom field</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The background task queue is visible on the Health page, and the task drain window is configurable</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The account creation email now reaches users created by their first LDAP login</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>KeePass XML import no longer fails on entries with empty fields</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Upgrade notes</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Code only — installations already on 3.2.1.4 are not sent through the upgrade wizard</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Anything automated against the items list must request the first page of a folder before asking for later pages</span></li>
+      </ul>
+    </article>
+    <article class="tp-card" style="margin-bottom: 24px;">
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
         <h3 style="margin:0; font-size:1.375rem;">3.2.1.4</h3>
         <span class="tp-badge">2 August 2026</span>
       </div>
       <p style="margin-bottom:16px;">Faceted search, a Quick access panel, and a folder-scope authorization bypass in search closed.</p>
       <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
       <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Folder scope bypass in the search backend — the `limited` parameter replaced the accessible-folder scope instead of narrowing it, letting any authenticated user enumerate item metadata across folder boundaries</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Folder scope bypass in the search backend — the "limited" parameter replaced the accessible-folder scope instead of narrowing it, letting any authenticated user enumerate item metadata across folder boundaries</span></li>
         <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Search scope now intersects the requested subtree with the folders the caller can reach, and subtracts other people's personal folders</span></li>
       </ul>
       <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">New</h4>
@@ -419,6 +596,7 @@
           <ul>
             <li><a href="/features.html">Features</a></li>
             <li><a href="/whats-new.html">What's new</a></li>
+            <li><a href="/lapr.html">Linux password rotation</a></li>
             <li><a href="/extension.html">Browser extension</a></li>
             <li><a href="/install.html">Install &amp; requirements</a></li>
             <li><a href="/pricing.html">Pricing</a></li>

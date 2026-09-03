@@ -1,0 +1,46 @@
+<section class="tp-section tp-section--inverse" id="lapr">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Linux password rotation</span>
+      <h2>Your vault knows the root password. Teampass can change it.</h2>
+      <p>
+        LAPR rotates local Linux account passwords over SSH, straight from the
+        item that stores them. Agentless — nothing is installed on the target
+        servers — and part of the open-source server, not a separate product.
+      </p>
+    </header>
+
+    <div class="tp-split">
+      <div>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span><strong>The server changes first.</strong> Teampass only records a password the machine has already accepted.</span></li>
+          <li>{% include components/icon.html name="check" %}<span><strong>Reusable policies.</strong> Frequency, length and character sets, applied to as many accounts as you like.</span></li>
+          <li>{% include components/icon.html name="check" %}<span><strong>Host key verified before the credential is sent.</strong> A changed fingerprint blocks the rotation instead of logging a warning.</span></li>
+          <li>{% include components/icon.html name="check" %}<span><strong>Retries, then suspends.</strong> An unreachable host is never hammered, and the failure is visible rather than silent.</span></li>
+          <li>{% include components/icon.html name="check" %}<span><strong>An audit log that never holds a secret</strong>, and its own permission, separate from administration.</span></li>
+        </ul>
+        <p style="margin-top: 24px;">
+          <a class="tp-link-arrow" href="{{ '/lapr.html' | relative_url }}">
+            How LAPR works, and what it deliberately does not do {% include components/icon.html name="arrow-right" %}
+          </a>
+        </p>
+      </div>
+      <div>
+        <p style="font-size: 0.8125rem; margin-bottom: 8px;">
+          The entire footprint on a managed host:
+        </p>
+        <code class="tp-code">printf '%s:%s\n' 'svc-deploy' '••••••' | chpasswd</code>
+        <div class="tp-callout" style="margin-top: 24px;">
+          {% include components/icon.html name="server" %}
+          <p>
+            No agent, no package, no inbound port. One outbound SSH session from
+            the Teampass host, in a background task, using the SSH library
+            already bundled with the application.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

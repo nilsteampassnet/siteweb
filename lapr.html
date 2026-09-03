@@ -1,0 +1,587 @@
+---
+layout: page
+title: Rotate Linux passwords from the vault that stores them
+eyebrow: LAPR — Linux Account Password Rotation
+lead: >-
+  Teampass generates the password, pushes it to the server over SSH, then
+  re-encrypts the item — so the vault only ever records a password the machine
+  actually accepted. Nothing is installed on the target servers.
+description: >-
+  LAPR rotates local Linux account passwords directly from Teampass, agentless,
+  over SSH. Rotation policies, host key verification, a secret-free audit log
+  and a scheduler that retries then suspends — in the open-source server.
+cta:
+  - label: Read the LAPR documentation
+    url: https://documentation.teampass.net/#/features/lapr
+  - label: Install Teampass
+    url: /install.html
+faq:
+  - question: Do I have to install anything on the servers?
+    answer: >-
+      No. LAPR is agentless. It opens an SSH session with a credential you
+      already store in Teampass, runs `chpasswd`, and disconnects. There is no
+      daemon, no package, no scheduled job and no configuration file on the
+      target.
+  - question: What does the SSH account need to be able to do?
+    answer: >-
+      Either be `root`, or hold **passwordless** `sudo` for `chpasswd`. Teampass
+      probes this during enrollment and refuses the endpoint if neither is true,
+      rather than accepting it and failing on every future rotation. When the
+      right is missing, the check screen shows the prerequisite and the
+      `sudoers` line for the operating system it detected.
+  - question: What happens if a server is unreachable?
+    answer: >-
+      Only transport failures — timeout, connection refused, host unreachable,
+      lost connection — are retried, up to the configured maximum and spaced by
+      the configured delay. After that the account is suspended and waits for a
+      human to use *Reset & resume*. Authentication, privilege, host key and
+      configuration failures stop immediately, because retrying cannot repair
+      them.
+  - question: What if the SSH host key changes?
+    answer: >-
+      The rotation is blocked. LAPR connects with a reusable, privileged
+      credential, so a changed host key is treated as a man-in-the-middle signal
+      rather than a note in a log. Verify the server, then trust the new key
+      explicitly.
+  - question: Does it work on Windows, Active Directory or databases?
+    answer: >-
+      No. LAPR rotates **local Linux accounts** over SSH, and nothing else.
+      Windows accounts, directory accounts, database users, network appliances
+      and cloud IAM identities are outside its scope. It is deliberately one
+      thing done properly rather than a thin layer over everything.
+  - question: Can a Teampass administrator rotate passwords?
+    answer: >-
+      No, and that is on purpose. Administrators enable and configure the
+      module; operating it needs the separate *Can manage LAPR* permission,
+      which is held by non-administrators, and folder rights still apply on top
+      — an operator can only manage accounts whose item folder they can write
+      to.
+  - question: Is a password ever written to a log?
+    answer: >-
+      No. The LAPR audit log records operational metadata only, on a
+      whitelist — action, endpoint, account, error code, actor, timestamp. The
+      same holds for the failure alert emails and for the System Health JSON
+      export.
+  - question: What happens if I switch the module off?
+    answer: >-
+      Everything is released. Linked items behave like ordinary items again —
+      no badge, no read-only field, no blocked delete or move — and pending
+      tasks are cancelled. Endpoints, accounts and audit history stay stored and
+      pick up where they left off when you switch it back on.
+  - question: Does LAPR create accounts or vault items?
+    answer: >-
+      Neither. It manages the password of a Linux account that already exists,
+      recorded in a Teampass item you already store. Discovery lists what is on
+      the server; you decide what gets managed.
+---
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">The gap everyone lives with</span>
+      <h2>Every vault knows the root password. Almost none can change it.</h2>
+      <p>
+        A password manager stores the credential; changing it on the machine is
+        someone's manual task, so it happens once, at build time, and then never
+        again. LAPR closes that loop — it shipped in 3.2.2, in the open-source
+        server, with no extra licence.
+      </p>
+    </header>
+
+    <div class="tp-grid">
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning">{% include components/icon.html name="clock" %}</span>
+        <h3>Rotation is scheduled, then postponed</h3>
+        <p>
+          Changing a service account password by hand means an outage window, a
+          runbook and someone available. It slips, and the credential quietly
+          ages into a compliance finding.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning">{% include components/icon.html name="git-branch" %}</span>
+        <h3>The vault and the machine drift apart</h3>
+        <p>
+          Someone rotates on the server and forgets the vault, or edits the vault
+          and never touches the server. Now nobody trusts either, so nobody
+          rotates anything.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning">{% include components/icon.html name="users" %}</span>
+        <h3>Offboarding leaves shared logins behind</h3>
+        <p>
+          The leaver report tells you which shared accounts a departing engineer
+          could reach. Acting on it means changing those passwords on dozens of
+          hosts — which is exactly why it does not get done.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="how">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">How a rotation runs</span>
+      <h2>The server changes first. The vault records second.</h2>
+      <p>
+        The order matters more than anything else on this page. Teampass only
+        ever stores a password the machine has already accepted, so the vault
+        cannot end up holding a credential that does not work.
+      </p>
+    </header>
+
+    <ol class="tp-flow">
+      <li class="tp-flow__step">
+        <span class="tp-flow__stage">Stage 1</span>
+        <h3>Read the current value</h3>
+        <p>
+          The item is decrypted server-side first. This proves the key chain
+          works before anything is touched, and captures the previous password
+          for the item history.
+        </p>
+      </li>
+      <li class="tp-flow__step">
+        <span class="tp-flow__stage">Stage 2</span>
+        <h3>Generate from the policy</h3>
+        <p>
+          Length and character sets come from the rotation policy, and the result
+          is filtered to be safe for <code>chpasswd</code> — no colon, no
+          whitespace, no quotes or backslash.
+        </p>
+      </li>
+      <li class="tp-flow__step">
+        <span class="tp-flow__stage">Stage 3</span>
+        <h3>Push it over SSH</h3>
+        <p>
+          One SSH session, one <code>chpasswd</code> call, through
+          <code>sudo -n</code> when the account is not root. If the server
+          refuses, nothing has changed anywhere.
+        </p>
+      </li>
+      <li class="tp-flow__step">
+        <span class="tp-flow__stage">Stage 4</span>
+        <h3>Re-encrypt and fan out</h3>
+        <p>
+          The item is re-encrypted, every user's key is refreshed, the previous
+          value is stored in the item history and connected browsers are updated
+          in real time.
+        </p>
+      </li>
+    </ol>
+
+    <div class="tp-callout tp-callout--warning" style="margin-top: 32px;">
+      {% include components/icon.html name="alert-triangle" %}
+      <p>
+        <strong>And when stage 4 fails?</strong> The account is marked in error
+        with a <strong>manual resync required</strong> note, because the server
+        already holds the new password. That case is stated loudly rather than
+        swallowed — it is the one situation where a human has to intervene, and
+        pretending otherwise would be worse than the outage.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="agentless">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Agentless</span>
+      <h2>What you install on the target servers: nothing</h2>
+    </header>
+
+    <div class="tp-split">
+      <div>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          No agent, no package, no port to open inbound, no configuration file to
+          template out. LAPR is an outbound SSH session from the Teampass host,
+          made with the <code>phpseclib3</code> library already bundled with the
+          application — there is no <code>sshpass</code>, no <code>php-ssh2</code>
+          extension and no call to <code>exec()</code> anywhere in the path.
+        </p>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          Every SSH operation runs in a background task. Nothing blocks a web
+          request, so a slow or dead host degrades a queue rather than a page.
+        </p>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span>Reachability from the Teampass host to the target SSH port</span></li>
+          <li>{% include components/icon.html name="check" %}<span><code>chpasswd</code> present on the target — it is, on every mainstream distribution</span></li>
+          <li>{% include components/icon.html name="check" %}<span>An SSH account that is <strong>root</strong>, or has <strong>passwordless</strong> <code>sudo</code> for <code>chpasswd</code></span></li>
+          <li>{% include components/icon.html name="check" %}<span>Teampass background tasks running — cron or the FPM trigger</span></li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size: 0.8125rem; color: var(--tp-text-muted); margin-bottom: 8px;">
+          The entire footprint on a managed host, root and non-root:
+        </p>
+        <code class="tp-code">printf '%s:%s\n' 'svc-deploy' '••••••' | chpasswd
+
+printf '%s:%s\n' 'svc-deploy' '••••••' | sudo -n chpasswd
+
+# discovery, when you ask for it
+getent passwd</code>
+        <div class="tp-callout" style="margin-top: 24px;">
+          {% include components/icon.html name="info" %}
+          <p>
+            The SSH credential itself is an ordinary Teampass item. LAPR reads it
+            server-side at connection time — it is never typed into a form, never
+            sent to a browser and never duplicated into a second secret store.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="safety">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Guard rails</span>
+      <h2>A tool that changes root passwords has to fail safely</h2>
+      <p>
+        LAPR holds a reusable, privileged credential for every server you enrol.
+        The design assumes that is dangerous, and constrains it accordingly.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="shield-check" %}</span>
+        <h3>Host key changes block the rotation</h3>
+        <p>
+          The fingerprint is trusted on first use at enrollment and verified
+          <em>before</em> the credential is transmitted. A mismatch aborts —
+          it is not downgraded to a warning, because the thing at risk is a
+          root password.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="refresh" %}</span>
+        <h3>Retry, then suspend — never hammer</h3>
+        <p>
+          Transient connectivity failures are retried on a delay you set, up to a
+          maximum you set. Then the account suspends and waits for a human.
+          Everything else — bad credentials, missing privilege, misconfiguration
+          — fails once and stops.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="file-text" %}</span>
+        <h3>An audit log that cannot leak</h3>
+        <p>
+          Every enrollment, check, rotation, retry, suspension, pause and reset is
+          recorded with its actor and outcome. The fields are a whitelist, so a
+          password cannot reach the log even by accident.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="users" %}</span>
+        <h3>Separated from administration</h3>
+        <p>
+          Administrators enable and configure LAPR. Operating it requires the
+          distinct <em>Can manage LAPR</em> permission, and folder rights apply on
+          top — you manage the accounts whose items you can already write.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="server" %}</span>
+        <h3>Off by default, and fenced in</h3>
+        <p>
+          The module ships disabled and does nothing until an administrator turns
+          it on. An optional allowlist restricts which hostnames LAPR may reach at
+          all, connection attempts are rate limited, and managing the Teampass
+          host itself is blocked unless it is deliberately, explicitly enabled.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="lock" %}</span>
+        <h3>No parallel secret store</h3>
+        <p>
+          Rotated passwords live in the same items, under the same AES-256-GCM
+          object keys and the same per-user key wrapping as everything else in
+          your vault. LAPR adds a workflow, not a second place for secrets to
+          sit.
+        </p>
+      </article>
+
+    </div>
+
+    <p style="margin-top: 32px;">
+      <a class="tp-link-arrow" href="{{ '/security.html' | relative_url }}">
+        The encryption and key distribution model {% include components/icon.html name="arrow-right" %}
+      </a>
+    </p>
+
+  </div>
+</section>
+
+<section class="tp-section" id="vault">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Inside the vault</span>
+      <h2>A managed item tells you it is managed</h2>
+    </header>
+
+    <div class="tp-split tp-split--reverse">
+      <div>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          The worst outcome for a rotation tool is a well-meaning colleague
+          editing a password by hand and desynchronising the vault from the
+          machine. Teampass makes that impossible rather than discouraged.
+        </p>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span><strong>Badges</strong> in item lists, search results and the item header mark managed items and SSH credential items</span></li>
+          <li>{% include components/icon.html name="check" %}<span>On a managed item the <strong>login and password are read-only</strong>; label, URL, description, tags and custom fields stay editable</span></li>
+          <li>{% include components/icon.html name="check" %}<span><strong>Deleting</strong> an item a managed account or endpoint still references is refused</span></li>
+          <li>{% include components/icon.html name="check" %}<span><strong>Moving</strong> one into a personal folder is refused — the server has to be able to read it</span></li>
+          <li>{% include components/icon.html name="check" %}<span>The same rules apply to bulk actions and to the <strong>REST API</strong>, which answers <code>409</code>; bulk operations skip linked items and tell you how many</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Automatic changes appear in the item history as <strong>LAPR system</strong>, manual ones under the name of whoever asked</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="tp-callout">
+          {% include components/icon.html name="git-branch" %}
+          <p>
+            Enforcement lives in the handlers, not the browser. Bypassing the
+            interface with a script gets you the same refusal, which is the only
+            version of this guarantee worth having.
+          </p>
+        </div>
+        <div class="tp-callout" style="margin-top: 16px;">
+          {% include components/icon.html name="info" %}
+          <p>
+            An SSH credential item stays editable on purpose — it is the recovery
+            path when a connection password is changed outside Teampass. The
+            interface warns that editing it does not change anything on Linux.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="operating">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Operating it</span>
+      <h2>Day to day</h2>
+    </header>
+
+    <div class="tp-grid tp-grid--2" style="--min: 460px;">
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="clipboard-check" %}</span>
+        <h3>Reusable rotation policies</h3>
+        <p>
+          Frequency from 1 to 3 650 days, length from 8 to 128, the character sets
+          you allow, and an optional rotate-on-enrollment so a newly managed
+          account gets a password nobody has ever seen. Three presets ship ready
+          to use; preview a sample before you save your own.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="search" %}</span>
+        <h3>Discovery instead of typing</h3>
+        <p>
+          Ask an endpoint what accounts it has: LAPR reads <code>getent passwd</code>
+          and lists <code>root</code> plus real login accounts, skipping system
+          accounts and anything shelled to <code>nologin</code>. You pick which
+          ones to manage — it never creates an item on your behalf.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="clock" %}</span>
+        <h3>Scheduled, checked and pausable</h3>
+        <p>
+          The scheduler rotates what is due. Enrolled endpoints are re-checked
+          periodically — reachability, OS, and the privilege probe — and a
+          recovering host is retried sooner than the normal cadence. One endpoint
+          going into maintenance can be paused, with a reason, without disturbing
+          the state or the due dates of its accounts.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="gauge" %}</span>
+        <h3>Health and statistics, without SSH</h3>
+        <p>
+          <em>System Health → LAPR</em> reports scheduler and worker state,
+          queues, overdue and suspended accounts, and referential problems.
+          <em>Statistics → LAPR</em> shows rotation volume, success rate, failure
+          categories and policy adoption. Both are passive reports — opening the
+          page never opens a connection.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="scope">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Honest scope</span>
+      <h2>What LAPR is not</h2>
+      <p>
+        This is one job done properly, not a privileged-access platform. Knowing
+        the edges before you deploy it is worth more than a longer feature list.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--2" style="--min: 460px;">
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--danger">{% include components/icon.html name="minus-circle" %}</span>
+        <h3>Local Linux accounts only</h3>
+        <p>
+          Windows accounts, directory accounts, database users, network
+          appliances and cloud IAM identities are out of scope. If your estate is
+          mostly one of those, LAPR is not the reason to choose Teampass.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--danger">{% include components/icon.html name="minus-circle" %}</span>
+        <h3>Not session brokering</h3>
+        <p>
+          LAPR changes passwords. It does not proxy your SSH sessions, record
+          them, or hand out short-lived access — the things a full PAM product
+          exists to do.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--danger">{% include components/icon.html name="minus-circle" %}</span>
+        <h3>Managed items must be shared, not personal</h3>
+        <p>
+          The server reads the item as itself in order to rotate it, and personal
+          folders deliberately prevent that. Managed accounts and SSH credentials
+          live in shared folders.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--danger">{% include components/icon.html name="minus-circle" %}</span>
+        <h3>It concentrates privilege — plan for it</h3>
+        <p>
+          The folder holding your SSH credential items is a crown-jewel folder:
+          whoever can read it holds root on the estate. Restrict it hard, and
+          treat that decision as part of deploying LAPR.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="differentiator">
+  <div class="tp-container">
+    <div class="tp-split">
+      <div>
+        <span class="tp-section-header__eyebrow">Where this sits</span>
+        <h2 style="font-size: 2.25rem; line-height: 1.2; margin-bottom: 16px;">Normally you would buy a second product for this</h2>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          Rotating the credentials of the machines themselves is privileged-access
+          territory, sold separately, licensed per host, and deployed alongside
+          the password manager you already run. Teampass does the narrow, useful
+          part of it from the vault that already holds those credentials — in the
+          open-source server, with no licence key and no per-host cost.
+        </p>
+        <a class="tp-link-arrow" href="{{ '/compare.html' | relative_url }}">
+          Compare Teampass with the alternatives {% include components/icon.html name="arrow-right" %}
+        </a>
+      </div>
+      <div>
+        <div class="tp-callout tp-callout--quote">
+          {% include components/icon.html name="refresh" %}
+          <p>
+            None of the self-hosted alternatives on our comparison page rotate
+            local Linux account passwords. That is a deliberate claim, listed as a
+            row in the table, and we would rather you check it than take our word
+            for it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tp-section" id="start">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Getting started</span>
+      <h2>From nothing to a first rotation</h2>
+    </header>
+
+    <ol class="tp-steps">
+      <li class="tp-step">
+        <h3>Enable and fence the module</h3>
+        <p>
+          <em>Operations → LAPR settings</em>. Turn the module on, switch on the
+          hostname allowlist, and grant <em>Can manage LAPR</em> to the people who
+          will operate it.
+        </p>
+      </li>
+      <li class="tp-step">
+        <h3>Enrol one endpoint</h3>
+        <p>
+          Host, port, SSH user, and the Teampass item holding its credential.
+          <em>Test connection</em> records the host key, collects the OS and
+          proves the account can actually change a password.
+        </p>
+      </li>
+      <li class="tp-step">
+        <h3>Manage one account, then rotate</h3>
+        <p>
+          Attach an existing item to that endpoint, pick a policy, and use
+          <em>Rotate now</em>. Watch it in the history, then let the scheduler
+          take over.
+        </p>
+      </li>
+    </ol>
+
+    <div class="tp-callout" style="margin-top: 32px;">
+      {% include components/icon.html name="book" %}
+      <p>
+        Every setting, error code and failure mode is documented in the
+        <a href="https://documentation.teampass.net/#/features/lapr" target="_blank" rel="noopener">LAPR documentation</a>.
+        Start on a disposable VM, not on the box that runs your vault.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt">
+  <div class="tp-container tp-container--prose">
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Questions</span>
+      <h2>Straight answers</h2>
+    </header>
+    {% include components/faq.html items=page.faq %}
+  </div>
+</section>
+
+{% include components/cta-band.html
+   title="Rotate the first one this afternoon."
+   body="Install Teampass, enrol a test VM and change a password from the vault. The whole loop takes less time than writing the runbook for doing it by hand."
+   primary-label="Install Teampass" primary-url="/install.html"
+   secondary-label="Read the documentation" secondary-url="https://documentation.teampass.net/#/features/lapr" %}

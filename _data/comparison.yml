@@ -84,6 +84,15 @@ rows:
     passbolt: { mark: partial, text: "Pro" }
     keepass: { mark: partial, text: "Via plugins" }
 
+  # Rotating the passwords of the machines themselves is normally a separate
+  # privileged-access product. None of the four alternatives documents it.
+  - label: Rotates local Linux account passwords
+    teampass: { mark: yes, text: "Agentless, over SSH" }
+    bitwarden: { mark: no }
+    vaultwarden: { mark: no }
+    passbolt: { mark: no }
+    keepass: { mark: no }
+
   - label: LDAP / Active Directory
     teampass: { mark: yes, text: "Included, nested groups" }
     bitwarden: { mark: partial, text: "Directory Connector, paid tiers" }

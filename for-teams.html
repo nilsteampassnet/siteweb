@@ -29,7 +29,9 @@ faq:
     answer: >-
       Disable the account and their access is gone. The leaver risk report shows
       which credentials they had reached, so you know exactly what to rotate
-      instead of rotating everything or, more commonly, nothing.
+      instead of rotating everything or, more commonly, nothing. For the shared
+      Linux logins on that list, [LAPR](/lapr.html) can do the rotation for you,
+      over SSH.
   - question: Can we give a client or contractor one credential without an account?
     answer: >-
       Yes — Secure Send produces a link with an expiry, a view limit and an
@@ -121,6 +123,7 @@ faq:
           <li>{% include components/icon.html name="check" %}<span>Per-item history</span></li>
           <li>{% include components/icon.html name="check" %}<span>Leaver risk report listing what a departing account could reach</span></li>
           <li>{% include components/icon.html name="check" %}<span>Rotation tracking, so overdue credentials surface on their own</span></li>
+          <li>{% include components/icon.html name="check" %}<span>For Linux servers, <a href="{{ '/lapr.html' | relative_url }}">rotation Teampass performs itself</a>, over SSH</span></li>
         </ul>
       </div>
       <div class="tp-split__visual">

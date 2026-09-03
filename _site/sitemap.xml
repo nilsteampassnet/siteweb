@@ -1,81 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://teampass.net/about.html</loc>
+    <loc>http://localhost:4000/about.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/compare.html</loc>
+    <loc>http://localhost:4000/compare.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/compliance.html</loc>
+    <loc>http://localhost:4000/compliance.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/extension-privacy.html</loc>
+    <loc>http://localhost:4000/extension-privacy.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/extension.html</loc>
+    <loc>http://localhost:4000/extension.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/features.html</loc>
+    <loc>http://localhost:4000/features.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/for-enterprise.html</loc>
+    <loc>http://localhost:4000/for-enterprise.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/for-individuals.html</loc>
+    <loc>http://localhost:4000/for-individuals.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/for-teams.html</loc>
+    <loc>http://localhost:4000/for-teams.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/</loc>
+    <loc>http://localhost:4000/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://teampass.net/install.html</loc>
+    <loc>http://localhost:4000/install.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/pricing.html</loc>
+    <loc>http://localhost:4000/lapr.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/privacy.html</loc>
+    <loc>http://localhost:4000/pricing.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/security.html</loc>
+    <loc>http://localhost:4000/privacy.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/support.html</loc>
+    <loc>http://localhost:4000/security.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://teampass.net/whats-new.html</loc>
+    <loc>http://localhost:4000/support.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>http://localhost:4000/whats-new.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

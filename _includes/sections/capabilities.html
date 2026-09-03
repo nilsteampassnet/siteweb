@@ -10,7 +10,8 @@
       </p>
     </header>
 
-    <div class="tp-grid">
+    <!-- Nine capabilities: 340px lands on three even rows rather than a 4/4/1 orphan. -->
+    <div class="tp-grid" style="--min: 340px;">
       {%- for item in site.data.capabilities %}
       <article class="tp-card">
         <span class="tp-icon-tile">{% include components/icon.html name=item.icon %}</span>

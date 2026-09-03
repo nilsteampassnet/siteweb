@@ -19,6 +19,13 @@
     Weak, reused, breached and overdue credentials are scored continuously,
     with a personal score per user and an optional email digest.
 
+- title: Linux password rotation
+  icon: refresh
+  body: >-
+    LAPR changes the passwords of local Linux accounts over SSH, agentless,
+    from the item that stores them. The server accepts the new password before
+    the vault records it.
+
 - title: Governance and audit
   icon: clipboard-check
   body: >-

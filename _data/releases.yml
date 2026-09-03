@@ -6,6 +6,13 @@
 line: "3.2"
 
 highlights:
+  - title: Linux password rotation
+    icon: refresh
+    body: >-
+      LAPR changes the passwords of local Linux accounts over SSH, agentless,
+      from the item that stores them — pushing to the server first, then
+      re-encrypting the vault entry.
+
   - title: Authenticated encryption
     icon: lock
     body: >-
