@@ -33,6 +33,47 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.2.1
+    date: 2026-09-03
+    summary: Seven security advisories, four of them in LAPR, plus file integrity diagnostics, folder search and a Docker upgrade path that no longer leaves databases half-migrated.
+    changes:
+      - group: Security
+        items:
+          - "LAPR endpoints are now scoped to the caller, so an operator can no longer attach an account to an endpoint whose SSH credential they cannot read (GHSA-mq4w-p2gw-pqp4)"
+          - "The SSH host key is verified before the credential is transmitted, closing a window where a man-in-the-middle received the plaintext password of a privileged account (GHSA-h25r-8cc9-2cg8)"
+          - "Deleting a managed account and changing its rotation policy now check folder scope, blocking a weak policy from being pushed to a privileged Linux account (GHSA-v7hq-28rv-qh3p)"
+          - "The API change feed no longer discloses instance-wide item ids and activity to a caller holding no folder rights (GHSA-9823-p8pg-rfm4)"
+          - "The item history detail is encoded where it is rendered, closing a stored cross-site scripting reachable from any edited field (GHSA-mwxw-gg4p-8xpc)"
+          - "The item login is rendered as text rather than markup (GHSA-47xg-w656-j4v4)"
+          - "Two entity-decoding helpers no longer build a live DOM node while decoding (GHSA-5vf9-rxqv-g8wp)"
+          - The command palette applies item-level restrictions, so it no longer returns items the user cannot open
+      - group: New
+        items:
+          - "File integrity and permission diagnostics in System Health, replacing the old unknown-files counter and its web deletion workflow with a read-only report"
+          - A command-line integrity script for environments reachable only over SSH
+          - Folder results, a folder filter and a reset control on the search page
+          - Periodic checks of enrolled LAPR endpoints, and a pause that suspends rotations for one endpoint
+          - "Repair my personal items encryption keys, in My Profile, for an owner whose internal reference key went missing"
+      - group: Improved
+        items:
+          - The background key repair task now covers personal items, writing a key for their owner only
+          - Personal folders are excluded from key redistribution by their position in the tree, instead of a flag that legacy data never set
+          - An empty custom field is no longer reported as unreadable, and can be cleared again
+          - The One-Time View page decodes stored entities, so descriptions and logins render as written
+          - OAuth2 self-registration assigns the configured fallback role again
+          - The Docker container applies every intermediate upgrade step and records the version reached
+          - Published Docker images report the real version instead of the branch name
+          - Every Tools page query builds its table name from the configured prefix, restoring two repair tools on installations that do not use the default one
+          - Search no longer hides items sitting deep inside a personal folder
+          - A password changed through the API is recorded in the item history
+          - Item revision timestamps are returned wherever the revision is
+      - group: Upgrade notes
+        items:
+          - Schema change — the upgrade wizard runs on every installation
+          - Periodic LAPR endpoint checks stay off after an upgrade, so no outbound SSH starts without an administrator enabling it
+          - "Updating an item password through the API can now be refused while encryption keys are still being distributed — retry, the message says so"
+          - The web workflow that deleted unknown files is gone, replaced by the read-only report
+          - Back up the database before upgrading
   - version: 3.2.2.0
     date: 2026-08-23
     summary: LAPR — agentless rotation of Linux account passwords over SSH — plus item revisions for offline synchronization and three new notification types.
