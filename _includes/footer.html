@@ -68,6 +68,9 @@
         &copy; {{ site.footer-copyright-year }}
         <a href="{{ site.author.url }}" target="_blank" rel="noopener">{{ site.author.name }}</a> —
         released under {{ site.product.licence }}.
+{%- if site.consulting.url %}
+        Consulting: <a href="{{ site.consulting.url }}" target="_blank" rel="noopener">{{ site.consulting.name }}</a>.
+{%- endif %}
       </p>
       <p class="tp-footer__made">
         <img src="{{ '/images/madeinfrance.png' | relative_url }}" alt="Made in France" height="28">

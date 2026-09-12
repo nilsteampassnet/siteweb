@@ -9,22 +9,22 @@
 
   <title>What's new in Teampass 3.2 | Teampass</title>
   <meta name="description" content="Teampass 3.2 release highlights — AES-256-GCM encryption, Security Posture Dashboard, access recertification, Secure Send and the security advisories closed in each version.">
-  <link rel="canonical" href="http://localhost:4000/whats-new.html">
+  <link rel="canonical" href="https://teampass.net/whats-new.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Teampass">
   <meta property="og:title" content="What's new in Teampass 3.2 | Teampass">
   <meta property="og:description" content="Teampass 3.2 release highlights — AES-256-GCM encryption, Security Posture Dashboard, access recertification, Secure Send and the security advisories closed in each version.">
-  <meta property="og:url" content="http://localhost:4000/whats-new.html">
-  <meta property="og:image" content="http://localhost:4000/images/og-image.png">
+  <meta property="og:url" content="https://teampass.net/whats-new.html">
+  <meta property="og:image" content="https://teampass.net/images/og-image.png">
   <meta property="og:locale" content="en_GB">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="What's new in Teampass 3.2 | Teampass">
   <meta name="twitter:description" content="Teampass 3.2 release highlights — AES-256-GCM encryption, Security Posture Dashboard, access recertification, Secure Send and the security advisories closed in each version.">
-  <meta name="twitter:image" content="http://localhost:4000/images/og-image.png">
+  <meta name="twitter:image" content="https://teampass.net/images/og-image.png">
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="stylesheet" href="/css/style.css">
@@ -237,6 +237,94 @@
     </header>
     <article class="tp-card" style="margin-bottom: 24px;">
       <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
+        <h3 style="margin:0; font-size:1.375rem;">3.2.2.4</h3>
+        <span class="tp-badge">12 September 2026</span>
+      </div>
+      <p style="margin-bottom:16px;">Two access-control advisories, idempotent item creation and deletion in the API, and a self-service trial of the browser extension licence.</p>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The REST API applies item-level restrictions, so a user excluded from an item can no longer read its password or its TOTP code, nor update or delete it (GHSA-gxc6-rgv6-wx99)</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Item access is granted only for a folder of the user's own scope, closing a path where a grant on a subfolder gave read access to the passwords of its parent (GHSA-jr9q-x7pj-8qh9)</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The API tag list is scoped to the items the caller can read, instead of returning the tags of every folder in the instance</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">New</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Self-service trial of the browser extension licence, requested from the Licence tab of the API settings, with an offline path by e-mail, clipboard or QR code for an instance with no Internet access</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Idempotent item creation and conditional deletion in the REST API, so a client that lost the response can retry without creating a second item</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A search field in the LDAP synchronization user list</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Twenty production dependencies refreshed, among them phpseclib 3.0.57, Guzzle 7.15.5, the Symfony 6.4.45 components and TCPDF 6.11.4</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The Docker image applies the Alpine security updates at build time, and is rebuilt every week so an unchanged release keeps receiving them</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Fixed</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Monitoring logs honour the selected search column, and the Errors, Copy, Admin and Failed logins purges apply the selected account instead of deleting the entries of every account</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A newly created folder appears in the Items tree without a manual refresh</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Renaming, moving or changing the icon of a folder from the Items page no longer resets its special options and its renewal period, and a new subfolder inherits them from its parent</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The background task log is written again, and two task handlers can no longer run at once</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The file integrity check no longer warns about the background tasks lock file</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The login form accepts one submission at a time</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The admin dashboard no longer reports an enabled scheduled backup as missing, and the new version available notice stops showing after an upgrade</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Upgrade notes</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Schema change, the upgrade wizard runs once on every installation</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Let running background tasks finish before replacing the files, the handler lock file is now kept instead of deleted</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>API clients no longer receive the items the caller is restricted from, and the tag list only covers readable items</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Re-check the special options and the renewal period of the folders you renamed or moved from the Items page</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Back up the database before upgrading</span></li>
+      </ul>
+    </article>
+    <article class="tp-card" style="margin-bottom: 24px;">
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
+        <h3 style="margin:0; font-size:1.375rem;">3.2.2.3</h3>
+        <span class="tp-badge">4 September 2026</span>
+      </div>
+      <p style="margin-bottom:16px;">Hotfix — the administration page shipped inert in 3.2.2.2, killed by a JavaScript syntax error.</p>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Fixed</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The administration page works again, a template emitted two declarations on a single output line and the whole script block failed to parse</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The regression guard meant to catch that shape no longer misses a declaration sitting at column zero</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Upgrade notes</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>No schema change of its own, an installation already running 3.2.2.2 is not sent back through the upgrade wizard</span></li>
+      </ul>
+    </article>
+    <article class="tp-card" style="margin-bottom: 24px;">
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
+        <h3 style="margin:0; font-size:1.375rem;">3.2.2.2</h3>
+        <span class="tp-badge">4 September 2026</span>
+      </div>
+      <p style="margin-bottom:16px;">An unauthenticated entry point to the background scheduler, a leftover installation table holding the administrator password in clear text, and a Docker upgrade path that could leave a container unable to log in.</p>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The background scheduler wrapper sitting in the web root is removed, and the scheduler itself refuses any invocation that does not come from a command line (GHSA-fpv9-jxph-qg96)</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The temporary installation table holding the administrator password in clear text is now really dropped, by the installer and by the upgrade</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Client-side sanitization helpers rewritten after CodeQL findings, among them an entity decoder that turned a stored escape back into a live quote</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The admin dashboard information card becomes Actions required, and disappears entirely when there is nothing to act on</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Five dismissible getting-started recommendations for a fresh installation</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The file integrity manifest no longer lists the development metadata vendored inside dependencies</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Fixed</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A Docker container no longer skips a patch migration and ends up unable to log in</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The command palette returns items again, its restriction clause targeted the wrong table alias</span></li>
+      </ul>
+      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Upgrade notes</h4>
+      <ul class="tp-checklist">
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Data migration without any table alteration, the upgrade wizard runs once on every installation</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A crontab calling the scheduler over HTTP now gets a 404, the supported invocation has always been the command line one</span></li>
+        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Back up the database before upgrading</span></li>
+      </ul>
+    </article>
+    <article class="tp-card" style="margin-bottom: 24px;">
+      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
         <h3 style="margin:0; font-size:1.375rem;">3.2.2.1</h3>
         <span class="tp-badge">3 September 2026</span>
       </div>
@@ -312,234 +400,6 @@
         <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Schema change — the upgrade wizard runs on every installation</span></li>
         <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>LAPR is disabled by default, does nothing until an administrator enables it, and needs its own permission that no existing user receives on upgrade</span></li>
         <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Back up the database before upgrading</span></li>
-      </ul>
-    </article>
-    <article class="tp-card" style="margin-bottom: 24px;">
-      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
-        <h3 style="margin:0; font-size:1.375rem;">3.2.1.7</h3>
-        <span class="tp-badge">18 August 2026</span>
-      </div>
-      <p style="margin-bottom:16px;">Customizable email templates, server log reading on the Health page, and a refreshed Docker image clearing most of the vulnerabilities reported against it.</p>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Upgrade wizard administrator check had no server-side effect — the grant is now kept server-side and required on every step</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Link secrets masked in the Health page log excerpts</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The client-side purifier split into inbound and outbound entry points, closing the class of XSS that assumed a purified value was safe to concatenate</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The WebDAV backup client no longer follows redirects, so Basic credentials cannot be replayed towards another host</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Vendored crypto-js updated to 4.2.0 (CVE-2023-46233)</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">New</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Customizable email templates — every subject and body rewritable per language, stored as a pure diff over the shipped strings</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Health page reading of the WebSocket and server access logs</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Docker base image moved to Alpine 3.24, clearing around 42 of the 48 open image alerts</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>All Composer dependencies updated, clearing the five Dependabot advisories on guzzlehttp/guzzle</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Development dependencies are no longer part of an installation</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Upgrade notes</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Schema change — the upgrade wizard runs on every installation and creates the email templates table</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>An externalized WebDAV destination that relied on a redirect will stop working</span></li>
-      </ul>
-    </article>
-    <article class="tp-card" style="margin-bottom: 24px;">
-      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
-        <h3 style="margin:0; font-size:1.375rem;">3.2.1.6</h3>
-        <span class="tp-badge">11 August 2026</span>
-      </div>
-      <p style="margin-bottom:16px;">A broad sweep of stored cross-site scripting sinks closed, and the client IP feeding the audit log and the bruteforce counter can no longer be forged.</p>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Stored markup in folder titles imported from KeePass</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>LDAP and OAuth2 identity fields neutralized before storage, and encoded in the directory sync screens</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Folder titles, folder paths and role names encoded in the roles matrix</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Item labels, recipient emails and task error messages encoded in attribute contexts</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>WebSocket notification payloads escaped</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Item icons stored by the API before 3.2.1 can no longer inject markup</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The client IP used for security decisions is resolved through trusted proxies only</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Two earlier security fixes that had been applied to the wrong copy of a duplicated file are now actually served</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Accented names are stored with their accents, and names already in the database are realigned by the upgrade</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A sentinel test pins client-side HTML encoding at each sink, and another covers all 21 duplicated file pairs</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Upgrade notes</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>No table structure change, but three idempotent data migrations run once through the upgrade wizard</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The strict client IP resolution is opt-in — declare your trusted proxies to enable it</span></li>
-      </ul>
-    </article>
-    <article class="tp-card" style="margin-bottom: 24px;">
-      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
-        <h3 style="margin:0; font-size:1.375rem;">3.2.1.5</h3>
-        <span class="tp-badge">7 August 2026</span>
-      </div>
-      <p style="margin-bottom:16px;">Two authorization bypasses closed, and the personal-to-shared item move rebuilt on a single hardened path shared by the web interface and the API.</p>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Folder authorization was only checked on the first page of the items list, so asking for a later page returned the metadata of any folder, including other users' personal folders (GHSA-xrjw-r5hx-29rj)</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Item copy verified the rights on the source folder and never looked at the destination, letting any non-read-only user copy into an admin-restricted folder (GHSA-g797-4rh6-m2xp)</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">New</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Knowledge base entries searchable from the command palette</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The account avatar shown in the topbar</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The personal-to-shared item move is one hardened implementation — a missing source key now aborts the move instead of dropping the custom field</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The background task queue is visible on the Health page, and the task drain window is configurable</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The account creation email now reaches users created by their first LDAP login</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>KeePass XML import no longer fails on entries with empty fields</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Upgrade notes</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Code only — installations already on 3.2.1.4 are not sent through the upgrade wizard</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Anything automated against the items list must request the first page of a folder before asking for later pages</span></li>
-      </ul>
-    </article>
-    <article class="tp-card" style="margin-bottom: 24px;">
-      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
-        <h3 style="margin:0; font-size:1.375rem;">3.2.1.4</h3>
-        <span class="tp-badge">2 August 2026</span>
-      </div>
-      <p style="margin-bottom:16px;">Faceted search, a Quick access panel, and a folder-scope authorization bypass in search closed.</p>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Folder scope bypass in the search backend — the "limited" parameter replaced the accessible-folder scope instead of narrowing it, letting any authenticated user enumerate item metadata across folder boundaries</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Search scope now intersects the requested subtree with the folders the caller can reach, and subtracts other people's personal folders</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">New</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Faceted search — classification level, security flags, attachments, dates, rotation, tags, scope, favourites, recently viewed and unencrypted custom fields</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Item restrictions moved into SQL, so filtering happens before the row limit rather than after it</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Quick access panel replacing the sidebar: recent, most used and favourites, ranked per user</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Health page accuracy and backup reliability</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Version differences between instances no longer raise backup anomaly warnings</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Server-side filtering and a "Password changed" column on the security posture flagged-items list</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Login page repairs itself after a session expires, and renews keys silently when a tab regains focus</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Upgrade notes</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Schema change — the upgrade wizard runs on every installation</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Back up the database before upgrading</span></li>
-      </ul>
-    </article>
-    <article class="tp-card" style="margin-bottom: 24px;">
-      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
-        <h3 style="margin:0; font-size:1.375rem;">3.2.1.3</h3>
-        <span class="tp-badge">29 July 2026</span>
-      </div>
-      <p style="margin-bottom:16px;">Administrator control over authentication lockouts, KeePass 2.x XML export and a native PowerShell API client.</p>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">New</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Administrator management of authentication lockouts</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>KeePass 2.x XML export</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Native PowerShell API client</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Configurable minimum password length</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>"Not assessed" password health state for uncomputed metadata</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Redesigned operational statistics dashboard</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Security scans no longer abort on malformed legacy passwords</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Item password health measured from the live value</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Authorization boundary tightened — holding a sharekey is not an access grant</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Role assignment scoped to the caller's own roles</span></li>
-      </ul>
-    </article>
-    <article class="tp-card" style="margin-bottom: 24px;">
-      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
-        <h3 style="margin:0; font-size:1.375rem;">3.2.1.2</h3>
-        <span class="tp-badge">26 July 2026</span>
-      </div>
-      <p style="margin-bottom:16px;">Active Directory nested groups restored and two authorization defects closed.</p>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Missing authorization in the folder update action (GHSA-66q9-mxf2-xqw6)</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Personal items disclosed through key generation</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Active Directory group mapping with nested-group support in both login modes</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>API folder rights aligned with the web interface</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Folder password complexity exposed through the API</span></li>
-      </ul>
-    </article>
-    <article class="tp-card" style="margin-bottom: 24px;">
-      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
-        <h3 style="margin:0; font-size:1.375rem;">3.2.1.1</h3>
-        <span class="tp-badge">23 July 2026</span>
-      </div>
-      <p style="margin-bottom:16px;">The first stable build of the 3.2.1 line — modern cryptography, a security posture dashboard and governance features, plus nine advisories closed.</p>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Encryption</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Authenticated AES-256-GCM with random IVs and per-secret salts</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>PBKDF2 raised from 1,000 to 600,000 iterations, HKDF-SHA256 added</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Object keys widened from 64 to 256 bits</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Personal folders readable only by their owner and the recovery account</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Lazy re-encryption of existing secrets, with progress tracking</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">New</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Security Posture Dashboard and personal security score</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Access Recertification Campaigns with immutable decisions</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Compliance reports and CSV evidence export</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Leaver / offboarding risk identification</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Rotation policy and overdue tracking</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Four-level data classification and item ownership</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Secure Send — expiring, view-limited external sharing</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Importers for Bitwarden, LastPass, 1Password and KeePassXC</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Configurable RFC 6238 TOTP profiles</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Ctrl-K command palette and in-app notification centre</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>First-run onboarding wizard</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Unauthenticated MFA reset and authentication oracles (GHSA-6x6x-v79m-v5x3)</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Unauthenticated forced password reset (GHSA-cm5h-m2xm-5pxr)</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Folder access bypass in item details (GHSA-hjhc-6g7v-8jxr)</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Legacy unguarded user update branches (GHSA-58ph-5gg6-h2v8)</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Unscoped role assignment (GHSA-gjc5-pmxw-58p4)</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Stored XSS through the API (GHSA-r298-6mxv-j9hc)</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>User logs IDOR (GHSA-qhff-v9qj-75wc)</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Decoupled authorization in downloadFile (GHSA-3f3c-cw29-xxm7)</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Import module authorization (GHSA-cgcj-f9rx-c8r4)</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Upgrade notes</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>PHP 8.2 is now the minimum supported version</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Every new feature is seeded disabled on upgrade</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The hardened encryption format stays off after an upgrade until you enable it</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Back up the database before running remediation scripts</span></li>
-      </ul>
-    </article>
-    <article class="tp-card" style="margin-bottom: 24px;">
-      <div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-bottom:8px;">
-        <h3 style="margin:0; font-size:1.375rem;">3.2.0.8</h3>
-        <span class="tp-badge">9 July 2026</span>
-      </div>
-      <p style="margin-bottom:16px;">Four advisories closed, including a privilege escalation and an OAuth2 bypass.</p>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Security</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Mass-assignment privilege escalation in user management (GHSA-x8jf-9g87-j232)</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>OAuth2 authentication bypass (GHSA-2mvr-v9w8-34c7)</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>SQL injection in the user-logs datatable (GHSA-fqg6-xvv8-w228)</span></li>
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Authenticated path traversal in file upload (GHSA-wwxq-c766-v93w)</span></li>
-      </ul>
-      <h4 style="font-size:0.8125rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--tp-text-muted); margin:16px 0 4px;">Improved</h4>
-      <ul class="tp-checklist">
-        <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Folder-level rights enforced consistently on bulk operations</span></li>
       </ul>
     </article>
 
@@ -642,6 +502,7 @@
         &copy; 2009-2026
         <a href="https://nils.laumaille.fr/" target="_blank" rel="noopener">Nils Laumaillé</a> —
         released under GPL-3.0.
+        Consulting: <a href="https://www.logcarre.com/en/" target="_blank" rel="noopener">LogCarré</a>.
       </p>
       <p class="tp-footer__made">
         <img src="/images/madeinfrance.png" alt="Made in France" height="28">

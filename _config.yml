@@ -40,6 +40,10 @@ url: "https://teampass.net"
 baseurl: ""
 email: nils@teampass.net
 
+# Commercial routing. Kept separate from site.email because the legacy
+# Formspree endpoint and the privacy contact are tied to the address above.
+email-commercial: contact@teampass.net
+
 # Social preview image used when no page-specific image is set.
 # TODO(nils): produce images/og-image.png at 1200x630 — until it exists, links
 # shared on Slack, LinkedIn and X render without a preview card.
@@ -86,6 +90,12 @@ author:
   name: Nils Laumaillé
   url: https://nils.laumaille.fr/
   avatar: nils.jpeg
+
+# Nils' consulting practice, credited in the footer. Not a Teampass vendor:
+# the link is a personal credit, not a product endorsement.
+consulting:
+  name: LogCarré
+  url: https://www.logcarre.com/en/
 
 # ---------------------------------------------------------------------------
 # Footer
