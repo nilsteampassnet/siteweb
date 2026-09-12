@@ -40,6 +40,77 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.2.4
+    date: 2026-09-12
+    summary: Two access-control advisories, idempotent item creation and deletion in the API, and a self-service trial of the browser extension licence.
+    changes:
+      - group: Security
+        items:
+          - "The REST API applies item-level restrictions, so a user excluded from an item can no longer read its password or its TOTP code, nor update or delete it (GHSA-gxc6-rgv6-wx99)"
+          - "Item access is granted only for a folder of the user's own scope, closing a path where a grant on a subfolder gave read access to the passwords of its parent (GHSA-jr9q-x7pj-8qh9)"
+          - The API tag list is scoped to the items the caller can read, instead of returning the tags of every folder in the instance
+      - group: New
+        items:
+          - Self-service trial of the browser extension licence, requested from the Licence tab of the API settings, with an offline path by e-mail, clipboard or QR code for an instance with no Internet access
+          - Idempotent item creation and conditional deletion in the REST API, so a client that lost the response can retry without creating a second item
+          - A search field in the LDAP synchronization user list
+      - group: Improved
+        items:
+          - Twenty production dependencies refreshed, among them phpseclib 3.0.57, Guzzle 7.15.5, the Symfony 6.4.45 components and TCPDF 6.11.4
+          - The Docker image applies the Alpine security updates at build time, and is rebuilt every week so an unchanged release keeps receiving them
+      - group: Fixed
+        items:
+          - "Monitoring logs honour the selected search column, and the Errors, Copy, Admin and Failed logins purges apply the selected account instead of deleting the entries of every account"
+          - A newly created folder appears in the Items tree without a manual refresh
+          - Renaming, moving or changing the icon of a folder from the Items page no longer resets its special options and its renewal period, and a new subfolder inherits them from its parent
+          - The background task log is written again, and two task handlers can no longer run at once
+          - The file integrity check no longer warns about the background tasks lock file
+          - The login form accepts one submission at a time
+          - The admin dashboard no longer reports an enabled scheduled backup as missing, and the new version available notice stops showing after an upgrade
+      - group: Upgrade notes
+        items:
+          - Schema change, the upgrade wizard runs once on every installation
+          - Let running background tasks finish before replacing the files, the handler lock file is now kept instead of deleted
+          - API clients no longer receive the items the caller is restricted from, and the tag list only covers readable items
+          - Re-check the special options and the renewal period of the folders you renamed or moved from the Items page
+          - Back up the database before upgrading
+
+  - version: 3.2.2.3
+    date: 2026-09-04
+    summary: Hotfix — the administration page shipped inert in 3.2.2.2, killed by a JavaScript syntax error.
+    changes:
+      - group: Fixed
+        items:
+          - The administration page works again, a template emitted two declarations on a single output line and the whole script block failed to parse
+          - The regression guard meant to catch that shape no longer misses a declaration sitting at column zero
+      - group: Upgrade notes
+        items:
+          - No schema change of its own, an installation already running 3.2.2.2 is not sent back through the upgrade wizard
+
+  - version: 3.2.2.2
+    date: 2026-09-04
+    summary: An unauthenticated entry point to the background scheduler, a leftover installation table holding the administrator password in clear text, and a Docker upgrade path that could leave a container unable to log in.
+    changes:
+      - group: Security
+        items:
+          - "The background scheduler wrapper sitting in the web root is removed, and the scheduler itself refuses any invocation that does not come from a command line (GHSA-fpv9-jxph-qg96)"
+          - The temporary installation table holding the administrator password in clear text is now really dropped, by the installer and by the upgrade
+          - Client-side sanitization helpers rewritten after CodeQL findings, among them an entity decoder that turned a stored escape back into a live quote
+      - group: Improved
+        items:
+          - The admin dashboard information card becomes Actions required, and disappears entirely when there is nothing to act on
+          - Five dismissible getting-started recommendations for a fresh installation
+          - The file integrity manifest no longer lists the development metadata vendored inside dependencies
+      - group: Fixed
+        items:
+          - A Docker container no longer skips a patch migration and ends up unable to log in
+          - The command palette returns items again, its restriction clause targeted the wrong table alias
+      - group: Upgrade notes
+        items:
+          - Data migration without any table alteration, the upgrade wizard runs once on every installation
+          - A crontab calling the scheduler over HTTP now gets a 404, the supported invocation has always been the command line one
+          - Back up the database before upgrading
+
   - version: 3.2.2.1
     date: 2026-09-03
     summary: Seven security advisories, four of them in LAPR, plus file integrity diagnostics, folder search and a Docker upgrade path that no longer leaves databases half-migrated.
@@ -106,189 +177,3 @@ versions:
           - Schema change — the upgrade wizard runs on every installation
           - LAPR is disabled by default, does nothing until an administrator enables it, and needs its own permission that no existing user receives on upgrade
           - Back up the database before upgrading
-
-  - version: 3.2.1.7
-    date: 2026-08-18
-    summary: Customizable email templates, server log reading on the Health page, and a refreshed Docker image clearing most of the vulnerabilities reported against it.
-    changes:
-      - group: Security
-        items:
-          - "Upgrade wizard administrator check had no server-side effect — the grant is now kept server-side and required on every step"
-          - Link secrets masked in the Health page log excerpts
-          - The client-side purifier split into inbound and outbound entry points, closing the class of XSS that assumed a purified value was safe to concatenate
-          - The WebDAV backup client no longer follows redirects, so Basic credentials cannot be replayed towards another host
-          - Vendored crypto-js updated to 4.2.0 (CVE-2023-46233)
-      - group: New
-        items:
-          - Customizable email templates — every subject and body rewritable per language, stored as a pure diff over the shipped strings
-          - Health page reading of the WebSocket and server access logs
-      - group: Improved
-        items:
-          - Docker base image moved to Alpine 3.24, clearing around 42 of the 48 open image alerts
-          - All Composer dependencies updated, clearing the five Dependabot advisories on guzzlehttp/guzzle
-          - Development dependencies are no longer part of an installation
-      - group: Upgrade notes
-        items:
-          - Schema change — the upgrade wizard runs on every installation and creates the email templates table
-          - An externalized WebDAV destination that relied on a redirect will stop working
-
-  - version: 3.2.1.6
-    date: 2026-08-11
-    summary: A broad sweep of stored cross-site scripting sinks closed, and the client IP feeding the audit log and the bruteforce counter can no longer be forged.
-    changes:
-      - group: Security
-        items:
-          - Stored markup in folder titles imported from KeePass
-          - LDAP and OAuth2 identity fields neutralized before storage, and encoded in the directory sync screens
-          - Folder titles, folder paths and role names encoded in the roles matrix
-          - Item labels, recipient emails and task error messages encoded in attribute contexts
-          - WebSocket notification payloads escaped
-          - Item icons stored by the API before 3.2.1 can no longer inject markup
-          - The client IP used for security decisions is resolved through trusted proxies only
-          - Two earlier security fixes that had been applied to the wrong copy of a duplicated file are now actually served
-      - group: Improved
-        items:
-          - Accented names are stored with their accents, and names already in the database are realigned by the upgrade
-          - A sentinel test pins client-side HTML encoding at each sink, and another covers all 21 duplicated file pairs
-      - group: Upgrade notes
-        items:
-          - No table structure change, but three idempotent data migrations run once through the upgrade wizard
-          - The strict client IP resolution is opt-in — declare your trusted proxies to enable it
-
-  - version: 3.2.1.5
-    date: 2026-08-07
-    summary: Two authorization bypasses closed, and the personal-to-shared item move rebuilt on a single hardened path shared by the web interface and the API.
-    changes:
-      - group: Security
-        items:
-          - "Folder authorization was only checked on the first page of the items list, so asking for a later page returned the metadata of any folder, including other users' personal folders (GHSA-xrjw-r5hx-29rj)"
-          - Item copy verified the rights on the source folder and never looked at the destination, letting any non-read-only user copy into an admin-restricted folder (GHSA-g797-4rh6-m2xp)
-      - group: New
-        items:
-          - Knowledge base entries searchable from the command palette
-          - The account avatar shown in the topbar
-      - group: Improved
-        items:
-          - "The personal-to-shared item move is one hardened implementation — a missing source key now aborts the move instead of dropping the custom field"
-          - The background task queue is visible on the Health page, and the task drain window is configurable
-          - The account creation email now reaches users created by their first LDAP login
-          - KeePass XML import no longer fails on entries with empty fields
-      - group: Upgrade notes
-        items:
-          - Code only — installations already on 3.2.1.4 are not sent through the upgrade wizard
-          - Anything automated against the items list must request the first page of a folder before asking for later pages
-
-  - version: 3.2.1.4
-    date: 2026-08-02
-    summary: Faceted search, a Quick access panel, and a folder-scope authorization bypass in search closed.
-    changes:
-      - group: Security
-        items:
-          - "Folder scope bypass in the search backend — the \"limited\" parameter replaced the accessible-folder scope instead of narrowing it, letting any authenticated user enumerate item metadata across folder boundaries"
-          - Search scope now intersects the requested subtree with the folders the caller can reach, and subtracts other people's personal folders
-      - group: New
-        items:
-          - Faceted search — classification level, security flags, attachments, dates, rotation, tags, scope, favourites, recently viewed and unencrypted custom fields
-          - Item restrictions moved into SQL, so filtering happens before the row limit rather than after it
-          - "Quick access panel replacing the sidebar: recent, most used and favourites, ranked per user"
-      - group: Improved
-        items:
-          - Health page accuracy and backup reliability
-          - Version differences between instances no longer raise backup anomaly warnings
-          - Server-side filtering and a "Password changed" column on the security posture flagged-items list
-          - Login page repairs itself after a session expires, and renews keys silently when a tab regains focus
-      - group: Upgrade notes
-        items:
-          - Schema change — the upgrade wizard runs on every installation
-          - Back up the database before upgrading
-
-  - version: 3.2.1.3
-    date: 2026-07-29
-    summary: Administrator control over authentication lockouts, KeePass 2.x XML export and a native PowerShell API client.
-    changes:
-      - group: New
-        items:
-          - Administrator management of authentication lockouts
-          - KeePass 2.x XML export
-          - Native PowerShell API client
-          - Configurable minimum password length
-          - "\"Not assessed\" password health state for uncomputed metadata"
-      - group: Improved
-        items:
-          - Redesigned operational statistics dashboard
-          - Security scans no longer abort on malformed legacy passwords
-          - Item password health measured from the live value
-      - group: Security
-        items:
-          - Authorization boundary tightened — holding a sharekey is not an access grant
-          - Role assignment scoped to the caller's own roles
-
-  - version: 3.2.1.2
-    date: 2026-07-26
-    summary: Active Directory nested groups restored and two authorization defects closed.
-    changes:
-      - group: Security
-        items:
-          - Missing authorization in the folder update action (GHSA-66q9-mxf2-xqw6)
-          - Personal items disclosed through key generation
-      - group: Improved
-        items:
-          - Active Directory group mapping with nested-group support in both login modes
-          - API folder rights aligned with the web interface
-          - Folder password complexity exposed through the API
-
-  - version: 3.2.1.1
-    date: 2026-07-23
-    summary: The first stable build of the 3.2.1 line — modern cryptography, a security posture dashboard and governance features, plus nine advisories closed.
-    changes:
-      - group: Encryption
-        items:
-          - Authenticated AES-256-GCM with random IVs and per-secret salts
-          - PBKDF2 raised from 1,000 to 600,000 iterations, HKDF-SHA256 added
-          - Object keys widened from 64 to 256 bits
-          - Personal folders readable only by their owner and the recovery account
-          - Lazy re-encryption of existing secrets, with progress tracking
-      - group: New
-        items:
-          - Security Posture Dashboard and personal security score
-          - Access Recertification Campaigns with immutable decisions
-          - Compliance reports and CSV evidence export
-          - Leaver / offboarding risk identification
-          - Rotation policy and overdue tracking
-          - Four-level data classification and item ownership
-          - Secure Send — expiring, view-limited external sharing
-          - Importers for Bitwarden, LastPass, 1Password and KeePassXC
-          - Configurable RFC 6238 TOTP profiles
-          - Ctrl-K command palette and in-app notification centre
-          - First-run onboarding wizard
-      - group: Security
-        items:
-          - Unauthenticated MFA reset and authentication oracles (GHSA-6x6x-v79m-v5x3)
-          - Unauthenticated forced password reset (GHSA-cm5h-m2xm-5pxr)
-          - Folder access bypass in item details (GHSA-hjhc-6g7v-8jxr)
-          - Legacy unguarded user update branches (GHSA-58ph-5gg6-h2v8)
-          - Unscoped role assignment (GHSA-gjc5-pmxw-58p4)
-          - Stored XSS through the API (GHSA-r298-6mxv-j9hc)
-          - User logs IDOR (GHSA-qhff-v9qj-75wc)
-          - Decoupled authorization in downloadFile (GHSA-3f3c-cw29-xxm7)
-          - Import module authorization (GHSA-cgcj-f9rx-c8r4)
-      - group: Upgrade notes
-        items:
-          - PHP 8.2 is now the minimum supported version
-          - Every new feature is seeded disabled on upgrade
-          - The hardened encryption format stays off after an upgrade until you enable it
-          - Back up the database before running remediation scripts
-
-  - version: 3.2.0.8
-    date: 2026-07-09
-    summary: Four advisories closed, including a privilege escalation and an OAuth2 bypass.
-    changes:
-      - group: Security
-        items:
-          - Mass-assignment privilege escalation in user management (GHSA-x8jf-9g87-j232)
-          - OAuth2 authentication bypass (GHSA-2mvr-v9w8-34c7)
-          - SQL injection in the user-logs datatable (GHSA-fqg6-xvv8-w228)
-          - Authenticated path traversal in file upload (GHSA-wwxq-c766-v93w)
-      - group: Improved
-        items:
-          - Folder-level rights enforced consistently on bulk operations
