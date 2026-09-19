@@ -40,6 +40,43 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.2.5
+    date: 2026-09-19
+    summary: Two access-control advisories on item moves and folder copies, individual password renewal periods, and a rebuilt Monitoring logs page.
+    changes:
+      - group: Security
+        items:
+          - "Copying a folder requires access to the target folder, and skips the items the user is restricted from and the subfolders they are denied (GHSA-q47m-rvr6-jqw7)"
+          - "Moving an item through the REST API requires the delete right on the source folder and the edit right on the target (GHSA-q47m-rvr6-jqw7)"
+          - "The item edit form checks the move rights on the item's own folder instead of the destination (GHSA-vxv5-cr34-5q7g)"
+          - Moving an item to a personal folder through the API removes the other users' keys, as the web move does
+      - group: New
+        items:
+          - Individual password renewal periods on items, set by anyone who can edit them, with the shorter of the item and folder periods applying
+          - The Renewal page moves to the user sidebar, with deadline icons in the item list and the applicable policy shown in folder banners, item forms and move confirmations
+      - group: Improved
+        items:
+          - The Monitoring logs page is rebuilt around a single filter panel, and its purge deletes exactly the entries on screen
+          - API authentication refusals name their cause in the log, while the answer sent to the client stays the same
+          - Every user allowed to use extension tokens can list and revoke them
+          - Selected values in multiple-choice fields are readable, with a 5:1 contrast
+          - Rewritten browser extension documentation, with installation from the Chrome, Edge and Firefox stores
+      - group: Fixed
+        items:
+          - Accented characters are no longer saved as HTML entities when client/server encryption is disabled
+          - Active Directory groups are mapped to roles when the user DN attribute setting is left empty
+          - Restoring a backup stored on S3 no longer fails with a Malformed UTF-8 data error
+          - The e-mail test button reports SMTP failures instead of waiting forever, and failed messages stay queued
+          - Clearing Knowledge Base logs without dates no longer deletes every matching entry
+          - A user's log no longer shows entries recorded for an IP address such as 10.0.0.5
+      - group: Upgrade notes
+        items:
+          - Schema change, the upgrade wizard runs once on every installation
+          - The Renewal page leaves the administration area, administrators supervise renewals through the compliance reports
+          - Users with the ND, NE or NDNE level on a folder can no longer move its items out, from the web or from the API
+          - API item reads return renewal_period, and a move to a personal folder answers 422 while the item's keys are still being distributed
+          - Back up the database before upgrading
+
   - version: 3.2.2.4
     date: 2026-09-12
     summary: Two access-control advisories, idempotent item creation and deletion in the API, and a self-service trial of the browser extension licence.
