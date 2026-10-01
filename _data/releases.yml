@@ -40,6 +40,59 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.2.6
+    date: 2026-10-01
+    summary: Three access-control advisories, folder rights enforced on item creation, and a reworked Secure Send with reveal confirmation, item snapshots and opt-in TOTP sharing.
+    changes:
+      - group: Security
+        items:
+          - "Creating, revealing and listing a Secure Send link require current access to the item, so a user can no longer share an item from a folder they cannot see or an item restricted to others (GHSA-chpj-3vff-555v)"
+          - "The personal-items recovery dialog only acts on the signed-in user's own account (GHSA-6rq2-hf9c-cxh2)"
+          - "Deleting an item deletes that item alone, instead of also deleting another item whose key was sent with the request (GHSA-ghj3-wppx-w8j3)"
+          - A read-only role can no longer create items in a folder or copy items into it, and delete buttons are hidden without the delete right
+          - New installations lock an account after 10 failed logins instead of never, and the administrator dashboard warns while an existing installation still has no threshold
+          - The Security posture scan only queries Have I Been Pwned when breach detection is enabled, and a replaced compromised password loses its breach badge
+      - group: Secure Send
+        items:
+          - Recipients confirm on the page before the content is revealed, so a link scanner cannot consume a view, and view limits hold under concurrent requests
+          - Item links share an encrypted snapshot of the item as it was when the link was created
+          - Sharing the current TOTP code is an explicit option, unchecked by default, and the TOTP secret never reaches the browser
+          - The public sharing address accepts a full HTTPS URL or a hostname, is validated on save, and is only used when the sender selects it
+          - The sender form can no longer generate two links or copy a stale one, and follows the AdminLTE layout
+      - group: New
+        items:
+          - A custom login background, and login logo and background images picked by file name from a dedicated public/assets/custom folder
+          - A Configuration check panel on the LDAP settings page, whose test button now runs the real login code
+          - A totp column in the CSV export, written as an otpauth URI for non-standard profiles
+          - A per-role switch for the Security posture Fix shortcuts, which now only point to items the user may edit
+      - group: Improved
+        items:
+          - A clear permission error when the configuration directory cannot be read, instead of the installer or a bare HTTP 500, and an installer that refuses a database already in use
+          - The password show button of the item form is a toggle, remembered in the browser
+          - Background tasks start on Windows without opening console windows
+          - Scheduled backup report e-mails use a table layout in every shipped language
+          - A rewritten security hardening guide and a new Security posture documentation page
+      - group: Fixed
+        items:
+          - Accounts created on 3.0.x whose password holds special or accented characters can log in after the upgrade
+          - Personal-items recovery after a key regeneration re-encrypts the items again
+          - Saving a personal item created by another user no longer removes its owner's access
+          - Personal items still encrypted with a 2.x salt key can be migrated again
+          - Accented search terms find labels saved from the item form, and search results show accented characters instead of HTML entities
+          - The KeePass import no longer stops on an entry without a title, and imports passwords containing & as written
+          - Duo starts in one click when it is the only MFA method
+          - The browser extension FQDN suggestion is a placeholder instead of a value that only looked saved
+          - The Docker example environment file defaults to the latest image tag
+      - group: Upgrade notes
+        items:
+          - Schema change, the upgrade wizard runs once on every installation
+          - Set a lockout threshold if the administrator dashboard reports that failed logins never lock an account
+          - Users with read-only access on a folder can no longer create items there
+          - Secure Send recipients press a confirmation button, and requiring a passphrase or disabling notes now also applies to existing links
+          - If the public sharing address is a short prefix, check the public route, new links always use HTTPS and keep the main URL's port and path
+          - On Docker, mount individual branding files into public/assets/custom rather than the folder itself
+          - Back up the database before upgrading
+
   - version: 3.2.2.5
     date: 2026-09-19
     summary: Two access-control advisories on item moves and folder copies, individual password renewal periods, and a rebuilt Monitoring logs page.
