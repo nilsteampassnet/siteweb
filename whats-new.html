@@ -31,6 +31,9 @@ cta:
         <span class="tp-icon-tile">{% include components/icon.html name=item.icon %}</span>
         <h3>{{ item.title }}</h3>
         <p>{{ item.body }}</p>
+        {%- if item.url %}
+        <div class="tp-card__footer">{% include components/more-link.html url=item.url %}</div>
+        {%- endif %}
       </article>
       {%- endfor %}
     </div>

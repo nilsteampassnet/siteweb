@@ -1,0 +1,11 @@
+{% comment %}
+  "Learn more" link for a card or a feature group. `url` is a page of this site
+  or an absolute http(s) URL, which opens in a new tab as in the navigation.
+  Optional `label`.
+{% endcomment %}
+{%- assign more_label = include.label | default: "Learn more" -%}
+{%- if include.url contains 'http' -%}
+<a class="tp-link-arrow" href="{{ include.url }}" target="_blank" rel="noopener">{{ more_label }} {% include components/icon.html name="external-link" %}</a>
+{%- else -%}
+<a class="tp-link-arrow" href="{{ include.url | relative_url }}">{{ more_label }} {% include components/icon.html name="arrow-right" %}</a>
+{%- endif -%}

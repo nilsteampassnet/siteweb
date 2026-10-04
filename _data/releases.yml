@@ -1,12 +1,15 @@
 # Release highlights.
 #
 # `highlights` feeds the home page cards; `versions` feeds /whats-new.html.
+# A highlight's optional `url` adds a "Learn more" link: a page of this site
+# when one exists, the documentation otherwise.
 # Source of truth: https://github.com/nilsteampassnet/TeamPass/releases
 
 line: "3.2"
 
 highlights:
   - title: Linux password rotation
+    url: /lapr.html
     icon: refresh
     body: >-
       LAPR changes the passwords of local Linux accounts over SSH, agentless,
@@ -14,6 +17,7 @@ highlights:
       re-encrypting the vault entry.
 
   - title: Authenticated encryption
+    url: /security.html
     icon: lock
     body: >-
       AES-256-GCM replaces AES-CBC, with random IVs, per-secret salts,
@@ -21,6 +25,7 @@ highlights:
       Existing vaults migrate lazily, on first read.
 
   - title: Security Posture Dashboard
+    url: https://documentation.teampass.net/#/features/security-posture
     icon: gauge
     body: >-
       Weak, reused, breached and overdue credentials at a glance, a personal
@@ -28,12 +33,14 @@ highlights:
       editing an item.
 
   - title: Governance built in
+    url: /for-enterprise.html
     icon: clipboard-check
     body: >-
       Access recertification campaigns, rotation policy tracking, leaver risk
       detection, four-level data classification and CSV evidence export.
 
   - title: Secure Send
+    url: /secure-send.html
     icon: send
     body: >-
       Share a credential with someone outside Teampass under an expiry, a view

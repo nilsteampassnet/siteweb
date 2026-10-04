@@ -40,6 +40,7 @@
 
 - group: Linux password rotation (LAPR)
   icon: refresh
+  url: /lapr.html
   intro: Agentless rotation of local Linux account passwords, over SSH. New in 3.2.2.
   items:
     - Rotation of local Linux account passwords from the item that stores them
@@ -102,11 +103,13 @@
 
 - group: Sharing
   icon: send
+  url: /secure-send.html
   intro: Getting a credential to someone who should not have an account.
   items:
-    - Secure Send with expiry and view-count limits
-    - Optional recipient passphrase
-    - One-time-view links
+    - Secure Send links with expiry and view-count limits
+    - Optional recipient passphrase, mandatory when the administrator requires it
+    - Recipient confirmation before reveal, so link scanners consume nothing
+    - Branded recipient page, on an optional public address
     - User-to-user sharing on individual items
 
 - group: Automation and integration

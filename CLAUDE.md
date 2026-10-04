@@ -50,6 +50,10 @@ Front matter drives the hero: `title`, `eyebrow`, `lead`, `cta` (a list of
 - `_includes/components/icon.html` — the inline SVG icon set
 - `_includes/components/cta-band.html` — the closing call to action
 - `_includes/components/faq.html` — renders a `faq` front-matter array
+- `_includes/components/more-link.html` — the "Learn more" link of a highlight
+  card or a feature group, driven by the optional `url` of a `releases.yml`
+  highlight or a `features.yml` group: a page of this site when one exists, the
+  documentation otherwise (absolute URLs open in a new tab)
 - `_includes/components/consent-banner.html` — the cookie banner; rendered only
   when an analytics tag is configured, wired in `js/main.js`, state handled by
   `window.tpConsent` in `_includes/analytics.html`

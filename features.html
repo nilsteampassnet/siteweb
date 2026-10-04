@@ -42,6 +42,9 @@ cta:
           <li>{% include components/icon.html name="check" %}<span>{{ item }}</span></li>
           {%- endfor %}
         </ul>
+        {%- if section.url %}
+        <div class="tp-card__footer">{% include components/more-link.html url=section.url %}</div>
+        {%- endif %}
       </div>
     </div>
     {%- endfor %}

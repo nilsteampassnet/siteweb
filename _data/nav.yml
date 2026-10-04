@@ -12,6 +12,9 @@
     - title: Linux password rotation
       url: /lapr.html
       summary: Agentless rotation of Linux account passwords over SSH
+    - title: Secure Send
+      url: /secure-send.html
+      summary: Expiring, view-limited links for people outside the vault
     - title: Browser extension
       url: /extension.html
       summary: Autofill and capture for Chrome, Firefox and Edge
