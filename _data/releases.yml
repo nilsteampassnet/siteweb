@@ -40,6 +40,46 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.2.7
+    date: 2026-10-04
+    summary: Two advisories, private key recovery copies sealed against database dumps and MFA enforced for roles inherited from AD groups, plus folder deletion protection and Markdown and category browsing in the knowledge base.
+    changes:
+      - group: Security
+        items:
+          - A database dump alone no longer reveals the users' private keys, whose recovery copy is now sealed with the instance key (GHSA-fv78-jwjv-pj25)
+          - The LDAP bind password and the SMTP password are encrypted with the instance key and never sent back to the settings pages
+          - The MFA role requirement also applies to roles inherited from AD groups, and saving the user form no longer turns them into manual roles (GHSA-6mg2-rh62-rr3g)
+          - The Docker image logs request paths without their query string or Referer, so Secure Send link credentials stay out of its access log
+          - The session cookie is marked Secure behind a trusted reverse proxy that terminates HTTPS
+      - group: New
+        items:
+          - Administrators can protect a folder against accidental deletion, which also blocks deleting any parent folder containing it
+          - A branded Secure Send recipient page, with an organisation name, the local custom logo and an opt-in sender name
+          - A List / Categories switch on the knowledge base page
+          - Markdown pasted into a knowledge base article is formatted, and an Edit as Markdown view sits next to the code view
+      - group: Improved
+        items:
+          - A folder holding items used by LAPR can no longer be deleted or moved into a personal folder
+          - A Secure Send deployment and hardening guide
+          - The dead INSTALL_MODE=auto Docker option is removed, and the Docker Hub volume and backup instructions are fixed
+          - Open sessions are closed while a database upgrade is pending
+          - Polish is fully translated
+      - group: Fixed
+        items:
+          - Key generation for a new account resumes in slices instead of failing at the task time limit on a large vault
+          - The sharekeys repair restores the owner's key on personal items damaged by issue 5407
+          - "LDAP bind and SMTP passwords containing &, ', \", < or > are saved as typed instead of HTML-encoded"
+          - See log works for an account without any log
+          - The file integrity check of the Docker image no longer reports three critical unknown files
+          - Knowledge base articles keep their image sizes, merged cells and literal HTML code samples
+      - group: Upgrade notes
+        items:
+          - Schema change and data migration, the upgrade wizard runs once on every installation and sign-in is closed until it has run
+          - Database dumps taken before the upgrade still open the private keys and must be protected or destroyed
+          - Returning to an older version after the upgrade is not supported
+          - Users holding the MFA role only through an AD group are asked for MFA at their next sign-in
+          - The Docker access log format changed, and INSTALL_MODE, ADMIN_EMAIL and ADMIN_PWD are no longer read
+          - The sender name on Secure Send pages stays off on upgraded installations until an administrator enables it
   - version: 3.2.2.6
     date: 2026-10-01
     summary: Three access-control advisories, folder rights enforced on item creation, and a reworked Secure Send with reveal confirmation, item snapshots and opt-in TOTP sharing.
