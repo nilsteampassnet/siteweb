@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f2740" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#08151f" media="(prefers-color-scheme: dark)">
+
+  <title>Send one credential to someone outside the vault | Teampass</title>
+  <meta name="description" content="Secure Send shares a single Teampass item through a link with an expiry, a view limit and an optional passphrase. Recipient confirmation defeats link scanners, access is checked at every opening, and the recipient page carries your branding — in the open-source server.">
+  <link rel="canonical" href="http://localhost:4000/secure-send.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Teampass">
+  <meta property="og:title" content="Send one credential to someone outside the vault | Teampass">
+  <meta property="og:description" content="Secure Send shares a single Teampass item through a link with an expiry, a view limit and an optional passphrase. Recipient confirmation defeats link scanners, access is checked at every opening, and the recipient page carries your branding — in the open-source server.">
+  <meta property="og:url" content="http://localhost:4000/secure-send.html">
+  <meta property="og:image" content="http://localhost:4000/images/og-image.png">
+  <meta property="og:locale" content="en_GB">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Send one credential to someone outside the vault | Teampass">
+  <meta name="twitter:description" content="Secure Send shares a single Teampass item through a link with an expiry, a view limit and an optional passphrase. Recipient confirmation defeats link scanners, access is checked at every opening, and the recipient page carries your branding — in the open-source server.">
+  <meta name="twitter:image" content="http://localhost:4000/images/og-image.png">
+
+  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+
+<body id="top">
+
+  
+
+<a class="tp-skip-link" href="#main">Skip to content</a>
+
+<nav class="tp-nav" id="site-nav" aria-label="Main">
+  <div class="tp-nav__inner">
+
+    <a class="tp-nav__logo" href="/" aria-label="Teampass — home">
+      
+<span class="tp-brand">
+  <img class="tp-brand__mark"
+       src="/images/teampass-logo2-home.png"
+       alt="" width="75" height="77" aria-hidden="true">
+  <span class="tp-brand__name">Teampass</span>
+</span>
+
+    </a>
+
+    <button class="tp-nav__toggle" type="button"
+            aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation">
+      <svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+
+    <ul class="tp-nav__menu">
+      <li class="tp-nav__item">
+        <span class="tp-nav__link" role="button" tabindex="0" aria-haspopup="true">
+          Product<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        <ul class="tp-nav__dropdown">
+          <li>
+            <a href="/features.html">
+              Features<span>Everything Teampass does, grouped by domain</span>
+            </a>
+          </li>
+          <li>
+            <a href="/whats-new.html">
+              What's new<span>Highlights of the 3.2 line</span>
+            </a>
+          </li>
+          <li>
+            <a href="/lapr.html">
+              Linux password rotation<span>Agentless rotation of Linux account passwords over SSH</span>
+            </a>
+          </li>
+          <li>
+            <a href="/secure-send.html">
+              Secure Send<span>Expiring, view-limited links for people outside the vault</span>
+            </a>
+          </li>
+          <li>
+            <a href="/extension.html">
+              Browser extension<span>Autofill and capture for Chrome, Firefox and Edge</span>
+            </a>
+          </li>
+          <li>
+            <a href="/install.html">
+              Install & requirements<span>Docker, bare metal and server prerequisites</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="tp-nav__item">
+        <span class="tp-nav__link" role="button" tabindex="0" aria-haspopup="true">
+          Solutions<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        <ul class="tp-nav__dropdown">
+          <li>
+            <a href="/for-individuals.html">
+              For individuals<span>Homelabs, freelancers and independent consultants</span>
+            </a>
+          </li>
+          <li>
+            <a href="/for-teams.html">
+              For teams & SMB<span>Shared credentials without the spreadsheet</span>
+            </a>
+          </li>
+          <li>
+            <a href="/for-enterprise.html">
+              For enterprise<span>Governance, audit evidence and identity integration</span>
+            </a>
+          </li>
+          <li>
+            <a href="/compare.html">
+              Compare alternatives<span>Teampass next to Bitwarden, Vaultwarden, Passbolt and KeePass</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="tp-nav__item">
+        <a class="tp-nav__link" href="/security.html">Security</a>
+      </li>
+      <li class="tp-nav__item">
+        <a class="tp-nav__link" href="/compliance.html">Compliance</a>
+      </li>
+      <li class="tp-nav__item">
+        <a class="tp-nav__link" href="/pricing.html">Pricing</a>
+      </li>
+      <li class="tp-nav__item">
+        <span class="tp-nav__link" role="button" tabindex="0" aria-haspopup="true">
+          Community<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        <ul class="tp-nav__dropdown">
+          <li>
+            <a href="/support.html">
+              Support & services<span>Community channels and commercial options</span>
+            </a>
+          </li>
+          <li>
+            <a href="/about.html">
+              About the project<span>History, licence and how it is funded</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://documentation.teampass.net" target="_blank" rel="noopener">
+              Documentation<span>Install, configure and operate Teampass</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/nilsteampassnet/TeamPass" target="_blank" rel="noopener">
+              GitHub<span>Source code, issues and discussions</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="tp-nav__actions">
+      <a class="tp-btn tp-btn--secondary" href="https://documentation.teampass.net" target="_blank" rel="noopener">Docs</a>
+      <a class="tp-btn" href="/install.html">Get started</a>
+    </div>
+
+  </div>
+</nav>
+
+
+  <main id="main">
+    <header class="tp-page-hero">
+  <div class="tp-container"><span class="tp-page-hero__eyebrow">Secure Send</span>
+    <h1>Send one credential to someone outside the vault</h1><p class="tp-page-hero__lead">A link that expires, counts its views and then stops working — so a client or a contractor gets the one password they need, without an account, and without that password sitting in a mailbox for years.</p>
+    <div class="tp-button-row">
+      <a class="tp-btn" href="https://documentation.teampass.net/#/features/items?id=one-time-view" target="_blank" rel="noopener">Read the Secure Send documentation</a>
+      <a class="tp-btn tp-btn--ghost" href="/install.html">Install Teampass</a>
+    </div>
+  </div>
+</header>
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">The problem</span>
+      <h2>Every team sends passwords to outsiders. Usually by e-mail.</h2>
+      <p>
+        A supplier needs the router password, an auditor needs a read-only login,
+        a freelancer needs the staging credentials for a week. The vault cannot
+        reach them, so the password leaves it the quickest way available — and
+        stays wherever it landed.
+      </p>
+    </header>
+
+    <div class="tp-grid">
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+        <h3>A sent password never leaves</h3>
+        <p>
+          It stays in both mailboxes, in the backups of both mail servers and in
+          every search index along the way, long after the work it was sent for
+          is finished.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <h3>An account is too much for one password</h3>
+        <p>
+          Creating a vault account for an outsider means standing access, folder
+          rights to get right, and an offboarding step that someone has to
+          remember once the job is done.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
+        <h3>Scanners open one-time links first</h3>
+        <p>
+          Mail security gateways and chat previews follow links as soon as they
+          arrive. A link that reveals its content on first opening is consumed
+          before the person it was meant for ever sees it.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="how">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">How a link works</span>
+      <h2>Nothing is revealed until the recipient asks for it</h2>
+      <p>
+        A Secure Send link is not a page that displays a password. It is a
+        request the recipient has to confirm, checked against every limit at the
+        moment they do.
+      </p>
+    </header>
+
+    <ol class="tp-flow">
+      <li class="tp-flow__step">
+        <span class="tp-flow__stage">Step 1</span>
+        <h3>Choose what to share</h3>
+        <p>
+          From the item, set how many days the link lives and how many views it
+          allows, within the limits your administrator set. Add a passphrase,
+          and the current TOTP code if the recipient needs it.
+        </p>
+      </li>
+      <li class="tp-flow__step">
+        <span class="tp-flow__stage">Step 2</span>
+        <h3>Send the link</h3>
+        <p>
+          Copy the link and send it as usual. Send the passphrase through a
+          different channel — a phone call, a chat — so that intercepting one
+          message is not enough.
+        </p>
+      </li>
+      <li class="tp-flow__step">
+        <span class="tp-flow__stage">Step 3</span>
+        <h3>The recipient confirms</h3>
+        <p>
+          Opening the link shows the expiry date, the remaining views and, when
+          configured, the sender's organisation. Nothing is decrypted and nothing
+          is counted until the recipient confirms.
+        </p>
+      </li>
+      <li class="tp-flow__step">
+        <span class="tp-flow__stage">Step 4</span>
+        <h3>Revealed, counted, gone</h3>
+        <p>
+          The view is reserved before the content is shown. When the last view is
+          used or the expiry date passes, the link stops working for good.
+        </p>
+      </li>
+    </ol>
+
+    <div class="tp-callout" style="margin-top: 32px;">
+      <svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg>
+      <p>
+        <strong>The sender's access is checked again at every opening.</strong>
+        A link created by someone who has since been disabled, or who lost access
+        to the item, stops working — even if it has not expired yet. Deleting
+        the item stops its links too.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="sender">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">On the sender's side</span>
+      <h2>Two clicks from the item you already have open</h2>
+    </header>
+
+    <div class="tp-split">
+      <div>
+        <ul class="tp-checklist">
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Secure Send</strong> sits in the item's toolbar, next to Share and Notify</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The dialog shows what the recipient will see about you before the link exists</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A badge on the item row counts its active links</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span><strong>My secure sends</strong> lists your active links, and revokes any of them</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>An item set to delete itself after a number of views, or at a date, does so through a link exactly as through the item viewer</span></li>
+        </ul>
+      </div>
+      <div class="tp-split__visual">
+        <img src="/images/portfolio/tp3_sw_2.png" alt="An item in Teampass, with Secure Send in the toolbar next to Share and Notify" width="1920" height="881" loading="lazy">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="recipient">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">On the recipient's side</span>
+      <h2>A page that says who is asking, before it shows anything</h2>
+      <p>
+        The recipient has never seen your Teampass. The page they land on has to
+        earn their trust — and give them a reason to check the address before
+        typing a passphrase.
+      </p>
+    </header>
+
+    <div class="tp-split tp-split--reverse">
+      <div>
+        <ul class="tp-checklist">
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Your <strong>organisation name</strong> and your <strong>logo</strong>, when it is an image stored on the server</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The sender's first and last name, only if the administrator enables it — never a login or an e-mail address</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>The expiry date and the remaining views, before anything is revealed</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>A reminder to check that the page address belongs to the sender's organisation</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Light and dark mode, in the visitor's language or the instance's default one</span></li>
+        </ul>
+      </div>
+      <div><div class="tp-callout">
+          <svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+          <p>
+            <strong>No third party learns that a link was opened.</strong> A logo
+            given as an external URL stays on the login page only: the recipient
+            page uses a logo stored on your server, or none, so opening a link
+            never contacts another host.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="safety">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Guard rails</span>
+      <h2>A link to a password has to fail closed</h2>
+      <p>
+        Every limit is enforced by the server, at the moment the link is used —
+        not by the page, and not only when the link is created.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+
+      <article class="tp-card">
+        <span class="tp-icon-tile"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <h3>Confirmation before reveal</h3>
+        <p>
+          Only an explicit confirmation reveals the content and uses a view.
+          Link previews and scanners open the page and consume nothing.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+        <h3>Limits that hold under load</h3>
+        <p>
+          Views and failed attempts are reserved in a single database
+          transaction, so concurrent requests cannot exceed a link's limits.
+          Five wrong attempts revoke it.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></svg></span>
+        <h3>Access checked at every opening</h3>
+        <p>
+          The sender's current right to the item is verified when the link is
+          created, again before anything is decrypted for the recipient, and
+          when the sender lists their links.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="M2 12.18a1 1 0 0 0 .6.9l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 .58-.91"/><path d="M2 17.18a1 1 0 0 0 .6.9l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 .58-.91"/></svg></span>
+        <h3>A copy, frozen at creation</h3>
+        <p>
+          The link carries an encrypted copy of the item as it was. A description
+          too long for it is shortened and both sides are told; the credentials
+          themselves are never cut.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+        <h3>TOTP codes, never the seed</h3>
+        <p>
+          When the sender chooses to share it, the recipient gets server-generated
+          codes. The TOTP secret is never sent to a browser.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+        <h3>Nothing for the browser to keep</h3>
+        <p>
+          The recipient page forbids caching, framing and referrers, and runs
+          under a restrictive Content Security Policy.
+        </p>
+      </article>
+
+    </div>
+
+    <p style="margin-top: 32px;">
+      <a class="tp-link-arrow" href="/security.html">
+        The encryption and key distribution model <svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </p>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="policy">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Administrator policy</span>
+      <h2>Senders choose within limits you set</h2>
+      <p>
+        The settings live under <em>Settings → Options</em>, in the Collaboration
+        group, except the organisation name, which is in General Info. The names
+        below are the ones the settings page shows.
+      </p>
+    </header>
+
+    <div class="tp-table-scroll">
+      <table class="tp-table">
+        <thead>
+          <tr>
+            <th scope="col">Setting</th>
+            <th scope="col">New installation</th>
+            <th scope="col">What it controls</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">User can propose One-Time-View links</th><td>Off</td><td>Turns Secure Send on</td></tr>
+          <tr><th scope="row">One-time-view (OTV) links expire after XX days</th><td>7</td><td>The longest validity a sender may choose, also proposed by default</td></tr>
+          <tr><th scope="row">Secure Send maximum number of views per link</th><td>5</td><td>The most views a sender may allow; the form proposes 1</td></tr>
+          <tr><th scope="row">Force a passphrase on every Secure Send link</th><td>Off</td><td>Makes the passphrase mandatory; links already sent without one stop working</td></tr>
+          <tr><th scope="row">Allow sending ad-hoc notes/secrets (not only items)</th><td>Off</td><td>Lets users share a standalone note instead of an item</td></tr>
+          <tr><th scope="row">Show the sender's profile name to Secure Send recipients</th><td>On</td><td>Shows the sender's first and last name; off after an upgrade until enabled</td></tr>
+          <tr><th scope="row">Public entity name</th><td>Empty</td><td>The organisation name shown to recipients</td></tr>
+          <tr><th scope="row">Public sharing address</th><td>Empty</td><td>A separate address senders may choose for links meant for the Internet</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="exposure">
+  <div class="tp-container">
+    <div class="tp-split">
+      <div>
+        <span class="tp-section-header__eyebrow">Publishing links</span>
+        <h2 style="font-size: 2.25rem; line-height: 1.2; margin-bottom: 16px;">Reachable from the Internet, with the vault still private</h2>
+        <p style="color: var(--tp-text-muted); margin-bottom: 24px;">
+          Recipients are outside your network, your vault should not be. A public
+          sharing address puts the recipient page on a dedicated hostname, and the
+          sender picks it link by link — the internal address stays the default,
+          and the dialog always shows which one a link will use.
+        </p>
+        <ul class="tp-checklist">
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Apache and Nginx allowlists that accept the exact requests of the recipient page and refuse everything else</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Reverse-proxy and Docker setups, TLS, and sessions on several nodes</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Logging without the link credentials, and a validation matrix to test the result</span></li>
+        </ul>
+        <a class="tp-link-arrow" href="https://documentation.teampass.net/#/install/secure-send" target="_blank" rel="noopener">
+          Secure Send deployment guide <svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+        </a>
+      </div>
+      <div>
+        <div class="tp-callout tp-callout--quote">
+          <svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01"/><path d="M6 18h.01"/></svg>
+          <p>
+            Since 3.2.2.7 the official Docker image logs requests without their
+            query string and without the <code>Referer</code> header, so the
+            credentials carried by a link never reach the container's access log.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="scope">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Honest scope</span>
+      <h2>What a Secure Send link does not carry</h2>
+    </header>
+
+    <div class="tp-grid tp-grid--2" style="--min: 460px;">
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--danger"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg></span>
+        <h3>Custom fields, tags and attachments</h3>
+        <p>
+          The shared copy holds the label, login, URL, description and password,
+          plus the TOTP code when the sender chooses to include it. Files and
+          custom fields stay in the vault.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--danger"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg></span>
+        <h3>Ongoing access</h3>
+        <p>
+          A link is for handing over a credential once, or a few times. Someone
+          who needs the item for months belongs in Teampass, with an account and
+          folder rights you can review.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="start">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Getting started</span>
+      <h2>From switched off to a first link</h2>
+    </header>
+
+    <ol class="tp-steps">
+      <li class="tp-step">
+        <h3>Set the policy</h3>
+        <p>
+          In <em>Settings → Options → Collaboration</em>, turn on
+          <em>User can propose One-Time-View links</em>, then set the longest
+          validity, the view limit and whether a passphrase is mandatory.
+        </p>
+      </li>
+      <li class="tp-step">
+        <h3>Decide where links point</h3>
+        <p>
+          Internal recipients only? Nothing more to do. Outsiders? Declare a
+          public sharing address and publish it by following the deployment
+          guide, then set your organisation name.
+        </p>
+      </li>
+      <li class="tp-step">
+        <h3>Send the first one</h3>
+        <p>
+          Open an item, choose <em>Secure Send</em>, generate the link and copy
+          it. Send the passphrase separately, and watch the link in
+          <em>My secure sends</em>.
+        </p>
+      </li>
+    </ol>
+
+    <div class="tp-callout" style="margin-top: 32px;">
+      <svg class="tp-icon " viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"></svg>
+      <p>
+        Recipient confirmation, frozen copies, TOTP sharing and the public sharing
+        address arrived in 3.2.2.6, the branded recipient page in 3.2.2.7 — see
+        <a href="/whats-new.html">What's new</a>. Every
+        setting and limit is described in the
+        <a href="https://documentation.teampass.net/#/features/items?id=one-time-view" target="_blank" rel="noopener">Secure Send documentation</a>.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt">
+  <div class="tp-container tp-container--prose">
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Questions</span>
+      <h2>Straight answers</h2>
+    </header>
+    
+<div class="tp-faq">
+  <details class="tp-faq__item">
+    <summary>Does the recipient need a Teampass account?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>No. They open the link in a browser, on a page served by your own Teampass server. There is nothing to install and no account to create — and therefore nothing to offboard afterwards.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>Can a mail scanner or a link preview use up the link?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>No. Opening the link only shows a confirmation page, with the expiry date and the remaining views. The content is revealed, and a view counted, only when the recipient confirms. Security gateways and chat previews that follow links consume nothing.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>What if I change the item after sending the link?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>The link shares a copy of the label, login, URL, description and password as they were when it was created, so later edits do not reach the recipient. Deleting the item, or losing your own access to it, still blocks the link.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>Can I share a TOTP code?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>Yes, explicitly: tick <strong>Include the current TOTP code</strong> when you create the link. The recipient receives a code generated by the server, and the next one when the current code is about to expire — never the TOTP secret. The option is unchecked by default and is not offered to read-only accounts.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>What stops someone from guessing the passphrase?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>Five wrong key or passphrase attempts revoke the link. Failed attempts are counted in the same database transaction as the views, so parallel requests cannot get around the limit.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>What does the recipient learn about me?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>The organisation name your administrator sets, and — only if the administrator enables <strong>Show the sender’s profile name</strong> — your first and last name. Never your login, never your e-mail address. You see in the Secure Send dialog what the recipient will be shown.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>Can I cancel a link I already sent?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>Yes. <strong>My secure sends</strong> lists your active links, and each one can be revoked. A link also stops working on its own when it expires, when its last view is used, or when you lose access to the item.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>Can the links be reachable from the Internet while the vault stays internal?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>Yes. The administrator can declare a public sharing address, and the sender chooses it per link — the internal address stays the default. The <a href="https://documentation.teampass.net/#/install/secure-send">Secure Send deployment guide</a> explains how to publish that address so it exposes the recipient page and nothing else.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>Is it enabled by default?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>No. An administrator turns it on with <strong>User can propose One-Time-View links</strong>, in the Collaboration settings, and sets the limits that every link must respect.</p>
+</div>
+  </details>
+  <details class="tp-faq__item">
+    <summary>Can I send something that is not an item?<svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></summary>
+    <div class="tp-faq__answer"><p>Yes, when the administrator enables <strong>Allow sending ad-hoc notes/secrets</strong>: a standalone note gets its own link, with the same limits. It is off by default.</p>
+</div>
+  </details>
+</div>
+
+  </div>
+</section>
+
+
+<section class="tp-cta-band">
+  <div class="tp-container">
+    <h2>Stop e-mailing passwords.</h2><p>Install Teampass, turn Secure Send on and send the next credential as a link that expires on its own.</p>
+    <div class="tp-button-row">
+      <a class="tp-btn tp-btn--lg" href="/install.html">Install Teampass</a>
+      <a class="tp-btn tp-btn--ghost tp-btn--lg" href="https://documentation.teampass.net/#/features/items?id=one-time-view" target="_blank" rel="noopener">Read the documentation</a>
+    </div>
+  </div>
+</section>
+
+
+
+  </main>
+
+  <footer class="tp-footer">
+  <div class="tp-container">
+
+    <div class="tp-footer__top">
+
+      <div class="tp-footer__brand">
+        
+<span class="tp-brand tp-brand--lg">
+  <img class="tp-brand__mark"
+       src="/images/teampass-logo2-home.png"
+       alt="" width="75" height="77" aria-hidden="true">
+  <span class="tp-brand__name">Teampass</span>
+</span>
+
+        <p>Teampass has been built and maintained by Nils Laumaillé since 2009.</p>
+        <ul class="tp-footer__social">
+          <li><a href="https://github.com/nilsteampassnet/TeamPass" target="_blank" rel="noopener" aria-label="Teampass on GitHub"><svg class="tp-icon tp-icon--lg" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2 0-.4-.5-1.6.2-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.2 2.8.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg></a></li>
+          <li><a href="https://www.reddit.com/r/TeamPass/" target="_blank" rel="noopener" aria-label="Teampass on Reddit"><svg class="tp-icon tp-icon--lg" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M24 11.8a2.6 2.6 0 0 0-4.4-1.8 12.8 12.8 0 0 0-6.9-2.2l1.2-5.5 3.9.8a1.9 1.9 0 1 0 .2-1.1L13.5.9a.6.6 0 0 0-.7.4l-1.4 6.4a12.8 12.8 0 0 0-7 2.2 2.6 2.6 0 1 0-2.9 4.2 5 5 0 0 0 0 .8c0 4 4.7 7.3 10.5 7.3s10.5-3.3 10.5-7.3a5 5 0 0 0 0-.8 2.6 2.6 0 0 0 1.5-2.3M6 13.7a1.9 1.9 0 1 1 1.9 1.9A1.9 1.9 0 0 1 6 13.7m10.7 5a6.9 6.9 0 0 1-4.6 1.4A6.9 6.9 0 0 1 7.5 19a.5.5 0 0 1 .7-.7 5.9 5.9 0 0 0 3.9 1.1 5.9 5.9 0 0 0 3.9-1.2.5.5 0 1 1 .7.7Zm-.6-3a1.9 1.9 0 1 1 1.9-1.9 1.9 1.9 0 0 1-1.9 2Z"/></svg></a></li>
+          <li><a href="https://twitter.com/theteampass" target="_blank" rel="noopener" aria-label="Teampass on X"><svg class="tp-icon tp-icon--lg" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.5L6.3 22H3.2l7.3-8.3L2.8 2h6.4l4.4 5.9Zm-1.1 18.2h1.7L8.3 3.7H6.5Z"/></svg></a></li>
+          <li><a href="https://fr-fr.facebook.com/TeamPass-Passwords-for-Teams-163627833721400/" target="_blank" rel="noopener" aria-label="Teampass on Facebook"><svg class="tp-icon tp-icon--lg" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true" focusable="false"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.6 4.5-4.6 1.3 0 2.7.2 2.7.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.4l-.6 3.5h-2.8v8.4A12 12 0 0 0 24 12"/></svg></a></li>
+        </ul>
+      </div>
+
+      <div class="tp-footer__links">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="/features.html">Features</a></li>
+            <li><a href="/whats-new.html">What's new</a></li>
+            <li><a href="/lapr.html">Linux password rotation</a></li>
+            <li><a href="/secure-send.html">Secure Send</a></li>
+            <li><a href="/extension.html">Browser extension</a></li>
+            <li><a href="/install.html">Install &amp; requirements</a></li>
+            <li><a href="/pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Solutions</h2>
+          <ul>
+            <li><a href="/for-individuals.html">For individuals</a></li>
+            <li><a href="/for-teams.html">For teams &amp; SMB</a></li>
+            <li><a href="/for-enterprise.html">For enterprise</a></li>
+            <li><a href="/compare.html">Compare alternatives</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Trust</h2>
+          <ul>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="/compliance.html">Compliance</a></li>
+            <li><a href="https://github.com/nilsteampassnet/TeamPass/security/advisories" target="_blank" rel="noopener">Security advisories</a></li>
+            <li><a href="/privacy.html">Privacy &amp; cookies</a></li>
+            <li><a href="/extension-privacy.html">Extension privacy policy</a></li>
+            <li><button type="button" class="tp-footer__consent" data-tp-consent-reopen>Cookie preferences</button></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Community</h2>
+          <ul>
+            <li><a href="https://documentation.teampass.net" target="_blank" rel="noopener">Documentation</a></li>
+            <li><a href="https://github.com/nilsteampassnet/TeamPass" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://github.com/nilsteampassnet/TeamPass/discussions" target="_blank" rel="noopener">Discussions</a></li>
+            <li><a href="/whats-new.html">Release history</a></li>
+            <li><a href="/support.html">Support &amp; services</a></li>
+            <li><a href="/about.html">About the project</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tp-footer__bottom">
+      <p>
+        &copy; 2009-2026
+        <a href="https://nils.laumaille.fr/" target="_blank" rel="noopener">Nils Laumaillé</a> —
+        released under GPL-3.0.
+        Consulting: <a href="https://www.logcarre.com/en/" target="_blank" rel="noopener">LogCarré</a>.
+      </p>
+      <p class="tp-footer__made">
+        <img src="/images/madeinfrance.png" alt="Made in France" height="28">
+      </p>
+    </div>
+
+  </div>
+</footer>
+
+<a href="#top" class="tp-to-top" aria-label="Back to top"><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg></a>
+
+  
+<div class="tp-consent" id="tp-consent" role="dialog" aria-modal="false"
+     aria-labelledby="tp-consent-title" hidden>
+  <div class="tp-consent__inner">
+
+    <div class="tp-consent__text">
+      <h2 class="tp-consent__title" id="tp-consent-title">Audience measurement</h2>
+      <p>
+        We would like to use Google Analytics to count visits and see which
+        pages are read. It sets cookies on your device. Nothing is loaded
+        until you accept, and we run no advertising or profiling.
+        See the <a href="/privacy.html">privacy policy</a>.
+      </p>
+    </div>
+
+    <div class="tp-consent__actions">
+      <button type="button" class="tp-btn tp-btn--secondary" data-tp-consent="decline">Decline</button>
+      <button type="button" class="tp-btn" data-tp-consent="accept">Accept</button>
+    </div>
+
+  </div>
+</div>
+
+  
+<script>
+  (function () {
+    'use strict';
+
+    var ID = 'G-5NS849FBPH';
+    var STORAGE_KEY = 'tp-consent';
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    // Consent Mode v2 — everything off until the visitor says otherwise.
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'granted',
+      security_storage: 'granted'
+    });
+
+    function read() {
+      try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+    }
+
+    function write(value) {
+      try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
+    }
+
+    // Drop the cookies the tag may already have written.
+    function clearCookies() {
+      var names = document.cookie.split(';').map(function (pair) {
+        return pair.split('=')[0].trim();
+      }).filter(function (name) {
+        return name.indexOf('_ga') === 0 || name === '_gid';
+      });
+
+      var host = location.hostname;
+      var domains = ['', host, '.' + host];
+      var parts = host.split('.');
+      if (parts.length > 2) { domains.push('.' + parts.slice(-2).join('.')); }
+
+      names.forEach(function (name) {
+        domains.forEach(function (domain) {
+          document.cookie = name + '=; Max-Age=0; path=/' +
+            (domain ? '; domain=' + domain : '');
+        });
+      });
+    }
+
+    var loaded = false;
+
+    function load() {
+      if (loaded) { return; }
+      loaded = true;
+
+      gtag('consent', 'update', { analytics_storage: 'granted' });
+      gtag('js', new Date());
+      gtag('config', ID, {
+        anonymize_ip: true
+      });
+
+      var tag = document.createElement('script');
+      tag.async = true;
+      tag.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID;
+      document.head.appendChild(tag);
+    }
+
+    window.tpConsent = {
+      state: function () { return read(); },
+
+      accept: function () {
+        write('granted');
+        load();
+      },
+
+      decline: function () {
+        write('denied');
+        gtag('consent', 'update', { analytics_storage: 'denied' });
+        clearCookies();
+      }
+    };
+
+    if (read() === 'granted') { load(); }
+  })();
+</script>
+
+  <script src="/js/main.js" defer></script>
+
+
+</body>
+</html>

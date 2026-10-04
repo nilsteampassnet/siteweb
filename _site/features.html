@@ -9,22 +9,22 @@
 
   <title>Everything Teampass does | Teampass</title>
   <meta name="description" content="The complete Teampass feature list — access control, encryption, security posture, governance, authentication, sharing, automation, import/export and everyday usability.">
-  <link rel="canonical" href="https://teampass.net/features.html">
+  <link rel="canonical" href="http://localhost:4000/features.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Teampass">
   <meta property="og:title" content="Everything Teampass does | Teampass">
   <meta property="og:description" content="The complete Teampass feature list — access control, encryption, security posture, governance, authentication, sharing, automation, import/export and everyday usability.">
-  <meta property="og:url" content="https://teampass.net/features.html">
-  <meta property="og:image" content="https://teampass.net/images/og-image.png">
+  <meta property="og:url" content="http://localhost:4000/features.html">
+  <meta property="og:image" content="http://localhost:4000/images/og-image.png">
   <meta property="og:locale" content="en_GB">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Everything Teampass does | Teampass">
   <meta name="twitter:description" content="The complete Teampass feature list — access control, encryption, security posture, governance, authentication, sharing, automation, import/export and everyday usability.">
-  <meta name="twitter:image" content="https://teampass.net/images/og-image.png">
+  <meta name="twitter:image" content="http://localhost:4000/images/og-image.png">
 
   <link rel="shortcut icon" href="/images/favicon.png">
   <link rel="stylesheet" href="/css/style.css">
@@ -75,6 +75,11 @@
           <li>
             <a href="/lapr.html">
               Linux password rotation<span>Agentless rotation of Linux account passwords over SSH</span>
+            </a>
+          </li>
+          <li>
+            <a href="/secure-send.html">
+              Secure Send<span>Expiring, view-limited links for people outside the vault</span>
             </a>
           </li>
           <li>
@@ -272,6 +277,7 @@
           <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>System Health and Statistics reports covering scheduler, queues and failures</span></li>
           <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Optional email alerts on rotation failure, carrying operational metadata only</span></li>
         </ul>
+        <div class="tp-card__footer"><a class="tp-link-arrow" href="/lapr.html">Learn more <svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
       </div>
     </div>
     <div style="margin-top: 48px;">
@@ -343,11 +349,13 @@
 
       <div class="tp-card">
         <ul class="tp-checklist" style="columns: 1;">
-          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Secure Send with expiry and view-count limits</span></li>
-          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Optional recipient passphrase</span></li>
-          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>One-time-view links</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Secure Send links with expiry and view-count limits</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Optional recipient passphrase, mandatory when the administrator requires it</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Recipient confirmation before reveal, so link scanners consume nothing</span></li>
+          <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>Branded recipient page, on an optional public address</span></li>
           <li><svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg><span>User-to-user sharing on individual items</span></li>
         </ul>
+        <div class="tp-card__footer"><a class="tp-link-arrow" href="/secure-send.html">Learn more <svg class="tp-icon " viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
       </div>
     </div>
     <div style="margin-top: 48px;">
@@ -457,6 +465,7 @@
             <li><a href="/features.html">Features</a></li>
             <li><a href="/whats-new.html">What's new</a></li>
             <li><a href="/lapr.html">Linux password rotation</a></li>
+            <li><a href="/secure-send.html">Secure Send</a></li>
             <li><a href="/extension.html">Browser extension</a></li>
             <li><a href="/install.html">Install &amp; requirements</a></li>
             <li><a href="/pricing.html">Pricing</a></li>

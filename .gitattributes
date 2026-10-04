@@ -1,0 +1,4 @@
+# Store text files with LF and check them out with LF on every platform.
+# Git for Windows ships core.autocrlf=true, which otherwise rewrites them
+# with CRLF and makes WSL's git report them as modified.
+* text=auto eol=lf
