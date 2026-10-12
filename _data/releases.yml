@@ -9,7 +9,7 @@ line: "3.2"
 
 highlights:
   - title: Passkeys
-    url: https://documentation.teampass.net/#/features/passkeys
+    url: /passkeys.html
     icon: key
     body: >-
       Teampass keeps the passkeys of other sites in its items, with a private

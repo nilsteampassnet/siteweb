@@ -87,6 +87,18 @@
     - Brute-force protection with administrator-managed lockouts
     - Role assignment scoped to the caller's own roles
 
+- group: Passkeys
+  icon: key
+  url: /passkeys.html
+  intro: For the sites your team shares, and for Teampass itself. New in 3.2.3.
+  items:
+    - Passkeys of third-party sites kept in items and used through the browser extension (paid add-on)
+    - Private key generated, encrypted and used on the server, never returned by any endpoint
+    - Shared through folder rights and item restrictions, like the password of the item
+    - Passkey added, used and deleted recorded in the item history
+    - Sign-in to Teampass with a passkey, as a second factor or without a password
+    - Offered rather than imposed, registered from the profile and revocable by an administrator
+
 - group: Items and data
   icon: file-text
   intro: What an entry can hold.

@@ -1,0 +1,644 @@
+---
+layout: page
+title: Passkeys your team can share, and a vault that opens with one
+eyebrow: Passkeys
+lead: >-
+  Teampass keeps the passkeys of other sites in its items, next to the passwords
+  they replace: whoever can open the item can sign in with it, and the private
+  key never leaves your server. Users can also sign in to Teampass itself with a
+  fingerprint, a face, a PIN or a security key.
+description: >-
+  Teampass 3.2.3 keeps the passkeys of third-party sites in its items, signed on
+  your own server and shared through folder rights, and lets users sign in to
+  Teampass with a passkey, as a second factor or without a password. Both are
+  off by default.
+cta:
+  - label: Read the passkeys documentation
+    url: https://documentation.teampass.net/#/features/passkeys
+  - label: Install Teampass
+    url: /install.html
+faq:
+  - question: Are the two passkey features linked?
+    answer: >-
+      No. Keeping the passkeys of other sites and signing in to Teampass with a
+      passkey each have their own settings. Turning one on does not turn the
+      other on, and a passkey of one is never usable by the other.
+  - question: Where is the private key of a passkey kept in Teampass?
+    answer: >-
+      On your Teampass server, and nowhere else. It is generated there,
+      encrypted like an item password, and used there. No endpoint returns it:
+      the browser extension only relays the request of the site and receives a
+      signature in return.
+  - question: Who can sign in with a passkey kept in an item?
+    answer: >-
+      Everyone who can open the item. In a shared folder, that is every user
+      with access to the folder, minus those excluded by an item restriction;
+      in a personal folder, its owner only. A read-only user of the folder can
+      sign in with the passkey, but cannot save or delete one.
+  - question: Do I need the browser extension?
+    answer: >-
+      For the passkeys of other sites, yes: it is the extension, version 1.8.0
+      or later, that answers a site's passkey request in the browser, and the
+      extension is a [paid add-on](/extension.html) with a free trial. Signing
+      in to Teampass itself with a passkey needs nothing but the open-source
+      server and a browser.
+  - question: What happens when the Teampass server cannot be reached?
+    answer: >-
+      A passkey kept in Teampass cannot be used, because its private key never
+      leaves the server. When the server takes more than 5 seconds to answer,
+      or cannot be reached, the browser's own passkey window opens instead.
+      Keep another way to sign in — a password, recovery codes — on every
+      account such a passkey protects.
+  - question: Can I import the passkeys I already have?
+    answer: >-
+      No. Passkeys already stored in a browser, a phone or another password
+      manager cannot be imported, and the passkeys kept in Teampass cannot be
+      exported.
+  - question: Does enabling sign-in passkeys force my users to enrol?
+    answer: >-
+      No. Passkeys are offered, never imposed. An account without a passkey
+      signs in exactly as before, and there is no enrolment during sign-in:
+      users register a passkey from their profile, whenever they choose to.
+  - question: What if a user loses the phone or the key that holds their passkey?
+    answer: >-
+      An administrator, or a manager of that account, revokes the passkey from
+      the Users page. The revocation takes effect at once, and the account
+      goes back to its password, plus any other method it had.
+  - question: Can LDAP or OAuth2 accounts sign in without a password?
+    answer: >-
+      No. Signing in without the directory password would bypass a directory
+      that may have disabled the account, so these accounts use their passkey
+      as a second factor. Passwordless sign-in is for local accounts.
+  - question: How can a sign-in without a password decrypt anything?
+    answer: >-
+      Every item is encrypted with the user's key, and that key is protected by
+      their password. A passkey used for passwordless sign-in therefore carries
+      a second, encrypted copy of that key, opened either by a secret only the
+      authenticator can produce (PRF) or, for the authenticators without PRF,
+      by a key derived from the instance secret file, which is outside the
+      database. **Require PRF for passwordless sign-in** refuses the second
+      kind.
+  - question: Can Teampass keep the passkey that signs in to Teampass?
+    answer: >-
+      No. The server refuses to save or to use such a passkey in an item, and
+      the extension leaves the pages of its own Teampass server to the browser:
+      an item holding it would let everyone who can open it sign in as its
+      owner. Register that passkey on another authenticator — Windows Hello, a
+      phone, a security key.
+  - question: Is it enabled by default?
+    answer: >-
+      No. An administrator turns on **Allow the browser extension to save
+      passkeys** for the passkeys of other sites, and chooses a mode in **Sign
+      in with a passkey** for Teampass itself. Both need Teampass 3.2.3 or
+      later. Serve it over HTTPS first: sign-in passkeys do not work without
+      it.
+---
+
+<section class="tp-section">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">The problem</span>
+      <h2>Passkeys were built for one person. Teams share accounts.</h2>
+      <p>
+        A passkey replaces a password with a key held by a device or by a
+        personal password manager. That suits an account one person owns. It
+        suits the supplier portal, the registrar or the social media account
+        that four colleagues use much less well.
+      </p>
+    </header>
+
+    <div class="tp-grid">
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning">{% include components/icon.html name="users" %}</span>
+        <h3>A shared account on one person's device</h3>
+        <p>
+          The passkey of a shared account ends up on the phone, or in the
+          personal manager, of whoever created it. Their holiday, or their
+          departure, becomes everyone's problem.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning">{% include components/icon.html name="key" %}</span>
+        <h3>So shared accounts stay on passwords</h3>
+        <p>
+          Rather than depend on one colleague, the team declines the passkey the
+          site offers and keeps the password in the vault, where everyone who
+          needs it can reach it.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--warning">{% include components/icon.html name="lock" %}</span>
+        <h3>And the vault still opens with a password</h3>
+        <p>
+          The place that holds every credential is itself protected by what
+          passkeys were meant to replace: something typed, which can be typed
+          into the wrong page.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="two-features">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Two features, two switches</span>
+      <h2>For the sites your team uses, and for Teampass itself</h2>
+      <p>
+        Teampass uses passkeys for two independent things, each with its own
+        settings. Both are off until an administrator turns them on.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--2" style="--min: 460px;">
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="key" %}</span>
+        <h3>Passkeys of other sites</h3>
+        <p>
+          Teampass keeps the passkeys of third-party sites in its items, like it
+          keeps their passwords, and the browser extension signs in with them.
+          The server side is open-source; the
+          <a href="{{ '/extension.html' | relative_url }}">extension</a> is the
+          paid add-on.
+        </p>
+        <div class="tp-card__footer">
+          <a class="tp-link-arrow" href="#how">How it works {% include components/icon.html name="arrow-right" %}</a>
+        </div>
+      </article>
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="user-check" %}</span>
+        <h3>Signing in to Teampass</h3>
+        <p>
+          A passkey confirms, or replaces, the password of a Teampass account.
+          It needs the open-source server, HTTPS and a browser that supports
+          passkeys — no extension.
+        </p>
+        <div class="tp-card__footer">
+          <a class="tp-link-arrow" href="#sign-in">How it works {% include components/icon.html name="arrow-right" %}</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="tp-callout" style="margin-top: 32px;">
+      {% include components/icon.html name="info" %}
+      <p>
+        <strong>Turning one on does not turn the other on</strong>, and a passkey
+        of one is never usable by the other.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="how">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Passkeys of other sites</span>
+      <h2>The private key is created, kept and used on your server</h2>
+      <p>
+        A passkey kept in Teampass is not a file handed to each browser. The
+        extension relays the request of the site; the server signs it and sends
+        back the signature, nothing else.
+      </p>
+    </header>
+
+    <ol class="tp-flow">
+      <li class="tp-flow__step">
+        <span class="tp-flow__stage">Step 1</span>
+        <h3>A site offers a passkey</h3>
+        <p>
+          A Teampass window opens in the browser. Choose the item to store the
+          passkey in, or create a new one in a folder of your choice, then save.
+        </p>
+      </li>
+      <li class="tp-flow__step">
+        <span class="tp-flow__stage">Step 2</span>
+        <h3>The server generates the key</h3>
+        <p>
+          An ECDSA P-256 key pair is generated on the Teampass server. Its
+          private key is encrypted with a key of its own, itself encrypted for
+          each user — the same scheme as item passwords.
+        </p>
+      </li>
+      <li class="tp-flow__step">
+        <span class="tp-flow__stage">Step 3</span>
+        <h3>The site asks for it later</h3>
+        <p>
+          Choose the account and sign in. The extension relays the request, the
+          server signs it for the site the passkey was created for, and only the
+          signature comes back.
+        </p>
+      </li>
+      <li class="tp-flow__step">
+        <span class="tp-flow__stage">Step 4</span>
+        <h3>The use is recorded</h3>
+        <p>
+          Passkey added, Passkey used and Passkey deleted are written to the
+          item history with the site concerned, under the user the server signed
+          for.
+        </p>
+      </li>
+    </ol>
+
+    <div class="tp-callout" style="margin-top: 32px;">
+      {% include components/icon.html name="users" %}
+      <p>
+        <strong>Everyone who can open an item can use its passkeys.</strong> A
+        passkey saved in a shared folder signs in for every member of that
+        folder, exactly like its password. One saved in a personal folder signs
+        in for its owner only.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="items">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">In the vault</span>
+      <h2>A passkey behaves like the item that holds it</h2>
+    </header>
+
+    <div class="tp-split">
+      <div>
+        <ul class="tp-checklist">
+          <li>{% include components/icon.html name="check" %}<span>Folder rights, item restrictions and the recycle bin apply to passkeys as they do to passwords</span></li>
+          <li>{% include components/icon.html name="check" %}<span>A read-only user of the folder can sign in with a passkey, but cannot save or delete one</span></li>
+          <li>{% include components/icon.html name="check" %}<span>The item card lists its passkeys with the site, the account, the creation date and the last use</span></li>
+          <li>{% include components/icon.html name="check" %}<span>A fingerprint next to the title marks the items that hold a passkey</span></li>
+          <li>{% include components/icon.html name="check" %}<span>Passkeys follow their item when it is moved, and are never copied or exported</span></li>
+          <li>{% include components/icon.html name="check" %}<span>New users receive the keys of the passkeys they can reach, and <strong>Restore missing sharekeys</strong> covers passkeys too</span></li>
+        </ul>
+      </div>
+      <div>
+        {%- comment %}
+          TODO(nils): screenshot of an item card with its Passkeys section (light
+          mode), 1920 wide, saved as images/portfolio/passkeys-item.png, then
+          replace the callout below with:
+          <div class="tp-split__visual">
+            <img src="{{ '/images/portfolio/passkeys-item.png' | relative_url }}" alt="An item card in Teampass, with a Passkeys section listing the site, the account, the creation date and the last use of each passkey" width="1920" height="1080" loading="lazy">
+          </div>
+        {% endcomment -%}
+        <div class="tp-callout">
+          {% include components/icon.html name="bell" %}
+          <p>
+            <strong>A passkey saved without your knowledge gets noticed.</strong>
+            The user who saves a passkey is e-mailed the site, the account and
+            the item, unless the administrator turns the notification off. A
+            passkey added with a stolen session does not stay silent.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="sign-in">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Signing in to Teampass</span>
+      <h2>A second factor, or no password at all</h2>
+      <p>
+        A fingerprint, a face, a PIN or a security key confirms a Teampass
+        sign-in instead of a code, and can replace the password entirely. The
+        passkey is registered by the user and never leaves their device:
+        Teampass only stores its public key.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--2" style="--min: 460px;">
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="shield-check" %}</span>
+        <h3>As a second factor</h3>
+        <p>
+          After the login and the password, Teampass asks for the passkey. Where
+          Google Authenticator or Duo is already required, the passkey is
+          offered next to them and the user picks one.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="zap" %}</span>
+        <h3>Without a password</h3>
+        <p>
+          In passwordless mode, the login page shows <em>Sign in with a
+          passkey</em>. The account is the one the chosen passkey belongs to:
+          nothing has to be typed, and one click opens the browser dialog.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="user-check" %}</span>
+        <h3>Offered, never imposed</h3>
+        <p>
+          An account without a passkey signs in exactly as before. There is no
+          enrolment during sign-in: users add up to 20 passkeys from their
+          profile, after confirming their password.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="activity" %}</span>
+        <h3>Adoption you can see</h3>
+        <p>
+          A badge on the Users page gives the number of sign-in passkeys of each
+          account, and the administration dashboard counts the active accounts
+          that hold one.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="tp-table-scroll" style="margin-top: 32px;">
+      <table class="tp-table">
+        <thead>
+          <tr>
+            <th scope="col">Account</th>
+            <th scope="col">Sign-in without a password</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Local account</th><td>Allowed</td></tr>
+          <tr><th scope="row">Directory (LDAP) or OAuth2 account</th><td>Refused: the passkey stays a second factor, because a sign-in without the directory password would bypass a directory that may have disabled the account</td></tr>
+          <tr><th scope="row">Account waiting for its keys, for a re-encryption or for a one-time code</th><td>Refused until that step is done with the password</td></tr>
+          <tr><th scope="row">Another second factor imposed, with <em>Passwordless sign-in counts as MFA</em> off</th><td>Refused: the password path goes through that factor</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tp-callout" style="margin-top: 32px;">
+      {% include components/icon.html name="refresh" %}
+      <p>
+        <strong>A lost authenticator never locks anyone out for good.</strong>
+        An administrator, or a manager of the account, revokes the passkey from
+        the Users page, and the account goes back to its password, plus any
+        other method it had.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="safety">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Guard rails</span>
+      <h2>What the server refuses to do</h2>
+      <p>
+        Each rule below is enforced by the server, whatever the extension or the
+        browser asks for.
+      </p>
+    </header>
+
+    <div class="tp-grid tp-grid--2">
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="lock" %}</span>
+        <h3>No endpoint returns the private key</h3>
+        <p>
+          The API signs on the server and sends back the signature only. The
+          credential identifier is random and generated by Teampass, never
+          supplied by the client.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="shield-check" %}</span>
+        <h3>Bound to its site</h3>
+        <p>
+          A passkey signs only for the site it was created for. A signature
+          counter grows at each use, which lets a site detect a cloned passkey.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="x-circle" %}</span>
+        <h3>The vault's own passkey stays out of the vault</h3>
+        <p>
+          The server refuses to keep the passkey of its own sign-in page in an
+          item: it would let everyone who can open that item sign in as its
+          owner.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="user-check" %}</span>
+        <h3>A password before a new passkey</h3>
+        <p>
+          An open session is not enough to add a sign-in passkey. Whoever finds
+          one unattended cannot register a passkey of their own and keep signing
+          in after the owner changed their password.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="layers" %}</span>
+        <h3>An encryption key that stays wrapped</h3>
+        <p>
+          A passwordless passkey carries an encrypted copy of the user's
+          encryption key, opened by a secret only the authenticator can produce
+          or, without PRF, by a key derived from the instance secret file. A
+          setting refuses the second.
+        </p>
+      </article>
+
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name="activity" %}</span>
+        <h3>Refusals count, changes are logged</h3>
+        <p>
+          A refused passkey counts towards the account lockout like a wrong
+          password. Additions, deletions and passwordless changes are logged,
+          and the owner is e-mailed when a passkey is added.
+        </p>
+      </article>
+
+    </div>
+
+    <p style="margin-top: 32px;">
+      <a class="tp-link-arrow" href="{{ '/security.html' | relative_url }}">
+        The encryption and key distribution model {% include components/icon.html name="arrow-right" %}
+      </a>
+    </p>
+
+  </div>
+</section>
+
+<section class="tp-section" id="policy">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Administrator policy</span>
+      <h2>Off by default, and yours to scope</h2>
+      <p>
+        The first setting is under <em>Settings → API → Browser Extension</em>,
+        the others under <em>Settings → MFA → Passkeys</em>; the notification is
+        on both tabs. The names below are the ones the settings pages show.
+      </p>
+    </header>
+
+    <div class="tp-table-scroll">
+      <table class="tp-table">
+        <thead>
+          <tr>
+            <th scope="col">Setting</th>
+            <th scope="col">Default</th>
+            <th scope="col">What it controls</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Allow the browser extension to save passkeys</th><td>Off</td><td>Turns the passkeys of other sites on for the whole instance; each user can still turn it off in the extension</td></tr>
+          <tr><th scope="row">Notify users when a passkey is saved</th><td>On</td><td>E-mails the user who saved a passkey; covers both kinds of passkey and needs an e-mail server</td></tr>
+          <tr><th scope="row">Sign in with a passkey</th><td>Disabled</td><td>Disabled, as a second factor, or passwordless and as a second factor</td></tr>
+          <tr><th scope="row">Require PRF for passwordless sign-in</th><td>Off</td><td>Refuses the copy of the encryption key the server can open; turning it on deletes the copies already registered</td></tr>
+          <tr><th scope="row">Passwordless sign-in counts as MFA</th><td>On</td><td>When off, an account on which Google Authenticator or Duo is imposed must sign in with its password</td></tr>
+          <tr><th scope="row">Relying party ID</th><td>Empty</td><td>The domain the sign-in passkeys are bound to; empty means the host of the Teampass URL</td></tr>
+          <tr><th scope="row">Name shown when creating a passkey</th><td><code>TeamPass</code></td><td>Shown by the browser and the authenticator</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tp-callout" style="margin-top: 32px;">
+      {% include components/icon.html name="alert-triangle" %}
+      <p>
+        <strong>Choose the relying party ID before users register.</strong>
+        Authenticators bind a passkey to that domain: changing it makes every
+        registered sign-in passkey unusable. When passkeys exist, Teampass asks
+        for a confirmation before saving a new value.
+      </p>
+    </div>
+
+    <p style="margin-top: 24px; color: var(--tp-text-muted);">
+      For the passkeys of other sites, the API rights of each user decide what
+      the extension may do on their behalf: Read to sign in, Update to save or
+      delete a passkey — on top of the right to edit the item, never beyond it.
+    </p>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt" id="scope">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Honest scope</span>
+      <h2>What passkeys in Teampass do not do</h2>
+    </header>
+
+    <div class="tp-grid tp-grid--2" style="--min: 460px;">
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--danger">{% include components/icon.html name="minus-circle" %}</span>
+        <h3>Work without the server</h3>
+        <p>
+          The private key never leaves the server: a passkey kept in Teampass
+          cannot be used while the server is down or unreachable, and it is not
+          part of the offline export. Keep another way to sign in on every
+          account it protects.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--danger">{% include components/icon.html name="minus-circle" %}</span>
+        <h3>Import, export or survive an old backup</h3>
+        <p>
+          Passkeys stored elsewhere cannot be imported, and those kept in
+          Teampass cannot be exported. Restoring a backup loses the passkeys
+          saved since that backup, while the sites still expect them.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--danger">{% include components/icon.html name="minus-circle" %}</span>
+        <h3>Satisfy every site</h3>
+        <p>
+          Sites that require attestation or device-bound passkeys, as some
+          enterprise identity providers do, do not accept Teampass passkeys.
+          Only ES256 passkeys are created, and the extension does not offer
+          passkeys in the browser's autofill suggestions, nor inside frames.
+        </p>
+      </article>
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile tp-icon-tile--danger">{% include components/icon.html name="minus-circle" %}</span>
+        <h3>Replace the directory password</h3>
+        <p>
+          LDAP and OAuth2 accounts use their passkey as a second factor only. An
+          instance whose accounts all come from a directory gains nothing from
+          the passwordless mode.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section" id="start">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Getting started</span>
+      <h2>From switched off to a first passkey</h2>
+    </header>
+
+    <ol class="tp-steps">
+      <li class="tp-step">
+        <h3>Serve Teampass over HTTPS</h3>
+        <p>
+          Browsers only offer passkeys in a secure context. For the passkeys of
+          other sites, also enable <em>Require HTTPS for API requests</em>:
+          System Health warns while the API still accepts plain HTTP.
+        </p>
+      </li>
+      <li class="tp-step">
+        <h3>Turn on what you need</h3>
+        <p>
+          <em>Allow the browser extension to save passkeys</em> in
+          <em>Settings → API → Browser Extension</em>, a mode for <em>Sign in
+          with a passkey</em> in <em>Settings → MFA → Passkeys</em>, or both.
+        </p>
+      </li>
+      <li class="tp-step">
+        <h3>Save the first one</h3>
+        <p>
+          With the extension, accept the passkey a site offers and store it in
+          an item. For Teampass itself, add one from <em>Profile → Sign-in and
+          security → Sign-in passkeys</em>.
+        </p>
+      </li>
+    </ol>
+
+    <div class="tp-callout" style="margin-top: 32px;">
+      {% include components/icon.html name="book" %}
+      <p>
+        Both features arrived in 3.2.3.0 — see
+        <a href="{{ '/whats-new.html' | relative_url }}">What's new</a>. The
+        passkeys of other sites need the browser extension 1.8.0 or later. Every
+        setting, restriction and error message is described in the
+        <a href="https://documentation.teampass.net/#/features/passkeys" target="_blank" rel="noopener">Passkeys documentation</a>.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="tp-section tp-section--alt">
+  <div class="tp-container tp-container--prose">
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Questions</span>
+      <h2>Straight answers</h2>
+    </header>
+    {% include components/faq.html items=page.faq %}
+  </div>
+</section>
+
+{% include components/cta-band.html
+   title="Keep the passkey where the password already is."
+   body="Install Teampass, turn passkeys on, and let the next shared account move off its password."
+   primary-label="Install Teampass" primary-url="/install.html"
+   secondary-label="Read the documentation" secondary-url="https://documentation.teampass.net/#/features/passkeys" %}

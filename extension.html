@@ -234,6 +234,9 @@ faq:
           <li>{% include components/icon.html name="check" %}<span>{{ item }}</span></li>
           {%- endfor %}
         </ul>
+        {%- if group.url %}
+        <div class="tp-card__footer">{% include components/more-link.html url=group.url %}</div>
+        {%- endif %}
       </article>
       {%- endfor %}
     </div>

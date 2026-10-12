@@ -15,6 +15,9 @@
     - title: Secure Send
       url: /secure-send.html
       summary: Expiring, view-limited links for people outside the vault
+    - title: Passkeys
+      url: /passkeys.html
+      summary: Shared through the vault, and used to sign in to Teampass
     - title: Browser extension
       url: /extension.html
       summary: Autofill and capture for Chrome, Firefox and Edge

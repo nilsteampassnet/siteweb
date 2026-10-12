@@ -6,13 +6,15 @@
 # a new version ships.
 #
 # A group is { title, icon, items }; `icon` is a name from
-# _includes/components/icon.html.
+# _includes/components/icon.html. A group of `new` may carry a `url`, rendered
+# as a "Learn more" link to a page of this site.
 
 version: "1.8.1"
 
 new:
   - title: Passkeys
     icon: key
+    url: /passkeys.html
     items:
       - The extension answers sites' passkey requests; the private key stays in Teampass (server 3.2.3+), which does the signing
       - Confirmation in an extension window, verified with the vault PIN or biometrics, and can be turned off in the options
