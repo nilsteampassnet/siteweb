@@ -210,6 +210,54 @@ faq:
   </div>
 </section>
 
+{%- assign release = site.data.extension %}
+<section class="tp-section tp-section--alt" id="whats-new">
+  <div class="tp-container">
+
+    <header class="tp-section-header">
+      <span class="tp-section-header__eyebrow">Latest release</span>
+      <h2>What's new in version {{ release.version }}</h2>
+      <p>
+        Passkeys signed by your own server, an options page rebuilt around a
+        setup wizard, and one consistent look across every extension screen.
+      </p>
+    </header>
+
+    <span class="tp-section-header__eyebrow">New</span>
+    <div class="tp-grid tp-grid--2" style="--min: 460px;">
+      {%- for group in release.new %}
+      <article class="tp-card">
+        <span class="tp-icon-tile">{% include components/icon.html name=group.icon %}</span>
+        <h3>{{ group.title }}</h3>
+        <ul class="tp-checklist">
+          {%- for item in group.items %}
+          <li>{% include components/icon.html name="check" %}<span>{{ item }}</span></li>
+          {%- endfor %}
+        </ul>
+      </article>
+      {%- endfor %}
+    </div>
+
+    <hr>
+
+    <span class="tp-section-header__eyebrow">Fixes</span>
+    <div class="tp-grid tp-grid--2" style="--min: 460px;">
+      {%- for group in release.fixes %}
+      <article class="tp-card tp-card--muted">
+        <span class="tp-icon-tile">{% include components/icon.html name=group.icon %}</span>
+        <h3>{{ group.title }}</h3>
+        <ul class="tp-checklist">
+          {%- for item in group.items %}
+          <li>{% include components/icon.html name="check" %}<span>{{ item }}</span></li>
+          {%- endfor %}
+        </ul>
+      </article>
+      {%- endfor %}
+    </div>
+
+  </div>
+</section>
+
 {% include components/cta-band.html
    title="Try it for a month."
    body="Every new instance gets thirty days across the whole team, with no card and no commitment."

@@ -1,0 +1,73 @@
+# Latest browser-extension release, rendered by the "What's new" section of
+# /extension.html.
+#
+# Reproduce the release notes; do not embellish them. Every line must be
+# checkable against the extension's release notes. Replace the whole file when
+# a new version ships.
+#
+# A group is { title, icon, items }; `icon` is a name from
+# _includes/components/icon.html.
+
+version: "1.8.1"
+
+new:
+  - title: Passkeys
+    icon: key
+    items:
+      - The extension answers sites' passkey requests; the private key stays in Teampass (server 3.2.3+), which does the signing
+      - Confirmation in an extension window, verified with the vault PIN or biometrics, and can be turned off in the options
+      - Coexists with other managers (Bitwarden) and falls back to the browser when Teampass has no passkey for the site
+
+  - title: Options and vault settings
+    icon: lock
+    items:
+      - "Options page rebuilt: a first-run setup wizard (configuration file, server, account, licence), then a dashboard organised in sections"
+      - Vault settings (PIN, biometrics, auto-lock) are grouped in the options; the popup keeps unlock / lock
+      - The options page follows the language chosen in the popup
+
+  - title: Password generator
+    icon: refresh
+    items:
+      - "In-page generator aligned with the popup's: passphrases, Generate / History tabs, strength indicator, shared settings"
+      - Every draw uses the browser's cryptographic random generator
+      - The generator history keeps only what was copied or used
+
+  - title: Look and feel
+    icon: layers
+    items:
+      - "Theme: Auto (system) / Light / Dark, one setting for every page"
+      - "A single indigo palette: popup, options, passkey and confirmation windows, and the elements injected into pages"
+      - "Field marker: a “Teampass” pill on the field's border, which no longer covers the text or the “show password” eye"
+      - "Form fields harmonised; the “Emoji” icon style is removed"
+
+  - title: Item cards and dialogs
+    icon: file-text
+    items:
+      - "Item cards: one main button (Fill), quick copies on hover, the rest in the ⋮ menu"
+      - Click an item's logo to open its website (1.8.1)
+      - "Delete confirmations built into the extension and translated: item, generator history (1.8.1)"
+      - "Popup dialogs unified: Esc, click outside, focus handling"
+
+  - title: Smaller changes
+    icon: check-circle
+    items:
+      - Back button on the left in sub-screens
+      - Automatic-configuration confirmation window translated into 4 languages
+      - “About” screen updated
+
+fixes:
+  - title: Sign-in and server
+    icon: server
+    items:
+      - "Refused sign-in: the reason given by the server is shown (password, API key, API disabled) instead of “token expired”"
+      - No more automatic sign-in attempts in a loop after a refusal (risk of locking the account)
+      - Passkey requests are fast and silent on servers without passkeys
+      - The extension no longer acts on the pages of the Teampass server itself
+
+  - title: Interface
+    icon: shield-check
+    items:
+      - "Custom save: the folder list loads (it stayed on “Loading…”, so saving was impossible)"
+      - "Favicon: a default globe instead of Google's blurry icon"
+      - "Popup: purple band under short screens, unreadable “Loading…”, dark-mode defects"
+      - Broken “About” link removed from the options

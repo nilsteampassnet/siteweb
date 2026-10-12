@@ -8,6 +8,14 @@
 line: "3.2"
 
 highlights:
+  - title: Passkeys
+    url: https://documentation.teampass.net/#/features/passkeys
+    icon: key
+    body: >-
+      Teampass keeps the passkeys of other sites in its items, with a private
+      key that never leaves the server, and users can sign in to Teampass
+      itself with a passkey, as a second factor or without a password.
+
   - title: Linux password rotation
     url: /lapr.html
     icon: refresh
@@ -47,6 +55,63 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.3.0
+    date: 2026-10-12
+    summary: Passkeys arrive in Teampass, kept in items for other sites and used to sign in to Teampass itself, with a Secure Send activity journal, Folders and Roles pages that scale to large trees, and a High severity fix for the administration of roles by managers.
+    changes:
+      - group: Security
+        items:
+          - Managers and HR managers are bound to their own roles and folders on the Roles page, and the AD group mapping is reserved to administrators (GHSA-j3ph-4847-695h)
+      - group: New
+        items:
+          - The passkeys of other sites are kept in Teampass items and used through the browser extension 1.8.0, with a private key that never leaves the server
+          - Users sign in to Teampass with a passkey, as a second factor or without a password
+          - A Secure Send activity journal records creations, reveals, failed attempts, revocations, invalidations and expiries, metadata only
+          - A Secure Send usage card in the user statistics
+          - An optional retention, in days, for the Secure Send activity journal
+          - The administrator live activity shows failed sign-ins and lockouts, and gains an expanded view
+      - group: Improved
+        items:
+          - The Folders page and the Roles permission matrix stay usable on trees of several thousand folders
+          - The Profile page is organised in six sections
+          - The current password sent with a password change is no longer stored
+          - Items created or deleted through the API appear in the author's open folder without a reload
+      - group: Fixed
+        items:
+          - Signing out and opening the profile work again in Safari
+          - The upgrade from 2.x no longer stops with an HTTP 500 after the key file is renamed
+          - The file integrity scan no longer stays in progress on NFS storage
+          - The permission repair plan covers the data folders stored on their own volume
+          - Accented and special characters are displayed correctly on the Renewal page
+          - A new password is no longer refused because of a very short name
+      - group: Upgrade notes
+        items:
+          - Schema change, the upgrade wizard runs once and adds four tables and eight settings
+          - Both passkey features stay off until an administrator enables them, and need HTTPS
+          - Changing the relying party ID makes every registered sign-in passkey unusable
+          - Review the permission matrix of each role and the AD group mappings for changes made by managers
+          - A folder can no longer be created in, or moved to, a parent that is read-only for the user
+  - version: 3.2.2.8
+    date: 2026-10-07
+    summary: Maintenance release — Restore missing sharekeys can rebuild keys from any user who can still open the objects, three Health page findings can be cleared again, and the PHP libraries are shipped rather than installed with Composer.
+    changes:
+      - group: Improved
+        items:
+          - Restore missing sharekeys can open the objects with the keys of another user, whose password is checked on the server and whose use is recorded in the system logs
+          - Every key is checked against the data it must open, so a stale key is replaced instead of being copied to the users missing one
+          - The Fix items are empty after user OTP change tool is removed, replaced by Restore missing sharekeys with a reference user
+          - The PHP libraries are shipped with the release and never installed with Composer, in the guides and in the Docker image
+      - group: Fixed
+        items:
+          - Items with an empty password are no longer reported as corrupted
+          - Users whose legacy keys were emptied by the personal items recovery are no longer reported as inconsistent forever
+          - The Items integrity scan also removes the orphan sharekeys left on attachments, custom fields, history entries and suggestions
+      - group: Upgrade notes
+        items:
+          - No database change, replace the files and there is no upgrade wizard to run
+          - Do not run Composer after replacing the files
+          - Run Restore missing sharekeys after upgrading if the Health page reports missing or corrupted keys
+          - The repair may now replace an existing key, only when the object is proven to be encrypted with another one
   - version: 3.2.2.7
     date: 2026-10-04
     summary: Two advisories, private key recovery copies sealed against database dumps and MFA enforced for roles inherited from AD groups, plus folder deletion protection and Markdown and category browsing in the knowledge base.
