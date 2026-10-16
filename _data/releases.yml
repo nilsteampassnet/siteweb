@@ -55,6 +55,33 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.3.1
+    date: 2026-10-16
+    summary: Security release closing two Critical unauthenticated remote code execution flaws, in the access guard of the AJAX handlers and in the installer, with private backup files and a Licence tab charting the browser extension seats.
+    changes:
+      - group: Security
+        items:
+          - Requests without a session no longer pass the shared access guard of the AJAX handlers, which let an anonymous visitor change settings and run an uploaded PHP file (GHSA-988j-pf6f-2m2r)
+          - The installer is refused once Teampass is installed, and its steps require an install session and a CSRF token (GHSA-8xp7-fh3p-5pcr)
+          - The files and upload folders can no longer be set inside the public directory, and the Docker nginx configuration no longer executes PHP under /assets and /plugins
+          - Backup files and their metadata are no longer readable by every local account
+      - group: New
+        items:
+          - A Licence tab in the statistics shows the extension seats used this month, refused users and the seats of the last 31 days
+      - group: Improved
+        items:
+          - The browser extension documentation is rewritten around user setup and administrator enablement
+      - group: Fixed
+        items:
+          - The upgrade no longer stops on a database whose name contains a dot
+          - A backup comment that cannot be saved is reported as a failure
+      - group: Upgrade notes
+        items:
+          - No database change, replace the files and there is no upgrade wizard to run
+          - Upgrading is required for every installation
+          - On your own nginx, deny PHP files under /assets and /plugins, as the installation guide shows
+          - Check that the files and upload folders are outside the public directory
+          - The seat chart fills in once the licence server provides the daily history
   - version: 3.2.3.0
     date: 2026-10-12
     summary: Passkeys arrive in Teampass, kept in items for other sites and used to sign in to Teampass itself, with a Secure Send activity journal, Folders and Roles pages that scale to large trees, and a High severity fix for the administration of roles by managers.
