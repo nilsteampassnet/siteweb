@@ -55,6 +55,28 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.3.2
+    date: 2026-10-20
+    summary: Corrective release that makes fresh installations work again after 3.2.3.1, verifies the SMTP server certificate, and shows creation and modification dates in the knowledge base.
+    changes:
+      - group: Security
+        items:
+          - "Fresh installations no longer stop at the database step, where 3.2.3.1 refused 35 tables (GHSA-pxjv-6qgf-xhcg)"
+          - The certificate of the SMTP server can be verified, on by default for new installations
+      - group: New
+        items:
+          - Knowledge base articles show their creation and modification dates
+      - group: Fixed
+        items:
+          - Licence dates follow the date format of the instance, and the licence panel no longer shows the expiry one day late east of UTC
+          - Article titles and categories containing an ampersand are no longer re-encoded on each save
+          - Translations holding an identifier instead of a text are removed in Italian, Polish and Brazilian Portuguese
+      - group: Upgrade notes
+        items:
+          - The upgrade wizard runs once, to add the article dates to the knowledge base
+          - Upgraded installations keep SMTP certificate verification off until it is enabled in Admin, Emails
+          - After a failed 3.2.3.1 installation, start again from an empty database with 3.2.3.2
+          - Never install 3.2.3.0 or older to work around it, they carry two Critical flaws
   - version: 3.2.3.1
     date: 2026-10-16
     summary: Security release closing two Critical unauthenticated remote code execution flaws, in the access guard of the AJAX handlers and in the installer, with private backup files and a Licence tab charting the browser extension seats.
