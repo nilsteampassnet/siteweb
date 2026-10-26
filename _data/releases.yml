@@ -55,6 +55,36 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.3.3
+    date: 2026-10-26
+    summary: Maintenance release closing an attachment authorization flaw, repairing upgrade paths that stopped or skipped migrations, and adding disaster recovery onto a fresh server and experimental QR pairing for external devices.
+    changes:
+      - group: Security
+        items:
+          - "Deleting an attachment requires the edit right, and a new item only receives the files its own session uploaded (GHSA-r6r4-5mr3-rppm)"
+      - group: New
+        items:
+          - Disaster recovery restores a complete encrypted backup and its Recovery Package onto a fresh server, verified and upgraded before activation
+          - Experimental QR pairing of external devices, off by default, with expiring and individually revocable device credentials, for client developers until a client is published
+      - group: Improved
+        items:
+          - Backups are taken from a single consistent database snapshot
+          - The database records the complete release that last upgraded it, and the upgrade wizard shows the version it upgrades from
+          - The browser extension documentation covers the popup features added since 1.8.2
+      - group: Fixed
+        items:
+          - Docker images no longer skip migrations on databases coming from 3.2.2.6 or earlier, which broke non-administrator sign-ins
+          - No sign-in is accepted while a database upgrade is pending, OAuth2 and passkeys included
+          - An unusable internal TP account key is detected and can be rebuilt, instead of silently leaving users without access when their keys are generated
+          - Upgrades from 2.x no longer stop with an HTTP 500 on the user keys step
+          - The upgrade wizard no longer stops at 3.1.5 on databases migrated from 2.x
+          - LAPR rates rotated passwords, and deleting an endpoint releases its managed accounts
+      - group: Upgrade notes
+        items:
+          - Schema change, the upgrade wizard runs once and adds one table, four columns and three device pairing settings
+          - Backups keep maintenance mode on while they run and sign out non-administrators who use Teampass meanwhile, so schedule them outside working hours
+          - Docker instances already upgraded from 3.2.2.6 or earlier to 3.2.3.0–3.2.3.2 should run the check described in the Docker guide
+          - After a disaster recovery, offline API clients must send back the generation adopted on their last full sync
   - version: 3.2.3.2
     date: 2026-10-20
     summary: Corrective release that makes fresh installations work again after 3.2.3.1, verifies the SMTP server certificate, and shows creation and modification dates in the knowledge base.
