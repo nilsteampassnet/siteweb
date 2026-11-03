@@ -55,6 +55,72 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.4.1
+    date: 2026-11-03
+    summary: Security release enforcing the per-item restriction on item history, one-time codes, attachment previews, item details, exports and item creation, and ending the sessions opened before a password change.
+    changes:
+      - group: Security
+        items:
+          - "Item history and one-time codes require read access to the item, not only to its folder (GHSA-75qw-h7p8-ppr3)"
+          - "The attachment preview checks access to the attachment's item before decrypting it (GHSA-jxj9-mcx4-h34j)"
+          - "Role restrictions apply to the item details and to the four export formats, and the export handler enforces the Export permission (GHSA-h66m-8w9q-86r2)"
+          - "Creating an item can no longer add a role restriction to another existing item (GHSA-jgmv-3gr2-fjpw)"
+          - "A password change, a password recovery or an administrator key generation ends the sessions opened before it, and session extension is capped (GHSA-p84q-3h9h-qvh6)"
+          - "Key generation no longer resets the caller's own password without the current one (GHSA-2vf9-2qw7-8hmr)"
+          - Symfony http-foundation and mime updated to 6.4.49
+      - group: Improved
+        items:
+          - The pre-upgrade backup of the command-line upgrade is listed with the on-the-fly backups and kept until deleted
+      - group: Fixed
+        items:
+          - Non-administrators get the target folder list again when importing from Bitwarden, LastPass, 1Password or KeePassXC
+          - A role restriction chosen when creating an item is saved
+      - group: Upgrade notes
+        items:
+          - Code only, installations on 3.2.4.0 are not sent through the upgrade wizard
+          - The export handler refuses administrators and users without an allowed role, like the Export menu, and leaves out items restricted to other roles
+          - Items created with a role restriction before 3.2.4.1 carry none, so their owners should set it again
+          - A password change signs out copies of the previous session, and API clients such as the browser extension sign in again
+  - version: 3.2.4.0
+    date: 2026-11-01
+    summary: Opens the 3.2.4 line with a command-line upgrade, a redesigned item view and edit form, a Secure Send inventory and a Recovery Package reminder, and closes a High severity installer flaw.
+    changes:
+      - group: Security
+        items:
+          - "The installer no longer accepts a session opened before the setup on instances installed with 3.2.3.1 to 3.2.3.3 (GHSA-6x8j-28p6-mmfm)"
+          - Tags and Knowledge Base labels can no longer run script in the item view
+          - Tag suggestions only offer the tags of items the user can read
+          - The command palette no longer reveals the names of inaccessible parent folders
+          - Knowledge Base item suggestions respect item restrictions
+      - group: New
+        items:
+          - A command-line upgrade backs up the database, runs the upgrade in maintenance mode and restores the backup if a step fails
+          - The item view is redesigned, with a sticky action bar, credential rows and foldable sections
+          - The item edit form fits on one page, with foldable sections, Ctrl+S and file cards for attachments
+          - An icon picker for item and folder icons, with search and suggestions
+          - Tags are edited as chips
+          - A Secure Send inventory lists the active links of the user, each one revocable
+          - The administrator dashboard reminds administrators to save a Recovery Package
+          - A community card on the administrator dashboard lists ways to help Teampass be found and funded
+      - group: Improved
+        items:
+          - Searches match the displayed text, without regard to accents
+          - The Secure Send settings explain their scope, and refused Host headers are logged
+      - group: Fixed
+        items:
+          - The web installer shows its final page again
+          - Folder, favourite and Knowledge Base names no longer show HTML entities
+          - The web upgrade wizard enables maintenance mode
+          - Docker images run the upgrade data clean-ups
+          - Background tasks wait until the database matches the deployed files
+          - restore.php --force-disconnect disconnects users under strict SQL mode
+          - Several item view and edit form glitches
+      - group: Upgrade notes
+        items:
+          - No schema change, but the move to the 3.2.4 line runs the upgrade once, through the wizard, the command line or the Docker entrypoint
+          - The web wizard enables maintenance mode and disconnects users while it runs
+          - Every upgraded instance asks for a Recovery Package on the dashboard until one is downloaded
+          - Instances installed with 3.2.3.1 to 3.2.3.3 should delete or lock down public/install and check the indicators of compromise listed in GHSA-6x8j-28p6-mmfm
   - version: 3.2.3.3
     date: 2026-10-26
     summary: Maintenance release closing an attachment authorization flaw, repairing upgrade paths that stopped or skipped migrations, and adding disaster recovery onto a fresh server and experimental QR pairing for external devices.
