@@ -55,6 +55,36 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.4.2
+    date: 2026-11-08
+    summary: Security release keeping managers and HR managers within the accounts and folders they administer, requiring the session key on every administration action, and making generic OpenID Connect providers work.
+    changes:
+      - group: Security
+        items:
+          - "Managers and HR managers can only grant folders within their own scope as allowed or forbidden folders (GHSA-vrhq-38vx-9vjp)"
+          - "Every administration action requires the session key (GHSA-7wvw-wxqx-v364)"
+          - "The Users list is limited to users who may open the Users page, and only displayed columns can be sorted (GHSA-5cwc-6hfp-2mr7)"
+          - "The folder rights of an account are only shown to the people who administer it (GHSA-28mq-vx4v-72h8)"
+          - "Only administrators grant the root-folder creation right (GHSA-57ww-wx2c-hx7x)"
+          - "The folder list no longer returns the path of a folder the user cannot access (GHSA-5mff-6g7v-9v6v)"
+          - Account creation checks the administrating role against the roles the creator may grant
+      - group: New
+        items:
+          - Generic OpenID Connect providers such as authentik and Keycloak work, with sub and preferred_username required
+      - group: Improved
+        items:
+          - 489 Chinese and 3 German translations added from POEditor
+      - group: Fixed
+        items:
+          - OAuth2 users can generate new keys and rebuild their keys again, Microsoft Entra ID included
+          - An LDAP account without a key pair gets its keys generated at its first login instead of an HTTP 500
+          - The command-line upgrade reconnects after an idle database connection and no longer reverts a complete upgrade
+      - group: Upgrade notes
+        items:
+          - Code only, installations on 3.2.4.0 or 3.2.4.1 are not sent through the upgrade wizard
+          - Existing manager grants are kept, and folders outside a manager's scope are dropped from now on
+          - "A generic OpenID Connect provider needs the scopes openid,profile,email, and usernames controlled by its administrators"
+
   - version: 3.2.4.1
     date: 2026-11-03
     summary: Security release enforcing the per-item restriction on item history, one-time codes, attachment previews, item details, exports and item creation, and ending the sessions opened before a password change.
