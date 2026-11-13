@@ -55,6 +55,51 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.4.3
+    date: 2026-11-13
+    summary: Security release closing three single sign-on weaknesses and a read-only folder bypass, with email through Microsoft Graph, Microsoft 365 OAuth2 or the Gmail API, and Secure Send links that can be emailed or created from API clients.
+    changes:
+      - group: Security
+        items:
+          - "An SSO user named Admin, tp, otv or api is no longer signed in to the administrator or an internal account (GHSA-9f44-82r9-8878)"
+          - "OAuth2 accounts are bound to their identity at the provider, so an SSO user can no longer take over a local or LDAP account with the same login (GHSA-rwmr-96mp-w36x)"
+          - "The allowed groups for self-registration are enforced (GHSA-grv6-m9pj-4cf2)"
+          - "A read-only folder role prevents renaming the folder and changing its settings (GHSA-32hp-p55x-wr8v)"
+          - Email diagnostics and task logs no longer keep credentials or message contents
+          - Symfony components updated for CVE-2026-118514, CVE-2026-118515 and CVE-2026-118516
+      - group: New
+        items:
+          - Email through Microsoft Graph, Microsoft 365 SMTP with OAuth2 or the Gmail API, next to an SMTP relay
+          - Secure Send links can be emailed to their recipient, off by default
+          - Secure Send links can be created from API clients such as the browser extension, off by default
+          - The Secure Send journal in Monitoring → Logs, for administrators
+          - Test an SSO user and check the allowed groups from the OAuth page, for Microsoft Entra ID
+          - Add and remove favourites from the search results
+      - group: Improved
+        items:
+          - Installation, upgrade and disaster recovery end with a file permission review, and the operator removes the installer folder
+          - Queued emails are encrypted and retried within limits
+          - Email failures are reported instead of being silent
+          - Entra groups include nested groups
+          - 141 new strings, translated into French
+      - group: Fixed
+        items:
+          - An active account signs in again when a deleted account had the same login
+          - "A role named after an SSO group with an accent, & or ' is granted"
+          - Each legacy backlog email goes to its own recipients only
+          - Password expiry notifications keep the countdown of the day they were delivered
+          - A password change can no longer save an empty private key
+          - Line breaks of plain-text descriptions are kept
+          - Administrators can release an item edit lock from the Database page
+          - Saving the Teampass location URL works again
+      - group: Upgrade notes
+        items:
+          - Schema change, every installation goes through the upgrade wizard once
+          - At the end of the installation or web upgrade, remove the installer folder with the command shown, or restart the Docker container
+          - "The allowed groups for self-registration are now enforced: enter * to let everybody in"
+          - Linking existing accounts at their first SSO sign-in stays enabled after the upgrade for Microsoft Entra ID only, and is off on fresh installations
+          - Check the administrator and internal accounts, and the accounts holding an empty private key, with the queries of the release notes
+
   - version: 3.2.4.2
     date: 2026-11-08
     summary: Security release keeping managers and HR managers within the accounts and folders they administer, requiring the session key on every administration action, and making generic OpenID Connect providers work.
