@@ -55,6 +55,38 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.4.4
+    date: 2026-11-20
+    summary: Maintenance release closing a network whitelist bypass and hardening backups and restores, with an upgrade fix for installations holding Secure Send notes and imports and CSV exports that keep passwords and line breaks intact.
+    changes:
+      - group: Security
+        items:
+          - "Network whitelists and blacklists filter every request and read the proxy chain from the right (GHSA-6q46-mfmg-f8ph)"
+          - SFTP externalized backups check the server's host key fingerprint before sending any credential
+      - group: Improved
+        items:
+          - Secure Send recipients can show the passphrase they type
+          - API clients can send Secure Send notes, list their links and revoke them
+          - A restore validates the whole archive, its schema and its master key before changing anything
+          - 13 new strings translated into French, Brazilian Portuguese translation complete
+      - group: Fixed
+        items:
+          - The upgrade no longer stops on installations holding Secure Send notes
+          - Accented letters of the settings are stored as typed, not as HTML entities
+          - Imports from Bitwarden, KeePassXC, LastPass and 1Password keep passwords exactly as exported
+          - The CSV import reads the documented comments column, and the CSV export keeps multi-line values whole
+          - SQL backups keep line breaks, backslashes and binary values
+          - An item saved to another folder than the one open gets the keys of its folder
+          - The folder tree follows the counter option
+          - API logins no longer slow down as the system log grows
+          - The Secure Send journal of the logs page no longer shows a DataTables warning
+      - group: Upgrade notes
+        items:
+          - Behind a reverse proxy, list every intermediary in Trusted proxies before upgrading
+          - Existing SFTP destinations need the server's fingerprint, and HTTP WebDAV or S3 endpoints an explicit opt-in
+          - A successful restore leaves the instance in maintenance and signs everyone out
+          - "No schema change: 3.2.4.3 installations are not sent through the upgrade wizard"
+
   - version: 3.2.4.3
     date: 2026-11-13
     summary: Security release closing three single sign-on weaknesses and a read-only folder bypass, with email through Microsoft Graph, Microsoft 365 OAuth2 or the Gmail API, and Secure Send links that can be emailed or created from API clients.
