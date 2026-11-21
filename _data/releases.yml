@@ -55,6 +55,21 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.4.5
+    date: 2026-11-21
+    summary: Security release fixing five weaknesses in the handling of items, among them change proposals that destroyed the encryption keys of an unrelated item.
+    changes:
+      - group: Security
+        items:
+          - "Change proposals no longer overwrite the encryption keys of an unrelated item, and the action is removed (GHSA-xp38-wccv-8v49)"
+          - "Manual history entries require edit rights on the item (GHSA-4hrh-wjp5-wrph)"
+          - "Changing an item's automatic password update frequency requires edit rights on it (GHSA-ccc7-vc5r-qp79)"
+          - "Sharing an item by email respects its user and role restrictions (GHSA-6qg7-w2p8-7rw4)"
+          - "Change notifications reach only the subscribers who can still read the item (GHSA-9375-g3m3-9jvg)"
+      - group: Upgrade notes
+        items:
+          - Installations that ever used change proposals should check the items whose id matches a stored proposal
+          - "No schema change: 3.2.4.4 installations are not sent through the upgrade wizard"
   - version: 3.2.4.4
     date: 2026-11-20
     summary: Maintenance release closing a network whitelist bypass and hardening backups and restores, with an upgrade fix for installations holding Secure Send notes and imports and CSV exports that keep passwords and line breaks intact.
