@@ -55,6 +55,29 @@ highlights:
       limit and an optional recipient passphrase.
 
 versions:
+  - version: 3.2.4.6
+    date: 2026-11-25
+    summary: Security and feature release scoping the recycle bin of managers to what they can see, with file attachments in Secure Send, the offline vault policy of the browser extension and a rewritten per-user audit log.
+    changes:
+      - group: Security
+        items:
+          - "Managers and HR managers can only purge or restore recycled items and folders they can see (GHSA-4jq3-w38q-6wrq)"
+          - "Moving or copying a folder to the root requires the root-folder right (GHSA-c2rh-qwj7-9m7j)"
+      - group: New
+        items:
+          - Secure Send notes can carry a file, and item shares up to ten of the item's attachments
+          - Administrators can let the browser extension keep an encrypted offline copy of a user's items
+      - group: Improved
+        items:
+          - The per-user audit log filters by period, activity, channel and text, and counts item exports as password access
+      - group: Fixed
+        items:
+          - The Bitwarden import keeps custom fields in the item description
+      - group: Upgrade notes
+        items:
+          - "Schema change: every installation goes through the upgrade wizard once"
+          - Secure Send attachments and the offline vault stay off until an administrator enables them
+          - Accounts that moved folders to the root through the sub-folder setting or the HR manager right now need the root-folder right
   - version: 3.2.4.5
     date: 2026-11-21
     summary: Security release fixing five weaknesses in the handling of items, among them change proposals that destroyed the encryption keys of an unrelated item.
